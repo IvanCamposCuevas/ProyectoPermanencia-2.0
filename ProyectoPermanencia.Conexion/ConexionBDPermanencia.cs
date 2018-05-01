@@ -17,14 +17,6 @@ namespace ProyectoPermanencia.Conexion
             set { nombreBaseDeDatos = value; }
         }
 
-        private String nombreTabla;
-
-        public String NombreTabla
-        {
-            get { return nombreTabla; }
-            set { nombreTabla = value; }
-        }
-
         private String cadenaConexion;
 
         public String CadenaConexion
@@ -57,23 +49,13 @@ namespace ProyectoPermanencia.Conexion
             set { dbConnection = value; }
         }
 
-        private System.Data.DataSet dbDataSet;
+        private SqlDataReader dbReader;
 
-        public System.Data.DataSet DbDataSet
+        public SqlDataReader DbReader
         {
-            get { return dbDataSet; }
-            set { dbDataSet = value; }
+            get { return dbReader; }
+            set { dbReader = value; }
         }
-
-
-        private SqlDataAdapter dbDataAdapter;
-
-        public SqlDataAdapter DbDataAdapter
-        {
-            get { return dbDataAdapter; }
-            set { dbDataAdapter = value; }
-        }
-
 
         //abrir la conexion
 
@@ -116,11 +98,6 @@ namespace ProyectoPermanencia.Conexion
             }
 
 
-            if (this.NombreTabla.Length == 0)
-            {
-                throw new Exception("Falta nombre tabla");
-            }
-
             if (this.CadenaConexion.Length == 0)
             {
                 throw new Exception("Falta cadena Conexion");
@@ -143,30 +120,26 @@ namespace ProyectoPermanencia.Conexion
 
             //SE abre la conexion
             this.Abrir();
-
-            //Se instancia el DataAdapter
-
+            //Se ingresara tanto la cadena de SQL y de conexion y se instanciara a la Variable SQLCommand.
+            SqlCommand variableSQL = new SqlCommand(this.cadenaSQL, this.dbConnection);
+            //Si es una consulta, se instanciara DataReader con SqlCommand. Si no, se leera como un Update, Delete e Insert
+            //solo se tendra que executar la cadena.
             if (this.EsSelect)
             {
-                //SE instancia dataSet
-
-                this.DbDataSet = new System.Data.DataSet();
                 try
                 {
-                    this.DbDataAdapter = new SqlDataAdapter(this.CadenaSQL, this.DbConnection);
-                    this.DbDataAdapter.Fill(this.DbDataSet, this.NombreTabla);
+                    this.DbReader = variableSQL.ExecuteReader();
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error al cargar los datos", ex);
 
+                    throw new Exception("Error al cargar los datos", ex);
                 }
             }
             else
             {
                 try
                 {
-                    SqlCommand variableSQL = new SqlCommand(this.CadenaSQL, this.DbConnection);
                     variableSQL.ExecuteNonQuery();
 
                 }

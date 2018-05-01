@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProyectoPermanencia.Negocio
 {
-    public class Class1
+    public class NegocioTablaGlobal
     {
+        
     }
 }

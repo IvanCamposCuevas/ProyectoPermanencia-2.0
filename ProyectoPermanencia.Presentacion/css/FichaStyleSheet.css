@@ -1,0 +1,43 @@
+﻿div .info {
+    font-family: Calibri;
+    float: left;
+    border-style: solid;
+    border-color: rgb(9,40,69);
+}
+
+div .ScoreNotas {
+    align-content: center;
+    vertical-align: central;
+    border-style: solid;
+    border-color: rgb(9,40,69);
+}
+
+div .ScoreAsistencia {
+    align-content: center;
+    vertical-align: central;
+    border-style: solid;
+    border-color: rgb(9,40,69);
+}
+
+div .ScoreFinanzas {
+    align-content: center;
+    vertical-align: central;
+    border-style: solid;
+    border-color: rgb(9,40,69);
+}
+
+div Column{
+    width: 30%;
+}
+
+div MainColumn {
+    width: 70%;
+}
+
+ContentFicha {
+    border: 5px solid rgb(9,40,69);
+}
+
+BodyFicha {
+    border: 5px solid rgb(9,40,69);
+}

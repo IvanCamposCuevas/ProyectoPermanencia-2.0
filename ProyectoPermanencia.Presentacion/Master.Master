@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="ProyectoPermanencia.Presentacion.Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PROYECTO PERMANENCIA</title>
+    <link href="css/MasterStyleSheet.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="formPrincipal" class="container" runat="server">
+        <header>
+            <img runat="server" src="~/imgs/logo_duoc.png" width="300" />
+            <div id="MenuPrincipal" class="MenuPrincipal">
+            <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal"
+                CssClass=".MenuPrincipal" BackColor="#092845" DynamicHorizontalOffset="2"
+                Font-Names="Lucida Sans Unicode" Font-Size="20px" ForeColor="#ffffff"
+                DynamicMenuItemStyle-BorderStyle="Solid">
+                <Items>
+                    <asp:MenuItem NavigateUrl="~/Pages/FichaAlumno.aspx" Text=" [Ficha] " />
+                    <asp:MenuItem NavigateUrl="~/Pages/VisionGlobal.aspx" Text=" [Global] " />
+                    
+
+                </Items>
+            </asp:Menu>
+        </div>
+        </header>
+        
+        <!-- CONTENIDO DINAMICO DE LA MASTER -->
+        <div>
+            <hr />
+            <br />
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderFicha" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderGlobal" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderHistorico" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <footer>
+            Copyright y toda esa shit
+        </footer>
+    </form>
+</body>
+</html>

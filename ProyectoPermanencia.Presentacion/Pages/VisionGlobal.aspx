@@ -7,63 +7,54 @@
     <!-- FILTROS DE BUSQUEDA -->
     <hr />
     <div id="Filtros" class="Filtros" style="padding: 10px">
-        
-        <h3>Filtrar resultados</h3>
+
         <!-- Filtrar por rut o nombre -->
         <div>
-            <asp:DropDownList ID="ddlRutNom" runat="server">
+            <h3>Buscar Alumno</h3>
+            <asp:DropDownList ID="ddlRutNom" runat="server" Width="120px">
                 <asp:ListItem Value="1" Text="Rut Alumno">Rut Alumno</asp:ListItem>
                 <asp:ListItem>Nombre Alumno</asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox runat="server">
-            </asp:TextBox>
+            <asp:TextBox runat="server" Width="115px"></asp:TextBox>
             <asp:Button runat="server" Text="Filtrar" />
         </div>
+        <!-- Filtrar resultados -->
+        <br /><h3>Filtrar resultados </h3>
         <!-- Filtrar por jornada -->
-        <div>
+        <div ID="Jornada" style="width:200px;">
             <h4>Jornada: </h4>
             <asp:CheckBox runat="server" ID="chkDiurno" Text="Diurno" />
             <br />
             <asp:CheckBox runat="server" ID="chkVespertino" Text="Vespertino" />
+            <br />
         </div>
         <!-- Filtrar por escuela -->
-        <div>
+        <div id="Escuela" style="width:200px; border:solid; align-self:center;">
             <h4>Escuela: </h4>
-            <asp:DropDownList ID="ddlEscuelas" runat="server">
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-
+            <asp:DropDownList ID="ddlEscuelas" runat="server" >
+                <asp:ListItem>Escuela 1</asp:ListItem>
+                <asp:ListItem>Escuela 2</asp:ListItem>
+                <asp:ListItem>Escuela 3</asp:ListItem>
+                <asp:ListItem>Escuela 4</asp:ListItem>
+                <asp:ListItem>Escuela 5</asp:ListItem>
+                <asp:ListItem>Escuela 6</asp:ListItem>
             </asp:DropDownList>
+            <br />
         </div>
         <!-- Filtrar por carrera -->
-        <div>
+        <div id="Carrera" style="width:200px; border:solid; float:none;">
             <h4>Carrera: </h4>
             <asp:DropDownList ID="ddlCarrera" runat="server">
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-                <asp:ListItem></asp:ListItem>
-
+                <asp:ListItem>Carrera 1</asp:ListItem>
+                <asp:ListItem>Carrera 2</asp:ListItem>
+                <asp:ListItem>Carrera 3</asp:ListItem>
+                <asp:ListItem>Carrera 4</asp:ListItem>
+                <asp:ListItem>Carrera 5</asp:ListItem>
+                <asp:ListItem>Carrera 6</asp:ListItem>
             </asp:DropDownList>
+            <br />
         </div>
+        <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" />
 
         <br />
         <hr />
@@ -73,7 +64,7 @@
     <div>
         <div id="ScoreGlobal" class="ScoreGlobal">
             <h2>Scores </h2>
-            <asp:GridView ID="grvGlobal" runat="server" AllowPaging="true" AutoGenerateColumns="false" BorderStyle="Solid" GridLines="Both" ShowHeaderWhenEmpty="true" EmptyDataText="No se encontraron registros">
+            <asp:GridView ID="grvGlobal" runat="server" AllowPaging="True" AutoGenerateColumns="False" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
                 <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                 <Columns>
                     <asp:BoundField DataField="" HeaderText="ID Alumno" />

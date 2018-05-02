@@ -25,8 +25,8 @@
 
         <!-- COLUMNA LATERAL CON INFORMACION DEL ALUMNO -->
         <div>
-            <div id="InformacionAlumno" class="SideColumn" style="border: 2px solid rgb(9,40,69); width:250px; float:left">
-                <h3>Información Personal</h3>
+            <div id="InformacionAlumno" class="SideColumn" style="border: 2px solid rgb(9,40,69); width:200px; float:left; align-content:center; padding: 20px;" >
+                <h3 style="text-align:center">Información Personal</h3>
                 <asp:Label runat="server">Rut:</asp:Label>
                 18462110-k
         <br />
@@ -38,7 +38,7 @@
         <br />
                 <asp:Label runat="server">Escuela:</asp:Label>
                 Inf.
-        <h3>Contacto</h3>
+        <h3 style="text-align:center">Contacto</h3>
                 <br />
                 <asp:Label runat="server">Teléfono:</asp:Label>
                 99999999
@@ -52,11 +52,13 @@
         <!-- COLUMNA PRINCIPAL CON GRILLAS DE SCORE -->
         <div>
             <div id="Grillas" runat="server" class="row" 
-                style="border: 2px solid rgb(9,40,69); background-color: azure; width:880px; float:right">
+                style="border: 1px solid rgb(9,40,69); background-color: azure; width:850px; float:right">
                 <div >
                     <div id="ScoreNotas" class="ScoreNotas">
                         <h2>Score notas por asignatura </h2>
-                        <asp:GridView ID="grvNotas" runat="server" CssClass="ScoreNotas" AllowPaging="true" AutoGenerateColumns="false" BorderStyle="Solid" GridLines="Both" ShowHeaderWhenEmpty="true" EmptyDataText="No se encontraron registros">
+                        <asp:GridView ID="grvNotas" runat="server" CssClass="ScoreNotas" AllowPaging="true" 
+                            AutoGenerateColumns="false" BorderStyle="Solid" BorderWidth="3px" GridLines="Both" ShowHeaderWhenEmpty="true" 
+                            EmptyDataText="No se encontraron registros">
                             <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                             <Columns>
                                 <asp:BoundField DataField="" HeaderText="ID Asignatura" />
@@ -101,6 +103,29 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+        
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br /> 
+        <br />
+        <br />
+        <br />EL FOOTER NO SE QUEDA AQUI ABAJO SIN LOS SALTOS DE LINEAAAAAAAAAAA
+        <br />
+        <br />
+
     </div>
 </asp:Content>
 

@@ -47,7 +47,7 @@
                 </asp:ContentPlaceHolder>
             </div>
         </div>
-        <footer>
+        <footer style="position:static; margin-bottom: 0px" class="footer" id="footer">
             Copyright y toda esa shit
         </footer>
     </form>

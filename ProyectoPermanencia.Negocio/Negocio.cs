@@ -10,9 +10,9 @@ namespace ProyectoPermanencia.Negocio
     public class Negocio
     {
         
-            private Conexion conec1;
+            private Conexion.Conexion conec1;
 
-            public Conexion Conec1
+            public Conexion.Conexion Conec1
             {
                 get { return conec1; }
                 set { conec1 = value; }

@@ -11,7 +11,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.txtRut.Text = Request.QueryString[0];
         }
     }
 }

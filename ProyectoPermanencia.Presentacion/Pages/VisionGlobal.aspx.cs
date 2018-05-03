@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+
+
 namespace ProyectoPermanencia.Presentacion
 {
     public partial class VisionGlobal : System.Web.UI.Page
@@ -28,10 +31,7 @@ namespace ProyectoPermanencia.Presentacion
             }
         }
 
-        protected void btnDetalle_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void CargarGrilla()
         {
@@ -40,5 +40,22 @@ namespace ProyectoPermanencia.Presentacion
             //grvGlobal.DataBind();
         }
 
+        protected void btoFiltrar_Click(object sender, EventArgs e)
+        {
+            ProyectoPermanencia.Negocio.Negocio auxNegocio = new ProyectoPermanencia.Negocio.Negocio();
+
+            //this.GridViewScore.DataMember =
+            this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRut.Text);
+            this.grvGlobal.DataBind();
+        }
+
+        protected void grvGlobal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = this.grvGlobal.SelectedRow;
+
+            String auxRut = row.Cells[1].Text;
+
+            Response.Redirect("WebConsultaScoreAlumno.aspx?auxRut = " + auxRut);
+        }
     }
 }

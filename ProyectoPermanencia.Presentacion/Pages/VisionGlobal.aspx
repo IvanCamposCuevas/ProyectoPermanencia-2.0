@@ -15,7 +15,7 @@
                 <asp:ListItem Value="1" Text="Rut Alumno">Rut Alumno</asp:ListItem>
                 <asp:ListItem>Nombre Alumno</asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox runat="server" Width="115px"></asp:TextBox>
+            <asp:TextBox runat="server" Width="115px" ID="txtRut"></asp:TextBox>
             <asp:Button runat="server" Text="Filtrar" />
         </div>
         <!-- Filtrar resultados -->
@@ -51,7 +51,7 @@
         </div>
         <br />
         <br />
-        <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" />
+        <asp:Button ID="btoFiltrar" runat="server" OnClick="btoFiltrar_Click" Text="Filtrar" />
 
         <br />
         <hr />
@@ -61,7 +61,7 @@
     <div>
         <div id="ScoreGlobal" class="ScoreGlobal">
             <h2>Scores </h2>
-            <asp:GridView ID="grvGlobal" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
+            <asp:GridView ID="grvGlobal" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged">
                 <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                 <Columns>
                     <asp:BoundField DataField="" HeaderText="Rut" />

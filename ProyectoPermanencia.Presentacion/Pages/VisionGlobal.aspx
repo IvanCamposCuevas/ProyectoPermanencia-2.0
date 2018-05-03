@@ -23,37 +23,34 @@
         <!-- Filtrar por jornada -->
         <div ID="Jornada" style="width:200px;">
             <h4>Jornada: </h4>
-            <asp:CheckBox runat="server" ID="chkDiurno" Text="Diurno" />
-            <br />
-            <asp:CheckBox runat="server" ID="chkVespertino" Text="Vespertino" />
+            <asp:DropDownList ID="ddlJornada" runat="server" Width="120px">
+                <asp:ListItem Value="1" Text="Diurno">Diurno</asp:ListItem>
+                <asp:ListItem Value="2" Text="Vespertino">Vespertino</asp:ListItem>
+            </asp:DropDownList>
             <br />
         </div>
         <!-- Filtrar por escuela -->
-        <div id="Escuela" style="width:200px; border:solid; align-self:center;">
+        <div id="Escuela" style="width:200px; align-self:center;">
             <h4>Escuela: </h4>
             <asp:DropDownList ID="ddlEscuelas" runat="server" >
                 <asp:ListItem>Escuela 1</asp:ListItem>
                 <asp:ListItem>Escuela 2</asp:ListItem>
                 <asp:ListItem>Escuela 3</asp:ListItem>
-                <asp:ListItem>Escuela 4</asp:ListItem>
-                <asp:ListItem>Escuela 5</asp:ListItem>
-                <asp:ListItem>Escuela 6</asp:ListItem>
             </asp:DropDownList>
             <br />
         </div>
         <!-- Filtrar por carrera -->
-        <div id="Carrera" style="width:200px; border:solid; float:none;">
+        <div id="Carrera" style="width:200px; float:none;">
             <h4>Carrera: </h4>
             <asp:DropDownList ID="ddlCarrera" runat="server">
                 <asp:ListItem>Carrera 1</asp:ListItem>
                 <asp:ListItem>Carrera 2</asp:ListItem>
                 <asp:ListItem>Carrera 3</asp:ListItem>
-                <asp:ListItem>Carrera 4</asp:ListItem>
-                <asp:ListItem>Carrera 5</asp:ListItem>
-                <asp:ListItem>Carrera 6</asp:ListItem>
             </asp:DropDownList>
             <br />
         </div>
+        <br />
+        <br />
         <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" />
 
         <br />
@@ -64,10 +61,9 @@
     <div>
         <div id="ScoreGlobal" class="ScoreGlobal">
             <h2>Scores </h2>
-            <asp:GridView ID="grvGlobal" runat="server" AllowPaging="True" AutoGenerateColumns="False" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
+            <asp:GridView ID="grvGlobal" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
                 <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                 <Columns>
-                    <asp:BoundField DataField="" HeaderText="ID Alumno" />
                     <asp:BoundField DataField="" HeaderText="Rut" />
                     <asp:BoundField DataField="" HeaderText="Nombre" />
                     <asp:BoundField DataField="" HeaderText="Carrera" />
@@ -76,6 +72,12 @@
                     <asp:BoundField DataField="" HeaderText="Semestre" />
                     <asp:BoundField DataField="" HeaderText="Jornada" />
                     <asp:BoundField DataField="" HeaderText="SCORE" />
+                    <asp:TemplateField>
+                        <HeaderTemplate>Detalle Alumno</HeaderTemplate>
+                        <ItemTemplate>
+                            <asp:Button ID="btnDetalle" runat="server"/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
         </div>

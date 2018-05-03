@@ -22,22 +22,13 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.DropDownList ddlRutNom;
         
         /// <summary>
-        /// Control chkDiurno.
+        /// Control ddlJornada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkDiurno;
-        
-        /// <summary>
-        /// Control chkVespertino.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkVespertino;
+        protected global::System.Web.UI.WebControls.DropDownList ddlJornada;
         
         /// <summary>
         /// Control ddlEscuelas.

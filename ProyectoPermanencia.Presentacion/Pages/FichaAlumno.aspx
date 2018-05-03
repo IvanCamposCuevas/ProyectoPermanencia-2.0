@@ -28,23 +28,23 @@
             <div id="InformacionAlumno" class="SideColumn" style="border: 2px solid rgb(9,40,69); width:200px; float:left; align-content:center; padding: 20px;" >
                 <h3 style="text-align:center">Información Personal</h3>
                 <asp:Label runat="server">Rut:</asp:Label>
-                18462110-k
+                <asp:Label runat="server"> </asp:Label>
         <br />
                 <asp:Label runat="server">Nombre:</asp:Label>
-                Catalina
+                <asp:Label runat="server"> </asp:Label>
         <br />
                 <asp:Label runat="server">Carrera:</asp:Label>
-                Ing Informatica
+                <asp:Label runat="server"> </asp:Label>
         <br />
                 <asp:Label runat="server">Escuela:</asp:Label>
-                Inf.
+                <asp:Label runat="server"> </asp:Label>
         <h3 style="text-align:center">Contacto</h3>
                 <br />
                 <asp:Label runat="server">Teléfono:</asp:Label>
-                99999999
+                <asp:Label runat="server"> </asp:Label>
         <br />
                 <asp:Label runat="server">Mail:</asp:Label>
-                fdsgd@jhjg.com
+                <asp:Label runat="server"> </asp:Label>
             </div>
 
         </div>
@@ -122,7 +122,7 @@
         <br /> 
         <br />
         <br />
-        <br />EL FOOTER NO SE QUEDA AQUI ABAJO SIN LOS SALTOS DE LINEAAAAAAAAAAA
+        <br />EL FOOTER NO SE QUEDA AQUI ABAJO SIN LOS SALTOS DE LINEAAAAAAA SACARRAAAAAAA
         <br />
         <br />
 

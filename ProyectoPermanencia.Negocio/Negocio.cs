@@ -27,7 +27,7 @@ namespace ProyectoPermanencia.Negocio
             }
 
 
-            public System.Data.DataSet consultaScore(String rut)
+            public System.Data.DataSet consultaScore(String rut, String jornada, String carrera)
             {
                 this.configuraConexion();
                 String auxSQL = " WHERE "
@@ -42,9 +42,13 @@ namespace ProyectoPermanencia.Negocio
                 //Aplicar Filtros
                 if (!String.IsNullOrEmpty(rut))
                     auxSQL = auxSQL + " AND AL.Desc_Rut_Alumno = '" + rut + "';";
+                if (!String.IsNullOrEmpty(jornada))
+                    auxSQL = auxSQL + " AND AL.Id_Jornada = '" + jornada + "';";
+                if (!String.IsNullOrEmpty(carrera))
+                    auxSQL = auxSQL + " AND AL.Id_Carrera = '" + carrera + "';";
 
 
-                this.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
+            this.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
                                                + "AL.Desc_Alumno AS Nombre,"
                                                + "CA.Desc_Carrera AS Carrera,"
                                                + "SE.Desc_Sede AS Sede,"

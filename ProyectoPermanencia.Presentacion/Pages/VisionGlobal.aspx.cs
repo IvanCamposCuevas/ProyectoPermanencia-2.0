@@ -102,13 +102,6 @@ namespace ProyectoPermanencia.Presentacion
 
         }
 
-        protected void btoFiltrarPorRut_Click(object sender, EventArgs e)
-        {
-            ProyectoPermanencia.Negocio.Negocio auxNegocio = new ProyectoPermanencia.Negocio.Negocio();
-
-            //this.GridViewScore.DataMember =
-            this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRut.Text);
-            this.grvGlobal.DataBind();
-        }
+        
     }
 }

@@ -14,6 +14,7 @@ namespace ProyectoPermanencia.Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             try
             {
                 if (!IsPostBack)
@@ -28,7 +29,7 @@ namespace ProyectoPermanencia.Presentacion
             catch (Exception ex)
             {
                 //lblMensaje.Text = "Ocurrio un error inesperado favor contactese con el administrado";
-            }
+            }*/
         }
 
        
@@ -42,11 +43,7 @@ namespace ProyectoPermanencia.Presentacion
 
         protected void btoFiltrar_Click(object sender, EventArgs e)
         {
-            ProyectoPermanencia.Negocio.Negocio auxNegocio = new ProyectoPermanencia.Negocio.Negocio();
-
-            //this.GridViewScore.DataMember =
-            this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRut.Text);
-            this.grvGlobal.DataBind();
+           
         }
 
         protected void grvGlobal_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,6 +53,15 @@ namespace ProyectoPermanencia.Presentacion
             String auxRut = row.Cells[1].Text;
 
             Response.Redirect("WebConsultaScoreAlumno.aspx?auxRut = " + auxRut);
+        }
+
+        protected void btoFiltrarPorRut_Click(object sender, EventArgs e)
+        {
+            ProyectoPermanencia.Negocio.Negocio auxNegocio = new ProyectoPermanencia.Negocio.Negocio();
+
+            //this.GridViewScore.DataMember =
+            this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRut.Text);
+            this.grvGlobal.DataBind();
         }
     }
 }

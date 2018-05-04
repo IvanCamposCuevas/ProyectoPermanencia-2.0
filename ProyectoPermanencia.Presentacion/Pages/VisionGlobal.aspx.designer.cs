@@ -31,6 +31,15 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.TextBox txtRut;
         
         /// <summary>
+        /// Control btoFiltrarPorRut.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btoFiltrarPorRut;
+        
+        /// <summary>
         /// Control ddlJornada.
         /// </summary>
         /// <remarks>
@@ -58,13 +67,13 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.DropDownList ddlCarrera;
         
         /// <summary>
-        /// Control btoFiltrar.
+        /// Control btoFiltroAd.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btoFiltrar;
+        protected global::System.Web.UI.WebControls.Button btoFiltroAd;
         
         /// <summary>
         /// Control grvGlobal.

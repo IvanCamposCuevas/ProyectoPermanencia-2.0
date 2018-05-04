@@ -56,17 +56,8 @@
                 <div >
                     <div id="ScoreNotas" class="ScoreNotas">
                         <h2>Score notas por asignatura </h2>
-                        <asp:GridView ID="grvNotas" runat="server" CssClass="ScoreNotas" AllowPaging="true" 
-                            AutoGenerateColumns="false" BorderStyle="Solid" BorderWidth="3px" GridLines="Both" ShowHeaderWhenEmpty="true" 
-                            EmptyDataText="No se encontraron registros">
+                        <asp:GridView ID="grvNotas" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="328px">
                             <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
-                            <Columns>
-                                <asp:BoundField DataField="" HeaderText="ID Asignatura" />
-                                <asp:BoundField DataField="" HeaderText="Nombre asignatura" />
-                                <asp:BoundField DataField="" HeaderText="Notas" />
-                                <asp:BoundField DataField="" HeaderText="Promedio" />
-                                <asp:BoundField DataField="" HeaderText="SCORE" />
-                            </Columns>
                         </asp:GridView>
                     </div>
 

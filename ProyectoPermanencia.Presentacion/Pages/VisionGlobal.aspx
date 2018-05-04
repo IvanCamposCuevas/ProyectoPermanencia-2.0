@@ -16,7 +16,7 @@
                 <asp:ListItem>Nombre Alumno</asp:ListItem>
             </asp:DropDownList>
             <asp:TextBox runat="server" Width="115px" ID="txtRut"></asp:TextBox>
-            <asp:Button runat="server" Text="Filtrar" OnClick="btoFiltrarPorRut_Click" ID="btoFiltrarPorRut" />
+            <asp:Button runat="server" Text="Filtrar" ID="btoFiltrar" />
         </div>
         <!-- Filtrar resultados -->
         <br /><h3>Filtrar resultados </h3>
@@ -24,8 +24,9 @@
         <div ID="Jornada" style="width:200px;">
             <h4>Jornada: </h4>
             <asp:DropDownList ID="ddlJornada" runat="server" Width="120px">
-                <asp:ListItem Value="1" Text="Diurno">Diurno</asp:ListItem>
-                <asp:ListItem Value="2" Text="Vespertino">Vespertino</asp:ListItem>
+                <asp:ListItem>Seleccionar</asp:ListItem>
+                <asp:ListItem Value="D" >Diurno</asp:ListItem>
+                <asp:ListItem Value="V">Vespertino</asp:ListItem>
             </asp:DropDownList>
             <br />
         </div>
@@ -46,7 +47,6 @@
         </div>
         <br />
         <br />
-        <asp:Button ID="btoFiltroAd" runat="server" OnClick="btoFiltrar_Click" Text="Filtrar" />
 
         <br />
         <hr />

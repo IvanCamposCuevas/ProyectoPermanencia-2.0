@@ -101,13 +101,6 @@ namespace ProyectoPermanencia.Presentacion
             Response.Redirect("FichaAlumno.aspx?auxRut=" + auxRut+"&auxNombre="+ auxNombre+"&auxCarrera="+auxCarrera+"&auxSede="+auxSede);
         }
 
-        protected void btoFiltrarPorRut_Click(object sender, EventArgs e)
-        {
-            ProyectoPermanencia.Negocio.Negocio auxNegocio = new ProyectoPermanencia.Negocio.Negocio();
-
-            //this.GridViewScore.DataMember =
-            this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRut.Text);
-            this.grvGlobal.DataBind();
-        }
+        
     }
 }

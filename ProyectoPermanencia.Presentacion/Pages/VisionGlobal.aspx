@@ -32,7 +32,7 @@
         <!-- Filtrar por escuela -->
         <div id="Escuela" style="width:200px; align-self:center;">
             <h4>Escuela: </h4>
-            <asp:DropDownList ID="ddlEscuelas" runat="server" >
+            <asp:DropDownList ID="ddlEscuelas" runat="server" class="nose">
                 <asp:ListItem>Escuela 1</asp:ListItem>
                 <asp:ListItem>Escuela 2</asp:ListItem>
                 <asp:ListItem>Escuela 3</asp:ListItem>

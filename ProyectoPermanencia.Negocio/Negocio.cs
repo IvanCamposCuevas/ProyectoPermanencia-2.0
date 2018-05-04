@@ -164,6 +164,34 @@ namespace ProyectoPermanencia.Negocio
             }
             return this.Conec1.DbDat;
         }
+
+        public System.Data.DataSet consultaNota(string rut) {
+            this.configuraConexion();
+
+            string auxSQL = "WHERE NA.Id_Asignatura = SIG.Id_Asignatura " +
+                            "AND NA.Id_Alumno = SC.Id_Alumno " +
+                            "AND NA.Id_Alumno = AL.Id_Alumno ";
+
+            if (!string.IsNullOrEmpty(rut))
+            {
+                auxSQL += "AND AL.Desc_Rut_Alumno = '" + rut + "';";
+                this.conec1.IntruccioneSQL = "SELECT SIG.[Cod_Asignatura] AS Cod_Asignatura," +
+                                             "SIG.[Desc_Asignatura] AS Nombre_Asigantura," +
+                                             "NA.[F_Notas_Rendidas] AS Notas_Rendidas," +
+                                             "ROUND(NA.[F_Promedio], 1) AS Promedio," +
+                                             "SC.ScoreNotas AS Score " +"\n"+
+                                             "FROM " +
+                                             "Permanencia_2.dbo.Score_Alumnos SC," +
+                                             "Permanencia_2.dbo.[FT_Nota_Asistencia] NA," +
+                                             "Permanencia_2.dbo.[LK_Asignatura] SIG," +
+                                             "Permanencia_2.dbo.LK_Alumno AL" + "\n"+
+                                             auxSQL;
+
+                this.Conec1.EsSelect = true;
+                this.Conec1.conectar();
+            }
+          return this.Conec1.DbDat;
+        }
     }
 }
 

@@ -19,6 +19,8 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 this.lblEscuela.Text = Request.QueryString[3];
                 grvAsistencia.DataSource = new Negocio.Negocio().consultaAsignatura(lblRut.Text);
                 grvAsistencia.DataBind();
+                grvNotas.DataSource = new Negocio.Negocio().consultaNota(lblRut.Text);
+                grvNotas.DataBind();
             }
 
         }

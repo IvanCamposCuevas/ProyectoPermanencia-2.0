@@ -98,7 +98,7 @@ namespace ProyectoPermanencia.Presentacion
             String auxCarrera = row.Cells[3].Text;
             String auxSede = row.Cells[4].Text;
 
-            Response.Redirect("FichaAlumno.aspx?auxRut=" +  Server.UrlEncode(auxRut)+"&auxNombre="+ Server.UrlEncode(auxNombre) + "&auxCarrera="+ Server.UrlEncode(auxCarrera) + "&auxSede="+Server.UrlEncode(auxSede));
+            Response.Redirect("FichaAlumno.aspx?auxRut=" +  auxRut+"&auxNombre="+ auxNombre + "&auxCarrera="+ auxCarrera + "&auxSede="+auxSede);
 
         }
 

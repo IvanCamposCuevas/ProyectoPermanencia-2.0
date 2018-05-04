@@ -57,21 +57,21 @@
                     <div id="ScoreNotas" class="ScoreNotas">
                         <h2>Score notas por asignatura </h2>
                         <asp:GridView ID="grvNotas" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="328px">
-                            <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                         </asp:GridView>
                     </div>
 
                     <div id="ScoreAsistencia" class="ScoreAsistencia">
                         <h2>Score asistencia por asignatura </h2>
                         <asp:GridView ID="grvAsistencia" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="328px">
-                            <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                         </asp:GridView>
                     </div>
 
                     <div id="ScoreFinanzas" class="ScoreFinanzas">
                         <h2>Score situación financiera </h2>
                         <asp:GridView ID="grvFinanzas" runat="server" AllowPaging="true" AutoGenerateColumns="false" BorderStyle="Solid" GridLines="Both" ShowHeaderWhenEmpty="true" EmptyDataText="No se encontraron registros">
-                            <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                             <Columns>
                                 <asp:BoundField DataField="" HeaderText="N° Cuota" />
                                 <asp:BoundField DataField="" HeaderText="Fecha Vencimiento" />
@@ -105,9 +105,58 @@
         <br /> 
         <br />
         <br />
-        <br />EL FOOTER NO SE QUEDA AQUI ABAJO SIN LOS SALTOS DE LINEAAAAAAA SACARRAAAAAAA
         <br />
         <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br /> 
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br /> 
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br /> 
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        
 
     </div>
 </asp:Content>

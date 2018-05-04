@@ -11,7 +11,16 @@ namespace ProyectoPermanencia.Presentacion.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.txtRut.Text = Request.QueryString[0];
+            if (!IsPostBack)
+            {
+                this.lblRut.Text = Request.QueryString[0];
+                this.lblNombre.Text = Request.QueryString[1];
+                this.lblCarrera.Text = Request.QueryString[2];
+                this.lblEscuela.Text = Request.QueryString[3];
+                grvAsistencia.DataSource = new Negocio.Negocio().consultaAsignatura(lblRut.Text);
+                grvAsistencia.DataBind();
+            }
+
         }
     }
 }

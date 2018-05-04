@@ -28,23 +28,23 @@
             <div id="InformacionAlumno" class="SideColumn" style="border: 2px solid rgb(9,40,69); width:200px; float:left; align-content:center; padding: 20px;" >
                 <h3 style="text-align:center">Información Personal</h3>
                 <asp:Label runat="server">Rut:</asp:Label>
-                <asp:Label ID="txtRut" runat="server"> </asp:Label>
+                <asp:Label ID="lblRut" runat="server"></asp:Label>
         <br />
                 <asp:Label runat="server">Nombre:</asp:Label>
-                <asp:Label runat="server"> </asp:Label>
+                <asp:Label runat="server" ID="lblNombre"></asp:Label>
         <br />
                 <asp:Label runat="server">Carrera:</asp:Label>
-                <asp:Label runat="server"> </asp:Label>
+                <asp:Label runat="server" ID="lblCarrera"></asp:Label>
         <br />
                 <asp:Label runat="server">Escuela:</asp:Label>
-                <asp:Label runat="server"> </asp:Label>
+                <asp:Label runat="server" ID="lblEscuela"></asp:Label>
         <h3 style="text-align:center">Contacto</h3>
                 <br />
                 <asp:Label runat="server">Teléfono:</asp:Label>
-                <asp:Label runat="server"> </asp:Label>
+                <asp:Label runat="server" ID="lblTelefono"></asp:Label>
         <br />
                 <asp:Label runat="server">Mail:</asp:Label>
-                <asp:Label runat="server"> </asp:Label>
+                <asp:Label runat="server" ID="lblMail"></asp:Label>
             </div>
 
         </div>
@@ -72,16 +72,8 @@
 
                     <div id="ScoreAsistencia" class="ScoreAsistencia">
                         <h2>Score asistencia por asignatura </h2>
-                        <asp:GridView ID="grvAsistencia" runat="server" AllowPaging="true" AutoGenerateColumns="false" BorderStyle="Solid" GridLines="Both" ShowHeaderWhenEmpty="true" EmptyDataText="No se encontraron registros">
+                        <asp:GridView ID="grvAsistencia" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="328px">
                             <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
-                            <Columns>
-                                <asp:BoundField DataField="" HeaderText="ID Asignatura" />
-                                <asp:BoundField DataField="" HeaderText="Nombre asignatura" />
-                                <asp:BoundField DataField="" HeaderText="N° de clases registradas" />
-                                <asp:BoundField DataField="" HeaderText="N° de clases asitidas" />
-                                <asp:BoundField DataField="" HeaderText="% actual de asistencia" />
-                                <asp:BoundField DataField="" HeaderText="SCORE" />
-                            </Columns>
                         </asp:GridView>
                     </div>
 

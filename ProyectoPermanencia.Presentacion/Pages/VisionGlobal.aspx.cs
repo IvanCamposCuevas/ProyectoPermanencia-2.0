@@ -51,8 +51,11 @@ namespace ProyectoPermanencia.Presentacion
             GridViewRow row = this.grvGlobal.SelectedRow;
 
             String auxRut = row.Cells[1].Text;
+            String auxNombre = row.Cells[2].Text;
+            String auxCarrera = row.Cells[3].Text;
+            String auxSede = row.Cells[4].Text;
 
-            Response.Redirect("WebConsultaScoreAlumno.aspx?auxRut = " + auxRut);
+            Response.Redirect("FichaAlumno.aspx?auxRut=" + auxRut+"&auxNombre="+ auxNombre+"&auxCarrera="+auxCarrera+"&auxSede="+auxSede);
         }
 
         protected void btoFiltrarPorRut_Click(object sender, EventArgs e)

@@ -22,6 +22,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl BodyFicha;
         
         /// <summary>
+        /// Control txtRut.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtRut;
+        
+        /// <summary>
         /// Control Grillas.
         /// </summary>
         /// <remarks>

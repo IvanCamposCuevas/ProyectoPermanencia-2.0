@@ -28,7 +28,7 @@
             <div id="InformacionAlumno" class="SideColumn" style="border: 2px solid rgb(9,40,69); width:200px; float:left; align-content:center; padding: 20px;" >
                 <h3 style="text-align:center">Información Personal</h3>
                 <asp:Label runat="server">Rut:</asp:Label>
-                <asp:Label runat="server"> </asp:Label>
+                <asp:Label ID="txtRut" runat="server"> </asp:Label>
         <br />
                 <asp:Label runat="server">Nombre:</asp:Label>
                 <asp:Label runat="server"> </asp:Label>

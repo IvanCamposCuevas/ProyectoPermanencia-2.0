@@ -22,22 +22,22 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.DropDownList ddlRutNom;
         
         /// <summary>
-        /// Control txtInfoAlumno.
+        /// Control txtRut.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInfoAlumno;
+        protected global::System.Web.UI.WebControls.TextBox txtRut;
         
         /// <summary>
-        /// Control btnBuscarAlumno.
+        /// Control btoFiltrarPorRut.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscarAlumno;
+        protected global::System.Web.UI.WebControls.Button btoFiltrarPorRut;
         
         /// <summary>
         /// Control ddlJornada.
@@ -67,13 +67,13 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.DropDownList ddlCarrera;
         
         /// <summary>
-        /// Control btnFiltrar.
+        /// Control btoFiltroAd.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFiltrar;
+        protected global::System.Web.UI.WebControls.Button btoFiltroAd;
         
         /// <summary>
         /// Control grvGlobal.

@@ -15,8 +15,8 @@
                 <asp:ListItem Value="1" Text="Rut Alumno">Rut Alumno</asp:ListItem>
                 <asp:ListItem>Nombre Alumno</asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox runat="server" Width="115px" ID="txtInfoAlumno"></asp:TextBox>
-            <asp:Button runat="server" Text="Filtrar" ID="btnBuscarAlumno" OnClick="btnBuscarAlumno_Click" />
+            <asp:TextBox runat="server" Width="115px" ID="txtRut"></asp:TextBox>
+            <asp:Button runat="server" Text="Filtrar" OnClick="btoFiltrarPorRut_Click" ID="btoFiltrarPorRut" />
         </div>
         <!-- Filtrar resultados -->
         <br /><h3>Filtrar resultados </h3>
@@ -51,7 +51,7 @@
         </div>
         <br />
         <br />
-        <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" />
+        <asp:Button ID="btoFiltroAd" runat="server" OnClick="btoFiltrar_Click" Text="Filtrar" />
 
         <br />
         <hr />
@@ -61,23 +61,10 @@
     <div>
         <div id="ScoreGlobal" class="ScoreGlobal">
             <h2>Scores </h2>
-            <asp:GridView ID="grvGlobal" runat="server" AutoGenerateColumns="False" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
+            <asp:GridView ID="grvGlobal" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="328px">
                 <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
                 <Columns>
-                    <asp:BoundField DataField="" HeaderText="Rut" />
-                    <asp:BoundField DataField="" HeaderText="Nombre" />
-                    <asp:BoundField DataField="" HeaderText="Carrera" />
-                    <asp:BoundField DataField="" HeaderText="Escuela" />
-                    <asp:BoundField DataField="" HeaderText="Sede" />
-                    <asp:BoundField DataField="" HeaderText="Semestre" />
-                    <asp:BoundField DataField="" HeaderText="Jornada" />
-                    <asp:BoundField DataField="" HeaderText="SCORE" />
-                    <asp:TemplateField>
-                        <HeaderTemplate>Detalle Alumno</HeaderTemplate>
-                        <ItemTemplate>
-                            <asp:Button ID="btnDetalle" runat="server"/>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                    <asp:CommandField ShowSelectButton="True" />
                 </Columns>
             </asp:GridView>
         </div>

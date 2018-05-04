@@ -1,0 +1,57 @@
+﻿body {
+    font-family: 'Open Sans',sans-serif;
+    justify-content: center;    
+}
+
+header {
+    display: block;
+    height: 110px;
+    background: rgb(9,40,69);
+    border-bottom: 5px solid rgb(252,173,24);
+}
+
+#MenuPrincipal {
+    text-decoration: line-through;
+    float: right; 
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-right: 30px;
+    padding-top: 30px;
+    position: sticky;
+
+}
+
+footer {
+    display: block;
+    height: 100px;
+    background: rgb(9,40,69);
+    border-top: 5px solid rgb(252,173,24);
+    position: static;
+    width: 100%;
+    bottom: 0;
+    text-align:center;
+    margin-bottom: 0;
+}
+
+.container {
+    padding-right: 100px;
+    padding-left: 100px;
+    border: solid 10px solid rgb(9,40,69);
+    margin-right: auto;
+    margin-left: auto
+}
+
+#wrapper {
+    width: 760px;
+    margin: 0 auto;
+}
+
+#sidebar {
+    width: 220px;
+    padding: 10px;
+    float: left;
+}
+
+#mainContent {
+    margin-left: 240px;
+}
+

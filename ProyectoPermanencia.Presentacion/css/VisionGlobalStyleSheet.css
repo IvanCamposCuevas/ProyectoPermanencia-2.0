@@ -1,0 +1,21 @@
+﻿#Filtros{
+    border: 5px solid rgb(9,40,69);
+    max-height: 30%;
+}
+
+.Filtros {
+    border: 5px solid rgb(9,40,69);
+    max-height: 30%;
+}
+
+div Jornada {
+    border:solid;
+}
+
+div .Jornada {
+    border: solid;
+}
+
+div #Jornada {
+    border: solid;
+}

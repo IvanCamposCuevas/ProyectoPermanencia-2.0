@@ -23,7 +23,7 @@ namespace ProyectoPermanencia.Negocio
                 this.Conec1 = new Conexion.Conexion();
                 this.Conec1.NombreBaseDeDatos = "prueba";
                 this.Conec1.NombreTabla = "clientes";
-                this.Conec1.CadenaConexion = "Data Source=LAPTOP-9N5AEVQ2;Initial Catalog=Permanencia_2;Integrated Security=True";
+                this.Conec1.CadenaConexion = @"Data Source=DESKTOP-L975CUE\SQLEXPRESS;Initial Catalog=Permanencia_2;Integrated Security=True";
             }
 
 
@@ -79,7 +79,7 @@ namespace ProyectoPermanencia.Negocio
             } // Fin metodo entrega
 
 
-
+            
             public bool validarRut(string rut)
             {
 

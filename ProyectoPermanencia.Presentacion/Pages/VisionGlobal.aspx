@@ -16,7 +16,7 @@
                 <asp:ListItem>Nombre Alumno</asp:ListItem>
             </asp:DropDownList>
             <asp:TextBox runat="server" Width="115px" ID="txtRut"></asp:TextBox>
-            <asp:Button runat="server" Text="Filtrar" ID="btoFiltrar" />
+            <asp:Button runat="server" Text="Filtrar" ID="btoFiltrar" OnClick="btoFiltrar_Click1" />
         </div>
         <!-- Filtrar resultados -->
         <br /><h3>Filtrar resultados </h3>

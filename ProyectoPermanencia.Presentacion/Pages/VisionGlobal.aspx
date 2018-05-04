@@ -32,10 +32,7 @@
         <!-- Filtrar por escuela -->
         <div id="Escuela" style="width:200px; align-self:center;">
             <h4>Escuela: </h4>
-            <asp:DropDownList ID="ddlEscuelas" runat="server" class="nose">
-                <asp:ListItem>Escuela 1</asp:ListItem>
-                <asp:ListItem>Escuela 2</asp:ListItem>
-                <asp:ListItem>Escuela 3</asp:ListItem>
+            <asp:DropDownList ID="ddlEscuelas" runat="server" >
             </asp:DropDownList>
             <br />
         </div>
@@ -43,9 +40,7 @@
         <div id="Carrera" style="width:200px; float:none;">
             <h4>Carrera: </h4>
             <asp:DropDownList ID="ddlCarrera" runat="server">
-                <asp:ListItem>Carrera 1</asp:ListItem>
-                <asp:ListItem>Carrera 2</asp:ListItem>
-                <asp:ListItem>Carrera 3</asp:ListItem>
+                
             </asp:DropDownList>
             <br />
         </div>
@@ -62,9 +57,9 @@
         <div id="ScoreGlobal" class="ScoreGlobal">
             <h2>Scores </h2>
             <asp:GridView ID="grvGlobal" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="328px">
-                <HeaderStyle BackColor="#337ab7" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" Width="900px" />
                 <Columns>
-                    <asp:CommandField ShowSelectButton="True" />
+                    <asp:CommandField ShowSelectButton="True"  />
                 </Columns>
             </asp:GridView>
         </div>

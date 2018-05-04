@@ -150,6 +150,7 @@
     <Content Include="Master.Master" />
     <Content Include="Pages\FichaAlumno.aspx" />
     <Content Include="Pages\Historico.aspx" />
+    <Content Include="Pages\Reportes.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -263,6 +264,13 @@
     </Compile>
     <Compile Include="Pages\Historico.aspx.designer.cs">
       <DependentUpon>Historico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

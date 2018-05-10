@@ -16,7 +16,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 this.lblRut.Text = Request.QueryString[0];
                 this.lblNombre.Text = Request.QueryString[1];
                 this.lblCarrera.Text = Request.QueryString[2];
-                this.lblEscuela.Text = Request.QueryString[3];
+                //this.lblEscuela.Text = Request.QueryString[3];
                 new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out System.Data.DataSet notas, out System.Data.DataSet asistencias);
                 grvAsistencia.DataSource = asistencias;
                 grvAsistencia.DataBind();

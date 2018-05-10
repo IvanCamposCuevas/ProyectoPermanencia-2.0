@@ -8,7 +8,7 @@
     <title>PROYECTO PERMANENCIA</title>
     <link href="css/MasterStyleSheet.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    <form id="formPrincipal" class="container" runat="server">
+    <form id="formPrincipal" class="container-fluid" runat="server">
         <header>
             <img runat="server" src="~/imgs/logo_duoc.png" width="300" />
             <!--
@@ -33,11 +33,11 @@
             </div>
                 -->
         </header>
-        <nav class="navbar navbar-inverse" >
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <div class="navbar-header">                    
+                <div class="navbar-header">
                 </div>
-                <ul class="nav navbar-nav" style="float:right">
+                <ul class="nav navbar-nav" style="float: right">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="/Pages/VisionGlobal.aspx">Vision Global</a></li>
                     <li><a href="/Pages/Reportes.aspx">Reportes</a></li>

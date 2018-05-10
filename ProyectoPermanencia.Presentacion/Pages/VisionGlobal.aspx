@@ -9,19 +9,19 @@
     <div id="Filtros" class="Filtros" style="padding: 10px">
 
         <!-- Filtrar por rut o nombre -->
-        <div>
+        <div class="input-group">
             <h3>Buscar Alumno</h3>
             <asp:DropDownList ID="ddlRutNom" runat="server" Width="120px">
                 <asp:ListItem Value="1" Text="Rut Alumno">Rut Alumno</asp:ListItem>
                 <asp:ListItem>Nombre Alumno</asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox runat="server" Width="115px" ID="txtRut"></asp:TextBox>
-            <asp:Button runat="server" Text="Filtrar" ID="btoFiltrar" OnClick="btoFiltrar_Click1" />
+            <asp:TextBox runat="server" CssClass=”form-control” Width="115px" ID="txtRut"></asp:TextBox>
+            <asp:Button runat="server" Text="Buscar" ID="btoFiltrar" CssClass="btn btn-info" OnClick="btoFiltrar_Click1" />
         </div>
         <!-- Filtrar resultados -->
         <br /><h3>Filtrar resultados </h3>
         <!-- Filtrar por jornada -->
-        <div ID="Jornada" style="width:200px;">
+        <div ID="Jornada" class="form-row align-items-center" style="width:200px;">
             <h4>Jornada: </h4>
             <asp:DropDownList ID="ddlJornada" runat="server" Width="120px">
                 <asp:ListItem>Seleccionar</asp:ListItem>
@@ -44,10 +44,13 @@
                 
             </asp:DropDownList>
             <br />
+            
+            
         </div>
+        
         <br />
+        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Filtrar"></asp:LinkButton>
         <br />
-
         <br />
         <hr />
     </div>
@@ -56,7 +59,7 @@
     <div>
         <div id="ScoreGlobal" class="ScoreGlobal">
             <h2>Scores </h2>
-            <asp:GridView ID="grvGlobal" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="328px">
+            <asp:GridView ID="grvGlobal" CssClass="table table-bordered bs-table" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="328px">
                 <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" Width="900px" />
                 <Columns>
                     <asp:CommandField ShowSelectButton="True"  />

@@ -51,6 +51,16 @@
 
         <!-- COLUMNA PRINCIPAL CON GRILLAS DE SCORE -->
         <div>
+            <div id="riesgo" runat="server" class="row form-inline" 
+                style="border: 1px solid rgb(9,40,69); background-color: azure; width:850px; float:right">
+                <h4>Estado de riesgo: </h4> 
+                <asp:Label runat="server" ID="lblRiesgo"></asp:Label>
+                <div class="progress" style="width:200px";>
+                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            </div>
+            
+            
             <div id="Grillas" runat="server" class="row" 
                 style="border: 1px solid rgb(9,40,69); background-color: azure; width:850px; float:right">
                 <div >

@@ -17,12 +17,12 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 this.lblNombre.Text = Request.QueryString[1];
                 this.lblCarrera.Text = Request.QueryString[2];
                 this.lblEscuela.Text = Request.QueryString[3];
-                grvAsistencia.DataSource = new Negocio.Negocio().consultaAsignatura(lblRut.Text);
+                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out System.Data.DataSet notas, out System.Data.DataSet asistencias);
+                grvAsistencia.DataSource = asistencias;
                 grvAsistencia.DataBind();
-                grvNotas.DataSource = new Negocio.Negocio().consultaNota(lblRut.Text);
+                grvNotas.DataSource = notas;
                 grvNotas.DataBind();
             }
-
         }
     }
 }

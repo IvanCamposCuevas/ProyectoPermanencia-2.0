@@ -62,7 +62,7 @@
                         <div id="Div1" runat="server" class="colmd-4" style="border: 1px solid rgb(9,40,69); background-color: aqua; width: 250px; float: right">
                             <h4>Estado de riesgo: </h4>
                             <asp:Label runat="server" ID="lblRiesgo"></asp:Label>
-                            <div class="progress" style="width: 200px;">
+                            <div class="progress" style="width: 200px">
                                 <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                 </div>
                             </div>

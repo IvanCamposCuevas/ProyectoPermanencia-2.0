@@ -67,8 +67,9 @@
                     <!-- Filtrar por carrera -->
                     <div id="Carrera" style="width: 100px; float: none;">
                         <h3>Carrera: </h3>
-                        <asp:DropDownList ID="ddlCarrera" runat="server">
+                        <asp:DropDownList ID="ddlCarrera" runat="server" DataSourceID="sqlCarrera" DataTextField="Desc_Carrera" DataValueField="Desc_Carrera">
                         </asp:DropDownList>
+                        <asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString %>" SelectCommand="SELECT DISTINCT Desc_Carrera FROM LK_Carrera"></asp:SqlDataSource>
                     </div>
                 </div>
                 <!-- Filtrar resultados -->

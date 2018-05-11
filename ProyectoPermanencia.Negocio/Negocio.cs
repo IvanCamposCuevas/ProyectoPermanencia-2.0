@@ -19,7 +19,7 @@ namespace ProyectoPermanencia.Negocio
             /// <param name="rut"></param>
             /// <param name="jornada"></param>
             /// <returns></returns>
-            public System.Data.DataSet consultaScore(String rut, String jornada)
+            public System.Data.DataSet consultaScore(String rut, String jornada, String carrera)
             {
                 NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
                 con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
@@ -38,7 +38,9 @@ namespace ProyectoPermanencia.Negocio
                     auxSQL = auxSQL + " AND AL.Desc_Rut_Alumno = '" + rut + "';";
                 if (!String.IsNullOrEmpty(jornada))
                     auxSQL = auxSQL + " AND AL.Id_Jornada = '" + jornada + "';";
-                
+                if (!String.IsNullOrEmpty(carrera))
+                    auxSQL = auxSQL + " AND CA.Desc_Carrera = '" + carrera + "';";
+
             /*
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente

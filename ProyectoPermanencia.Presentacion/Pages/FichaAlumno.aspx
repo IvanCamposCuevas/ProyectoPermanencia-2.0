@@ -9,6 +9,11 @@
     <link href="../css/FichaStyleSheet.css" rel="stylesheet" type="text/css" />
 
 </asp:Content>
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderTitle" runat="server">
+    <asp:Label runat="server" >
+        <h3 style="color:azure" > Ficha Alumno  </h3>
+    </asp:Label>
+</asp:Content>
 <asp:Content ID="ContentFicha" ContentPlaceHolderID="ContentPlaceHolderFicha" runat="server">
     <div class="container">
         <div class="row">
@@ -48,8 +53,8 @@
                 <!-- Intento de ordenar todo en BodyFicha -->
                 <div id="BodyFicha" class="BodyFicha" runat="server">
                     <!-- TABS DE NAVEGACION ENTRE GRILLAS E HISTORICO -->
-                    <div class="Tabs-barra row" style="border: solid">
-                        <div class="Tabs col-md-4" style="float: left">
+                    <div class="Tabs-barra row" >
+                        <div class="Tabs col-md-6" style="float: left">
                             <h3>Tabs</h3>
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#">Home</a></li>
@@ -59,12 +64,15 @@
                             <br>
                         </div>
                         <!-- CONTENEDOR DE BARRA Y PUNTAJE-->
-                        <div id="Div1" runat="server" class="colmd-4" style="border: 1px solid rgb(9,40,69); background-color: aqua; width: 250px; float: right">
+                        <div id="Div1" runat="server" class="colmd-6" style="width: 250px; float: right">
                             <h4>Estado de riesgo: </h4>
                             <asp:Label runat="server" ID="lblRiesgo"></asp:Label>
                             <div class="progress" style="width: 200px">
                                 <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                 </div>
+                            </div>
+                            <div >
+                                <p > bajo    medio    alto </p>
                             </div>
                         </div>
                     </div>
@@ -77,7 +85,7 @@
                         <div class="row">
                             <div id="ScoreNotas" class="ScoreNotas">
                                 <h2>Score notas por asignatura </h2>
-                                <asp:GridView ID="GridView1" runat="server" BorderStyle="Solid" BackColor="SeaGreen" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
+                                <asp:GridView ID="GridView1" runat="server" BackColor="SeaGreen" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
                                     <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                                 </asp:GridView>
                             </div>
@@ -87,7 +95,7 @@
                         <div class="row">
                             <div id="ScoreAsistencia" class="ScoreAsistencia">
                                 <h2>Score asistencia por asignatura </h2>
-                                <asp:GridView ID="GridView2" runat="server" BorderStyle="Solid" BackColor="SeaGreen" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
+                                <asp:GridView ID="GridView2" runat="server" BackColor="SeaGreen" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
                                     <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                                 </asp:GridView>
                             </div>
@@ -119,11 +127,11 @@
 
                 <div class="row">
                     <!-- GRILLAS -->
-                    <div class="Grillas row">
+                    <div class="Grillas row" >
                         <div class="row">
                             <div id="ScoreNotas" class="ScoreNotas">
                                 <h2>Score notas por asignatura </h2>
-                                <asp:GridView ID="grvNotas" runat="server" BorderStyle="Solid" BackColor="SeaGreen" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
+                                <asp:GridView ID="grvNotas" runat="server" BackColor="White" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
                                     <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                                     <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                                 </asp:GridView>
@@ -133,7 +141,7 @@
                         <div class="row">
                             <div id="ScoreAsistencia" class="ScoreAsistencia">
                                 <h2>Score asistencia por asignatura </h2>
-                                <asp:GridView ID="grvAsistencia" runat="server" BorderStyle="Solid" BackColor="SeaGreen" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
+                                <asp:GridView ID="grvAsistencia" runat="server" BackColor="White" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
                                     <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                                 </asp:GridView>
                             </div>
@@ -142,7 +150,7 @@
                         <div class="row">
                             <div id="ScoreFinanzas" class="ScoreFinanzas">
                                 <h2>Score situación financiera </h2>
-                                <asp:GridView ID="grvFinanzas" runat="server" AllowPaging="true" AutoGenerateColumns="false" BorderStyle="Solid" BackColor="SeaGreen" GridLines="Both" ShowHeaderWhenEmpty="true" EmptyDataText="No se encontraron registros">
+                                <asp:GridView ID="grvFinanzas" runat="server" AllowPaging="true" AutoGenerateColumns="false" BackColor="SeaGreen" GridLines="Both" ShowHeaderWhenEmpty="true" EmptyDataText="No se encontraron registros" Width="800px">
                                     <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                                     <Columns>
                                         <asp:BoundField DataField="" HeaderText="N° Cuota" />

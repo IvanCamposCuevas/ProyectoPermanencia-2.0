@@ -15,7 +15,6 @@
 
 </head>
 <body>
-
     <form id="formPrincipal" class="container-fluid" runat="server">
         <header>
             <img runat="server" src="~/imgs/logo_duoc.png" width="300" />
@@ -35,7 +34,9 @@
         </header>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <div class="navbar-header">
+                <div class="navbar-header" >
+                    <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderTitle"  >
+                    </asp:ContentPlaceHolder>
                 </div>
                 <ul class="nav navbar-nav" style="float: right">
                     <li class="active"><a href="#">Home</a></li>

@@ -3,33 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProyectoPermanencia.Conexion;
 
 namespace ProyectoPermanencia.Negocio
 {
+    /// <summary>
+    /// Clase que servira para consultar y devolver los datos pedidos por la pagina VisionGlobal.aspx,
+    /// esta traera todo los alumnos de la base de datos, previo filtro, y los llenara en una grilla.
+    /// </summary>
     public class Negocio
-    {
-        
-            private Conexion.Conexion conec1;
-
-            public Conexion.Conexion Conec1
-            {
-                get { return conec1; }
-                set { conec1 = value; }
-            }  
-
-            public void configuraConexion()
-            {
-                this.Conec1 = new Conexion.Conexion();
-                this.Conec1.NombreBaseDeDatos = "prueba";
-                this.Conec1.NombreTabla = "clientes";
-                this.Conec1.CadenaConexion = "Data Source=HP-CATALINA;Initial Catalog=Permanencia_2;Integrated Security=True";
-            }
-
-            
+    {       
+            /// <summary>
+            /// Este metodo servira para consultar a todos los Alumnos de la base de datos, previo filtro, con
+            /// los scores sacados de sus Notas, Asistencia y Pagos.
+            /// </summary>
+            /// <param name="rut"></param>
+            /// <param name="jornada"></param>
+            /// <returns></returns>
             public System.Data.DataSet consultaScore(String rut, String jornada)
             {
-                this.configuraConexion();
+                NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
+                con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
+                //Se crean una variable de texto, que permitira establecer las uniones con las tablas de la base datos
                 String auxSQL = " WHERE "
            + "AL.Id_Alumno = SC.Id_Alumno"
            + " AND "
@@ -45,30 +39,29 @@ namespace ProyectoPermanencia.Negocio
                 if (!String.IsNullOrEmpty(jornada))
                     auxSQL = auxSQL + " AND AL.Id_Jornada = '" + jornada + "';";
                 
-
-
-
-            this.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
+            /*
+             * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
+             * tambien se agrega la variable auxiliar creada anteriormente
+            */
+            con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
                                                + "AL.Desc_Alumno AS Nombre,"
                                                + "CA.Desc_Carrera AS Carrera,"
                                                + "SE.Desc_Sede AS Sede,"
                                                + "JO.Desc_Jornada AS Jornada,"
-                                               + "SC.Score AS Score "
-                                               + "--ES.Desc_Escuela " + "\n"
+                                               + "SC.Score AS Score "+ "\n"
 
                                                + " FROM "
                                                + "Permanencia_2.dbo.Score_Alumnos SC,"
                                                + "Permanencia_2.dbo.LK_Alumno AL,"
                                                + "Permanencia_2.dbo.LK_Carrera CA,"
                                                + "Permanencia_2.dbo.LK_Sede SE,"
-                                               + "Permanencia_2.dbo.LK_Jornada JO"
-                                               + "   --Permanencia_2.dbo.LK_Escuela ES" + "\n"
+                                               + "Permanencia_2.dbo.LK_Jornada JO"+ "\n"
                                                + auxSQL;
 
-                this.Conec1.EsSelect = true;
-                this.Conec1.conectar();
+                con.Conec1.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
+                con.Conec1.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
 
-                return this.Conec1.DbDat;
+                return con.Conec1.DbDat; //Se retornan los datos en un DataSet.
             } // Fin metodo entrega
 
 

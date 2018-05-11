@@ -43,7 +43,7 @@
                     <div id="Jornada" class="form-row align-items-center" style="width: 200px;">
                         <h3>Jornada: </h3>
                         <asp:DropDownList ID="ddlJornada" runat="server" Width="120px">
-                            <asp:ListItem Value="A">Ambas</asp:ListItem>
+                            <asp:ListItem Value="">Ambas</asp:ListItem>
                             <asp:ListItem Value="D">Diurno</asp:ListItem>
                             <asp:ListItem Value="V">Vespertino</asp:ListItem>
                         </asp:DropDownList>

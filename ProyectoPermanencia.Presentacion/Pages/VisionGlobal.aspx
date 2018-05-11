@@ -15,91 +15,79 @@
 </asp:Content>
 <asp:Content ID="ContentGlobal" ContentPlaceHolderID="ContentPlaceHolderGlobal" runat="server">
     <div class="container">
-        <!-- TITULOS DE BUSQUEDA -->
-        <div class="row">
-            <div class="col-md-3">
-                <h3>Buscar Alumno por:</h3>
-            </div>
-            <div class="col-md-3">
-                <h3>Filtrar Alumno por:</h3>
-            </div>
-
+        <!-- Buscar por rut o nombre -->
+        <div class="row filtrobox input-group" style="height:100px">
+            <h3>Buscar Alumno:</h3>
+            <asp:DropDownList ID="ddlRutNom" runat="server" Width="120px">
+                <asp:ListItem Value="1" Text="Rut Alumno">Rut Alumno</asp:ListItem>
+                <asp:ListItem>Nombre Alumno</asp:ListItem>
+            </asp:DropDownList>
+            <asp:TextBox runat="server" CssClass="”form-control”" Width="115px" ID="txtRut"></asp:TextBox>
+            <asp:Button runat="server" Text="Buscar" ID="btoFiltrar" CssClass="btn btn-info" OnClick="btoFiltrar_Click1" />
         </div>
 
         <!-- FILTROS DE BUSQUEDA -->
-        <div class="row">
-            <div class="col-md-3 filtrobox"     >
-                <!-- Buscar por rut o nombre -->
-                <div class="input-group">
-                    <asp:DropDownList ID="ddlRutNom" runat="server" Width="120px">
-                        <asp:ListItem Value="1" Text="Rut Alumno">Rut Alumno</asp:ListItem>
-                        <asp:ListItem>Nombre Alumno</asp:ListItem>
+        <div class="row" style="height:90px">
+            <div class="col-md-4 filtrobox">
+                <!-- Filtrar por jornada -->
+                <div id="Jornada" class="form-row align-items-center" style="width: 200px;">
+                    <h3>Jornada: </h3>
+                    <asp:DropDownList ID="ddlJornada" runat="server" Width="120px">
+                        <asp:ListItem Value="">Ambas</asp:ListItem>
+                        <asp:ListItem Value="D">Diurno</asp:ListItem>
+                        <asp:ListItem Value="V">Vespertino</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:TextBox runat="server" CssClass="”form-control”" Width="115px" ID="txtRut"></asp:TextBox>
-                    <asp:Button runat="server" Text="Buscar" ID="btoFiltrar" CssClass="btn btn-info" OnClick="btoFiltrar_Click1" />
                 </div>
             </div>
 
-            <div class="col-md-8">
-                <div class="col-md-4 filtrobox" >
-                    <!-- Filtrar por jornada -->
-                    <div id="Jornada" class="form-row align-items-center" style="width: 100px;">
-                        <h3>Jornada: </h3>
-                        <asp:DropDownList ID="ddlJornada" runat="server" Width="120px">
-                            <asp:ListItem Value="">Ambas</asp:ListItem>
-                            <asp:ListItem Value="D">Diurno</asp:ListItem>
-                            <asp:ListItem Value="V">Vespertino</asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-
+            <div class="col-md-4 filtrobox">
+                <!-- Filtrar por escuela -->
+                <div id="Escuela" style="width: 100px; align-self: center;">
+                    <h3>Escuela: </h3>
+                    <asp:DropDownList ID="ddlEscuelas" runat="server">
+                    </asp:DropDownList>
                 </div>
+            </div>
 
-                <div class="col-md-4 filtrobox" >
-                    <!-- Filtrar por escuela -->
-                    <div id="Escuela" style="width: 100px; align-self: center;">
-                        <h3>Escuela: </h3>
-                        <asp:DropDownList ID="ddlEscuelas" runat="server">
-                        </asp:DropDownList>
-                    </div>
+            <div class="col-md-4 filtrobox">
+                <!-- Filtrar por carrera -->
+                <div id="Carrera" style="width: 100px; float: none;">
+                    <h3>Carrera: </h3>
+                    <asp:DropDownList ID="ddlCarrera" runat="server">
+                    </asp:DropDownList>
                 </div>
-
-                <div class="col-md-4 filtrobox" >
-                    <!-- Filtrar por carrera -->
-                    <div id="Carrera" style="width: 100px; float: none;">
-                        <h3>Carrera: </h3>
-                        <asp:DropDownList ID="ddlCarrera" runat="server">
-                        </asp:DropDownList>
-                    </div>
-                </div>
-                <!-- Filtrar resultados -->
-                <div style="float: right">
-                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Filtrar"></asp:LinkButton>
-                    <br />
-                    <br />
-                </div>
-
+            </div>
+            <!-- Filtrar resultados -->
+            <div style="float: right; height:50px">
+                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Filtrar"></asp:LinkButton>
+                <br />
+                <br />
             </div>
         </div>
+
         <hr />
         <!-- GRILLA PRINCIPAL -->
-        <div class="row">           
-            <div >
+        <div class="row">
+            <div>
                 <div id="ScoreGlobal" class="ScoreGlobal">
                     <h2>Scores </h2>
                     <asp:GridView ID="grvGlobal" CssClass="col-md-12 table table-bordered bs-table table-hover" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="1200px">
                         <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                         <Columns>
-                            <asp:CommandField ShowSelectButton="True" ItemStyle-Width="200px" ItemStyle-Wrap="true" />
+                            <asp:CommandField ShowSelectButton="True" ItemStyle-Width="200px" ItemStyle-Wrap="true" ButtonType="Button" SelectText="Ver detalle">
+                                <ItemStyle Wrap="True" Width="200px"></ItemStyle>
+                            </asp:CommandField>
                         </Columns>
                     </asp:GridView>
                 </div>
             </div>
         </div>
-       
+
 
 
 
 
     </div>
+
 
 </asp:Content>

@@ -131,7 +131,7 @@
                         <div class="row">
                             <div id="ScoreNotas" class="ScoreNotas">
                                 <h2>Score notas por asignatura </h2>
-                                <asp:GridView ID="grvNotas" runat="server" BackColor="White" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
+                                <asp:GridView ID="grvNotas" runat="server" BackColor="Azure" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
                                     <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                                     <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                                 </asp:GridView>
@@ -141,8 +141,9 @@
                         <div class="row">
                             <div id="ScoreAsistencia" class="ScoreAsistencia">
                                 <h2>Score asistencia por asignatura </h2>
-                                <asp:GridView ID="grvAsistencia" runat="server" BackColor="White" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
+                                <asp:GridView ID="grvAsistencia" runat="server" BackColor="Azure" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
                                     <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
+                                    <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                                 </asp:GridView>
                             </div>
                         </div>
@@ -150,8 +151,9 @@
                         <div class="row">
                             <div id="ScoreFinanzas" class="ScoreFinanzas">
                                 <h2>Score situación financiera </h2>
-                                <asp:GridView ID="grvFinanzas" runat="server" AllowPaging="true" AutoGenerateColumns="false" BackColor="SeaGreen" GridLines="Both" ShowHeaderWhenEmpty="true" EmptyDataText="No se encontraron registros" Width="800px">
+                                <asp:GridView ID="grvFinanzas" runat="server" AllowPaging="true" AutoGenerateColumns="false" BackColor="Azure" GridLines="Both" ShowHeaderWhenEmpty="true" EmptyDataText="No se encontraron registros" Width="800px">
                                     <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
+                                    <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                                     <Columns>
                                         <asp:BoundField DataField="" HeaderText="N° Cuota" />
                                         <asp:BoundField DataField="" HeaderText="Fecha Vencimiento" />

@@ -35,11 +35,11 @@ namespace ProyectoPermanencia.Negocio
 
                 //Aplicar Filtros
                 if (!String.IsNullOrEmpty(rut))
-                    auxSQL = auxSQL + " AND AL.Desc_Rut_Alumno = '" + rut + "';";
+                    auxSQL = auxSQL + " AND AL.Desc_Rut_Alumno = '" + rut + "'";
                 if (!String.IsNullOrEmpty(jornada))
-                    auxSQL = auxSQL + " AND AL.Id_Jornada = '" + jornada + "';";
+                    auxSQL = auxSQL + " AND AL.Id_Jornada = '" + jornada + "'";
                 if (!String.IsNullOrEmpty(carrera))
-                    auxSQL = auxSQL + " AND CA.Desc_Carrera = '" + carrera + "';";
+                    auxSQL = auxSQL + " AND CA.Desc_Carrera = '" + carrera + "'";
 
             /*
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 

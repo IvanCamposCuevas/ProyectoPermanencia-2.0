@@ -60,7 +60,7 @@
             </div>
             <!-- Filtrar resultados -->
             <div style="float: right; height:50px">
-                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Filtrar"></asp:LinkButton>
+                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Filtrar" OnClick="LinkButton1_Click"></asp:LinkButton>
                 <br />
                 <br />
             </div>

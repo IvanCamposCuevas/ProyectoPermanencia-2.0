@@ -17,23 +17,19 @@ namespace ProyectoPermanencia.Presentacion
 
             try
             {
-                Negocio.Negocio auxNegocio = new Negocio.Negocio();
-                this.grvGlobal.DataSource = auxNegocio.consultaScorePorRut(this.txtRut.Text);
-                this.grvGlobal.DataBind();
+                CargarGrilla();
                 if (!IsPostBack)
                 {
-                    Negocio.Negocio auxNegocio2 = new Negocio.Negocio();
-                    this.grvGlobal.DataSource = auxNegocio2.consultaScorePorRut(this.txtRut.Text);
-                    this.grvGlobal.DataBind();
+                    CargarGrilla();
                 }
                 else
                 {
                     //lblMensaje.Text = string.Empty;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //lblMensaje.Text = "Ocurrio un error inesperado favor contactese con el administrado";
+                //lblMensaje.Text = "Ocurrio un error inesperado favor contactese con el administrador";
             }
         }
 
@@ -41,9 +37,9 @@ namespace ProyectoPermanencia.Presentacion
 
         private void CargarGrilla()
         {
-            //var objetoNegocio = new Negocio();
-            //grvGlobal.DataSource = objetoNegocio.consultaScore();
-            //grvGlobal.DataBind();
+            Negocio.Negocio auxNegocio = new Negocio.Negocio();
+            this.grvGlobal.DataSource = auxNegocio.consultaScorePorRut(this.txtRut.Text);
+            this.grvGlobal.DataBind();
         }
 
         protected void btoFiltrar_Click(object sender, EventArgs e)

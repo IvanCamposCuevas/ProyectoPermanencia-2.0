@@ -41,7 +41,7 @@ namespace ProyectoPermanencia.Negocio
                  * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
                  * que incluye los las uniones y filtros correspondientes.
                  * */
-                con.Conec1.IntruccioneSQL = "SELECT SIG.[Cod_Asignatura] AS Cod_Asignatura," +
+                con.Conec1.IntruccioneSQL = "SELECT SIG.[Cod_Asignatura] AS CodAsignatura," +
                                         "SIG.[Desc_Asignatura] AS Nombre_Asigantura," +
                                         "SC.[Cant_Asignaturas]AS Num_Clases_Asistidas," +
                                         "ROUND(SI.[F_Asistencia] * 100, 2, 1) AS Porc_Asistencia," +
@@ -91,7 +91,7 @@ namespace ProyectoPermanencia.Negocio
                  * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
                  * que incluye los las uniones y filtros correspondientes.
                  * */
-                con.Conec1.IntruccioneSQL = "SELECT SIG.[Cod_Asignatura] AS Cod_Asignatura," +
+                con.Conec1.IntruccioneSQL = "SELECT SIG.[Cod_Asignatura] AS CodAsignatura," +
                                              "SIG.[Desc_Asignatura] AS Nombre_Asigantura," +
                                              "NA.[F_Notas_Rendidas] AS Notas_Rendidas," +
                                              "ROUND(NA.[F_Promedio], 1) AS Promedio," +

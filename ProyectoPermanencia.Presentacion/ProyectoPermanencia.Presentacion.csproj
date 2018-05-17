@@ -129,6 +129,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\CargarArchivos.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -219,6 +220,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Pages\CargarArchivos.aspx.cs">
+      <DependentUpon>CargarArchivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CargarArchivos.aspx.designer.cs">
+      <DependentUpon>CargarArchivos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

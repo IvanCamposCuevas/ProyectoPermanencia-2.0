@@ -42,6 +42,9 @@
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="/Pages/VisionGlobal.aspx">Vision Global</a></li>
                     <li><a href="/Pages/Reportes.aspx">Reportes</a></li>
+                    <li><a href="/Pages/CargarArchivos.aspx">Cargar</a></li>
+
+
                 </ul>
             </div>
         </nav>
@@ -60,6 +63,11 @@
                 <asp:ContentPlaceHolder ID="ContentPlaceHolderHistorico" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderCargar" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
         </div>
         <footer style="position: static; margin-bottom: 0px" class="footer" id="footer">
             Copyright 

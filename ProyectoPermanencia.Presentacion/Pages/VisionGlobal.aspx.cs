@@ -14,12 +14,17 @@ namespace ProyectoPermanencia.Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
+
             try
             {
+                Negocio.Negocio auxNegocio = new Negocio.Negocio();
+                this.grvGlobal.DataSource = auxNegocio.consultaScorePorRut(this.txtRut.Text);
+                this.grvGlobal.DataBind();
                 if (!IsPostBack)
                 {
-                    CargarGrilla();
+                    Negocio.Negocio auxNegocio2 = new Negocio.Negocio();
+                    this.grvGlobal.DataSource = auxNegocio2.consultaScorePorRut(this.txtRut.Text);
+                    this.grvGlobal.DataBind();
                 }
                 else
                 {
@@ -29,10 +34,10 @@ namespace ProyectoPermanencia.Presentacion
             catch (Exception ex)
             {
                 //lblMensaje.Text = "Ocurrio un error inesperado favor contactese con el administrado";
-            }*/
+            }
         }
 
-       
+
 
         private void CargarGrilla()
         {
@@ -43,9 +48,9 @@ namespace ProyectoPermanencia.Presentacion
 
         protected void btoFiltrar_Click(object sender, EventArgs e)
         {
-           
+
         }
-        
+
         protected void grvGlobal_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = this.grvGlobal.SelectedRow;
@@ -55,7 +60,7 @@ namespace ProyectoPermanencia.Presentacion
             String auxCarrera = row.Cells[3].Text;
             String auxSede = row.Cells[4].Text;
 
-            Response.Redirect("FichaAlumno.aspx?auxRut=" +  auxRut+"&auxNombre="+ auxNombre + "&auxCarrera="+ auxCarrera + "&auxSede="+auxSede);
+            Response.Redirect("FichaAlumno.aspx?auxRut=" + auxRut + "&auxNombre=" + auxNombre + "&auxCarrera=" + auxCarrera + "&auxSede=" + auxSede);
 
         }
 

@@ -13,6 +13,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
     public partial class Historico {
         
         /// <summary>
+        /// Control Label1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
         /// Control lblRut.
         /// </summary>
         /// <remarks>
@@ -67,30 +76,30 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Label lblMail;
         
         /// <summary>
-        /// Control BodyHistorico.
+        /// Control grvNotas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl BodyHistorico;
+        protected global::System.Web.UI.WebControls.GridView grvNotas;
         
         /// <summary>
-        /// Control Div1.
+        /// Control grvAsistencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.WebControls.GridView grvAsistencia;
         
         /// <summary>
-        /// Control lblRiesgo.
+        /// Control grvFinanzas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRiesgo;
+        protected global::System.Web.UI.WebControls.GridView grvFinanzas;
     }
 }

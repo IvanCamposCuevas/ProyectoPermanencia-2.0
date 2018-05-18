@@ -13,7 +13,12 @@
         <h3 style="color:azure"> Vision Global  </h3>
     </asp:Label>
 </asp:Content>
+
 <asp:Content ID="ContentGlobal" ContentPlaceHolderID="ContentPlaceHolderGlobal" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+     <asp:UpdatePanel ID="UpdatePanel1" runat="server">    
+        <ContentTemplate>
     <div class="container">
         <!-- BUSQUEDA Y FILTROS -->
         <div class="jumbotron modal-content" style="padding: 5px; box-shadow: none; box-sizing: border-box; margin-bottom: 0px;">
@@ -39,6 +44,7 @@
                             <asp:ListItem Value="D">Diurno</asp:ListItem>
                             <asp:ListItem Value="V">Vespertino</asp:ListItem>
                         </asp:DropDownList>
+                        
                     </div>
                 </div>
 
@@ -48,7 +54,7 @@
                         <h4>Escuela: </h4>
                         <asp:DropDownList ID="ddlEscuelas" runat="server" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString3 %>" SelectCommand="SELECT * FROM [LK_Escuela]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString2 %>" SelectCommand="SELECT * FROM [LK_Escuela]"></asp:SqlDataSource>
                     </div>
                 </div>
 
@@ -58,7 +64,7 @@
                         <h4>Carrera: </h4>
                         <asp:DropDownList ID="ddlCarrera" runat="server" DataSourceID="sqlCarrera" DataTextField="Desc_Carrera" DataValueField="Desc_Carrera">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString3 %>" SelectCommand="SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString2 %>" SelectCommand="SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera]"></asp:SqlDataSource>
                     </div>
                 </div>
                 <!-- Filtrar resultados -->
@@ -69,22 +75,22 @@
         </div>
 
         <h3>Scores</h3>
-
-        <!-- GRILLA PRINCIPAL -->
         <div class="row" style="margin:0px">
             <div id="ScoreGlobal" class="ScoreGlobal">
-                <asp:GridView ID="grvGlobal" CssClass="col-md-12 table table-bordered bs-table table-hover" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="1200px">
-                    <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
-                    <Columns>
-                        <asp:CommandField ShowSelectButton="True" ItemStyle-Width="200px" ItemStyle-Wrap="true" ButtonType="Button" SelectText="Ver detalle">
-                            <ItemStyle Wrap="True" Width="100px"></ItemStyle>
-                        </asp:CommandField>
-                    </Columns>
-                </asp:GridView>
+                        <asp:GridView ID="grvGlobal" CssClass="col-md-12 table table-bordered bs-table table-hover" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="1200px">
+                            <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
+                                <Columns>
+                                    <asp:CommandField ShowSelectButton="True" ItemStyle-Width="200px" ItemStyle-Wrap="true" ButtonType="Button" SelectText="Ver detalle">
+                                        <ItemStyle Wrap="True" Width="100px"></ItemStyle>
+                                    </asp:CommandField>
+                                </Columns>
+                        </asp:GridView>
+
             </div>
-        </div>
+        </div>  
+        <!-- GRILLA PRINCIPAL -->
 
     </div>
-
-
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

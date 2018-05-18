@@ -41,11 +41,11 @@ namespace ProyectoPermanencia.Negocio
                  * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
                  * que incluye los las uniones y filtros correspondientes.
                  * */
-                con.Conec1.IntruccioneSQL = "SELECT SIG.[Cod_Asignatura] AS CodAsignatura," +
-                                        "SIG.[Desc_Asignatura] AS Nombre_Asigantura," +
-                                        "SC.[Cant_Asignaturas]AS Num_Clases_Asistidas," +
-                                        "ROUND(SI.[F_Asistencia] * 100, 2, 1) AS Porc_Asistencia," +
-                                        "SC.ScoreAsistencia AS Score " + "\n" +
+                con.Conec1.IntruccioneSQL = "SELECT SIG.[Cod_Asignatura] AS 'Codigo Asignatura'," +
+                                        "SIG.[Desc_Asignatura] AS 'Nombre Asignatura'," +
+                                        "SC.[Cant_Asignaturas]AS 'N° Clases Asistidas'," +
+                                        "ROUND(SI.[F_Asistencia] * 100, 2, 1) AS 'Porcentaje Asistencia'," +
+                                        "SC.ScoreAsistencia AS 'Score' " + "\n" +
                                         "FROM " +
                                         "Permanencia_2.dbo.Score_Alumnos SC," +
                                         "Permanencia_2.dbo.[FT_Asistencia] SI," +
@@ -55,7 +55,7 @@ namespace ProyectoPermanencia.Negocio
 
                 con.Conec1.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.
                 con.Conec1.conectar(); //Se ejecuta el metodo "conectar()" de la clase NegocioConexionBD.
-
+                
             }
             return con.Conec1.DbDat; //Se retorna el DataSet generado luego de ser llenado por la consulta.
         }
@@ -91,11 +91,11 @@ namespace ProyectoPermanencia.Negocio
                  * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
                  * que incluye los las uniones y filtros correspondientes.
                  * */
-                con.Conec1.IntruccioneSQL = "SELECT SIG.[Cod_Asignatura] AS CodAsignatura," +
-                                             "SIG.[Desc_Asignatura] AS Nombre_Asigantura," +
-                                             "NA.[F_Notas_Rendidas] AS Notas_Rendidas," +
-                                             "ROUND(NA.[F_Promedio], 1) AS Promedio," +
-                                             "SC.ScoreNotas AS Score " + "\n" +
+                con.Conec1.IntruccioneSQL = "SELECT SIG.[Cod_Asignatura] AS 'Codigo Asignatura'," +
+                                             "SIG.[Desc_Asignatura] AS 'Nombre Asigantura'," +
+                                             "NA.[F_Notas_Rendidas] AS 'Notas Rendidas'," +
+                                             "ROUND(NA.[F_Promedio], 1) AS 'Promedio'," +
+                                             "SC.ScoreNotas AS 'Score' " + "\n" +
                                              "FROM " +
                                              "Permanencia_2.dbo.Score_Alumnos SC," +
                                              "Permanencia_2.dbo.[FT_Nota_Asistencia] NA," +
@@ -109,6 +109,45 @@ namespace ProyectoPermanencia.Negocio
             return con.Conec1.DbDat; //Se retorna el DataSet generado luego de ser llenado por la consulta.
         }
 
+        private System.Data.DataSet consultaSituacionFinanciera(string rut)
+        {
+            NegocioConexionBD con = new NegocioConexionBD(); // Instancia La Clase NegocioConexionBD
+            con.configuraConexion();
+
+            /*
+             *  Se unen las tablas que deben ser usadas para efecuar la consulta
+             * */
+            auxSQL = " WHERE AL.Id_Alumno = SC.Id_Alumno ";
+
+
+            if (!string.IsNullOrEmpty(rut))
+            {
+                /*
+                 * La consulta es filtrada segun las coincidencias que hay entre los Ruts encontrados 
+                 * en la base de datos con el ingresado en el parametro de entrada.
+                 * */
+                auxSQL += "AND AL.Desc_Rut_Alumno = '" + rut + "';";
+                /*
+                 * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
+                 * que incluye los las uniones y filtros correspondientes.
+                 * */
+                con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS 'Rut',"+
+       "AL.Desc_Alumno AS 'Nombre',"+
+	   "SC.Monto_Deuda AS 'Monto Deuda',"+
+	   "SC.Cant_Deuda AS 'Cantidad Deuda',"+
+	   "SC.ScoreDeuda AS 'Score' "+
+
+" FROM "+
+     "Permanencia_2.dbo.Score_Alumnos SC,"+
+     "Permanencia_2.dbo.LK_Alumno AL "+ auxSQL;
+
+                con.Conec1.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.
+                con.Conec1.conectar(); //Se ejecuta el metodo "conectar()" de la clase NegocioConexionBD.
+            }
+            return con.Conec1.DbDat; //Se retorna el DataSet generado luego de ser llenado por la consulta.
+
+        }
+
         /// <summary>
         /// Metodo que actuara como rutina para los demas funciones de la misma clase. El metodo
         /// funcionara para consultar el historial tanto de las Notas, Las Asistencias y la situacion financiera de un
@@ -117,9 +156,10 @@ namespace ProyectoPermanencia.Negocio
         /// <param name="rut"></param>
         /// <param name="datosNotas"></param>
         /// <param name="datosAsistencia"></param>
-        public void consultaGeneral(string rut, out System.Data.DataSet datosNotas, out System.Data.DataSet datosAsistencia) {
+        public void consultaGeneral(string rut, out System.Data.DataSet datosNotas, out System.Data.DataSet datosAsistencia ,out System.Data.DataSet datosMorosos) {
             datosNotas = consultaNota(rut);
             datosAsistencia = consultaAsistencia(rut);
+            datosMorosos = consultaSituacionFinanciera(rut);
         }
     }
 }

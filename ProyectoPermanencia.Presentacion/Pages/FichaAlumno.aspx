@@ -90,18 +90,9 @@
                 <div class="row" style="padding-left: 30px">
                     <div id="ScoreFinanzas" class="ScoreFinanzas">
                         <h3>Score situación financiera </h3>
-                        <asp:GridView ID="grvFinanzas" runat="server" AllowPaging="true" AutoGenerateColumns="false" BackColor="#e1e1e1" GridLines="Both" ShowHeaderWhenEmpty="true" EmptyDataText="No se encontraron registros" Width="800px">
-                            <HeaderStyle BackColor="#f2f2f7" Font-Bold="True" ForeColor="White" />
+                        <asp:GridView ID="grvFinanzas" runat="server" BackColor="#e1e1e1" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
+                            <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                             <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
-                            <Columns>
-                                <asp:BoundField DataField="" HeaderText="N° Cuota" />
-                                <asp:BoundField DataField="" HeaderText="Fecha Vencimiento" />
-                                <asp:BoundField DataField="" HeaderText="Tipo de beneficio" />
-                                <asp:BoundField DataField="" HeaderText="% de cobertura" />
-                                <asp:BoundField DataField="" HeaderText="Estado" />
-                                <asp:BoundField DataField="" HeaderText="Saldo" />
-                                <asp:BoundField DataField="" HeaderText="SCORE" />
-                            </Columns>
                         </asp:GridView>
                     </div>
                 </div>

@@ -55,7 +55,6 @@ namespace ProyectoPermanencia.Presentacion
             String auxNombre = row.Cells[2].Text;
             String auxCarrera = row.Cells[3].Text;
             String auxSede = row.Cells[4].Text;
-
             Response.Redirect("FichaAlumno.aspx?auxRut=" + auxRut + "&auxNombre=" + auxNombre + "&auxCarrera=" + auxCarrera + "&auxSede=" + auxSede);
 
         }

@@ -13,5 +13,18 @@ namespace ProyectoPermanencia.Presentacion
         {
 
         }
+
+        protected void btnCargarAr_Click(object sender, EventArgs e)
+        {
+            if (fuSubirArchivo.HasFile)
+            {
+                System.IO.Path.GetFileName(fuSubirArchivo.FileName);
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }

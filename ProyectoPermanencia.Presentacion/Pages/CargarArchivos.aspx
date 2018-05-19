@@ -29,7 +29,9 @@
             </div>
             <div class="col-md-4" style="height:50px">
                 <br />
-                <asp:FileUpload runat="server" ID="fuArchivo" />
+                <asp:FileUpload runat="server" ID="fuSubirArchivo" />
+                <br />
+                <asp:Button ID="btnCargarAr" runat="server" Text="Cargar" CssClass="btn btn-danger" OnClick="btnCargarAr_Click"/>
             </div>
         </div>
 

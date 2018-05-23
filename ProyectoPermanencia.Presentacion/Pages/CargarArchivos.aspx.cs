@@ -18,8 +18,9 @@ namespace ProyectoPermanencia.Presentacion
         {
             if (fuSubirArchivo.HasFile)
             {
-                System.IO.Path.GetFileName(fuSubirArchivo.FileName);
-
+                string path = Server.MapPath("~/Uploads/");
+                fuSubirArchivo.SaveAs(path+fuSubirArchivo.FileName);
+                
             }
             else
             {

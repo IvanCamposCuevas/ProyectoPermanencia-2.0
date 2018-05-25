@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.Data.Common;
+
 namespace ProyectoPermanencia.Negocio
 {
     /// <summary>
@@ -174,66 +178,21 @@ namespace ProyectoPermanencia.Negocio
         //}
 
         public void agregarArchivo(String nombreArchivo, String tipoArchivo, String path) {
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(path + nombreArchivo);
-            Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
-            Excel.Range xlRange = xlWorksheet.UsedRange;
-            try
+            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path+nombreArchivo);
+            using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
-                /*
-                 * Malo :c, no funciona lo que estoy haciendo, pero descubri ahora descubri que esto podria
-                 * ser la solucion para lo que estamos buscando, y de una manera mas limpia. LINQ \n/
-                 * https://stackoverflow.com/questions/1485958/read-excel-using-linq
-                 */
-                //dynamic expando = new System.Dynamic.ExpandoObject();
-                //int rowCount = xlRange.Rows.Count;
-                //int colCount = xlRange.Columns.Count;
-                //object[] atributos = new object[colCount+1];
-                //for (int i = 1; i <= rowCount; i++)
-                //{
-
-                //    for (int j = 1; j <= colCount; j++)
-                //    {
-                //        if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
-                //        {
-                //            if (i==1)
-                //            {
-                //                atributos[j] = xlRange.Cells[i, j].Value2;
-                //                string nombre = atributos[j].ToString();
-                //                expando.nombre = "";
-
-                //            }
-                //            if (i>=2)
-                //            {
-                //                string nombre = atributos[j].ToString();
-                //                expando.nombre = xlRange.Cells[i, j].Value2;
-                //            }
-                //        }
-                //    }
-                //}
-            }
-            catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException ex)
-            {
-                //cleanup
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-
-                //rule of thumb for releasing com objects:
-                //  never use two dots, all COM objects must be referenced and released individually
-                //  ex: [somthing].[something].[something] is bad
-
-                //release com objects to fully kill excel process from running in the background
-                Marshal.ReleaseComObject(xlRange);
-                Marshal.ReleaseComObject(xlWorksheet);
-
-                //close and release
-                xlWorkbook.Close();
-                Marshal.ReleaseComObject(xlWorkbook);
-
-                //quit and release
-                xlApp.Quit();
-                Marshal.ReleaseComObject(xlApp);
-
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Hoja1$]", conExcel);
+                conExcel.Open();
+                using (DbDataReader dr = comando.ExecuteReader())
+                {
+                    NegocioConexionBD con = new NegocioConexionBD();
+                    con.configuraConexion();
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
+                    {
+                        bulkCopy.DestinationTableName = "dbo.AsistenciaSTG";
+                        bulkCopy.WriteToServer(dr);
+                    } 
+                }
             }
         }
     }

@@ -54,7 +54,7 @@
                         <h4>Escuela: </h4>
                         <asp:DropDownList ID="ddlEscuelas" runat="server" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString3 %>" SelectCommand="SELECT DISTINCT * FROM [LK_Escuela]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString2 %>" SelectCommand="SELECT DISTINCT * FROM [LK_Escuela]"></asp:SqlDataSource>
                     </div>
                 </div>
 
@@ -64,7 +64,7 @@
                         <h4>Carrera: </h4>
                         <asp:DropDownList ID="ddlCarrera" runat="server" DataSourceID="sqlCarrera" DataTextField="Desc_Carrera" DataValueField="Desc_Carrera">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString3 %>" SelectCommand="SELECT DISTINCT * FROM [LK_Carrera]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString2 %>" SelectCommand="SELECT DISTINCT desc_carrera FROM [LK_Carrera]"></asp:SqlDataSource>
                     </div>
                 </div>
                 <!-- Filtrar resultados -->

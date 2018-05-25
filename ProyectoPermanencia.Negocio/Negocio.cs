@@ -200,7 +200,7 @@ namespace ProyectoPermanencia.Negocio
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
-                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Hoja1$]", conExcel);
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Reporte$]", conExcel);
                 conExcel.Open();
                 using (DbDataReader dr = comando.ExecuteReader())
                 {
@@ -208,7 +208,7 @@ namespace ProyectoPermanencia.Negocio
                     con.configuraConexion();
                     using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
                     {
-                        bulkCopy.DestinationTableName = "dbo.MorososSTG";
+                        bulkCopy.DestinationTableName = "dbo.Morosos_STG";
                         bulkCopy.WriteToServer(dr);
                     }
                 }
@@ -220,7 +220,7 @@ namespace ProyectoPermanencia.Negocio
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
-                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Hoja1$]", conExcel);
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Cursos20171$]", conExcel);
                 conExcel.Open();
                 using (DbDataReader dr = comando.ExecuteReader())
                 {
@@ -228,7 +228,7 @@ namespace ProyectoPermanencia.Negocio
                     con.configuraConexion();
                     using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
                     {
-                        bulkCopy.DestinationTableName = "dbo.CursoSTG";
+                        bulkCopy.DestinationTableName = "dbo.Curso_STG";
                         bulkCopy.WriteToServer(dr);
                     }
                 }

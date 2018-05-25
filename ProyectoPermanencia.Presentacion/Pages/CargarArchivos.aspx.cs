@@ -16,22 +16,22 @@ namespace ProyectoPermanencia.Presentacion
 
         protected void btnCargarAr_Click(object sender, EventArgs e)
         {
-            int opcion = this.ddlTipoArchivo.SelectedValue;
+            string opcion = this.ddlTipoArchivo.SelectedValue;
             if (fuSubirArchivo.HasFile)
             {
-                if(opcion==1)
+                if(opcion.Equals("1"))
                 {
                     string path = Server.MapPath("~/Uploads/");
                     fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);
                     new neg().agregarArchivo(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
                 }
-                if (opcion == 2)
+                if (opcion.Equals("2"))
                 {
                     string path = Server.MapPath("~/Uploads/");
                     fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);
                     new neg().agregarArchivoNotas(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
                 }
-                if (opcion == 3)
+                if (opcion.Equals("3"))
                 {
                     string path = Server.MapPath("~/Uploads/");
                     fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);

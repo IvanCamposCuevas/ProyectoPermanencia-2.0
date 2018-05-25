@@ -13,10 +13,11 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
             if (!IsPostBack)
             {
-                this.lblRut.Text = Request.QueryString[0];
-                this.lblNombre.Text = Request.QueryString[1];
-                this.lblCarrera.Text = Request.QueryString[2];
-                //this.lblEscuela.Text = Request.QueryString[3];
+                string[] info = (string[])Session["Info Alumnos"];
+                this.lblRut.Text = info[0];
+                this.lblNombre.Text = info[1];
+                this.lblCarrera.Text = info[2];
+                this.lblEscuela.Text = info[3];
                 new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out System.Data.DataSet notas, 
                     out System.Data.DataSet asistencias, out System.Data.DataSet morosos);
                 grvAsistencia.DataSource = asistencias;

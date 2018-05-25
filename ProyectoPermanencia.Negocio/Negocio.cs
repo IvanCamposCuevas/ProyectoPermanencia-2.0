@@ -194,6 +194,46 @@ namespace ProyectoPermanencia.Negocio
                 }
             }
         }
+
+        public void agregarArchivoDeuda(String nombreArchivo, String tipoArchivo, String path)
+        {
+            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
+            using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
+            {
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Hoja1$]", conExcel);
+                conExcel.Open();
+                using (DbDataReader dr = comando.ExecuteReader())
+                {
+                    NegocioConexionBD con = new NegocioConexionBD();
+                    con.configuraConexion();
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
+                    {
+                        bulkCopy.DestinationTableName = "dbo.MorososSTG";
+                        bulkCopy.WriteToServer(dr);
+                    }
+                }
+            }
+        }
+
+        public void agregarArchivoNotas(String nombreArchivo, String tipoArchivo, String path)
+        {
+            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
+            using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
+            {
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Hoja1$]", conExcel);
+                conExcel.Open();
+                using (DbDataReader dr = comando.ExecuteReader())
+                {
+                    NegocioConexionBD con = new NegocioConexionBD();
+                    con.configuraConexion();
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
+                    {
+                        bulkCopy.DestinationTableName = "dbo.CursoSTG";
+                        bulkCopy.WriteToServer(dr);
+                    }
+                }
+            }
+        }
     }
 }
 

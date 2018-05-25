@@ -17,7 +17,7 @@
 <asp:Content ID="ContentFicha" ContentPlaceHolderID="ContentPlaceHolderFicha" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-sm-3 jumbotron" style="padding: 15px; border-radius:5px;">
+            <div class="col-sm-3 jumbotron" style="padding: 15px; border-radius: 5px;">
                 <!-- COLUMNA LATERAL CON INFORMACION DEL ALUMNO -->
                 <div>
                     <div>
@@ -25,33 +25,43 @@
                     </div>
                     <div style="padding-left: 25px; padding-top: 0px; margin-top: 0px; position: center;">
                         <h4>Estado de riesgo: </h4>
-                        <asp:Label runat="server" ID="Label1"></asp:Label>
                         <div class="progress" style="width: 200px">
                             <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                             </div>
                         </div>
                     </div>
-                <div id="InformacionAlumno" class="SideColumn" style="float: left; align-content: center;">
-                    <h4 style="text-align: center">Información Personal</h4>
-                    <asp:Label runat="server">Rut:</asp:Label>
-                    <asp:Label ID="lblRut" runat="server"></asp:Label>
-                    <br />
-                    <asp:Label runat="server">Nombre:</asp:Label>
-                    <asp:Label runat="server" ID="lblNombre"></asp:Label>
-                    <br />
-                    <asp:Label runat="server">Carrera:</asp:Label>
-                    <asp:Label runat="server" ID="lblCarrera"></asp:Label>
-                    <br />
-                    <asp:Label runat="server">Escuela:</asp:Label>
-                    <asp:Label runat="server" ID="lblEscuela"></asp:Label>
-                    <h4 style="text-align: center">Contacto</h4>
-                    <br />
-                    <asp:Label runat="server">Teléfono:</asp:Label>
-                    <asp:Label runat="server" ID="lblTelefono"></asp:Label>
-                    <br />
-                    <asp:Label runat="server">Mail:</asp:Label>
-                    <asp:Label runat="server" ID="lblMail"></asp:Label>
-                </div>
+                    <div id="InformacionAlumno" class="SideColumn" style="float: left; align-content: center; padding-left:30px">
+                        <h4 style="text-align: center">Información Personal</h4>
+                        <asp:Label runat="server">Rut:</asp:Label>
+                        <asp:Label ID="lblRut" runat="server"></asp:Label>
+                        <br />
+                        <asp:Label runat="server">Nombre:</asp:Label>
+                        <asp:Label runat="server" ID="lblNombre"></asp:Label>
+                        <br />
+                        <asp:Label runat="server">Carrera:</asp:Label>
+                        <asp:Label runat="server" ID="lblCarrera"></asp:Label>
+                        <br />
+                        <asp:Label runat="server">Escuela:</asp:Label>
+                        <asp:Label runat="server" ID="lblEscuela"></asp:Label>
+                        <br />
+                        <br />
+                        <h4 style="text-align: center">Situación Financiera</h4>
+                        <asp:Label runat="server">Tipo de beneficio:</asp:Label>
+                        <asp:Label runat="server" ID="lblBeneficio"></asp:Label>
+                        <br />
+                        <asp:Label runat="server">% cobertura:</asp:Label>
+                        <asp:Label runat="server" ID="lblPorce"></asp:Label>
+                        <h4 style="text-align: center">Contacto</h4>
+                        <asp:Label runat="server">Teléfono:</asp:Label>
+                        <asp:Label runat="server" ID="lblTelefono"></asp:Label>
+                        <br />
+                        <asp:Label runat="server">Mail:</asp:Label>
+                        <asp:Label runat="server" ID="lblMail"></asp:Label>
+                        <br />
+                        <br />
+
+
+                    </div>
 
                 </div>
             </div>
@@ -63,9 +73,10 @@
                 </ul>
                 <br>
             </div>
+
+
+
             <div class="col-sm-9">
-
-
                 <!-- GRILLAS -->
                 <div class="row" style="padding-left: 30px">
                     <div id="ScoreNotas" class="ScoreNotas">

@@ -36,7 +36,8 @@ namespace ProyectoPermanencia.Negocio
                  * La consulta es filtrada segun las coincidencias que hay entre los Ruts encontrados 
                  * en la base de datos con el ingresado en el parametro de entrada.
                  * */
-                auxSQL += "AND AL.Desc_Rut_Alumno = '" + rut + "';";
+                auxSQL += "AND AL.Desc_Rut_Alumno = '" + rut + "'" +
+                    "ORDER BY SIG.Cod_Asignatura ASC;";
                 /*
                  * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
                  * que incluye los las uniones y filtros correspondientes.
@@ -86,7 +87,8 @@ namespace ProyectoPermanencia.Negocio
                  * La consulta es filtrada segun las coincidencias que hay entre los Ruts encontrados 
                  * en la base de datos con el ingresado en el parametro de entrada.
                  * */
-                auxSQL += "AND AL.Desc_Rut_Alumno = '" + rut + "';";
+                auxSQL += "AND AL.Desc_Rut_Alumno = '" + rut + "'" +
+                    "ORDER BY SIG.Cod_Asignatura ASC;";
                 /*
                  * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
                  * que incluye los las uniones y filtros correspondientes.
@@ -132,15 +134,15 @@ namespace ProyectoPermanencia.Negocio
                  * que incluye los las uniones y filtros correspondientes.
                  * */
                 con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS 'Rut',"+
-       "AL.Desc_Alumno AS 'Nombre',"+
-	   "SC.Monto_Deuda AS 'Monto Deuda',"+
-	   "SC.Cant_Deuda AS 'Cantidad Deuda',"+
-	   "SC.ScoreDeuda AS 'Score' "+
-
-" FROM "+
-     "Permanencia_2.dbo.Score_Alumnos SC,"+
-     "Permanencia_2.dbo.LK_Alumno AL "+ auxSQL;
-
+                                            "AL.Desc_Alumno AS 'Nombre',"+
+                                            "SC.Monto_Deuda AS 'Monto Deuda',"+
+                                            "SC.Cant_Deuda AS 'Cantidad Deuda',"+
+                                            "SC.ScoreDeuda AS 'Score' "+
+                                            " FROM "+
+                                            "Permanencia_2.dbo.Score_Alumnos SC,"+
+                                            "Permanencia_2.dbo.LK_Alumno AL "+
+                                            ""+ auxSQL;
+                    
                 con.Conec1.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.
                 con.Conec1.conectar(); //Se ejecuta el metodo "conectar()" de la clase NegocioConexionBD.
             }

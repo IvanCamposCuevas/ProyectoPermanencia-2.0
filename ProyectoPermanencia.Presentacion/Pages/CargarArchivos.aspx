@@ -17,14 +17,17 @@
     <div class="container">
         <div class="row jumbotron">
             <div class="col-md-4" style="height:50px; padding-top:10px">
-                <h4>Tipo de archivo a subir:</h4>
+                <h4>Seleccione el tipo de archivo a subir:</h4>
             </div>
             <div class="col-md-4" style="height:50px">
                 <br />
                 <asp:DropDownList runat="server" ID="ddlTipoArchivo">
-                    <asp:ListItem Value="1"> Hoja de Asistencia </asp:ListItem>
-                    <asp:ListItem Value="2"> Hoja de Notas </asp:ListItem>
-                    <asp:ListItem Value="3"> Hoja de Finanzas </asp:ListItem>
+                    <asp:ListItem Value="0"> Seleccione </asp:ListItem>
+                    <asp:ListItem Value="1"> Asistencia </asp:ListItem>
+                    <asp:ListItem Value="2"> Notas </asp:ListItem>
+                    <asp:ListItem Value="3"> Situación Financiera </asp:ListItem>
+                    <asp:ListItem Value="3"> Indice Alumno </asp:ListItem>
+
                 </asp:DropDownList>
             </div>
             <div class="col-md-4" style="height:50px">

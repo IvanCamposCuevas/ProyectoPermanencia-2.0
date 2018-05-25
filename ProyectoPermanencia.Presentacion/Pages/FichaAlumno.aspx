@@ -32,30 +32,30 @@
                     </div>
                     <div id="InformacionAlumno" class="SideColumn" style="float: left; align-content: center; padding-left:30px">
                         <h4 style="text-align: center">Información Personal</h4>
-                        <asp:Label runat="server">Rut:</asp:Label>
+                        <asp:Label runat="server" Font-Bold="true">Rut:</asp:Label>
                         <asp:Label ID="lblRut" runat="server"></asp:Label>
                         <br />
-                        <asp:Label runat="server">Nombre:</asp:Label>
+                        <asp:Label runat="server" Font-Bold="true">Nombre:</asp:Label>
                         <asp:Label runat="server" ID="lblNombre"></asp:Label>
                         <br />
-                        <asp:Label runat="server">Carrera:</asp:Label>
+                        <asp:Label runat="server" Font-Bold="true">Carrera:</asp:Label>
                         <asp:Label runat="server" ID="lblCarrera"></asp:Label>
                         <br />
-                        <asp:Label runat="server">Escuela:</asp:Label>
+                        <asp:Label runat="server" Font-Bold="true">Escuela:</asp:Label>
                         <asp:Label runat="server" ID="lblEscuela"></asp:Label>
                         <br />
                         <br />
                         <h4 style="text-align: center">Situación Financiera</h4>
-                        <asp:Label runat="server">Tipo de beneficio:</asp:Label>
+                        <asp:Label runat="server" Font-Bold="true">Tipo de beneficio:</asp:Label>
                         <asp:Label runat="server" ID="lblBeneficio"></asp:Label>
                         <br />
-                        <asp:Label runat="server">% cobertura:</asp:Label>
+                        <asp:Label runat="server" Font-Bold="true">% cobertura:</asp:Label>
                         <asp:Label runat="server" ID="lblPorce"></asp:Label>
                         <h4 style="text-align: center">Contacto</h4>
-                        <asp:Label runat="server">Teléfono:</asp:Label>
+                        <asp:Label runat="server" Font-Bold="true">Teléfono:</asp:Label>
                         <asp:Label runat="server" ID="lblTelefono"></asp:Label>
                         <br />
-                        <asp:Label runat="server">Mail:</asp:Label>
+                        <asp:Label runat="server" Font-Bold="true">Mail:</asp:Label>
                         <asp:Label runat="server" ID="lblMail"></asp:Label>
                         <br />
                         <br />

@@ -33,5 +33,26 @@ namespace ProyectoPermanencia.Negocio.Properties {
                 return ((string)(this["Conexion"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-9N5AEVQ2;Initial Catalog=Permanencia_2;Integrated Security=Tru" +
+            "e")]
+        public string Conexion2 {
+            get {
+                return ((string)(this["Conexion2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP-CATALINA;Initial Catalog=Permanencia_2;Integrated Security=True")]
+        public string Conexion3 {
+            get {
+                return ((string)(this["Conexion3"]));
+            }
+        }
     }
 }

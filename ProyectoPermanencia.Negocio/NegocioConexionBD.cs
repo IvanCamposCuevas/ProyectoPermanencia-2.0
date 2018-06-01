@@ -38,7 +38,7 @@ namespace ProyectoPermanencia.Negocio
             //this.Conec1.CadenaConexion = "Data Source=LAPTOP-9N5AEVQ2;Initial Catalog=Permanencia_2;Integrated Security=True";
             //this.Conec1.CadenaConexion = @"Data Source=DESKTOP-L975CUE\SQLEXPRESS;Initial Catalog=Permanencia_2;Integrated Security=True";
             //this.Conec1.CadenaConexion = @"Data Source=HP-CATALINA;Initial Catalog=Permanencia_2;Integrated Security=True";
-            this.Conec1.CadenaConexion = Properties.Settings.Default.Conexion;
+            this.Conec1.CadenaConexion = Properties.Settings.Default.Conexion2;
         }
     }
 }

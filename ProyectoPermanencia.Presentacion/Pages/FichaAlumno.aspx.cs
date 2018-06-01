@@ -17,7 +17,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 this.lblRut.Text = info[0];
                 this.lblNombre.Text = info[1];
                 this.lblCarrera.Text = info[2];
-                this.lblEscuela.Text = info[3];
+                this.lblSede.Text = info[3];
                 new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out System.Data.DataSet notas, 
                     out System.Data.DataSet asistencias, out System.Data.DataSet morosos);
                 grvAsistencia.DataSource = asistencias;

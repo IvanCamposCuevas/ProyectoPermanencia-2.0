@@ -124,17 +124,17 @@ namespace ProyectoPermanencia.Negocio
 
 			if (!string.IsNullOrEmpty(rut))
 			{
-				/*
+                /*
 				 * La consulta es filtrada segun las coincidencias que hay entre los Ruts encontrados 
 				 * en la base de datos con el ingresado en el parametro de entrada.
 				 * */
 
-				//auxSQL += "AND AL.Desc_Rut_Alumno = '" + rut + "';";
-				/*
+                //auxSQL += "AND AL.Desc_Rut_Alumno = '" + rut + "';";
+                /*
 				 * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
 				 * que incluye los las uniones y filtros correspondientes.
 				 * */
-				/*
+                /*
 			   con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS 'Rut',"+
 										   "AL.Desc_Alumno AS 'Nombre',"+
 										   "SC.Monto_Deuda AS 'Monto Deuda',"+
@@ -145,7 +145,7 @@ namespace ProyectoPermanencia.Negocio
 										   "Permanencia_2.dbo.LK_Alumno AL "+
 										   ""+ auxSQL;
 				*/
-				con.Conec1.IntruccioneSQL = "SELECT MO.RUT AS 'Rut', MO.[Fecha Vencimiento] AS 'Fecha de Vencimiento', MO.[Cuota Vencida] AS 'Cuota Vencida', MO.[Monto Adeudado] AS 'Monto Adeudado', MO.[BENEFICIO] AS 'Beneficio' FROM Permanencia_2.dbo.Morosos_STG MO, Permanencia_2.dbo.Score_Alumnos SC, Permanencia_2.dbo.LK_Alumno AL WHERE AL.Desc_Rut_Alumno = MO.RUT AND AL.Id_Alumno = SC.Id_Alumno";
+                con.Conec1.IntruccioneSQL = "SELECT MO.RUT AS 'Rut', replace(convert(NVARCHAR, MO.[Fecha Vencimiento], 106), ' ', '/') AS 'Fecha de Vencimiento', MO.[Cuota Vencida] AS 'Cuota Vencida', MO.[Monto Adeudado] AS 'Monto Adeudado', MO.[BENEFICIO] AS 'Beneficio' FROM Permanencia_2.dbo.Morosos_STG MO, Permanencia_2.dbo.Score_Alumnos SC, Permanencia_2.dbo.LK_Alumno AL WHERE AL.Desc_Rut_Alumno = MO.RUT AND AL.Id_Alumno = SC.Id_Alumno;";
 				con.Conec1.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.
 				con.Conec1.conectar(); //Se ejecuta el metodo "conectar()" de la clase NegocioConexionBD.
 			}

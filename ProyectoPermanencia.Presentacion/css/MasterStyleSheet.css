@@ -5,7 +5,7 @@
 header {
     display: block;
     height: 110px;
-    background: rgb(9,40,69);
+    background: rgb(1,40,69);
     border-bottom: 5px solid rgb(252,173,24);
 }
 
@@ -22,7 +22,7 @@ header {
 footer {
     display: block;
     height: 100px;
-    background: rgb(9,40,69);
+    background: rgb(1,40,69);
     border-top: 5px solid rgb(252,173,24);
     position: static;
     width: 100%;

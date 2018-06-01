@@ -14,7 +14,7 @@ namespace ProyectoPermanencia.Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            /*
             try
             {
                 CargarGrilla();
@@ -31,6 +31,7 @@ namespace ProyectoPermanencia.Presentacion
             {
                 //lblMensaje.Text = "Ocurrio un error inesperado favor contactese con el administrador";
             }
+            */
         }
 
 

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="VisionGlobal.aspx.cs" Inherits="ProyectoPermanencia.Presentacion.VisionGlobal" %>
 
 <asp:Content ID="ContentHeadGlobal" ContentPlaceHolderID="head" runat="server">
+    <title>Vision Global</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -13,7 +14,6 @@
         <h3 style="color:azure"> Vision Global  </h3>
     </asp:Label>
 </asp:Content>
-
 <asp:Content ID="ContentGlobal" ContentPlaceHolderID="ContentPlaceHolderGlobal" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
@@ -21,7 +21,7 @@
         <ContentTemplate>
     <div class="container">
         <!-- BUSQUEDA Y FILTROS -->
-        <div class="jumbotron modal-content" style="padding: 5px; box-shadow: none; box-sizing: border-box; margin-bottom: 0px;">
+        <div class="jumbotron modal-content" style="height:250px; padding: 5px; box-shadow: none; box-sizing: border-box; margin: 0px; border-radius:2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow:none;">
             <!-- Buscar por rut o nombre -->
             <div class="row filtrobox input-group" style="height: 100px; padding-left: 20px;">
                 <h4>Buscar Alumno:</h4>
@@ -35,9 +35,22 @@
 
             <!-- FILTROS DE BUSQUEDA -->
             <div class="row" style="height: 90px">
-                <div class="col-md-3 filtrobox" style="padding-left: 20px">
+                <div class="col-sm-2 filtrobox" style="padding-left: 20px; height:90px">
+                    <!-- Filtrar por Sede -->
+                    <div id="Sede" class="form-row align-items-center" style="width: 150px;">
+                        <h4>Sede: </h4>
+                        <asp:DropDownList ID="DropDownList1" runat="server" Width="120px">
+                            <asp:ListItem Value="">Todas</asp:ListItem>
+                            <asp:ListItem Value="D">Antonio Varas</asp:ListItem>
+                            <asp:ListItem Value="V">San Carlos</asp:ListItem>
+                        </asp:DropDownList>
+                        
+                    </div>
+                </div>
+
+                <div class="col-sm-2 filtrobox" style="padding-left: 10px; height:90px">
                     <!-- Filtrar por jornada -->
-                    <div id="Jornada" class="form-row align-items-center" style="width: 150px;">
+                    <div id="Jornada" class="form-row align-items-center" style="width: 100px;">
                         <h4>Jornada: </h4>
                         <asp:DropDownList ID="ddlJornada" runat="server" Width="120px">
                             <asp:ListItem Value="">Ambas</asp:ListItem>
@@ -48,7 +61,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 filtrobox">
+                <div class="col-sm-4 filtrobox" style="height:90px">
                     <!-- Filtrar por escuela -->
                     <div id="Escuela" style="width: 100px; align-self: center;">
                         <h4>Escuela: </h4>
@@ -58,17 +71,17 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 filtrobox">
+                <div class="col-sm-4 filtrobox" style="margin-left:0px; padding-left:0px; height:90px">
                     <!-- Filtrar por carrera -->
                     <div id="Carrera" style="width: 100px; ">
                         <h4>Carrera: </h4>
                         <asp:DropDownList ID="ddlCarrera" runat="server" DataSourceID="sqlCarrera" DataTextField="Desc_Carrera" DataValueField="Desc_Carrera">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString3 %>" SelectCommand="SELECT DISTINCT * FROM [LK_Carrera]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString3 %>" SelectCommand="SELECT DISTINCT Desc_Carrera FROM [LK_Carrera]"></asp:SqlDataSource>
                     </div>
                 </div>
                 <!-- Filtrar resultados -->
-                <div class="col-md-1" style="float: right; height: 50px; padding-top: 40px;">
+                <div class="col-md-1" style="float: right; height: 50px;">
                     <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Filtrar" OnClick="LinkButton1_Click"></asp:LinkButton>
                 </div>
             </div>

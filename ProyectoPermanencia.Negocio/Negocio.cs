@@ -52,6 +52,7 @@ namespace ProyectoPermanencia.Negocio
             con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
                                                + "AL.Desc_Alumno AS Nombre,"
                                                + "CA.Desc_Carrera AS Carrera,"
+                                               //+ "ES.Desc_Escuela AS Escuela,"
                                                + "SE.Desc_Sede AS Sede,"
                                                + "JO.Desc_Jornada AS Jornada,"
                                                + "SC.Score AS Score "+ "\n"
@@ -60,6 +61,7 @@ namespace ProyectoPermanencia.Negocio
                                                + "Permanencia_2.dbo.Score_Alumnos SC,"
                                                + "Permanencia_2.dbo.LK_Alumno AL,"
                                                + "Permanencia_2.dbo.LK_Carrera CA,"
+                                               //+ "Permanencia_2.dbo.LK_Escuela ES,"
                                                + "Permanencia_2.dbo.LK_Sede SE,"
                                                + "Permanencia_2.dbo.LK_Jornada JO"+ "\n"
                                                + auxSQL;

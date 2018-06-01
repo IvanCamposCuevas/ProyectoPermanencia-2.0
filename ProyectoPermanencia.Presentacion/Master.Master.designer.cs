@@ -67,13 +67,13 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderGlobal;
         
         /// <summary>
-        /// Control ContentPlaceHolderHistorico.
+        /// Control ContentPlaceHolderReportes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderHistorico;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderReportes;
         
         /// <summary>
         /// Control ContentPlaceHolderCargar.

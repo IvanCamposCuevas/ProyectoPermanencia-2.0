@@ -49,7 +49,7 @@
                         <asp:Label runat="server" Font-Bold="true">Escuela:</asp:Label>
                         <asp:Label runat="server" ID="lblEscuela"></asp:Label>
                         <br />
-                        <asp:Label runat="server">Sede:</asp:Label>
+                        <asp:Label runat="server" Font-Bold="true">Sede:</asp:Label>
                         <asp:Label runat="server" ID="lblSede"></asp:Label>
                         <br />
                         <br />

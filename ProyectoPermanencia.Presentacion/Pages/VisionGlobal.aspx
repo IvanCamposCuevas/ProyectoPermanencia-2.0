@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-2 filtrobox" style="padding-left: 10px; height:90px">
+                <div class="col-sm-2 filtrobox" style="padding-left: 20px; height:90px">
                     <!-- Filtrar por jornada -->
                     <div id="Jornada" class="form-row align-items-center" style="width: 100px;">
                         <h4>Jornada: </h4>

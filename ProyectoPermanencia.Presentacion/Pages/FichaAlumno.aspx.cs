@@ -26,6 +26,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 grvNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
+                
             }
         }
     }

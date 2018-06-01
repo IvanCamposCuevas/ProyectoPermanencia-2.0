@@ -37,7 +37,12 @@ namespace ProyectoPermanencia.Presentacion
                     fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);
                     new neg().agregarArchivoDeuda(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
                 }
-
+                if (opcion.Equals("4"))
+                {
+                    string path = Server.MapPath("~/Uploads/");
+                    fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);
+                    new neg().agregarArchivoIndice(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                }
             }
             else
             {

@@ -14,24 +14,7 @@ namespace ProyectoPermanencia.Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
-            try
-            {
-                CargarGrilla();
-                if (!IsPostBack)
-                {
-                    CargarGrilla();
-                }
-                else
-                {
-                    //lblMensaje.Text = string.Empty;
-                }
-            }
-            catch (Exception)
-            {
-                //lblMensaje.Text = "Ocurrio un error inesperado favor contactese con el administrador";
-            }
-            */
+
         }
 
 

@@ -26,7 +26,7 @@
                     <asp:ListItem Value="1"> Asistencia </asp:ListItem>
                     <asp:ListItem Value="2"> Notas </asp:ListItem>
                     <asp:ListItem Value="3"> Situación Financiera </asp:ListItem>
-                    <asp:ListItem Value="3"> Indice Alumno </asp:ListItem>
+                    <asp:ListItem Value="4"> Indice Alumno </asp:ListItem>
 
                 </asp:DropDownList>
             </div>

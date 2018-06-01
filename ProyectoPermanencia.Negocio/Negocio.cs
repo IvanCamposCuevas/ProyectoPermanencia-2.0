@@ -32,6 +32,8 @@ namespace ProyectoPermanencia.Negocio
            + "AL.Id_Alumno = SC.Id_Alumno"
            + " AND "
            + "AL.Id_Carrera = CA.Id_Carrera"
+           //+ " AND "
+           //+ "CA.Id_Escuela = ES.Id_Escuela"
            + " AND "
            + "AL.Id_Sede = SE.Id_Sede"
            + " AND "
@@ -97,6 +99,7 @@ namespace ProyectoPermanencia.Negocio
             con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
                                                + "AL.Desc_Alumno AS Nombre,"
                                                + "CA.Desc_Carrera AS Carrera,"
+                                              // + "ES.Desc_Escuela AS Escuela,"
                                                + "SE.Desc_Sede AS Sede,"
                                                + "JO.Desc_Jornada AS Jornada,"
                                                + "SC.Score AS Score " + "\n"
@@ -105,6 +108,7 @@ namespace ProyectoPermanencia.Negocio
                                                + "Permanencia_2.dbo.Score_Alumnos SC,"
                                                + "Permanencia_2.dbo.LK_Alumno AL,"
                                                + "Permanencia_2.dbo.LK_Carrera CA,"
+                                              // + "Permanencia_2.dbo.LK_Escuela ES,"
                                                + "Permanencia_2.dbo.LK_Sede SE,"
                                                + "Permanencia_2.dbo.LK_Jornada JO" + "\n"
                                                + auxSQL;
@@ -178,6 +182,9 @@ namespace ProyectoPermanencia.Negocio
         //    }
         //}
 
+        /*Carga de Archivos Excel a SQL*/
+        
+
         public void agregarArchivo(String nombreArchivo, String tipoArchivo, String path) {
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path+nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
@@ -231,6 +238,26 @@ namespace ProyectoPermanencia.Negocio
                     using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
                     {
                         bulkCopy.DestinationTableName = "dbo.Curso_STG";
+                        bulkCopy.WriteToServer(dr);
+                    }
+                }
+            }
+        }
+
+        public void agregarArchivoIndice(String nombreArchivo, String tipoArchivo, String path)
+        {
+            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
+            using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
+            {
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM [INDICE_2017_002_20170927_174140$]", conExcel);
+                conExcel.Open();
+                using (DbDataReader dr = comando.ExecuteReader())
+                {
+                    NegocioConexionBD con = new NegocioConexionBD();
+                    con.configuraConexion();
+                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
+                    {
+                        bulkCopy.DestinationTableName = "dbo.Indice_STG";
                         bulkCopy.WriteToServer(dr);
                     }
                 }

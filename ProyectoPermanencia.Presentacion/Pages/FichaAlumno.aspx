@@ -49,6 +49,9 @@
                         <asp:Label runat="server" Font-Bold="true">Escuela:</asp:Label>
                         <asp:Label runat="server" ID="lblEscuela"></asp:Label>
                         <br />
+                        <asp:Label runat="server">Sede:</asp:Label>
+                        <asp:Label runat="server" ID="lblSede"></asp:Label>
+                        <br />
                         <br />
                         <h4 style="text-align: center">Situación Financiera</h4>
                         <asp:Label runat="server" Font-Bold="true">Tipo de beneficio:</asp:Label>

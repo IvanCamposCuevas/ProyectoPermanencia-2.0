@@ -111,6 +111,11 @@ namespace ProyectoPermanencia.Negocio
 			return con.Conec1.DbDat; //Se retorna el DataSet generado luego de ser llenado por la consulta.
 		}
 
+        /// <summary>
+        /// Metodo que devuelve la situacion financiera actual de un Alumno en especifico.
+        /// </summary>
+        /// <param name="rut"></param>
+        /// <returns></returns>
 		private System.Data.DataSet consultaSituacionFinanciera(string rut)
 		{
 			NegocioConexionBD con = new NegocioConexionBD(); // Instancia La Clase NegocioConexionBD

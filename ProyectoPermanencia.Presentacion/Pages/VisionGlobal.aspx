@@ -77,7 +77,7 @@
                         <h4>Carrera: </h4>
                         <asp:DropDownList ID="ddlCarrera" runat="server" DataSourceID="sqlCarrera" DataTextField="Desc_Carrera" DataValueField="Desc_Carrera">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString %>" SelectCommand="SELECT DISTINCT * FROM [LK_Carrera] ORDER BY [Desc_Carrera]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString %>" SelectCommand="SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera] ORDER BY [Desc_Carrera]"></asp:SqlDataSource>
                     </div>
                 </div>
                 <!-- Filtrar resultados -->

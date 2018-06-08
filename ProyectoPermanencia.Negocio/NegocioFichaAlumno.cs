@@ -138,8 +138,7 @@ namespace ProyectoPermanencia.Negocio
 				 * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
 				 * que incluye los las uniones y filtros correspondientes.
 				 * */
-                con.Conec1.IntruccioneSQL = "SELECT MO.RUT AS 'Rut', " +
-                                            "replace(convert(NVARCHAR, MO.[Fecha Vencimiento], 106), ' ', '/') " +
+                con.Conec1.IntruccioneSQL = "SELECT replace(convert(NVARCHAR, MO.[Fecha Vencimiento], 106), ' ', '/') " +
                                             "AS 'Fecha de Vencimiento', MO.[Cuota Vencida] AS 'Cuota Vencida', " +
                                             "MO.[Monto Adeudado] AS 'Monto Adeudado', MO.[BENEFICIO] AS 'Beneficio' " + "\n" +
                                             "FROM " +

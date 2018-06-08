@@ -34,7 +34,7 @@ namespace ProyectoPermanencia.Presentacion
         protected void grvGlobal_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = this.grvGlobal.SelectedRow;
-            string[] info_alumnos = new string[] { row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text };
+            string[] info_alumnos = new string[] { row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text };
             Session["Info Alumnos"] = info_alumnos;
             Response.Redirect("FichaAlumno.aspx");
 

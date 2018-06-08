@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Data.Common;
+using System.Windows.Forms;
 
 namespace ProyectoPermanencia.Negocio
 {
@@ -205,6 +206,7 @@ namespace ProyectoPermanencia.Negocio
                     {
                         bulkCopy.DestinationTableName = "dbo.AsistenciaSTG";
                         bulkCopy.WriteToServer(dr);
+                        System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
                     } 
                 }
             }
@@ -225,6 +227,7 @@ namespace ProyectoPermanencia.Negocio
                     {
                         bulkCopy.DestinationTableName = "dbo.Morosos_STG";
                         bulkCopy.WriteToServer(dr);
+                        System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
                     }
                 }
             }
@@ -265,9 +268,12 @@ namespace ProyectoPermanencia.Negocio
                     {
                         bulkCopy.DestinationTableName = "dbo.Indice_STG";
                         bulkCopy.WriteToServer(dr);
+                        System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
                     }
+                    
                 }
             }
+            
         }
     }
 }

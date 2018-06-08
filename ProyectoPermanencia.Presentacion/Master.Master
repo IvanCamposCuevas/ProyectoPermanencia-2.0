@@ -55,6 +55,10 @@
                 </asp:ContentPlaceHolder>
             </div>
             <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderHistorico" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolderGlobal" runat="server">
                 </asp:ContentPlaceHolder>
             </div>

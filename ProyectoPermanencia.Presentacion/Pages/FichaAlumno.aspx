@@ -74,7 +74,7 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="FichaAlumno.aspx">Ficha</a></li>
-                    <li><a href="Historico.aspx">Historico</a></li>
+                    <li><a href="">Historico</a></li>
                 </ul>
                 <br>
             </div>

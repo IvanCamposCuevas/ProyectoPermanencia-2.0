@@ -13,5 +13,15 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
 
         }
+
+        protected void CheckBoxList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Chart1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

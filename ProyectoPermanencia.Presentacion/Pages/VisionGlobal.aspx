@@ -39,10 +39,10 @@
                     <!-- Filtrar por Sede -->
                     <div id="Sede" class="form-row align-items-center" style="width: 150px;">
                         <h4>Sede: </h4>
-                        <asp:DropDownList ID="DropDownList1" runat="server" Width="120px">
+                        <asp:DropDownList ID="ddlSede" runat="server" Width="120px">
                             <asp:ListItem Value="">Todas</asp:ListItem>
-                            <asp:ListItem Value="D">Antonio Varas</asp:ListItem>
-                            <asp:ListItem Value="V">San Carlos</asp:ListItem>
+                            <asp:ListItem Value="3">Antonio Varas</asp:ListItem>
+                            <asp:ListItem Value="4">San Carlos</asp:ListItem>
                         </asp:DropDownList>
                         
                     </div>

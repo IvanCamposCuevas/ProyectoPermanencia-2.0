@@ -51,7 +51,7 @@ namespace ProyectoPermanencia.Presentacion
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Negocio.Negocio auxNegocio = new Negocio.Negocio();
-            this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRut.Text, this.ddlJornada.SelectedValue, this.ddlCarrera.SelectedValue);
+            this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRut.Text, this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
             this.grvGlobal.DataBind();
         }
     }

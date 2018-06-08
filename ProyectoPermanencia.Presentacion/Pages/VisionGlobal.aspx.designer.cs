@@ -58,13 +58,13 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.Button btoFiltrar;
         
         /// <summary>
-        /// Control DropDownList1.
+        /// Control ddlSede.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSede;
         
         /// <summary>
         /// Control ddlJornada.

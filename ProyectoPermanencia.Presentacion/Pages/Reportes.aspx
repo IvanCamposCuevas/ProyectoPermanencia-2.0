@@ -23,21 +23,25 @@
                 </asp:CheckBoxList>
             </div>
             <div class="col-md-8 jumbotron modal-content" style="border:solid; margin:10px">
-                <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource1" OnLoad="Chart1_Load">
+                <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource1" OnLoad="Chart1_Load" Height="331px" Width="405px">
                     <series>
-                        <asp:Series ChartType="StackedColumn" Color="0, 192, 0" Name="Bajo" XValueMember="Desc_Escuela" YValueMembers="Bajo">
+                        <asp:Series ChartType="StackedBar100" Color="0, 192, 0" Name="Bajo" XValueMember="Desc_Escuela" YValueMembers="Bajo">
                         </asp:Series>
-                        <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn" Color="Gold" Name="Medio" XValueMember="Desc_Escuela" YValueMembers="Medio">
+                        <asp:Series ChartArea="ChartArea1" ChartType="StackedBar100" Color="Gold" Name="Medio" XValueMember="Desc_Escuela" YValueMembers="Medio">
                         </asp:Series>
-                        <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn" Color="Red" Name="Alto" XValueMember="Desc_Escuela" YValueMembers="Alto">
+                        <asp:Series ChartArea="ChartArea1" ChartType="StackedBar100" Color="Red" Name="Alto" XValueMember="Desc_Escuela" YValueMembers="Alto">
                         </asp:Series>
                     </series>
                     <chartareas>
                         <asp:ChartArea Name="ChartArea1">
+                            <AxisY Title="Porcentaje">
+                            </AxisY>
+                            <AxisX Title="Escuelas">
+                            </AxisX>
                         </asp:ChartArea>
                     </chartareas>
                     <Titles>
-                        <asp:Title Name="Title1" Text="Reporte Escuela">
+                        <asp:Title Name="Title1" Text="Reporte Escuela" Font="Microsoft Sans Serif, 12pt">
                         </asp:Title>
                     </Titles>
                 </asp:Chart>

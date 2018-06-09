@@ -217,7 +217,7 @@ namespace ProyectoPermanencia.Negocio
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
-                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Reporte$]", conExcel);
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Reporte Deuda$]", conExcel);
                 conExcel.Open();
                 using (DbDataReader dr = comando.ExecuteReader())
                 {
@@ -238,7 +238,7 @@ namespace ProyectoPermanencia.Negocio
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
-                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Cursos20171$]", conExcel);
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Cursos20181$]", conExcel);
                 conExcel.Open();
                 using (DbDataReader dr = comando.ExecuteReader())
                 {
@@ -258,7 +258,7 @@ namespace ProyectoPermanencia.Negocio
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
-                OleDbCommand comando = new OleDbCommand("SELECT * FROM [INDICE_2017_002_20170927_174140$]", conExcel);
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM [INDICE_2018_001_20180503_123408$]", conExcel);
                 conExcel.Open();
                 using (DbDataReader dr = comando.ExecuteReader())
                 {

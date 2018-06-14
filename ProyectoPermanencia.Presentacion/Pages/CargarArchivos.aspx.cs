@@ -23,7 +23,7 @@ namespace ProyectoPermanencia.Presentacion
                 {
                     string path = Server.MapPath("~/Uploads/");
                     fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);
-                    new neg().agregarArchivo(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                    new neg().agregarArchivoAsistencia(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
                 }
                 if (opcion.Equals("2"))
                 {

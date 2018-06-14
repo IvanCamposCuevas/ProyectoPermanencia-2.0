@@ -54,5 +54,16 @@ namespace ProyectoPermanencia.Negocio.Properties {
                 return ((string)(this["Conexion3"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.113.1.38\\SQL_PERMANENCIA;Initial Catalog=permanencia;User ID=sa;Pa" +
+            "ssword=Duoc.2018!")]
+        public string ConexionServer {
+            get {
+                return ((string)(this["ConexionServer"]));
+            }
+        }
     }
 }

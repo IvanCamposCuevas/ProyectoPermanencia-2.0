@@ -193,14 +193,19 @@ namespace ProyectoPermanencia.Negocio
         /*Carga de Archivos Excel a SQL*/
         
 
+        private String obtenerNombreHoja(OleDbConnection conexionExcel)
+        {
+            DataTable dbSchema = conexionExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+            string nombreHoja = dbSchema.Rows[0]["TABLE_NAME"].ToString();
+            return nombreHoja;
+        }
+
         public void agregarArchivoAsistencia(String nombreArchivo, String tipoArchivo, String path) {
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path+nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
                 conExcel.Open();
-                DataTable dbSchema = conExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                string nombreHoja = dbSchema.Rows[0]["TABLE_NAME"].ToString();
-                OleDbCommand comando = new OleDbCommand("SELECT * FROM ["+nombreHoja+"]", conExcel);
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM ["+ obtenerNombreHoja(conExcel)+ "]", conExcel);
                 using (DbDataReader dr = comando.ExecuteReader())
                 {
                     NegocioConexionBD con = new NegocioConexionBD();
@@ -220,8 +225,8 @@ namespace ProyectoPermanencia.Negocio
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
-                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Reporte Deuda$]", conExcel);
                 conExcel.Open();
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM ["+ obtenerNombreHoja(conExcel)+ "]", conExcel);
                 using (DbDataReader dr = comando.ExecuteReader())
                 {
                     NegocioConexionBD con = new NegocioConexionBD();
@@ -241,8 +246,8 @@ namespace ProyectoPermanencia.Negocio
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
-                OleDbCommand comando = new OleDbCommand("SELECT * FROM [Cursos20181$]", conExcel);
                 conExcel.Open();
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM ["+ obtenerNombreHoja(conExcel) + "]", conExcel);
                 using (DbDataReader dr = comando.ExecuteReader())
                 {
                     NegocioConexionBD con = new NegocioConexionBD();
@@ -261,8 +266,8 @@ namespace ProyectoPermanencia.Negocio
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
-                OleDbCommand comando = new OleDbCommand("SELECT * FROM [INDICE_2018_001_20180503_123408$]", conExcel);
                 conExcel.Open();
+                OleDbCommand comando = new OleDbCommand("SELECT * FROM ["+ obtenerNombreHoja(conExcel) + "]", conExcel);
                 using (DbDataReader dr = comando.ExecuteReader())
                 {
                     NegocioConexionBD con = new NegocioConexionBD();

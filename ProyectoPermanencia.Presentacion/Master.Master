@@ -75,7 +75,7 @@
         <footer style="position: static; margin-bottom: 0px" class="footer" id="footer">
             <br />
             
-            <p style="color: white"> &copy Copyright</p>
+<!--            <p style="color: white"> &copy Copyright</p> -->
         </footer>
     </form>
 </body>

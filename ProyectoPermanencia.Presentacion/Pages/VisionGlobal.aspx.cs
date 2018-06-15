@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-
 
 
 
@@ -50,9 +45,16 @@ namespace ProyectoPermanencia.Presentacion
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            Negocio.Negocio auxNegocio = new Negocio.Negocio();
-            this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRut.Text, this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
-            this.grvGlobal.DataBind();
+            try
+            {
+                Negocio.Negocio auxNegocio = new Negocio.Negocio();
+                this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRut.Text, this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
+                this.grvGlobal.DataBind();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message+";"+ex.InnerException);
+            }
         }
     }
 }

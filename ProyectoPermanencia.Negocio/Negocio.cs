@@ -243,7 +243,7 @@ namespace ProyectoPermanencia.Negocio
 
         public void agregarArchivoNotas(String nombreArchivo, String tipoArchivo, String path)
         {
-            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
+            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=YES'", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
                 conExcel.Open();
@@ -256,6 +256,7 @@ namespace ProyectoPermanencia.Negocio
                     {
                         bulkCopy.DestinationTableName = "dbo.Curso_STG";
                         bulkCopy.WriteToServer(dr);
+                        System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
                     }
                 }
             }

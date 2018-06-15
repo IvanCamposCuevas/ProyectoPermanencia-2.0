@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-2 filtrobox" style="padding-left: 20px; height:90px">
+                <div class="col-sm-2 filtrobox" style="padding-left: 20px; height:90px; top: 0px; left: 0px;">
                     <!-- Filtrar por jornada -->
                     <div id="Jornada" class="form-row align-items-center" style="width: 100px;">
                         <h4>Jornada: </h4>
@@ -65,9 +65,9 @@
                     <!-- Filtrar por escuela -->
                     <div id="Escuela" style="width: 100px; align-self: center;">
                         <h4>Escuela: </h4>
-                        <asp:DropDownList ID="ddlEscuelas" runat="server" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela">
+                        <asp:DropDownList ID="ddlEscuelas" runat="server" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela" OnSelectedIndexChanged="ddlEscuelas_SelectedIndexChanged" AutoPostBack="True">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString2 %>" SelectCommand="SELECT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString3 %>" SelectCommand="SELECT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]"></asp:SqlDataSource>
                     </div>
                 </div>
 
@@ -75,9 +75,10 @@
                     <!-- Filtrar por carrera -->
                     <div id="Carrera" style="width: 100px; ">
                         <h4>Carrera: </h4>
-                        <asp:DropDownList ID="ddlCarrera" runat="server" DataSourceID="sqlCarrera" DataTextField="Desc_Carrera" DataValueField="Desc_Carrera">
+                        <asp:DropDownList ID="ddlCarrera" runat="server"  DataTextField="Desc_Carrera" DataValueField="Desc_Carrera">
+                            <asp:ListItem>--Escoja Una Escuela--</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString2 %>" SelectCommand="SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera] ORDER BY [Desc_Carrera]"></asp:SqlDataSource>
+                        <!--<asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString2 %>" SelectCommand="SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera] ORDER BY [Desc_Carrera]"></asp:SqlDataSource>-->
                     </div>
                 </div>
                 <!-- Filtrar resultados -->

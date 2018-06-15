@@ -56,5 +56,15 @@ namespace ProyectoPermanencia.Presentacion
                 System.Windows.Forms.MessageBox.Show(ex.Message+";"+ex.InnerException);
             }
         }
+
+        protected void ddlEscuelas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlCarrera.DataSource = new Negocio.Negocio().cargarListaCarrera(ddlEscuelas.SelectedValue);
+            ddlCarrera.DataBind();
+            if (ddlCarrera.Items.Count == 0)
+            {
+                ddlCarrera.Items.Add(new ListItem("--Datos Vacios--", ""));
+            }
+        }
     }
 }

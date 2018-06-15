@@ -25,7 +25,7 @@ namespace ProyectoPermanencia.Negocio
             /// <param name="rut"></param>
             /// <param name="jornada"></param>
             /// <returns></returns>
-            public System.Data.DataSet consultaScore(String rut, String sede, String jornada, String escuela, String carrera)
+            public DataSet consultaScore(String rut, String sede, String jornada, String escuela, String carrera)
             {
                 NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
                 con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
@@ -81,7 +81,7 @@ namespace ProyectoPermanencia.Negocio
             } // Fin metodo entrega
 
 
-        public System.Data.DataSet consultaScorePorRut(String rut)
+        public DataSet consultaScorePorRut(String rut)
         {
             NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
             con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
@@ -283,6 +283,16 @@ namespace ProyectoPermanencia.Negocio
                 }
             }
             
+        }
+
+        public DataSet cargarListaCarrera(string escuela)
+        {
+            NegocioConexionBD conexion = new NegocioConexionBD();
+            conexion.configuraConexion();
+            conexion.Conec1.IntruccioneSQL = String.Format("SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera] WHERE Id_Escuela = {0} ORDER BY [Desc_Carrera]", escuela);
+            conexion.Conec1.EsSelect = true;
+            conexion.Conec1.conectar();
+            return conexion.Conec1.DbDat;
         }
     }
 }

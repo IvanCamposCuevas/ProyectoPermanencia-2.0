@@ -87,9 +87,9 @@ e.Desc_Escuela;"></asp:SqlDataSource>
                     <Series>
                         <asp:Series ChartType="StackedColumn" Color="0, 192, 0" Legend="Legend1" Name="Bajo" XValueMember="Desc_Carrera" YValueMembers="Bajo" ChartArea="ChartArea1">
                         </asp:Series>
-                        <asp:Series ChartArea="ChartArea1" Color="Yellow" Legend="Legend1" Name="Medio">
+                        <asp:Series ChartArea="ChartArea1" Color="Yellow" Legend="Legend1" Name="Medio" ChartType="StackedColumn">
                         </asp:Series>
-                        <asp:Series ChartArea="ChartArea1" Color="Red" Legend="Legend1" Name="Alto">
+                        <asp:Series ChartArea="ChartArea1" Color="Red" Legend="Legend1" Name="Alto" ChartType="StackedColumn">
                         </asp:Series>
                     </Series>
                     <ChartAreas>
@@ -113,7 +113,7 @@ e.Desc_Escuela;"></asp:SqlDataSource>
                     <Series>
                         <asp:Series ChartType="StackedColumn" Color="0, 192, 0" Legend="Legend1" Name="Bajo" XValueMember="Desc_Jornada" YValueMembers="Bajo">
                         </asp:Series>
-                        <asp:Series ChartArea="ChartArea1" Color="Yellow" Legend="Legend1" Name="Medio">
+                        <asp:Series ChartArea="ChartArea1" Color="Yellow" Legend="Legend1" Name="Medio" ChartType="StackedColumn">
                         </asp:Series>
                         <asp:Series ChartArea="ChartArea1" Color="Red" Legend="Legend1" Name="Alto">
                         </asp:Series>
@@ -138,9 +138,9 @@ e.Desc_Escuela;"></asp:SqlDataSource>
             <asp:Chart ID="Chart4" runat="server" DataSourceID="SqlDataSource4" Height="325px" Width="356px">
                 <Series>
                     <asp:Series Name="Bajo" ChartType="StackedColumn" Color="0, 192, 0" Legend="Legend1" XValueMember="Desc_Sede" YValueMembers="Bajo"></asp:Series>
-                    <asp:Series ChartArea="ChartArea1" Color="Yellow" Legend="Legend1" Name="Medio">
+                    <asp:Series ChartArea="ChartArea1" Color="Yellow" Legend="Legend1" Name="Medio" ChartType="StackedColumn">
                     </asp:Series>
-                    <asp:Series ChartArea="ChartArea1" Color="Red" Legend="Legend1" Name="Alto">
+                    <asp:Series ChartArea="ChartArea1" Color="Red" Legend="Legend1" Name="Alto" ChartType="StackedColumn">
                     </asp:Series>
                 </Series>
                 <ChartAreas>

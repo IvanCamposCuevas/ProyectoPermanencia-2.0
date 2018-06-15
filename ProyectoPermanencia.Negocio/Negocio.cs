@@ -246,18 +246,30 @@ namespace ProyectoPermanencia.Negocio
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=YES'", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
-                conExcel.Open();
-                OleDbCommand comando = new OleDbCommand("SELECT * FROM ["+ obtenerNombreHoja(conExcel) + "]", conExcel);
-                using (DbDataReader dr = comando.ExecuteReader())
+                try
                 {
-                    NegocioConexionBD con = new NegocioConexionBD();
-                    con.configuraConexion();
-                    using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
+                    conExcel.Open();
+                    OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
+                    using (DbDataReader dr = comando.ExecuteReader())
                     {
-                        bulkCopy.DestinationTableName = "dbo.Curso_STG";
-                        bulkCopy.WriteToServer(dr);
-                        System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
+                        NegocioConexionBD con = new NegocioConexionBD();
+                        con.configuraConexion();
+                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
+                        {
+                            bulkCopy.DestinationTableName = "dbo.Curso_STG";
+                            bulkCopy.WriteToServer(dr);
+                            System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
+                        }
                     }
+                }
+                catch (OleDbException ex)
+                {
+
+                    throw new Exception("Error en el archivo Excel, Excepcion:", ex);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al cargar el archivo, Excepcion:",ex);
                 }
             }
         }

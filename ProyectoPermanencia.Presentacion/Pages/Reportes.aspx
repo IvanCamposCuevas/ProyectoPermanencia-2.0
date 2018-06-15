@@ -135,6 +135,54 @@ e.Desc_Escuela;"></asp:SqlDataSource>
                         </asp:Title>
                     </Titles>
                 </asp:Chart>
+            <asp:Chart ID="Chart4" runat="server" DataSourceID="SqlDataSource4" Height="325px" Width="356px">
+                <Series>
+                    <asp:Series Name="Bajo" ChartType="StackedColumn" Color="0, 192, 0" Legend="Legend1" XValueMember="Desc_Sede" YValueMembers="Bajo"></asp:Series>
+                    <asp:Series ChartArea="ChartArea1" Color="Yellow" Legend="Legend1" Name="Medio">
+                    </asp:Series>
+                    <asp:Series ChartArea="ChartArea1" Color="Red" Legend="Legend1" Name="Alto">
+                    </asp:Series>
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea1">
+                        <AxisY Title="Porcentajes">
+                        </AxisY>
+                        <AxisX Title="Sedes">
+                        </AxisX>
+                    </asp:ChartArea>
+                </ChartAreas>
+                <Legends>
+                    <asp:Legend Name="Legend1">
+                    </asp:Legend>
+                </Legends>
+                <Titles>
+                    <asp:Title Name="Title1" Text="Reporte Sedes">
+                    </asp:Title>
+                </Titles>
+            </asp:Chart>
+                <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString %>" SelectCommand="SELECT (SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&lt;=0.4) Bajo, 
+(SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;=0.41 AND Score&lt;0.7) Medio, 
+(SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;0.7) Alto,
+se.Desc_Sede
+FROM 
+Permanencia_2.dbo.Score_Alumnos s, 
+Permanencia_2.dbo.LK_Alumno a , 
+Permanencia_2.dbo.LK_Carrera c,
+Permanencia_2.dbo.LK_Escuela e,
+Permanencia_2.dbo.LK_Jornada j,
+Permanencia_2.dbo.LK_Sede se 
+WHERE 
+s.Id_Alumno = a.Id_Alumno 
+AND 
+a.Id_Carrera = c.Id_Carrera 
+AND 
+c.Id_Escuela = e.Id_Escuela
+AND
+a.Id_Jornada = j.Id_Jornada
+AND
+a.Id_Sede = se.Id_Sede
+GROUP BY
+se.Desc_Sede;"></asp:SqlDataSource>
                 <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString %>" SelectCommand="SELECT (SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&lt;=0.4) Bajo, 
 (SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;=0.41 AND Score&lt;0.7) Medio, 
 (SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;0.7) Alto,

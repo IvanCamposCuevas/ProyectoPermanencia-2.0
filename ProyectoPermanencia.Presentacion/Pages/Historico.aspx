@@ -25,10 +25,10 @@
                         <div class="progress" style="width: 200px">
                             <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                             </div>
-                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                            <!--<div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                             </div>
                             <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     <div id="InformacionAlumno" class="SideColumn" style="float: left; align-content: center; padding-left: 20px">
@@ -51,16 +51,16 @@
                         <br />
                         <h4 style="text-align: center">Situación Financiera</h4>
                         <asp:Label runat="server" Font-Bold="true">Tipo de beneficio:</asp:Label>
-                        <asp:Label runat="server" ID="lblBeneficio"></asp:Label>
+                        <asp:Label runat="server" ID="lblBeneficio">CAE</asp:Label>
                         <br />
                         <asp:Label runat="server" Font-Bold="true">% cobertura:</asp:Label>
                         <asp:Label runat="server" ID="lblPorce"></asp:Label>
                         <h4 style="text-align: center">Contacto</h4>
                         <asp:Label runat="server" Font-Bold="true">Teléfono:</asp:Label>
-                        <asp:Label runat="server" ID="lblTelefono"></asp:Label>
+                        <asp:Label runat="server" ID="lblTelefono">987563450</asp:Label>
                         <br />
                         <asp:Label runat="server" Font-Bold="true">Mail:</asp:Label>
-                        <asp:Label runat="server" ID="lblMail"></asp:Label>
+                        <asp:Label runat="server" ID="lblMail">alumno@alumnos.duoc.cl</asp:Label>
                         <br />
                         <br />
                     </div>
@@ -77,7 +77,6 @@
 
             <div class="col-sm-9">
                 <!-- Información Histórico-->
-                <h2>Contenido histórico del alumno (Asignaturas con notas y asistencia. Situación Financiera)</h2>
 
                 
 

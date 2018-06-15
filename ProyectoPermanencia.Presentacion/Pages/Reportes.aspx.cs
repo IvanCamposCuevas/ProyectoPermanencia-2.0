@@ -23,5 +23,10 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
 
         }
+
+        protected void Chart2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

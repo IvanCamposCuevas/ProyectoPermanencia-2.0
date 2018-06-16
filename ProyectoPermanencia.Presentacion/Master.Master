@@ -70,6 +70,23 @@
                 <asp:ContentPlaceHolder ID="ContentPlaceHolderCargar" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderReportesSe" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderReportesEs" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderReportesCa" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderReportesJo" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
 
         </div>
         <footer style="position: static; margin-bottom: 0px" class="footer" id="footer">

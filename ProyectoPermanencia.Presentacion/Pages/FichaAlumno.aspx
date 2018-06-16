@@ -73,7 +73,7 @@
             <div class="Tabs col-md-6" style="float: left;">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#">Ficha</a></li>
-                    <li><a href="Historico.aspx" >Historico</a></li>
+                    <li><a href="#" >Historico</a></li>
                 </ul>
                 <br>
             </div>

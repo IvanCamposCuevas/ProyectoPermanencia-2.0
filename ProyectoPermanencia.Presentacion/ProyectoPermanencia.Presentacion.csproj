@@ -160,6 +160,10 @@
     <Content Include="Pages\FichaAlumno.aspx" />
     <Content Include="Pages\Historico.aspx" />
     <Content Include="Pages\Reportes.aspx" />
+    <Content Include="Pages\ReportesCarrera.aspx" />
+    <Content Include="Pages\ReportesEscuela.aspx" />
+    <Content Include="Pages\ReportesJornada.aspx" />
+    <Content Include="Pages\ReportesSede.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -287,6 +291,34 @@
     </Compile>
     <Compile Include="Pages\Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReportesCarrera.aspx.cs">
+      <DependentUpon>ReportesCarrera.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ReportesCarrera.aspx.designer.cs">
+      <DependentUpon>ReportesCarrera.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReportesEscuela.aspx.cs">
+      <DependentUpon>ReportesEscuela.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ReportesEscuela.aspx.designer.cs">
+      <DependentUpon>ReportesEscuela.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReportesJornada.aspx.cs">
+      <DependentUpon>ReportesJornada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ReportesJornada.aspx.designer.cs">
+      <DependentUpon>ReportesJornada.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReportesSede.aspx.cs">
+      <DependentUpon>ReportesSede.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ReportesSede.aspx.designer.cs">
+      <DependentUpon>ReportesSede.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

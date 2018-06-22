@@ -90,6 +90,16 @@
                 </div>
 
                 <div class="row" style="padding-left: 30px">
+                    <div id="DetalleNotas" class="ScoreNotas">
+                        <h3>Detalle de notas por asignatura </h3>
+                        <asp:GridView ID="grvDetalleNotas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
+                            <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
+                        </asp:GridView>
+                    </div>
+                </div>
+
+                <div class="row" style="padding-left: 30px">
                     <div id="ScoreAsistencia" class="ScoreAsistencia">
                         <h3>Score asistencia por asignatura </h3>
                         <asp:GridView ID="grvAsistencia" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">

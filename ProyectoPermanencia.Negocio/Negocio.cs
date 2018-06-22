@@ -29,17 +29,19 @@ namespace ProyectoPermanencia.Negocio
             {
                 NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
                 con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
-                //Se crean una variable de texto, que permitira establecer las uniones con las tablas de la base datos
-                String auxSQL = " WHERE "
-           + "AL.Id_Alumno = SC.Id_Alumno"
-           + " AND "
-           + "AL.Id_Carrera = CA.Id_Carrera"
-           + " AND "
-           + "CA.Id_Escuela = ES.Id_Escuela"
-           + " AND "
-           + "AL.Id_Sede = SE.Id_Sede"
-           + " AND "
-           + "AL.Id_Jornada = JO.Id_Jornada";
+                                         //Se crean una variable de texto, que permitira establecer las uniones con las tablas de la base datos
+            String auxSQL = " WHERE "
+       + "AL.Id_Alumno = SC.Id_Alumno"
+       + " AND "
+       + "AL.Id_Carrera = CA.Id_Carrera"
+       + " AND "
+       + "CA.Id_Escuela = ES.Id_Escuela"
+       + " AND "
+       + "AL.Id_Sede = SE.Id_Sede"
+       + " AND "
+       + "AL.Id_Jornada = JO.Id_Jornada";
+           //+ " AND "
+           //+ "AL.Desc_Rut_Alumno = IN.RUT";
 
                 //Aplicar Filtros
                 if (!String.IsNullOrEmpty(rut))
@@ -59,8 +61,9 @@ namespace ProyectoPermanencia.Negocio
             */
             con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
                                                + "AL.Desc_Alumno AS Nombre,"
-                                               + "AL.Telefono_Alumno AS Telefono,"
-                                               + "AL.Correo_Alumno AS Correo,"
+                                               //+ "IN.TELEFONO AS Telefono,"
+                                               //+ "IN.CELULAR AS Celular,"
+                                               //+ "IN.USERNAME AS Correo,"
                                                + "CA.Desc_Carrera AS Carrera,"
                                                + "ES.Desc_Escuela AS Escuela,"
                                                + "SE.Desc_Sede AS Sede,"
@@ -73,6 +76,7 @@ namespace ProyectoPermanencia.Negocio
                                                + "Permanencia_2.dbo.LK_Carrera CA,"
                                                + "Permanencia_2.dbo.LK_Escuela ES,"
                                                + "Permanencia_2.dbo.LK_Sede SE,"
+                                               //+ "Permanencia_2.dbo.Indice_STG IN,"
                                                + "Permanencia_2.dbo.LK_Jornada JO"+ "\n"
                                                + auxSQL;
 
@@ -137,8 +141,7 @@ namespace ProyectoPermanencia.Negocio
 
 
         /**
-         * Ni idea si se usara estas funciones, las comento eso si por si algun día se
-         * usan.
+         * Ni idea si se usara estas funciones, las comento eso si por si algun día se usan.
          * */
 
 

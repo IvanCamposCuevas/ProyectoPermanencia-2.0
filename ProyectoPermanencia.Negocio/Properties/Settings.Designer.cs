@@ -12,7 +12,7 @@ namespace ProyectoPermanencia.Negocio.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,11 +26,10 @@ namespace ProyectoPermanencia.Negocio.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-L975CUE\\SQLEXPRESS;Initial Catalog=Permanencia_2;Integrated S" +
-            "ecurity=True")]
-        public string Conexion {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=Permanencia_2;Integrated Security=True")]
+        public string ConexionIvan {
             get {
-                return ((string)(this["Conexion"]));
+                return ((string)(this["ConexionIvan"]));
             }
         }
         
@@ -39,9 +38,9 @@ namespace ProyectoPermanencia.Negocio.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-9N5AEVQ2;Initial Catalog=Permanencia_2;Integrated Security=Tru" +
             "e")]
-        public string Conexion2 {
+        public string ConexionMarce {
             get {
-                return ((string)(this["Conexion2"]));
+                return ((string)(this["ConexionMarce"]));
             }
         }
         
@@ -49,17 +48,17 @@ namespace ProyectoPermanencia.Negocio.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP-CATALINA;Initial Catalog=Permanencia_2;Integrated Security=True")]
-        public string Conexion3 {
+        public string ConexionCata {
             get {
-                return ((string)(this["Conexion3"]));
+                return ((string)(this["ConexionCata"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.113.1.38\\SQL_PERMANENCIA;Initial Catalog=permanencia;User ID=permanencia;Pa" +
-            "ssword=permanencia")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.113.1.38\\SQL_PERMANENCIA;Initial Catalog=permanencia;User ID=sa;Pa" +
+            "ssword=Duoc.2018!")]
         public string ConexionServer {
             get {
                 return ((string)(this["ConexionServer"]));

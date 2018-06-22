@@ -19,7 +19,8 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 this.lblCarrera.Text = info[2];
                 this.lblEscuela.Text = info[3];
                 this.lblSede.Text = info[4];
-
+                this.lblTelefono.Text = info[5];
+                this.lblMail.Text = info[6];
                 new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out System.Data.DataSet notas, 
                     out System.Data.DataSet asistencias, out System.Data.DataSet morosos);
                 grvAsistencia.DataSource = asistencias;
@@ -28,7 +29,6 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 grvNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
-                
             }
         }
     }

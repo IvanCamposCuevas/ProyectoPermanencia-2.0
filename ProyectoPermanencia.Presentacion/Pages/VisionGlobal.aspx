@@ -25,11 +25,11 @@
             <!-- Buscar por rut o nombre -->
             <div class="row filtrobox input-group" style="height: 100px; padding-left: 20px;">
                 <h4>Buscar Alumno:</h4>
-                <asp:DropDownList ID="ddlRutNom" runat="server" Width="120px" Height="30px">
+                <asp:DropDownList ID="ddlRutNom" runat="server" Width="138px" Height="30px">
                     <asp:ListItem Value="1" Text="Rut Alumno">Rut Alumno</asp:ListItem>
-                    <asp:ListItem>Nombre Alumno</asp:ListItem>
+                    <asp:ListItem Value="2">Nombre Alumno</asp:ListItem>
                 </asp:DropDownList>
-                <asp:TextBox runat="server" CssClass="”form-control”" Width="115px" Height="30px" ID="txtRut"></asp:TextBox>
+                <asp:TextBox runat="server" CssClass="”form-control”" Width="115px" Height="30px" ID="txtRutNombre"></asp:TextBox>
                 <asp:Button runat="server" Text="Buscar" ID="btoFiltrar" CssClass="btn btn-info" OnClick="btoFiltrar_Click1" />
             </div>
 
@@ -67,7 +67,7 @@
                         <h4>Escuela: </h4>
                         <asp:DropDownList ID="ddlEscuelas" runat="server" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela" OnSelectedIndexChanged="ddlEscuelas_SelectedIndexChanged" AutoPostBack="True">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString2 %>" SelectCommand="SELECT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]"></asp:SqlDataSource>
                     </div>
                 </div>
 

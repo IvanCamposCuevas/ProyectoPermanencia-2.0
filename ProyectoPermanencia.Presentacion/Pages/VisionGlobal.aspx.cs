@@ -16,9 +16,9 @@ namespace ProyectoPermanencia.Presentacion
 
         private void CargarGrilla()
         {
-            Negocio.Negocio auxNegocio = new Negocio.Negocio();
-            this.grvGlobal.DataSource = auxNegocio.consultaScorePorRut(this.txtRut.Text);
-            this.grvGlobal.DataBind();
+            //Negocio.Negocio auxNegocio = new Negocio.Negocio();
+            //this.grvGlobal.DataSource = auxNegocio.consultaScorePorRut(this.txtRutNombre.Text);
+            //this.grvGlobal.DataBind();
         }
 
         protected void btoFiltrar_Click(object sender, EventArgs e)
@@ -29,7 +29,9 @@ namespace ProyectoPermanencia.Presentacion
         protected void grvGlobal_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = this.grvGlobal.SelectedRow;
-            string[] info_alumnos = new string[] { row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text, row.Cells[5].Text };
+            string[] info_alumnos = new string[] { row.Cells[1].Text,
+                row.Cells[2].Text, row.Cells[3].Text, row.Cells[6].Text,
+                row.Cells[7].Text, row.Cells[4].Text, row.Cells[5].Text };
             Session["Info Alumnos"] = info_alumnos;
             Response.Redirect("FichaAlumno.aspx");
 
@@ -37,9 +39,17 @@ namespace ProyectoPermanencia.Presentacion
 
         protected void btoFiltrar_Click1(object sender, EventArgs e)
         {
-            Negocio.Negocio auxNegocio = new Negocio.Negocio();
-            this.grvGlobal.DataSource = auxNegocio.consultaScorePorRut(this.txtRut.Text);
-            this.grvGlobal.DataBind();
+            if (txtRutNombre.Text != "")
+            {
+                Negocio.Negocio auxNegocio = new Negocio.Negocio();
+                this.grvGlobal.DataSource = auxNegocio.consultaScorePorRut(this.txtRutNombre.Text, ddlRutNom.SelectedValue);
+                this.grvGlobal.DataBind();
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Ingrese la informacion dentro del campo de texto");
+            }
+           
 
         }
 
@@ -48,7 +58,7 @@ namespace ProyectoPermanencia.Presentacion
             try
             {
                 Negocio.Negocio auxNegocio = new Negocio.Negocio();
-                this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRut.Text, this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
+                this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRutNombre.Text, this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
                 this.grvGlobal.DataBind();
             }
             catch (Exception ex)

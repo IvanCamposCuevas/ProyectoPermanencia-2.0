@@ -140,7 +140,8 @@ namespace ProyectoPermanencia.Negocio
 				 * */
                 con.Conec1.IntruccioneSQL = "SELECT replace(convert(NVARCHAR, MO.[Fecha Vencimiento], 106), ' ', '/') " +
                                             "AS 'Fecha de Vencimiento', MO.[Cuota Vencida] AS 'Cuota Vencida', " +
-                                            "MO.[Monto Adeudado] AS 'Monto Adeudado', MO.[BENEFICIO] AS 'Beneficio' " + "\n" +
+                                            "MO.[Monto Adeudado] AS 'Monto Adeudado', MO.[BENEFICIO] AS 'Beneficio', " + 
+                                            "SC.[ScoreDeuda] AS 'Score' "+"\n" +
                                             "FROM " +
                                             "Permanencia_2.dbo.Morosos_STG MO, " +
                                             "Permanencia_2.dbo.Score_Alumnos SC, " +

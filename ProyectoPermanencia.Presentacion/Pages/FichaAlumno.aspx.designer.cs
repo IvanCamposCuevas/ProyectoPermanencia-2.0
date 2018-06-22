@@ -67,15 +67,6 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Label lblBeneficio;
         
         /// <summary>
-        /// Control lblPorce.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPorce;
-        
-        /// <summary>
         /// Control lblTelefono.
         /// </summary>
         /// <remarks>

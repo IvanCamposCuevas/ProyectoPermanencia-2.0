@@ -57,8 +57,6 @@
                         <asp:Label runat="server" Font-Bold="true">Tipo de beneficio:</asp:Label>
                         <asp:Label runat="server" ID="lblBeneficio"></asp:Label>
                         <br />
-                        <asp:Label runat="server" Font-Bold="true">% cobertura:</asp:Label>
-                        <asp:Label runat="server" ID="lblPorce"></asp:Label>
                         <h4 style="text-align: center">Contacto</h4>
                         <asp:Label runat="server" Font-Bold="true">Teléfono:</asp:Label>
                         <asp:Label runat="server" ID="lblTelefono"></asp:Label>
@@ -111,7 +109,6 @@
                     </div>
                 </div>
                 
-
             </div>
 
         </div>

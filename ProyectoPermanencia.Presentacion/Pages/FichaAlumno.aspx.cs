@@ -21,15 +21,24 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 this.lblSede.Text = info[4];
                 this.lblTelefono.Text = info[5];
                 this.lblMail.Text = info[6];
-                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out System.Data.DataSet notas, 
-                    out System.Data.DataSet asistencias, out System.Data.DataSet morosos);
+                System.Data.DataSet notas = new System.Data.DataSet();
+                System.Data.DataSet asistencias = new System.Data.DataSet();
+                System.Data.DataSet morosos = new System.Data.DataSet();
+                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out notas, 
+                    out asistencias, out morosos);
                 grvAsistencia.DataSource = asistencias;
                 grvAsistencia.DataBind();
                 grvNotas.DataSource = notas;
                 grvNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
+                lblBeneficio.Text = morosos.Tables[0].Rows[0].ItemArray[3].ToString();
             }
+        }
+
+        protected void grvFinanzas_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[3].Visible = false;
         }
     }
 }

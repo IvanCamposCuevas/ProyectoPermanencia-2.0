@@ -21,30 +21,34 @@ namespace ProyectoPermanencia.Presentacion
             {
                 try
                 {
-                    if (opcion.Equals("1"))
+                    string path = Server.MapPath("~/Uploads/");
+                    string extArchivo=System.IO.Path.GetExtension(path + fuSubirArchivo.FileName);
+                    if (extArchivo.Equals(".xls") || extArchivo.Equals(".xlsx"))
                     {
-                        string path = Server.MapPath("~/Uploads/");
                         fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);
-                        new neg().agregarArchivoAsistencia(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                        if (opcion.Equals("1"))
+                        {
+                            new neg().agregarArchivoAsistencia(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                        }
+                        if (opcion.Equals("2"))
+                        {
+                            new neg().agregarArchivoNotas(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                        }
+                        if (opcion.Equals("3"))
+                        {
+                            new neg().agregarArchivoDeuda(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                        }
+                        if (opcion.Equals("4"))
+                        {
+                            new neg().agregarArchivoIndice(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                        }
                     }
-                    if (opcion.Equals("2"))
+                    else
                     {
-                        string path = Server.MapPath("~/Uploads/");
-                        fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);
-                        new neg().agregarArchivoNotas(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                        System.Windows.Forms.MessageBox.Show("El archivo adjunto debe ser en formato Excels, "
+                            +"con extension .xls o .xlsx");
                     }
-                    if (opcion.Equals("3"))
-                    {
-                        string path = Server.MapPath("~/Uploads/");
-                        fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);
-                        new neg().agregarArchivoDeuda(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
-                    }
-                    if (opcion.Equals("4"))
-                    {
-                        string path = Server.MapPath("~/Uploads/");
-                        fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);
-                        new neg().agregarArchivoIndice(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
-                    }
+                    
                 }
                 catch (Exception ex)
                 {

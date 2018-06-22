@@ -55,7 +55,7 @@
                         <br />
                         <h4 style="text-align: center">Situación Financiera</h4>
                         <asp:Label runat="server" Font-Bold="true">Tipo de beneficio:</asp:Label>
-                        <asp:Label runat="server" ID="lblBeneficio">CAE</asp:Label>
+                        <asp:Label runat="server" ID="lblBeneficio"></asp:Label>
                         <br />
                         <asp:Label runat="server" Font-Bold="true">% cobertura:</asp:Label>
                         <asp:Label runat="server" ID="lblPorce"></asp:Label>
@@ -64,7 +64,7 @@
                         <asp:Label runat="server" ID="lblTelefono"></asp:Label>
                         <br />
                         <asp:Label runat="server" Font-Bold="true">Mail:</asp:Label>
-                        <asp:Label runat="server" ID="lblMail">alumno@alumnos.duoc.cl</asp:Label>
+                        <asp:Label runat="server" ID="lblMail"></asp:Label>
                         <br />
                         <br />
                     </div>

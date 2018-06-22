@@ -59,6 +59,8 @@ namespace ProyectoPermanencia.Negocio
             */
             con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
                                                + "AL.Desc_Alumno AS Nombre,"
+                                               + "AL.Telefono_Alumno AS Telefono,"
+                                               + "AL.Correo_Alumno AS Correo,"
                                                + "CA.Desc_Carrera AS Carrera,"
                                                + "ES.Desc_Escuela AS Escuela,"
                                                + "SE.Desc_Sede AS Sede,"
@@ -81,7 +83,7 @@ namespace ProyectoPermanencia.Negocio
             } // Fin metodo entrega
 
 
-        public DataSet consultaScorePorRut(String rut)
+        public DataSet consultaScorePorRut(String rn, String valorTipo)
         {
             NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
             con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
@@ -98,8 +100,12 @@ namespace ProyectoPermanencia.Negocio
                                + "AL.Id_Jornada = JO.Id_Jornada";
 
             //Aplicar Filtros
-            if (!String.IsNullOrEmpty(rut))
-                auxSQL = auxSQL + " AND AL.Desc_Rut_Alumno = '" + rut + "';";
+            if (!String.IsNullOrEmpty(rn) && valorTipo.Equals("1"))
+                auxSQL = auxSQL + " AND AL.Desc_Rut_Alumno = '" + rn + "';";
+            else
+            {
+                auxSQL = auxSQL + " AND AL.Desc_Alumno COLLATE Latin1_General_CI_AI LIKE '%" + rn + "%' COLLATE Latin1_General_CI_AI;";
+            }
                         /*
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente
@@ -107,6 +113,8 @@ namespace ProyectoPermanencia.Negocio
             con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
                                                + "AL.Desc_Alumno AS Nombre,"
                                                + "CA.Desc_Carrera AS Carrera,"
+                                               + "AL.Telefono_Alumno AS Telefono,"
+                                               + "AL.Correo_Alumno AS Correo,"
                                                + "ES.Desc_Escuela AS Escuela,"
                                                + "SE.Desc_Sede AS Sede,"
                                                + "JO.Desc_Jornada AS Jornada,"

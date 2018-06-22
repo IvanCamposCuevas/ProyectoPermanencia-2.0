@@ -19,24 +19,16 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 this.lblCarrera.Text = info[2];
                 this.lblEscuela.Text = info[3];
                 this.lblSede.Text = info[4];
-
-                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out System.Data.DataSet notas,
-                    out System.Data.DataSet detalleNotas, out System.Data.DataSet asistencias, out System.Data.DataSet morosos);
-                
-                grvNotas.DataSource = notas;
-                grvNotas.DataBind();
-                grvDetalleNotas.DataSource = detalleNotas;
-                grvDetalleNotas.DataBind();
+                this.lblTelefono.Text = info[5];
+                this.lblMail.Text = info[6];
+                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out System.Data.DataSet notas, 
+                    out System.Data.DataSet asistencias, out System.Data.DataSet morosos);
                 grvAsistencia.DataSource = asistencias;
                 grvAsistencia.DataBind();
+                grvNotas.DataSource = notas;
+                grvNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
-
-                //this.lblTelefono.Text = (string)new Negocio.NegocioFichaAlumno().getTelefono(lblRut.Text).ToString();
-                //this.lblTelefono.Text = tele.ToString();
-                //this.lblTelefono.Text = tele.Tables[0].Rows[0]["tele"].ToString();
-                
-
             }
         }
     }

@@ -82,7 +82,10 @@
                 <div class="row" style="padding-left: 30px">
                     <div id="ScoreNotas" class="ScoreNotas">
                         <h3>Score notas por asignatura </h3>
-                        <asp:GridView ID="grvNotas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
+                        <asp:GridView ID="grvNotas" runat="server" BackColor="#EFF4F8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px" OnSelectedIndexChanged="grvNotas_SelectedIndexChanged">
+                            <Columns>
+                                <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Notas" ShowHeader="True" Text="Detalle"/>
+                            </Columns>
                             <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" />
                             <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                         </asp:GridView>
@@ -133,5 +136,4 @@
         <br />
 
     </div>
-
 </asp:Content>

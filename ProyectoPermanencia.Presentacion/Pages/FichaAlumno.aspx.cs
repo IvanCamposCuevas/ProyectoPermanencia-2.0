@@ -25,14 +25,14 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 System.Data.DataSet asistencias = new System.Data.DataSet();
                 System.Data.DataSet morosos = new System.Data.DataSet();
                 System.Data.DataSet detalleNotas = new System.Data.DataSet();
-                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out notas, out detalleNotas,
+                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out notas,
                     out asistencias, out morosos);
                 grvAsistencia.DataSource = asistencias;
                 grvAsistencia.DataBind();
                 grvNotas.DataSource = notas;
                 grvNotas.DataBind();
-                grvDetalleNotas.DataSource = detalleNotas;
-                grvDetalleNotas.DataBind();
+                //grvDetalleNotas.DataSource = detalleNotas;
+                //grvDetalleNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
                 lblBeneficio.Text = morosos.Tables[0].Rows[0].ItemArray[3].ToString();
@@ -42,6 +42,14 @@ namespace ProyectoPermanencia.Presentacion.Pages
         protected void grvFinanzas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             e.Row.Cells[3].Visible = false;
+        }
+
+        protected void grvNotas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = grvNotas.SelectedRow;
+            string [] info_notas =  new string[] { row.Cells[1].Text, lblRut.Text };
+            Session["Info Notas"] = info_notas;
+            Response.Redirect("Historico.aspx");
         }
     }
 }

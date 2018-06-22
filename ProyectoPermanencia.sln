@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoPermanencia.Conexio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoPermanencia.Presentacion", "ProyectoPermanencia.Presentacion\ProyectoPermanencia.Presentacion.csproj", "{D6A93195-76A5-4378-8D45-C373649C0A74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "run_ssis_project", "run_ssis_project\run_ssis_project.csproj", "{3C2A14E5-02D8-45B9-910B-47D645A08221}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D6A93195-76A5-4378-8D45-C373649C0A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6A93195-76A5-4378-8D45-C373649C0A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6A93195-76A5-4378-8D45-C373649C0A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C2A14E5-02D8-45B9-910B-47D645A08221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C2A14E5-02D8-45B9-910B-47D645A08221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C2A14E5-02D8-45B9-910B-47D645A08221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C2A14E5-02D8-45B9-910B-47D645A08221}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,626 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/22/2017 10:26:25 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="AGC_W8"
+  DTS:CreatorName="AGC_W8\Arturo"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{8533CD60-29ED-447E-ADD5-732C7D23A42C}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="STG_CargaMora"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{C41744B7-7B3B-4A4C-94B0-7914A98AE2DF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones de archivos planos]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{B2EC5C84-C63F-4BCF-B9C0-7C255934970F}"
+      DTS:ObjectName="Administrador de conexiones de archivos planos">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="3082"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\Mac\Home\Desktop\Ruts.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RUT"
+              DTS:DTSID="{6895BCE9-D8E5-410F-8C0A-2A5D9E8864B3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Fecha Vencimiento"
+              DTS:DTSID="{E9E166F9-8729-447C-ADAA-5AF3DA92E736}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Cuota Vencida"
+              DTS:DTSID="{30002DD1-FAA3-4222-B9A9-14B77431382F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Monto Adeudado"
+              DTS:DTSID="{297BF97F-0E8D-4914-89FB-8211EF3CD81F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BENEFICIO"
+              DTS:DTSID="{9A794CAF-4287-4E1D-A628-7EE4BA4BDC3C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorCode"
+              DTS:DTSID="{6473E595-B5BF-4E43-878B-DAD4EDD165B2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ErrorColumn"
+              DTS:DTSID="{80523164-ABCE-480E-BED8-C9F8D8649578}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Borra Tabla Morosos"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{C3785971-AB0D-41DC-AC30-76668E9C2506}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Borra Tabla Morosos"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{ABE3BB7B-3727-4206-8217-22EE2832F292}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="Truncate Table Morosos_STG;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga Tabla Moroso"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{6D7320EE-EA1A-49C2-BA15-0E9D34AF313A}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga Tabla Moroso">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga Tabla Moroso\Excel Source"
+              componentClassID="DTSAdapter.ExcelSource.3"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Reporte$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Tabla Moroso\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="{29F4E899-7818-4637-B006-CFCE4679C869}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Deuda64]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[RUT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].ExternalColumns[RUT]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[RUT]"
+                      name="RUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[Fecha Vencimiento]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].ExternalColumns[Fecha Vencimiento]"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[Fecha Vencimiento]"
+                      name="Fecha Vencimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[Cuota Vencida]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].ExternalColumns[Cuota Vencida]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[Cuota Vencida]"
+                      name="Cuota Vencida"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[Monto Adeudado]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].ExternalColumns[Monto Adeudado]"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[Monto Adeudado]"
+                      name="Monto Adeudado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[BENEFICIO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].ExternalColumns[BENEFICIO]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[BENEFICIO]"
+                      name="BENEFICIO"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].ExternalColumns[RUT]"
+                      dataType="wstr"
+                      length="255"
+                      name="RUT" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].ExternalColumns[Fecha Vencimiento]"
+                      dataType="date"
+                      name="Fecha Vencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].ExternalColumns[Cuota Vencida]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cuota Vencida" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].ExternalColumns[Monto Adeudado]"
+                      dataType="cy"
+                      name="Monto Adeudado" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].ExternalColumns[BENEFICIO]"
+                      dataType="wstr"
+                      length="255"
+                      name="BENEFICIO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[RUT]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[RUT]"
+                      name="RUT" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[Fecha Vencimiento]"
+                      dataType="date"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[Fecha Vencimiento]"
+                      name="Fecha Vencimiento" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[Cuota Vencida]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[Cuota Vencida]"
+                      name="Cuota Vencida" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[Monto Adeudado]"
+                      dataType="cy"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[Monto Adeudado]"
+                      name="Monto Adeudado" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[BENEFICIO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[BENEFICIO]"
+                      name="BENEFICIO" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Tabla Moroso\OLE DB Destination"
+              componentClassID="DTSAdapter.OLEDBDestination.3"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Morosos_STG]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Tabla Moroso\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RUT]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RUT"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RUT]"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[RUT]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fecha Vencimiento]"
+                      cachedDataType="date"
+                      cachedName="Fecha Vencimiento"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha Vencimiento]"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[Fecha Vencimiento]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cuota Vencida]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Cuota Vencida"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cuota Vencida]"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[Cuota Vencida]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Monto Adeudado]"
+                      cachedDataType="cy"
+                      cachedName="Monto Adeudado"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Monto Adeudado]"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[Monto Adeudado]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BENEFICIO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BENEFICIO"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BENEFICIO]"
+                      lineageId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output].Columns[BENEFICIO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RUT]"
+                      dataType="wstr"
+                      length="255"
+                      name="RUT" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha Vencimiento]"
+                      dataType="dbTimeStamp"
+                      name="Fecha Vencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cuota Vencida]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cuota Vencida" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Monto Adeudado]"
+                      dataType="i4"
+                      name="Monto Adeudado" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BENEFICIO]"
+                      dataType="wstr"
+                      length="255"
+                      name="BENEFICIO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Tabla Moroso\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Tabla Moroso\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Tabla Moroso\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga Tabla Moroso.Paths[Excel Source Output]"
+              endId="Package\Carga Tabla Moroso\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Carga Tabla Moroso\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{629D1E46-B65F-4BA0-8E9A-8D7DC9F6165F}"
+      DTS:From="Package\Borra Tabla Morosos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Carga Tabla Moroso" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Borra Tabla Morosos"
+          TopLeft="198,49" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Carga Tabla Moroso"
+          TopLeft="215.5,173.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="286,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16,82.5"
+              Start="0,0"
+              End="16,75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.25"
+                    Point2="0,41.25"
+                    Point3="4,41.25" />
+                  <mssgle:LineSegment
+                    End="12,41.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12,41.25"
+                    Point2="16,41.25"
+                    Point3="16,45.25" />
+                  <mssgle:LineSegment
+                    End="16,75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga Tabla Moroso">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Carga Tabla Moroso\OLE DB Destination"
+          TopLeft="235,218" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Carga Tabla Moroso\Excel Source"
+          TopLeft="240,22" />
+        <EdgeLayout
+          Id="Package\Carga Tabla Moroso.Paths[Excel Source Output]"
+          TopLeft="309.5,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11,154"
+              Start="0,0"
+              End="11,146.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,73"
+                    Point2="0,77"
+                    Point3="4,77" />
+                  <mssgle:LineSegment
+                    End="7,77" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7,77"
+                    Point2="11,77"
+                    Point3="11,81" />
+                  <mssgle:LineSegment
+                    End="11,146.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Tabla Moroso\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Tabla Moroso\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

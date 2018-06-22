@@ -1,0 +1,1822 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/27/2017 11:21:00 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="AGC_W8"
+  DTS:CreatorName="AGC_W8\Arturo"
+  DTS:DTSID="{9006C972-2DCC-499B-BA08-A63C32B5081E}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="STG_Indice"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{A305F2A3-B415-4098-A434-1E84DD606C3B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{C954CEF9-F27B-4BCA-8086-B99004B27D9E}"
+      DTS:ObjectName="Administrador de conexiones con Excel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\Mac\Dropbox\Duoc\CITT\Permanencia\INDICE.XLS;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Permanencia.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{76B7A588-66F3-49B2-AE6B-7099B099EB06}"
+      DTS:ObjectName="LocalHost.Permanencia.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=Permanencia;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Borra Tabla STG Indice"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{39E2B52F-371B-4CD5-B5C5-34F56402F3F0}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Borra Tabla STG Indice"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{76B7A588-66F3-49B2-AE6B-7099B099EB06}"
+          SQLTask:SqlStatementSource="Truncate Table Indice_STG" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Indice"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DelayValidation="True"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{9FADE83F-A744-4297-95F8-68FB7C3FE6EE}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Indice"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Indice\Destino de ADO NET"
+              componentClassID="DTS.ManagedComponentWrapper.3"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="Destino de ADO NET"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."Indice_STG"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Indice\Destino de ADO NET.Connections[IDbConnection]"
+                  connectionManagerID="{C3F8CEF7-4BE3-4443-88B7-B9025810EAE8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BD Permanencia]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[AÑO]"
+                      cachedDataType="r8"
+                      cachedName="AÑO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AÑO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[SEMESTRE]"
+                      cachedDataType="r8"
+                      cachedName="SEMESTRE"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[SEMESTRE]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEMESTRE]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[SEDE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SEDE"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[SEDE]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEDE]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[INSTITUCION]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="INSTITUCION"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[INSTITUCION]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[INSTITUCION]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[ESTADO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ESTADO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ESTADO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ESTADO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[SALIDA INTERMEDIA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SALIDA INTERMEDIA"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[SALIDA INTERMEDIA]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SALIDA INTERMEDIA]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[JORNADA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="JORNADA"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[JORNADA]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[JORNADA]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[RUT]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="RUT"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[RUT]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[RUT]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[NOMBRES]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NOMBRES"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRES]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOMBRES]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[SEXO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SEXO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[SEXO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEXO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[FNAC]"
+                      cachedDataType="date"
+                      cachedName="FNAC"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[FNAC]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FNAC]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[ESTADO CIVIL]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ESTADO CIVIL"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ESTADO CIVIL]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ESTADO CIVIL]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[NACIONALIDAD]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NACIONALIDAD"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NACIONALIDAD]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NACIONALIDAD]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[TIPO INGRESO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TIPO INGRESO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[TIPO INGRESO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO INGRESO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[AÑO INGRESO]"
+                      cachedDataType="r8"
+                      cachedName="AÑO INGRESO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AÑO INGRESO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO INGRESO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[SEM INGRESO]"
+                      cachedDataType="r8"
+                      cachedName="SEM INGRESO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[SEM INGRESO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEM INGRESO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[USERNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="USERNAME"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[USERNAME]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[USERNAME]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[NOMBRE COLEGIO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NOMBRE COLEGIO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE COLEGIO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOMBRE COLEGIO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[TIPO COLEGIO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TIPO COLEGIO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[TIPO COLEGIO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO COLEGIO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[TIPO ESTUDIO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TIPO ESTUDIO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[TIPO ESTUDIO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO ESTUDIO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[EGRESO EM]"
+                      cachedDataType="r8"
+                      cachedName="EGRESO EM"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[EGRESO EM]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[EGRESO EM]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[AÑO PSU]"
+                      cachedDataType="r8"
+                      cachedName="AÑO PSU"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AÑO PSU]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO PSU]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[COMUNA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="COMUNA"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[COMUNA]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[COMUNA]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[CALLE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CALLE"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CALLE]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CALLE]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[NUMERO]"
+                      cachedDataType="r8"
+                      cachedName="NUMERO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NUMERO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NUMERO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[REGION]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="REGION"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[REGION]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[REGION]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[TELEFONO]"
+                      cachedDataType="r8"
+                      cachedName="TELEFONO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[TELEFONO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TELEFONO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[CELULAR]"
+                      cachedDataType="r8"
+                      cachedName="CELULAR"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CELULAR]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CELULAR]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[EMAIL]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="EMAIL"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[EMAIL]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[EMAIL]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[PPCF]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PPCF"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PPCF]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PPCF]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[PPF]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PPF"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PPF]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PPF]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[PPS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PPS"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PPS]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PPS]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[ID_ST]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ID_ST"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_ST]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ID_ST]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[ID_CS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ID_CS"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_CS]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ID_CS]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[VERIFICACION S#I#]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="VERIFICACION S#I#"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[VERIFICACION S]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[VERIFICACION S#I#]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[COD#CARRERA]"
+                      cachedDataType="r8"
+                      cachedName="COD#CARRERA"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[COD_CARRERA]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[COD#CARRERA]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[NOM#CARRERA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NOM#CARRERA"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOM_CARRERA]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOM#CARRERA]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[AP#PATERNO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AP#PATERNO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AP_PATERNO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AP#PATERNO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[AP#MATERNO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AP#MATERNO"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AP_MATERNO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AP#MATERNO]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[PROM#LEM]"
+                      cachedDataType="r8"
+                      cachedName="PROM#LEM"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROM_LEM]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PROM#LEM]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[PROM#PSU]"
+                      cachedDataType="r8"
+                      cachedName="PROM#PSU"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROM_PSU]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PROM#PSU]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[RUT SOSTE#]"
+                      cachedDataType="r8"
+                      cachedName="RUT SOSTE#"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[RUT SOSTE]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[RUT SOSTE#]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[NOM SOSTE#]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NOM SOSTE#"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOM SOSTE]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOM SOSTE#]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[DIR SOSTE#]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DIR SOSTE#"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[DIR SOSTE]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[DIR SOSTE#]" />
+                    <inputColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[FONO SOSTE#]"
+                      cachedDataType="r8"
+                      cachedName="FONO SOSTE#"
+                      externalMetadataColumnId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[FONO SOSTE]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FONO SOSTE#]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[F42]"
+                      dataType="r8"
+                      name="F42" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AÑO]"
+                      dataType="r8"
+                      name="AÑO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[SEMESTRE]"
+                      dataType="r8"
+                      name="SEMESTRE" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[SEDE]"
+                      dataType="wstr"
+                      length="255"
+                      name="SEDE" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[INSTITUCION]"
+                      dataType="wstr"
+                      length="255"
+                      name="INSTITUCION" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ESTADO]"
+                      dataType="wstr"
+                      length="255"
+                      name="ESTADO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[SALIDA INTERMEDIA]"
+                      dataType="wstr"
+                      length="255"
+                      name="SALIDA INTERMEDIA" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[VERIFICACION S]"
+                      dataType="wstr"
+                      length="255"
+                      name="VERIFICACION S" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[COD_CARRERA]"
+                      dataType="r8"
+                      name="COD_CARRERA" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOM_CARRERA]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOM_CARRERA" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[JORNADA]"
+                      dataType="wstr"
+                      length="255"
+                      name="JORNADA" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[RUT]"
+                      dataType="wstr"
+                      length="15"
+                      name="RUT" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRES]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOMBRES" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AP_PATERNO]"
+                      dataType="wstr"
+                      length="255"
+                      name="AP_PATERNO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AP_MATERNO]"
+                      dataType="wstr"
+                      length="255"
+                      name="AP_MATERNO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[SEXO]"
+                      dataType="wstr"
+                      length="255"
+                      name="SEXO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[FNAC]"
+                      dataType="dbTimeStamp"
+                      name="FNAC" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ESTADO CIVIL]"
+                      dataType="wstr"
+                      length="255"
+                      name="ESTADO CIVIL" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NACIONALIDAD]"
+                      dataType="wstr"
+                      length="255"
+                      name="NACIONALIDAD" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[TIPO INGRESO]"
+                      dataType="wstr"
+                      length="255"
+                      name="TIPO INGRESO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AÑO INGRESO]"
+                      dataType="r8"
+                      name="AÑO INGRESO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[SEM INGRESO]"
+                      dataType="r8"
+                      name="SEM INGRESO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[USERNAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="USERNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE COLEGIO]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOMBRE COLEGIO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[TIPO COLEGIO]"
+                      dataType="wstr"
+                      length="255"
+                      name="TIPO COLEGIO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[TIPO ESTUDIO]"
+                      dataType="wstr"
+                      length="255"
+                      name="TIPO ESTUDIO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROM_LEM]"
+                      dataType="r8"
+                      name="PROM_LEM" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[EGRESO EM]"
+                      dataType="r8"
+                      name="EGRESO EM" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[AÑO PSU]"
+                      dataType="r8"
+                      name="AÑO PSU" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROM_PSU]"
+                      dataType="r8"
+                      name="PROM_PSU" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[COMUNA]"
+                      dataType="wstr"
+                      length="255"
+                      name="COMUNA" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CALLE]"
+                      dataType="wstr"
+                      length="255"
+                      name="CALLE" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NUMERO]"
+                      dataType="r8"
+                      name="NUMERO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[REGION]"
+                      dataType="wstr"
+                      length="255"
+                      name="REGION" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[TELEFONO]"
+                      dataType="r8"
+                      name="TELEFONO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CELULAR]"
+                      dataType="r8"
+                      name="CELULAR" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[EMAIL]"
+                      dataType="wstr"
+                      length="255"
+                      name="EMAIL" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PPCF]"
+                      dataType="wstr"
+                      length="255"
+                      name="PPCF" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PPF]"
+                      dataType="wstr"
+                      length="255"
+                      name="PPF" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[PPS]"
+                      dataType="wstr"
+                      length="255"
+                      name="PPS" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_ST]"
+                      dataType="wstr"
+                      length="255"
+                      name="ID_ST" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ID_CS]"
+                      dataType="wstr"
+                      length="255"
+                      name="ID_CS" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[RUT SOSTE]"
+                      dataType="wstr"
+                      length="15"
+                      name="RUT SOSTE" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOM SOSTE]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOM SOSTE" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[DIR SOSTE]"
+                      dataType="wstr"
+                      length="255"
+                      name="DIR SOSTE" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[FONO SOSTE]"
+                      dataType="r8"
+                      name="FONO SOSTE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Indice\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Indice\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Indice\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Indice\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Indice\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Indice\Origen de Excel"
+              componentClassID="DTSAdapter.ExcelSource.3"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="Origen de Excel"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">INDICE_2017_002_20170927_174140$</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Indice\Origen de Excel.Connections[OleDbConnection]"
+                  connectionManagerID="{122590E6-41B4-446B-A20B-64C997F343CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Indice]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AÑO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO]"
+                      name="AÑO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEMESTRE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[SEMESTRE]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEMESTRE]"
+                      name="SEMESTRE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEDE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[SEDE]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEDE]"
+                      name="SEDE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[INSTITUCION]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[INSTITUCION]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[INSTITUCION]"
+                      name="INSTITUCION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ESTADO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ESTADO]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ESTADO]"
+                      name="ESTADO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SALIDA INTERMEDIA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[SALIDA INTERMEDIA]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SALIDA INTERMEDIA]"
+                      name="SALIDA INTERMEDIA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[VERIFICACION S#I#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[VERIFICACION S#I#]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[VERIFICACION S#I#]"
+                      name="VERIFICACION S#I#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[COD#CARRERA]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[COD#CARRERA]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[COD#CARRERA]"
+                      name="COD#CARRERA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOM#CARRERA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NOM#CARRERA]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOM#CARRERA]"
+                      name="NOM#CARRERA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[JORNADA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[JORNADA]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[JORNADA]"
+                      name="JORNADA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[RUT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[RUT]"
+                      length="15"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[RUT]"
+                      name="RUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOMBRES]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NOMBRES]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOMBRES]"
+                      name="NOMBRES"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AP#PATERNO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AP#PATERNO]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AP#PATERNO]"
+                      name="AP#PATERNO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AP#MATERNO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AP#MATERNO]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AP#MATERNO]"
+                      name="AP#MATERNO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEXO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[SEXO]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEXO]"
+                      name="SEXO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FNAC]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[FNAC]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FNAC]"
+                      name="FNAC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ESTADO CIVIL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ESTADO CIVIL]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ESTADO CIVIL]"
+                      name="ESTADO CIVIL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NACIONALIDAD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NACIONALIDAD]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NACIONALIDAD]"
+                      name="NACIONALIDAD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO INGRESO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[TIPO INGRESO]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO INGRESO]"
+                      name="TIPO INGRESO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO INGRESO]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AÑO INGRESO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO INGRESO]"
+                      name="AÑO INGRESO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEM INGRESO]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[SEM INGRESO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[SEM INGRESO]"
+                      name="SEM INGRESO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[USERNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[USERNAME]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[USERNAME]"
+                      name="USERNAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOMBRE COLEGIO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NOMBRE COLEGIO]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOMBRE COLEGIO]"
+                      name="NOMBRE COLEGIO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO COLEGIO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[TIPO COLEGIO]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO COLEGIO]"
+                      name="TIPO COLEGIO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO ESTUDIO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[TIPO ESTUDIO]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TIPO ESTUDIO]"
+                      name="TIPO ESTUDIO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PROM#LEM]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PROM#LEM]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PROM#LEM]"
+                      name="PROM#LEM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[EGRESO EM]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[EGRESO EM]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[EGRESO EM]"
+                      name="EGRESO EM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO PSU]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AÑO PSU]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[AÑO PSU]"
+                      name="AÑO PSU"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PROM#PSU]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PROM#PSU]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PROM#PSU]"
+                      name="PROM#PSU"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[COMUNA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[COMUNA]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[COMUNA]"
+                      name="COMUNA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CALLE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CALLE]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CALLE]"
+                      name="CALLE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NUMERO]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NUMERO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NUMERO]"
+                      name="NUMERO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[REGION]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[REGION]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[REGION]"
+                      name="REGION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TELEFONO]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[TELEFONO]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[TELEFONO]"
+                      name="TELEFONO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CELULAR]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CELULAR]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CELULAR]"
+                      name="CELULAR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[EMAIL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[EMAIL]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[EMAIL]"
+                      name="EMAIL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PPCF]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PPCF]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PPCF]"
+                      name="PPCF"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PPF]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PPF]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PPF]"
+                      name="PPF"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PPS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PPS]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[PPS]"
+                      name="PPS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ID_ST]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ID_ST]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ID_ST]"
+                      name="ID_ST"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ID_CS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ID_CS]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ID_CS]"
+                      name="ID_CS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[0]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[0]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[0]"
+                      name="0"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[RUT SOSTE#]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[RUT SOSTE#]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[RUT SOSTE#]"
+                      name="RUT SOSTE#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOM SOSTE#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NOM SOSTE#]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[NOM SOSTE#]"
+                      name="NOM SOSTE#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[DIR SOSTE#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[DIR SOSTE#]"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[DIR SOSTE#]"
+                      name="DIR SOSTE#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FONO SOSTE#]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[FONO SOSTE#]"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FONO SOSTE#]"
+                      name="FONO SOSTE#"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AÑO]"
+                      dataType="r8"
+                      name="AÑO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[SEMESTRE]"
+                      dataType="r8"
+                      name="SEMESTRE" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[SEDE]"
+                      dataType="wstr"
+                      length="255"
+                      name="SEDE" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[INSTITUCION]"
+                      dataType="wstr"
+                      length="255"
+                      name="INSTITUCION" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ESTADO]"
+                      dataType="wstr"
+                      length="255"
+                      name="ESTADO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[SALIDA INTERMEDIA]"
+                      dataType="wstr"
+                      length="255"
+                      name="SALIDA INTERMEDIA" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[VERIFICACION S#I#]"
+                      dataType="wstr"
+                      length="255"
+                      name="VERIFICACION S#I#" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[COD#CARRERA]"
+                      dataType="r8"
+                      name="COD#CARRERA" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NOM#CARRERA]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOM#CARRERA" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[JORNADA]"
+                      dataType="wstr"
+                      length="255"
+                      name="JORNADA" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[RUT]"
+                      dataType="wstr"
+                      length="255"
+                      name="RUT" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NOMBRES]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOMBRES" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AP#PATERNO]"
+                      dataType="wstr"
+                      length="255"
+                      name="AP#PATERNO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AP#MATERNO]"
+                      dataType="wstr"
+                      length="255"
+                      name="AP#MATERNO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[SEXO]"
+                      dataType="wstr"
+                      length="255"
+                      name="SEXO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[FNAC]"
+                      dataType="date"
+                      name="FNAC" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ESTADO CIVIL]"
+                      dataType="wstr"
+                      length="255"
+                      name="ESTADO CIVIL" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NACIONALIDAD]"
+                      dataType="wstr"
+                      length="255"
+                      name="NACIONALIDAD" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[TIPO INGRESO]"
+                      dataType="wstr"
+                      length="255"
+                      name="TIPO INGRESO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AÑO INGRESO]"
+                      dataType="r8"
+                      name="AÑO INGRESO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[SEM INGRESO]"
+                      dataType="r8"
+                      name="SEM INGRESO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[USERNAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="USERNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NOMBRE COLEGIO]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOMBRE COLEGIO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[TIPO COLEGIO]"
+                      dataType="wstr"
+                      length="255"
+                      name="TIPO COLEGIO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[TIPO ESTUDIO]"
+                      dataType="wstr"
+                      length="255"
+                      name="TIPO ESTUDIO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PROM#LEM]"
+                      dataType="r8"
+                      name="PROM#LEM" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[EGRESO EM]"
+                      dataType="r8"
+                      name="EGRESO EM" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[AÑO PSU]"
+                      dataType="r8"
+                      name="AÑO PSU" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PROM#PSU]"
+                      dataType="r8"
+                      name="PROM#PSU" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[COMUNA]"
+                      dataType="wstr"
+                      length="255"
+                      name="COMUNA" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CALLE]"
+                      dataType="wstr"
+                      length="255"
+                      name="CALLE" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NUMERO]"
+                      dataType="r8"
+                      name="NUMERO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[REGION]"
+                      dataType="wstr"
+                      length="255"
+                      name="REGION" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[TELEFONO]"
+                      dataType="r8"
+                      name="TELEFONO" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CELULAR]"
+                      dataType="r8"
+                      name="CELULAR" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[EMAIL]"
+                      dataType="wstr"
+                      length="255"
+                      name="EMAIL" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PPCF]"
+                      dataType="wstr"
+                      length="255"
+                      name="PPCF" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PPF]"
+                      dataType="wstr"
+                      length="255"
+                      name="PPF" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[PPS]"
+                      dataType="wstr"
+                      length="255"
+                      name="PPS" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ID_ST]"
+                      dataType="wstr"
+                      length="255"
+                      name="ID_ST" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ID_CS]"
+                      dataType="wstr"
+                      length="255"
+                      name="ID_CS" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[0]"
+                      dataType="r8"
+                      name="0" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[RUT SOSTE#]"
+                      dataType="r8"
+                      name="RUT SOSTE#" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[NOM SOSTE#]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOM SOSTE#" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[DIR SOSTE#]"
+                      dataType="wstr"
+                      length="255"
+                      name="DIR SOSTE#" />
+                    <externalMetadataColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[FONO SOSTE#]"
+                      dataType="r8"
+                      name="FONO SOSTE#" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AÑO]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AÑO]"
+                      name="AÑO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[SEMESTRE]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[SEMESTRE]"
+                      name="SEMESTRE" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[SEDE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[SEDE]"
+                      name="SEDE" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[INSTITUCION]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[INSTITUCION]"
+                      name="INSTITUCION" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ESTADO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ESTADO]"
+                      name="ESTADO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[SALIDA INTERMEDIA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[SALIDA INTERMEDIA]"
+                      name="SALIDA INTERMEDIA" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[VERIFICACION S#I#]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[VERIFICACION S#I#]"
+                      name="VERIFICACION S#I#" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[COD#CARRERA]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[COD#CARRERA]"
+                      name="COD#CARRERA" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NOM#CARRERA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NOM#CARRERA]"
+                      name="NOM#CARRERA" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[JORNADA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[JORNADA]"
+                      name="JORNADA" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[RUT]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[RUT]"
+                      name="RUT" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NOMBRES]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NOMBRES]"
+                      name="NOMBRES" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AP#PATERNO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AP#PATERNO]"
+                      name="AP#PATERNO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AP#MATERNO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AP#MATERNO]"
+                      name="AP#MATERNO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[SEXO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[SEXO]"
+                      name="SEXO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[FNAC]"
+                      dataType="date"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[FNAC]"
+                      name="FNAC" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ESTADO CIVIL]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ESTADO CIVIL]"
+                      name="ESTADO CIVIL" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NACIONALIDAD]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NACIONALIDAD]"
+                      name="NACIONALIDAD" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[TIPO INGRESO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[TIPO INGRESO]"
+                      name="TIPO INGRESO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AÑO INGRESO]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AÑO INGRESO]"
+                      name="AÑO INGRESO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[SEM INGRESO]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[SEM INGRESO]"
+                      name="SEM INGRESO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[USERNAME]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[USERNAME]"
+                      name="USERNAME" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NOMBRE COLEGIO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NOMBRE COLEGIO]"
+                      name="NOMBRE COLEGIO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[TIPO COLEGIO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[TIPO COLEGIO]"
+                      name="TIPO COLEGIO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[TIPO ESTUDIO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[TIPO ESTUDIO]"
+                      name="TIPO ESTUDIO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PROM#LEM]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PROM#LEM]"
+                      name="PROM#LEM" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[EGRESO EM]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[EGRESO EM]"
+                      name="EGRESO EM" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AÑO PSU]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[AÑO PSU]"
+                      name="AÑO PSU" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PROM#PSU]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PROM#PSU]"
+                      name="PROM#PSU" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[COMUNA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[COMUNA]"
+                      name="COMUNA" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CALLE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CALLE]"
+                      name="CALLE" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NUMERO]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NUMERO]"
+                      name="NUMERO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[REGION]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[REGION]"
+                      name="REGION" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[TELEFONO]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[TELEFONO]"
+                      name="TELEFONO" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CELULAR]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CELULAR]"
+                      name="CELULAR" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[EMAIL]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[EMAIL]"
+                      name="EMAIL" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PPCF]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PPCF]"
+                      name="PPCF" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PPF]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PPF]"
+                      name="PPF" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PPS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[PPS]"
+                      name="PPS" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ID_ST]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ID_ST]"
+                      name="ID_ST" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ID_CS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ID_CS]"
+                      name="ID_CS" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[0]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[0]"
+                      name="0" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[RUT SOSTE#]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[RUT SOSTE#]"
+                      name="RUT SOSTE#" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NOM SOSTE#]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[NOM SOSTE#]"
+                      name="NOM SOSTE#" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[DIR SOSTE#]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[DIR SOSTE#]"
+                      name="DIR SOSTE#" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[FONO SOSTE#]"
+                      dataType="r8"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[FONO SOSTE#]"
+                      name="FONO SOSTE#" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Indice\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Indice.Paths[Salida de origen de Excel]"
+              endId="Package\Indice\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+              name="Salida de origen de Excel"
+              startId="Package\Indice\Origen de Excel.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{B21EDABB-6B05-4D40-810E-3CB4A2F6F3C1}"
+      DTS:From="Package\Borra Tabla STG Indice"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Indice" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="sql11">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Borra Tabla STG Indice"
+          TopLeft="163,76" />
+        <NodeLayout
+          Size="108,42"
+          Id="Package\Indice"
+          TopLeft="190,199" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="257,118">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-13,81"
+              Start="0,0"
+              End="-13,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.5"
+                    Point2="0,40.5"
+                    Point3="-4,40.5" />
+                  <mssgle:LineSegment
+                    End="-9,40.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9,40.5"
+                    Point2="-13,40.5"
+                    Point3="-13,44.5" />
+                  <mssgle:LineSegment
+                    End="-13,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Indice">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Indice\Origen de Excel"
+          TopLeft="227,33" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Indice\Destino de ADO NET"
+          TopLeft="235,191" />
+        <EdgeLayout
+          Id="Package\Indice.Paths[Salida de origen de Excel]"
+          TopLeft="303.5,75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.5,116"
+              Start="0,0"
+              End="19.5,108.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,54"
+                    Point2="0,58"
+                    Point3="4,58" />
+                  <mssgle:LineSegment
+                    End="15.5,58" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.5,58"
+                    Point2="19.5,58"
+                    Point3="19.5,62" />
+                  <mssgle:LineSegment
+                    End="19.5,108.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Indice\Destino de ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Indice\Origen de Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

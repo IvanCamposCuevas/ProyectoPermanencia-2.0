@@ -112,7 +112,7 @@
                 <div class="row" style="padding-left: 30px">
                     <div id="ScoreFinanzas" class="ScoreFinanzas">
                         <h3>Score situación financiera </h3>
-                        <asp:GridView ID="grvFinanzas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
+                        <asp:GridView ID="grvFinanzas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px" OnRowDataBound="grvFinanzas_RowDataBound">
                             <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                             <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                         </asp:GridView>

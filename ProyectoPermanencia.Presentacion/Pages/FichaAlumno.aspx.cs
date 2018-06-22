@@ -24,12 +24,15 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 System.Data.DataSet notas = new System.Data.DataSet();
                 System.Data.DataSet asistencias = new System.Data.DataSet();
                 System.Data.DataSet morosos = new System.Data.DataSet();
-                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out notas, 
+                System.Data.DataSet detalleNotas = new System.Data.DataSet();
+                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out notas, out detalleNotas,
                     out asistencias, out morosos);
                 grvAsistencia.DataSource = asistencias;
                 grvAsistencia.DataBind();
                 grvNotas.DataSource = notas;
                 grvNotas.DataBind();
+                grvDetalleNotas.DataSource = detalleNotas;
+                grvDetalleNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
                 lblBeneficio.Text = morosos.Tables[0].Rows[0].ItemArray[3].ToString();

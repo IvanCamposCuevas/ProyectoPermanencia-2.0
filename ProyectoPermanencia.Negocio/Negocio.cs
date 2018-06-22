@@ -129,8 +129,7 @@ namespace ProyectoPermanencia.Negocio
 
 
         /**
-         * Ni idea si se usara estas funciones, las comento eso si por si algun día se
-         * usan.
+         * Ni idea si se usara estas funciones, las comento eso si por si algun día se usan.
          * */
 
 

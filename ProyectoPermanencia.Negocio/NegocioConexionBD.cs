@@ -36,8 +36,8 @@ namespace ProyectoPermanencia.Negocio
 
             //Del mismo modo, aqui se ingresaran las conexiones de cada uno, pa no estar cambiandolas a cada rato :S
             //this.Conec1.CadenaConexion = "Data Source=LAPTOP-9N5AEVQ2;Initial Catalog=Permanencia_2;Integrated Security=True";
-            this.Conec1.CadenaConexion = @"Data Source=DESKTOP-L975CUE\SQLEXPRESS;Initial Catalog=Permanencia_2;Integrated Security=True";
-            //this.Conec1.CadenaConexion = @"Data Source=HP-CATALINA;Initial Catalog=Permanencia_2;Integrated Security=True";
+            //this.Conec1.CadenaConexion = @"Data Source=DESKTOP-L975CUE\SQLEXPRESS;Initial Catalog=Permanencia_2;Integrated Security=True";
+            this.Conec1.CadenaConexion = @"Data Source=HP-CATALINA;Initial Catalog=Permanencia_2;Integrated Security=True";
             //this.Conec1.CadenaConexion = Properties.Settings.Default.ConexionServer;
         }
     }

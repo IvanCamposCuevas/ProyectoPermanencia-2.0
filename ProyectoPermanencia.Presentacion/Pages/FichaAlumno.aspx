@@ -61,7 +61,7 @@
                         <asp:Label runat="server" ID="lblPorce"></asp:Label>
                         <h4 style="text-align: center">Contacto</h4>
                         <asp:Label runat="server" Font-Bold="true">Teléfono:</asp:Label>
-                        <asp:Label runat="server" ID="lblTelefono">987563450</asp:Label>
+                        <asp:Label runat="server" ID="lblTelefono"></asp:Label>
                         <br />
                         <asp:Label runat="server" Font-Bold="true">Mail:</asp:Label>
                         <asp:Label runat="server" ID="lblMail">alumno@alumnos.duoc.cl</asp:Label>
@@ -85,6 +85,16 @@
                     <div id="ScoreNotas" class="ScoreNotas">
                         <h3>Score notas por asignatura </h3>
                         <asp:GridView ID="grvNotas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
+                            <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
+                        </asp:GridView>
+                    </div>
+                </div>
+
+                <div class="row" style="padding-left: 30px">
+                    <div id="DetalleNotas" class="ScoreNotas">
+                        <h3>Detalle de notas por asignatura </h3>
+                        <asp:GridView ID="grvDetalleNotas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
                             <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" />
                             <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                         </asp:GridView>

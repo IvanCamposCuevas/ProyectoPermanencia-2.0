@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="BD Permanencia"
+  DTS:DTSID="{C3F8CEF7-4BE3-4443-88B7-B9025810EAE8}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::ConnectionString]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="UserName">@[$Project::BDPermanencia_UserName]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=Permanencia;Application Name=&quot;SSIS-{C3F8CEF7-4BE3-4443-88B7-B9025810EAE8}BD Permanencia&quot;;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1"></DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

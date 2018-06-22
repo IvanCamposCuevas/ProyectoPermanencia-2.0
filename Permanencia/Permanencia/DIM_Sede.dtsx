@@ -7,13 +7,13 @@
   DTS:CreatorName="AGC_W8\Arturo"
   DTS:DTSID="{2FC87ED7-3D7A-44A8-BB2E-0AB3A7CC0060}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="3082"
   DTS:ObjectName="DIM_Sede"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{AA270187-CC0F-41DC-9067-A19D492FD210}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{8C65259B-37C6-4C3B-A531-8AA380BA8F72}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -96,8 +96,8 @@ FROM            Curso_STG</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Carga Sedes.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -213,8 +213,8 @@ FROM            Curso_STG</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\LK Sede.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -310,13 +310,13 @@ FROM            Curso_STG</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="138,42"
-          Id="Package\Tarea Flujo de datos\Carga Sedes"
-          TopLeft="249,29" />
-        <NodeLayout
           Size="117,42"
           Id="Package\Tarea Flujo de datos\LK Sede"
           TopLeft="238,220" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Tarea Flujo de datos\Carga Sedes"
+          TopLeft="249,29" />
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
           TopLeft="318,71">

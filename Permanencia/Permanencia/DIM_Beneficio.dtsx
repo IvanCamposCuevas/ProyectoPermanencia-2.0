@@ -7,13 +7,13 @@
   DTS:CreatorName="DESKTOP-7K6BBD2\Rolando"
   DTS:DTSID="{D870E539-392C-40C4-B3B0-FFD085D14C82}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="1033"
   DTS:ObjectName="DIM_Beneficio"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{CDF5FA5D-B47F-44A9-B322-7BDAF3EDDAC9}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{166B6B75-C7B6-4F1C-BB23-45676C65777B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables />
@@ -58,7 +58,7 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT distinct [BENEFICIO]
-  FROM [Permanencia].[dbo].[Morosos_STG]</property>
+  FROM [Permanencia_2].[dbo].[Morosos_STG]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -84,8 +84,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Beneficios.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -158,7 +158,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[LK_Beneficio]</property>
+                  name="OpenRowset">[dbo].[Morosos_STG]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -201,8 +201,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -219,20 +219,34 @@
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="BENEFICIO"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Beneficio]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BENEFICIO]"
                       lineageId="Package\Data Flow Task\Beneficios.Outputs[OLE DB Source Output].Columns[BENEFICIO]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id_Beneficio]"
-                      dataType="i4"
-                      name="Id_Beneficio" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Beneficio]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RUT]"
                       dataType="wstr"
-                      length="50"
-                      name="Desc_Beneficio" />
+                      length="255"
+                      name="RUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha Vencimiento]"
+                      dataType="dbTimeStamp"
+                      name="Fecha Vencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cuota Vencida]"
+                      dataType="wstr"
+                      length="255"
+                      name="Cuota Vencida" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Monto Adeudado]"
+                      dataType="i4"
+                      name="Monto Adeudado" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BENEFICIO]"
+                      dataType="wstr"
+                      length="255"
+                      name="BENEFICIO" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -298,13 +312,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="126,42"
-          Id="Package\Data Flow Task\Beneficios"
-          TopLeft="246,53" />
-        <NodeLayout
           Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="225,174" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Data Flow Task\Beneficios"
+          TopLeft="246,53" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="309.75,95">

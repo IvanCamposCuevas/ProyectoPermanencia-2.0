@@ -15,7 +15,7 @@ namespace run_ssis_project
             string targetServerName = "localhost";
             string folderName = "Permanencia";
             string projectName = "Permanencia";
-            string packageName = "Package.dtsx";
+            string packageName = "Package1.dtsx";
 
             // Conexion
             string sqlConnectionString = "Data Source=" + targetServerName +

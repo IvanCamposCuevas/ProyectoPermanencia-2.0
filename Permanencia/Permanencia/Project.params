@@ -163,7 +163,7 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">2017-12-15T02:21:08.9780112-02:00</SSIS:Property>
+        SSIS:Name="Value">2017-12-15T01:21:08.9780112-03:00</SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">16</SSIS:Property>
     </SSIS:Properties>
@@ -208,6 +208,27 @@
         SSIS:Name="Value">0</SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">9</SSIS:Property>
+    </SSIS:Properties>
+  </SSIS:Parameter>
+  <SSIS:Parameter
+    SSIS:Name="Conexion_Permanencia">
+    <SSIS:Properties>
+      <SSIS:Property
+        SSIS:Name="ID">{78d0f80b-77b9-4c17-9261-45422e23bf11}</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="CreationName"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Description"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Required">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Sensitive">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Value">Data Source=LAPTOP-9N5AEVQ2;User ID=sa;pwd=sa;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>
   </SSIS:Parameter>
 </SSIS:Parameters>

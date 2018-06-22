@@ -7,13 +7,13 @@
   DTS:CreatorName="AGC_W8\Arturo"
   DTS:DTSID="{F477C28F-66BC-4031-8E20-39538072FDC2}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="3082"
   DTS:ObjectName="DIM_Carrera"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{BAB734FC-D89D-45E9-861B-3F015BEB5FF8}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{B3035601-BB04-4500-8550-9BDF95BBE587}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables />
@@ -87,8 +87,8 @@ WHERE [COD_CARRERA] IS NOT NULL</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Carreras.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -222,8 +222,8 @@ WHERE [COD_CARRERA] IS NOT NULL</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\LK Carreras.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -329,13 +329,13 @@ WHERE [COD_CARRERA] IS NOT NULL</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="119,42"
-          Id="Package\Tarea Flujo de datos\Carreras"
-          TopLeft="239,58" />
-        <NodeLayout
           Size="133,42"
           Id="Package\Tarea Flujo de datos\LK Carreras"
           TopLeft="242,202" />
+        <NodeLayout
+          Size="119,42"
+          Id="Package\Tarea Flujo de datos\Carreras"
+          TopLeft="239,58" />
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
           TopLeft="298.5,100">

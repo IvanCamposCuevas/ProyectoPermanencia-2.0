@@ -59,8 +59,8 @@ namespace ProyectoPermanencia.Negocio
             */
             con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
                                                + "AL.Desc_Alumno AS Nombre,"
-                                               + "AL.Telefono_Alumno AS Telefono,"
-                                               + "AL.Correo_Alumno AS Correo,"
+                                               //+ "AL.Telefono_Alumno AS Telefono,"
+                                               //+ "AL.Correo_Alumno AS Correo,"
                                                + "CA.Desc_Carrera AS Carrera,"
                                                + "ES.Desc_Escuela AS Escuela,"
                                                + "SE.Desc_Sede AS Sede,"

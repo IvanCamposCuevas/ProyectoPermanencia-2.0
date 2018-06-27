@@ -7,13 +7,13 @@
   DTS:CreatorName="AGC_W8\Arturo"
   DTS:DTSID="{638B8910-D73C-4701-9825-E7E0550ED83B}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="3082"
   DTS:ObjectName="DIM_Alumno"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{07DC5362-F03E-481B-ABCF-238344E54118}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{FC5BC5A3-ED06-4746-82D7-C04D9FA8CC5C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -76,6 +76,8 @@
       ,[SEMESTRE]
       ,RTRIM(SUBSTRING(CAST([Rut] as nvarchar(9)),1,len(CAST([Rut] as nvarchar(9)))-1)+'-'+RIGHT(CAST([Rut] as nvarchar(9)),1)) AS Rut
       ,[NOMBRES]+' '+[AP_PATERNO]+' '+[AP_MATERNO] as Nombre
+	  ,[TELEFONO]
+	  ,[EMAIL]
 FROM [dbo].[Indice_STG]
 where [COD_CARRERA] is not null</property>
                 <property
@@ -103,8 +105,8 @@ where [COD_CARRERA] is not null</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Alumnos.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -180,6 +182,25 @@ where [COD_CARRERA] is not null</property>
                       lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[Nombre]"
                       name="Nombre"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[TELEFONO]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].ExternalColumns[TELEFONO]"
+                      lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[TELEFONO]"
+                      name="TELEFONO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[EMAIL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].ExternalColumns[EMAIL]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[EMAIL]"
+                      name="EMAIL"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -215,6 +236,15 @@ where [COD_CARRERA] is not null</property>
                       dataType="wstr"
                       length="767"
                       name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].ExternalColumns[TELEFONO]"
+                      dataType="r8"
+                      name="TELEFONO" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].ExternalColumns[EMAIL]"
+                      dataType="wstr"
+                      length="255"
+                      name="EMAIL" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -261,6 +291,17 @@ where [COD_CARRERA] is not null</property>
                       length="767"
                       lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Error Output].Columns[Nombre]"
                       name="Nombre" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Error Output].Columns[TELEFONO]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Error Output].Columns[TELEFONO]"
+                      name="TELEFONO" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Error Output].Columns[EMAIL]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Error Output].Columns[EMAIL]"
+                      name="EMAIL" />
                     <outputColumn
                       refId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -337,8 +378,8 @@ where [COD_CARRERA] is not null</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\LK Alumno.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -413,6 +454,20 @@ where [COD_CARRERA] is not null</property>
                       dataType="wstr"
                       length="1"
                       name="Id_Jornada" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Id_Semestre]"
+                      dataType="i4"
+                      name="Id_Semestre" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Telefono_Alumno]"
+                      dataType="wstr"
+                      length="15"
+                      name="Telefono_Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Correo_Alumno]"
+                      dataType="wstr"
+                      length="50"
+                      name="Correo_Alumno" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -511,8 +566,8 @@ where [refTable].[Desc_Sede] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Sede.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -646,9 +701,37 @@ where [refTable].[Desc_Sede] = ?</property>
           Id="Package\Tarea Flujo de datos\Sede"
           TopLeft="219,166" />
         <NodeLayout
+          Size="129,42"
+          Id="Package\Tarea Flujo de datos\LK Alumno"
+          TopLeft="201,288" />
+        <NodeLayout
           Size="119,42"
           Id="Package\Tarea Flujo de datos\Alumnos"
           TopLeft="220,37" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="267.75,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,30.15234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
           TopLeft="279.5,79">
@@ -683,34 +766,6 @@ where [refTable].[Desc_Sede] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="129,42"
-          Id="Package\Tarea Flujo de datos\LK Alumno"
-          TopLeft="201,288" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="267.75,208">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,80"
-              Start="0,0"
-              End="0,72.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,72.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,30.15234375,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -738,7 +793,7 @@ where [refTable].[Desc_Sede] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Alumnos">
+    design-time-name="Package\Tarea Flujo de datos\LK Alumno">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -751,7 +806,7 @@ where [refTable].[Desc_Sede] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\LK Alumno">
+    design-time-name="Package\Tarea Flujo de datos\Alumnos">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

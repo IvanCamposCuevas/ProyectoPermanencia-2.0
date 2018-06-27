@@ -7,13 +7,13 @@
   DTS:CreatorName="AGC_W8\Arturo"
   DTS:DTSID="{D4A3E622-A8C1-4BD6-A55E-DCE5E9DA9F97}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="3082"
   DTS:ObjectName="FT_Asistencia"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="48"
-  DTS:VersionGUID="{3F1C08BB-A05F-4018-8F23-98DF79BF03E5}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{3F70C23B-3956-478F-BAEA-20D368026BCF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -150,10 +150,25 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [Rut Alumno]
-      ,[Asignatura]
-	  ,[Asistencia]
-  FROM [Permanencia].[dbo].[AsistenciaSTG]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [Sede]
+      ,[CarreraGenérica]
+      ,[Carrera del Alumno]
+      ,[IDEvento]
+      ,[Evento]
+      ,[DescEvento]
+      ,[Jornada]
+      ,[ID Docente]
+      ,[Rut Docente]
+      ,[Profesor]
+      ,[Id Alumno]
+      ,[Rut Alumno]
+      ,[Alumno]
+      ,[Asistencia]
+      ,[Asistencia Posible]
+      ,[Clases]
+      ,[Por_Asistencia Real]
+      ,[Por_Asistenencia Reg]
+  FROM [Permanencia_2].[dbo].[AsistenciaSTG]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -179,8 +194,8 @@
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Asistencia.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -189,16 +204,6 @@
                   refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
-                    <outputColumn
-                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Asignatura]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Asignatura]"
-                      length="255"
-                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Asignatura]"
-                      name="Asignatura"
-                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Asistencia]"
                       dataType="r8"
@@ -218,14 +223,162 @@
                       lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Rut Alumno]"
                       name="Rut Alumno"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Sede]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Sede]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Sede]"
+                      name="Sede"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[CarreraGenérica]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[CarreraGenérica]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[CarreraGenérica]"
+                      name="CarreraGenérica"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Carrera del Alumno]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Carrera del Alumno]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Carrera del Alumno]"
+                      name="Carrera del Alumno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[IDEvento]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[IDEvento]"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[IDEvento]"
+                      name="IDEvento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Evento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Evento]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Evento]"
+                      name="Evento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[DescEvento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[DescEvento]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[DescEvento]"
+                      name="DescEvento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Jornada]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Jornada]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Jornada]"
+                      name="Jornada"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[ID Docente]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[ID Docente]"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[ID Docente]"
+                      name="ID Docente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Rut Docente]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Rut Docente]"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Rut Docente]"
+                      name="Rut Docente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Profesor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Profesor]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Profesor]"
+                      name="Profesor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Id Alumno]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Id Alumno]"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Id Alumno]"
+                      name="Id Alumno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Alumno]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Alumno]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Alumno]"
+                      name="Alumno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Asistencia Posible]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Asistencia Posible]"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Asistencia Posible]"
+                      name="Asistencia Posible"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Clases]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Clases]"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Clases]"
+                      name="Clases"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Por_Asistencia Real]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Por_Asistencia Real]"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Por_Asistencia Real]"
+                      name="Por_Asistencia Real"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Por_Asistenencia Reg]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Por_Asistenencia Reg]"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Por_Asistenencia Reg]"
+                      name="Por_Asistenencia Reg"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Asignatura]"
-                      dataType="wstr"
-                      length="255"
-                      name="Asignatura" />
                     <externalMetadataColumn
                       refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Asistencia]"
                       dataType="r8"
@@ -233,8 +386,81 @@
                     <externalMetadataColumn
                       refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Rut Alumno]"
                       dataType="wstr"
-                      length="15"
+                      length="50"
                       name="Rut Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Sede]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sede" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[CarreraGenérica]"
+                      dataType="wstr"
+                      length="255"
+                      name="CarreraGenérica" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Carrera del Alumno]"
+                      dataType="wstr"
+                      length="255"
+                      name="Carrera del Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[IDEvento]"
+                      dataType="r8"
+                      name="IDEvento" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Evento]"
+                      dataType="wstr"
+                      length="255"
+                      name="Evento" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[DescEvento]"
+                      dataType="wstr"
+                      length="255"
+                      name="DescEvento" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Jornada]"
+                      dataType="wstr"
+                      length="255"
+                      name="Jornada" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[ID Docente]"
+                      dataType="r8"
+                      name="ID Docente" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Rut Docente]"
+                      dataType="wstr"
+                      length="50"
+                      name="Rut Docente" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Profesor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Profesor" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Id Alumno]"
+                      dataType="r8"
+                      name="Id Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Alumno]"
+                      dataType="wstr"
+                      length="255"
+                      name="Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Asistencia Posible]"
+                      dataType="r8"
+                      name="Asistencia Posible" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Clases]"
+                      dataType="r8"
+                      name="Clases" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Por_Asistencia Real]"
+                      dataType="r8"
+                      name="Por_Asistencia Real" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Por_Asistenencia Reg]"
+                      dataType="r8"
+                      name="Por_Asistenencia Reg" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -243,22 +469,105 @@
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Sede]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Sede]"
+                      name="Sede" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[CarreraGenérica]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[CarreraGenérica]"
+                      name="CarreraGenérica" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Carrera del Alumno]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Carrera del Alumno]"
+                      name="Carrera del Alumno" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[IDEvento]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[IDEvento]"
+                      name="IDEvento" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Evento]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Evento]"
+                      name="Evento" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[DescEvento]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[DescEvento]"
+                      name="DescEvento" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Jornada]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Jornada]"
+                      name="Jornada" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[ID Docente]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[ID Docente]"
+                      name="ID Docente" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Rut Docente]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Rut Docente]"
+                      name="Rut Docente" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Profesor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Profesor]"
+                      name="Profesor" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Id Alumno]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Id Alumno]"
+                      name="Id Alumno" />
+                    <outputColumn
                       refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Rut Alumno]"
                       dataType="wstr"
-                      length="15"
+                      length="50"
                       lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Rut Alumno]"
                       name="Rut Alumno" />
                     <outputColumn
-                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Asignatura]"
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Alumno]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Asignatura]"
-                      name="Asignatura" />
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Alumno]"
+                      name="Alumno" />
                     <outputColumn
                       refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Asistencia]"
                       dataType="r8"
                       lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Asistencia]"
                       name="Asistencia" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Asistencia Posible]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Asistencia Posible]"
+                      name="Asistencia Posible" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Clases]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Clases]"
+                      name="Clases" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Por_Asistencia Real]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Por_Asistencia Real]"
+                      name="Por_Asistencia Real" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Por_Asistenencia Reg]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[Por_Asistenencia Reg]"
+                      name="Por_Asistenencia Reg" />
                     <outputColumn
                       refId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -333,7 +642,7 @@ where [refTable].[Cod_Asignatura] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Asignatura]};</property>
+                  name="ParameterMap">#{Package\Tarea Flujo de datos\14:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -346,8 +655,8 @@ where [refTable].[Cod_Asignatura] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Busca Asignatura.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -361,7 +670,7 @@ where [refTable].[Cod_Asignatura] = ?</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Asignatura"
-                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[Asignatura]">
+                      lineageId="Package\Tarea Flujo de datos\14:invalid">
                       <properties>
                         <property
                           dataType="System.String"
@@ -487,7 +796,7 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
                 <property
                   dataType="System.String"
                   description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id_Alumno" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Sede" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Carrera" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Alumno" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Rut_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Jornada" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id_Alumno" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Sede" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Carrera" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Alumno" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Rut_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Jornada" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Semestre" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Telefono_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Correo_Alumno" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -505,8 +814,8 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Busca Rut.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -653,8 +962,8 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\FT_Asistencia.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -856,14 +1165,14 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
               startId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de columna derivada]" />
             <path
               refId="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
-              endId="Package\Tarea Flujo de datos\Busca Asignatura.Inputs[Entrada de búsqueda]"
-              name="Salida de entradas coincidentes de búsqueda"
-              startId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de entradas coincidentes de búsqueda]" />
-            <path
-              refId="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda1]"
               endId="Package\Tarea Flujo de datos\Parametros.Inputs[Entrada de columna derivada]"
               name="Salida de entradas coincidentes de búsqueda"
               startId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda1]"
+              endId="Package\Tarea Flujo de datos\Busca Asignatura.Inputs[Entrada de búsqueda]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de entradas coincidentes de búsqueda]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -988,6 +1297,18 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="160,42"
+          Id="Package\Tarea Flujo de datos\Busca Asignatura"
+          TopLeft="313,265" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Tarea Flujo de datos\FT_Asistencia"
+          TopLeft="332,515" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Tarea Flujo de datos\Asistencia"
+          TopLeft="336,32" />
+        <NodeLayout
           Size="132,42"
           Id="Package\Tarea Flujo de datos\Parametros"
           TopLeft="336,406" />
@@ -995,76 +1316,8 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
           Size="126,42"
           Id="Package\Tarea Flujo de datos\Busca Rut"
           TopLeft="325,136" />
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Tarea Flujo de datos\Busca Asignatura"
-          TopLeft="313,265" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\Tarea Flujo de datos\Asistencia"
-          TopLeft="336,32" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
-          TopLeft="398.5,74">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-10.5,62"
-              Start="0,0"
-              End="-10.5,54.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27"
-                    Point2="0,31"
-                    Point3="-4,31" />
-                  <mssgle:LineSegment
-                    End="-6.5,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-6.5,31"
-                    Point2="-10.5,31"
-                    Point3="-10.5,35" />
-                  <mssgle:LineSegment
-                    End="-10.5,54.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-13.25,36,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="390.5,178">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,87"
-              Start="0,0"
-              End="0,79.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,79.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,33.65234375,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda1]"
           TopLeft="393,307">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1099,10 +1352,6 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="143,42"
-          Id="Package\Tarea Flujo de datos\FT_Asistencia"
-          TopLeft="332,515" />
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada]"
           TopLeft="402.75,448">
@@ -1125,6 +1374,64 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
+          TopLeft="398.5,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.5,62"
+              Start="0,0"
+              End="-10.5,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
+                  <mssgle:LineSegment
+                    End="-6.5,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.5,31"
+                    Point2="-10.5,31"
+                    Point3="-10.5,35" />
+                  <mssgle:LineSegment
+                    End="-10.5,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda1]"
+          TopLeft="390.5,178">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87"
+              Start="0,0"
+              End="0,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-108.50701171875,31.75,217.0140234375,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -1134,7 +1441,7 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">true</Value>
+          type="q2:string">true</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>

@@ -7,13 +7,13 @@
   DTS:CreatorName="AGC_W8\Arturo"
   DTS:DTSID="{225C3471-B3A9-423C-8BD2-4E04575B9492}"
   DTS:ExecutableType="SSIS.Package.3"
-  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
   DTS:LocaleID="3082"
   DTS:ObjectName="FT_Nota_Asistencia"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{5BD0E8D7-3224-485B-BC5A-ECA8E204F337}">
+  DTS:VersionBuild="53"
+  DTS:VersionGUID="{464735F7-3549-4959-BF85-B6DFD73D6061}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -195,8 +195,8 @@ where [refTable].[Cod_Asignatura] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Busca Asignatura.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -336,7 +336,7 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id_Alumno" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Sede" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Carrera" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Alumno" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Rut_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Jornada" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id_Alumno" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Sede" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Carrera" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Semestre" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Alumno" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Rut_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Telefono_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Correo_Inst" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Correo_Part" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Jornada" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -354,8 +354,8 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Busca Rut.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -672,8 +672,8 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\FT Asistencia.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -858,8 +858,8 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1221,8 +1221,8 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Notas Alumnos.Connections[OleDbConnection]"
-                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2275,143 +2275,53 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="132,42"
-          Id="Package\Tarea Flujo de datos\Parametros"
-          TopLeft="349,695" />
+          Size="171,42"
+          Id="Package\Tarea Flujo de datos\FT Notas Asistencia"
+          TopLeft="330,786" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Tarea Flujo de datos\Reemplaza Valores"
+          TopLeft="330,604" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Tarea Flujo de datos\Merge Join"
+          TopLeft="355,497" />
         <NodeLayout
           Size="126,42"
           Id="Package\Tarea Flujo de datos\Busca Rut"
           TopLeft="536,114" />
         <NodeLayout
-          Size="141,42"
-          Id="Package\Tarea Flujo de datos\FT Asistencia"
-          TopLeft="102,20" />
-        <NodeLayout
           Size="149,42"
           Id="Package\Tarea Flujo de datos\Notas Alumnos"
           TopLeft="529,25" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
-          TopLeft="601.25,67">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47"
-              Start="0,0"
-              End="0,39.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="148,42"
-          Id="Package\Tarea Flujo de datos\Sort Asistencia"
-          TopLeft="112,301" />
+          Size="132,42"
+          Id="Package\Tarea Flujo de datos\Parametros"
+          TopLeft="349,695" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Tarea Flujo de datos\Conditional Split 1"
+          TopLeft="519,189" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Tarea Flujo de datos\Conditional Split"
+          TopLeft="105,153" />
         <NodeLayout
           Size="128,42"
           Id="Package\Tarea Flujo de datos\Sort Notas"
           TopLeft="549,378" />
         <NodeLayout
+          Size="141,42"
+          Id="Package\Tarea Flujo de datos\FT Asistencia"
+          TopLeft="102,20" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Tarea Flujo de datos\Sort Asistencia"
+          TopLeft="112,301" />
+        <NodeLayout
           Size="160,42"
           Id="Package\Tarea Flujo de datos\Busca Asignatura"
           TopLeft="527,293" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Lookup Match Output]"
-          TopLeft="610,335">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,11.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Tarea Flujo de datos\Merge Join"
-          TopLeft="355,497" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Sort Output]"
-          TopLeft="186,343">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="213.666666666667,154"
-              Start="0,0"
-              End="213.666666666667,146.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,87.2765957446808" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,87.2765957446808"
-                    Point2="0,91.2765957446808"
-                    Point3="4,91.2765957446808" />
-                  <mssgle:LineSegment
-                    End="209.666666666667,91.2765957446808" />
-                  <mssgle:CubicBezierSegment
-                    Point1="209.666666666667,91.2765957446808"
-                    Point2="213.666666666667,91.2765957446808"
-                    Point3="213.666666666667,95.2765957446808" />
-                  <mssgle:LineSegment
-                    End="213.666666666667,146.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Tarea Flujo de datos\FT Notas Asistencia"
-          TopLeft="330,786" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada]"
-          TopLeft="415.25,737">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,49"
-              Start="0,0"
-              End="0,41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Sort Output1]"
           TopLeft="613,420">
@@ -2446,10 +2356,86 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Tarea Flujo de datos\Conditional Split"
-          TopLeft="105,153" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Sort Output]"
+          TopLeft="186,343">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="213.666666666667,154"
+              Start="0,0"
+              End="213.666666666667,146.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.2765957446808" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,87.2765957446808"
+                    Point2="0,91.2765957446808"
+                    Point3="4,91.2765957446808" />
+                  <mssgle:LineSegment
+                    End="209.666666666667,91.2765957446808" />
+                  <mssgle:CubicBezierSegment
+                    Point1="209.666666666667,91.2765957446808"
+                    Point2="213.666666666667,91.2765957446808"
+                    Point3="213.666666666667,95.2765957446808" />
+                  <mssgle:LineSegment
+                    End="213.666666666667,146.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="600,156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,6.65234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada]"
+          TopLeft="415.25,737">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output1]"
           TopLeft="172.5,62">
@@ -2485,55 +2471,93 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Con ID Alumno]"
-          TopLeft="184.25,195">
+          Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
+          TopLeft="601.25,67">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,106"
+              EndConnector="0,47"
               Start="0,0"
-              End="0,98.5">
+              End="0,39.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,98.5" />
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Merge Join Output]"
+          TopLeft="417,539">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Lookup Match Output]"
+          TopLeft="610,335">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-34.23455078125,44.37548828125,68.4691015625,9.7490234375"
+              BoundingBox="-48.19138671875,11.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164,42"
-          Id="Package\Tarea Flujo de datos\Conditional Split 1"
-          TopLeft="519,189" />
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="600,156">
+          Id="Package\Tarea Flujo de datos.Paths[Derived Column Output]"
+          TopLeft="414.5,646">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33"
+              EndConnector="0,49"
               Start="0,0"
-              End="0,25.5">
+              End="0,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.5" />
+                    End="0,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,6.65234375,199.638046875,12.1953125"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2560,57 +2584,46 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Tarea Flujo de datos\Reemplaza Valores"
-          TopLeft="330,604" />
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Merge Join Output]"
-          TopLeft="417,539">
+          Id="Package\Tarea Flujo de datos.Paths[Con ID Alumno]"
+          TopLeft="184.25,195">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,65"
+              EndConnector="0,106"
               Start="0,0"
-              End="0,57.5">
+              End="0,98.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.5" />
+                    End="0,98.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[Derived Column Output]"
-          TopLeft="414.5,646">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,49"
-              Start="0,0"
-              End="0,41.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-34.23455078125,44.37548828125,68.4691015625,9.7490234375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Notas Alumnos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Tarea Flujo de datos\Busca Rut">
     <Properties>
@@ -2648,7 +2661,7 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Notas Alumnos">
+    design-time-name="Package\Tarea Flujo de datos\FT Notas Asistencia">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2656,7 +2669,7 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">View</Value>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -2680,19 +2693,6 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\FT Notas Asistencia">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

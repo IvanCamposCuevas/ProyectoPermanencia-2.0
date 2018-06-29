@@ -12,8 +12,8 @@
   DTS:ObjectName="DIM_Alumno"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{FC5BC5A3-ED06-4746-82D7-C04D9FA8CC5C}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{AD29DC92-ECCE-43F9-A13E-C8FDFFBB5FFB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -78,6 +78,7 @@
       ,[NOMBRES]+' '+[AP_PATERNO]+' '+[AP_MATERNO] as Nombre
 	  ,[TELEFONO]
 	  ,[EMAIL]
+,[CORREO ALUMNOS]
 FROM [dbo].[Indice_STG]
 where [COD_CARRERA] is not null</property>
                 <property
@@ -201,6 +202,16 @@ where [COD_CARRERA] is not null</property>
                       lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[EMAIL]"
                       name="EMAIL"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[CORREO ALUMNOS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].ExternalColumns[CORREO ALUMNOS]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[CORREO ALUMNOS]"
+                      name="CORREO ALUMNOS"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -245,6 +256,11 @@ where [COD_CARRERA] is not null</property>
                       dataType="wstr"
                       length="255"
                       name="EMAIL" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].ExternalColumns[CORREO ALUMNOS]"
+                      dataType="wstr"
+                      length="255"
+                      name="CORREO ALUMNOS" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -302,6 +318,12 @@ where [COD_CARRERA] is not null</property>
                       length="255"
                       lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Error Output].Columns[EMAIL]"
                       name="EMAIL" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Error Output].Columns[CORREO ALUMNOS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Error Output].Columns[CORREO ALUMNOS]"
+                      name="CORREO ALUMNOS" />
                     <outputColumn
                       refId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -424,6 +446,32 @@ where [COD_CARRERA] is not null</property>
                       cachedName="Nombre"
                       externalMetadataColumnId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Alumno]"
                       lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].Columns[CORREO ALUMNOS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CORREO ALUMNOS"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Correo_Inst]"
+                      lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[CORREO ALUMNOS]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].Columns[EMAIL]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="EMAIL"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Correo_Part]"
+                      lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[EMAIL]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].Columns[TELEFONO]"
+                      cachedDataType="r8"
+                      cachedName="TELEFONO"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Telefono_Alumno]"
+                      lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[TELEFONO]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].Columns[SEMESTRE]"
+                      cachedDataType="r8"
+                      cachedName="SEMESTRE"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Id_Semestre]"
+                      lineageId="Package\Tarea Flujo de datos\Alumnos.Outputs[OLE DB Source Output].Columns[SEMESTRE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -459,15 +507,20 @@ where [COD_CARRERA] is not null</property>
                       dataType="i4"
                       name="Id_Semestre" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Telefono_Alumno]"
+                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Telefono_Alumno]"
                       dataType="wstr"
                       length="15"
-                      name="Telefono_Alumno" />
+                      name="Desc_Telefono_Alumno" />
                     <externalMetadataColumn
-                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Correo_Alumno]"
+                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Correo_Inst]"
                       dataType="wstr"
                       length="50"
-                      name="Correo_Alumno" />
+                      name="Desc_Correo_Inst" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\LK Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Desc_Correo_Part]"
+                      dataType="wstr"
+                      length="50"
+                      name="Desc_Correo_Part" />
                   </externalMetadataColumns>
                 </input>
               </inputs>

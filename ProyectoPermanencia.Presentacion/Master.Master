@@ -17,7 +17,7 @@
 <body>
     <form id="formPrincipal" class="container-fluid" runat="server">
         <header>
-            <img runat="server" src="~/imgs/logo_duoc.png" width="300" />
+            <img runat="server" src="~/imgs/logo_50años_avaras_blanco_01.png" width="260" />
             <!--
             <div id="MenuPrincipal" class="MenuPrincipal">
                 <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal"

@@ -1,0 +1,2700 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/14/2017 12:12:31 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="AGC_W8"
+  DTS:CreatorName="AGC_W8\Arturo"
+  DTS:DTSID="{225C3471-B3A9-423C-8BD2-4E04575B9492}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="FT_Nota_Asistencia"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="53"
+  DTS:VersionGUID="{464735F7-3549-4959-BF85-B6DFD73D6061}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Permanencia.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8EA00587-86F0-4211-8A4D-A5E10F7B0324}"
+      DTS:ObjectName="LocalHost.Permanencia.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=Permanencia;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{002FB1D1-2BCB-4B03-84E3-59EDD7DFC970}"
+      DTS:ObjectName="Medicion">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{D66D39DD-B1A5-4057-822F-3B7EF2C506F9}"
+      DTS:ObjectName="Semestre">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9F1895A3-DEEC-45F8-99EA-C455DDACB987}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Medicion1">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5B67062E-5531-49E1-BAE5-F4485AAA1F1E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Semester">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Medicion"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{C5EBD924-2169-4EE1-862B-E5F953EB3F1E}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Medicion"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{ABE3BB7B-3727-4206-8217-22EE2832F292}"
+          SQLTask:SqlStatementSource="SELECT    Top 1 [Id_Medición] as Medicion&#xA;FROM            LK_Medición&#xA;Order By [Id_Medición] Desc"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="Medicion"
+            SQLTask:DtsVariableName="User::Medicion1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Semestre"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{23117CF8-7A45-4965-8BD6-A5D058C071C9}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Semestre"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{ABE3BB7B-3727-4206-8217-22EE2832F292}"
+          SQLTask:SqlStatementSource="SELECT    Top 1 Id_Semestre as Semestre&#xA;FROM            LK_Semestre&#xA;Order By  Id_Semestre Desc"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="Semestre"
+            SQLTask:DtsVariableName="User::Semester" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea Flujo de datos"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{B764AE63-A697-4E40-8EE6-81B57DAD3138}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Flujo de datos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Tarea Flujo de datos\Busca Asignatura"
+              componentClassID="DTSTransform.Lookup.3"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Busca Asignatura"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[LK_Asignatura]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[LK_Asignatura]) [refTable]
+where [refTable].[Cod_Asignatura] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id_Asignatura" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Cod_Asignatura" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Seccion" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Asignatura" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Carrera" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Profesor" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Jornada" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[CODIGO ASIGNATURA]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarea Flujo de datos\Busca Asignatura.Connections[OleDbConnection]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos\Busca Asignatura.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Busca Asignatura.Inputs[Lookup Input].Columns[CODIGO ASIGNATURA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODIGO ASIGNATURA"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[CODIGO ASIGNATURA]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Cod_Asignatura</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Tarea Flujo de datos\Busca Asignatura.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup Match Output].Columns[Id_Asignatura]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup Match Output].Columns[Id_Asignatura]"
+                      name="Id_Asignatura"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Id_Asignatura</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Tarea Flujo de datos\Busca Asignatura.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Tarea Flujo de datos\Busca Asignatura.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos\Busca Rut"
+              componentClassID="DTSTransform.Lookup.3"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="Busca Rut"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[LK_Alumno]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[LK_Alumno]) [refTable]
+where [refTable].[Desc_Rut_Alumno] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id_Alumno" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Sede" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Carrera" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Semestre" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Alumno" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Rut_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Telefono_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Correo_Inst" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Correo_Part" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Jornada" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap">#{Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[RUT ALUMNO]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarea Flujo de datos\Busca Rut.Connections[OleDbConnection]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos\Busca Rut.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Busca Rut.Inputs[Entrada de búsqueda].Columns[RUT ALUMNO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RUT ALUMNO"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[RUT ALUMNO]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">Desc_Rut_Alumno</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\Tarea Flujo de datos\Busca Rut.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Id_Alumno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Id_Alumno]"
+                      name="Id_Alumno"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">Id_Alumno</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en &quot;Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes&quot;."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\Tarea Flujo de datos\Busca Rut.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\Tarea Flujo de datos\Busca Rut.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos\Conditional Split"
+              componentClassID="DTSTransform.ConditionalSplit.3"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Conditional Split.Inputs[Conditional Split Input].Columns[Id_Alumno]"
+                      cachedDataType="i4"
+                      cachedName="Id_Alumno"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Alumno]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\Conditional Split.Outputs[Con ID Alumno]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Con ID Alumno"
+                  synchronousInputId="Package\Tarea Flujo de datos\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">![ISNULL](#{Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Alumno]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(Id_Alumno)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Tarea Flujo de datos\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Tarea Flujo de datos\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos\Conditional Split 1"
+              componentClassID="DTSTransform.ConditionalSplit.3"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos\Conditional Split 1.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Conditional Split 1.Inputs[Conditional Split Input].Columns[Id_Alumno]"
+                      cachedDataType="i4"
+                      cachedName="Id_Alumno"
+                      lineageId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Id_Alumno]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\Conditional Split 1.Outputs[Con ID Alumno]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Con ID Alumno"
+                  synchronousInputId="Package\Tarea Flujo de datos\Conditional Split 1.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">![ISNULL](#{Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Id_Alumno]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(Id_Alumno)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\Conditional Split 1.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Tarea Flujo de datos\Conditional Split 1.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\Conditional Split 1.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Tarea Flujo de datos\Conditional Split 1.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos\FT Asistencia"
+              componentClassID="DTSAdapter.OLEDBSource.3"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="FT Asistencia"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FT_Asistencia]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarea Flujo de datos\FT Asistencia.Connections[OleDbConnection]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Alumno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Id_Alumno]"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Alumno]"
+                      name="Id_Alumno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Asignatura]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Id_Asignatura]"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Asignatura]"
+                      name="Id_Asignatura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Semestre]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Id_Semestre]"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Semestre]"
+                      name="Id_Semestre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Medición]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Id_Medición]"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Medición]"
+                      name="Id_Medición"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[F_Asistencia]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].ExternalColumns[F_Asistencia]"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[F_Asistencia]"
+                      name="F_Asistencia"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Id_Alumno]"
+                      dataType="i4"
+                      name="Id_Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Id_Asignatura]"
+                      dataType="i4"
+                      name="Id_Asignatura" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Id_Semestre]"
+                      dataType="i4"
+                      name="Id_Semestre" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].ExternalColumns[Id_Medición]"
+                      dataType="i4"
+                      name="Id_Medición" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].ExternalColumns[F_Asistencia]"
+                      dataType="r8"
+                      name="F_Asistencia" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[Id_Alumno]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[Id_Alumno]"
+                      name="Id_Alumno" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[Id_Asignatura]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[Id_Asignatura]"
+                      name="Id_Asignatura" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[Id_Semestre]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[Id_Semestre]"
+                      name="Id_Semestre" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[Id_Medición]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[Id_Medición]"
+                      name="Id_Medición" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[F_Asistencia]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[F_Asistencia]"
+                      name="F_Asistencia" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos\FT Notas Asistencia"
+              componentClassID="DTSAdapter.OLEDBDestination.3"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="FT Notas Asistencia"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FT_Nota_Asistencia]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Connections[OleDbConnection]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].Columns[Id_Alumno]"
+                      cachedDataType="i4"
+                      cachedName="Id_Alumno"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[Id_Alumno]"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Id_Alumno]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].Columns[Id_Asignatura]"
+                      cachedDataType="i4"
+                      cachedName="Id_Asignatura"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[Id_Asignatura]"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Id_Asignatura]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].Columns[Semestre]"
+                      cachedDataType="i2"
+                      cachedName="Semestre"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[Id_Semestre]"
+                      lineageId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de columna derivada].Columns[Semestre]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].Columns[Medicion]"
+                      cachedDataType="i2"
+                      cachedName="Medicion"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[Id_Medición]"
+                      lineageId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de columna derivada].Columns[Medicion]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].Columns[F_Asistencia]"
+                      cachedDataType="r8"
+                      cachedName="F_Asistencia"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[F_Asistencia]"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[F_Asistencia]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].Columns[Notas_Azul]"
+                      cachedDataType="i4"
+                      cachedName="Notas_Azul"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[F_Notas_Azules]"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Notas_Azul]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].Columns[Promedio]"
+                      cachedDataType="r8"
+                      cachedName="Promedio"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[F_Promedio]"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Promedio]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].Columns[Notas_Rendidas]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Notas_Rendidas"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[F_Notas_Rendidas]"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Notas_Rendidas]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[Id_Alumno]"
+                      dataType="i4"
+                      name="Id_Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[Id_Asignatura]"
+                      dataType="i4"
+                      name="Id_Asignatura" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[Id_Semestre]"
+                      dataType="i4"
+                      name="Id_Semestre" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[Id_Medición]"
+                      dataType="i4"
+                      name="Id_Medición" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[F_Asistencia]"
+                      dataType="r8"
+                      name="F_Asistencia" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[F_Notas_Curso]"
+                      dataType="i4"
+                      name="F_Notas_Curso" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[F_Notas_Rendidas]"
+                      dataType="i4"
+                      name="F_Notas_Rendidas" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[F_Notas_Azules]"
+                      dataType="i4"
+                      name="F_Notas_Azules" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input].ExternalColumns[F_Promedio]"
+                      dataType="r8"
+                      name="F_Promedio" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\FT Notas Asistencia.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\FT Notas Asistencia.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\FT Notas Asistencia.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos\Merge Join"
+              componentClassID="DTSTransform.MergeJoin.3"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">2</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Left Input].Columns[Id_Alumno]"
+                      cachedDataType="i4"
+                      cachedName="Id_Alumno"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[Id_Alumno]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Left Input].Columns[Id_Asignatura]"
+                      cachedDataType="i4"
+                      cachedName="Id_Asignatura"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[Id_Asignatura]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Left Input].Columns[F_Asistencia]"
+                      cachedDataType="r8"
+                      cachedName="F_Asistencia"
+                      lineageId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[F_Asistencia]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Right Input].Columns[Id_Alumno]"
+                      cachedDataType="i4"
+                      cachedName="Id_Alumno"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Id_Alumno]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Right Input].Columns[Id_Asignatura]"
+                      cachedDataType="i4"
+                      cachedName="Id_Asignatura"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Id_Asignatura]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Right Input].Columns[Notas_Azul]"
+                      cachedDataType="i4"
+                      cachedName="Notas_Azul"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Notas_Azul]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Right Input].Columns[Promedio]"
+                      cachedDataType="r8"
+                      cachedName="Promedio"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Promedio]" />
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Right Input].Columns[Notas_Rendidas]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Notas_Rendidas"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Notas_Rendidas]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Id_Alumno]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Id_Alumno]"
+                      name="Id_Alumno"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Left Input].Columns[Id_Alumno]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Id_Asignatura]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Id_Asignatura]"
+                      name="Id_Asignatura"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Left Input].Columns[Id_Asignatura]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Notas_Azul]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Notas_Azul]"
+                      name="Notas_Azul">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Right Input].Columns[Notas_Azul]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Promedio]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Promedio]"
+                      name="Promedio">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Right Input].Columns[Promedio]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[F_Asistencia]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[F_Asistencia]"
+                      name="F_Asistencia">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Left Input].Columns[F_Asistencia]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Notas_Rendidas]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Notas_Rendidas]"
+                      name="Notas_Rendidas">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Right Input].Columns[Notas_Rendidas]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos\Notas Alumnos"
+              componentClassID="DTSAdapter.OLEDBSource.3"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Notas Alumnos"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Notas_Asig_Alu]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tarea Flujo de datos\Notas Alumnos.Connections[OleDbConnection]"
+                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[JORNADA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[JORNADA]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[JORNADA]"
+                      name="JORNADA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[CODIGO ASIGNATURA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[CODIGO ASIGNATURA]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[CODIGO ASIGNATURA]"
+                      name="CODIGO ASIGNATURA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[SECCION]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[SECCION]"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[SECCION]"
+                      name="SECCION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[RUT ALUMNO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[RUT ALUMNO]"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[RUT ALUMNO]"
+                      name="RUT ALUMNO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Notas_Rendidas]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[Notas_Rendidas]"
+                      length="1"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Notas_Rendidas]"
+                      name="Notas_Rendidas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Notas_Azul]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[Notas_Azul]"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Notas_Azul]"
+                      name="Notas_Azul"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Promedio]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[Promedio]"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Promedio]"
+                      name="Promedio"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[JORNADA]"
+                      dataType="wstr"
+                      length="255"
+                      name="JORNADA" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[CODIGO ASIGNATURA]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODIGO ASIGNATURA" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[SECCION]"
+                      dataType="i4"
+                      name="SECCION" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[RUT ALUMNO]"
+                      dataType="wstr"
+                      length="255"
+                      name="RUT ALUMNO" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[Notas_Rendidas]"
+                      dataType="wstr"
+                      length="1"
+                      name="Notas_Rendidas" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[Notas_Azul]"
+                      dataType="i4"
+                      name="Notas_Azul" />
+                    <externalMetadataColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].ExternalColumns[Promedio]"
+                      dataType="r8"
+                      name="Promedio" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[JORNADA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[JORNADA]"
+                      name="JORNADA" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[CODIGO ASIGNATURA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[CODIGO ASIGNATURA]"
+                      name="CODIGO ASIGNATURA" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[SECCION]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[SECCION]"
+                      name="SECCION" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[RUT ALUMNO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[RUT ALUMNO]"
+                      name="RUT ALUMNO" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[Notas_Rendidas]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[Notas_Rendidas]"
+                      name="Notas_Rendidas" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[Notas_Azul]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[Notas_Azul]"
+                      name="Notas_Azul" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[Promedio]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[Promedio]"
+                      name="Promedio" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos\Parametros"
+              componentClassID="DTSTransform.DerivedColumn.3"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Parametros"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos\Parametros.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Tarea Flujo de datos\Parametros.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de columna derivada].Columns[Semestre]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de columna derivada].Columns[Semestre]"
+                      name="Semestre"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_I2)@[User::Semester]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)@[User::Semester]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de columna derivada].Columns[Medicion]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de columna derivada].Columns[Medicion]"
+                      name="Medicion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_I2)@[User::Medicion1]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)@[User::Medicion1]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Tarea Flujo de datos\Parametros.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos\Reemplaza Valores"
+              componentClassID="DTSTransform.DerivedColumn.3"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Reemplaza Valores"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos\Reemplaza Valores.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Reemplaza Valores.Inputs[Derived Column Input].Columns[Notas_Azul]"
+                      cachedDataType="i4"
+                      cachedName="Notas_Azul"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Notas_Azul]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Notas_Azul]},0)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(Notas_Azul,0)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Reemplaza Valores.Inputs[Derived Column Input].Columns[Promedio]"
+                      cachedDataType="r8"
+                      cachedName="Promedio"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Promedio]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Promedio]},1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(Promedio,1)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Reemplaza Valores.Inputs[Derived Column Input].Columns[Notas_Rendidas]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Notas_Rendidas"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Notas_Rendidas]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output].Columns[Notas_Rendidas]},0)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(Notas_Rendidas,0)</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\Reemplaza Valores.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Tarea Flujo de datos\Reemplaza Valores.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tarea Flujo de datos\Reemplaza Valores.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Tarea Flujo de datos\Reemplaza Valores.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Reemplaza Valores.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Reemplaza Valores.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Reemplaza Valores.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Reemplaza Valores.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos\Sort Asistencia"
+              componentClassID="DTSTransform.Sort.3"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Asistencia"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos\Sort Asistencia.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Asistencia.Inputs[Sort Input].Columns[Id_Alumno]"
+                      cachedDataType="i4"
+                      cachedName="Id_Alumno"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Alumno]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Asistencia.Inputs[Sort Input].Columns[Id_Asignatura]"
+                      cachedDataType="i4"
+                      cachedName="Id_Asignatura"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Asignatura]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Asistencia.Inputs[Sort Input].Columns[Id_Semestre]"
+                      cachedDataType="i4"
+                      cachedName="Id_Semestre"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Semestre]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Asistencia.Inputs[Sort Input].Columns[Id_Medición]"
+                      cachedDataType="i4"
+                      cachedName="Id_Medición"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Medición]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Asistencia.Inputs[Sort Input].Columns[F_Asistencia]"
+                      cachedDataType="r8"
+                      cachedName="F_Asistencia"
+                      lineageId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[F_Asistencia]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[Id_Alumno]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[Id_Alumno]"
+                      name="Id_Alumno"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Alumno]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[Id_Asignatura]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[Id_Asignatura]"
+                      name="Id_Asignatura"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Asignatura]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[Id_Semestre]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[Id_Semestre]"
+                      name="Id_Semestre">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Semestre]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[Id_Medición]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[Id_Medición]"
+                      name="Id_Medición">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[Id_Medición]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[F_Asistencia]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output].Columns[F_Asistencia]"
+                      name="F_Asistencia">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output].Columns[F_Asistencia]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tarea Flujo de datos\Sort Notas"
+              componentClassID="DTSTransform.Sort.3"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Notas"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tarea Flujo de datos\Sort Notas.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Inputs[Sort Input].Columns[JORNADA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="JORNADA"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[JORNADA]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Inputs[Sort Input].Columns[CODIGO ASIGNATURA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODIGO ASIGNATURA"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[CODIGO ASIGNATURA]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Inputs[Sort Input].Columns[SECCION]"
+                      cachedDataType="i4"
+                      cachedName="SECCION"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[SECCION]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Inputs[Sort Input].Columns[RUT ALUMNO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RUT ALUMNO"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[RUT ALUMNO]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Inputs[Sort Input].Columns[Notas_Rendidas]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Notas_Rendidas"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Notas_Rendidas]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Inputs[Sort Input].Columns[Notas_Azul]"
+                      cachedDataType="i4"
+                      cachedName="Notas_Azul"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Notas_Azul]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Inputs[Sort Input].Columns[Promedio]"
+                      cachedDataType="r8"
+                      cachedName="Promedio"
+                      lineageId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Promedio]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Inputs[Sort Input].Columns[Id_Alumno]"
+                      cachedDataType="i4"
+                      cachedName="Id_Alumno"
+                      lineageId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Id_Alumno]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Inputs[Sort Input].Columns[Id_Asignatura]"
+                      cachedDataType="i4"
+                      cachedName="Id_Asignatura"
+                      lineageId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup Match Output].Columns[Id_Asignatura]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[JORNADA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[JORNADA]"
+                      name="JORNADA">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[JORNADA]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[CODIGO ASIGNATURA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[CODIGO ASIGNATURA]"
+                      name="CODIGO ASIGNATURA">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[CODIGO ASIGNATURA]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[SECCION]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[SECCION]"
+                      name="SECCION">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[SECCION]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[RUT ALUMNO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[RUT ALUMNO]"
+                      name="RUT ALUMNO">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[RUT ALUMNO]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Notas_Rendidas]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Notas_Rendidas]"
+                      name="Notas_Rendidas">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Notas_Rendidas]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Notas_Azul]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Notas_Azul]"
+                      name="Notas_Azul">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Notas_Azul]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Promedio]"
+                      dataType="r8"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Promedio]"
+                      name="Promedio">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output].Columns[Promedio]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Id_Alumno]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Id_Alumno]"
+                      name="Id_Alumno"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de entradas coincidentes de búsqueda].Columns[Id_Alumno]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Id_Asignatura]"
+                      dataType="i4"
+                      lineageId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output].Columns[Id_Asignatura]"
+                      name="Id_Asignatura"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup Match Output].Columns[Id_Asignatura]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[Con ID Alumno]"
+              endId="Package\Tarea Flujo de datos\Sort Asistencia.Inputs[Sort Input]"
+              name="Con ID Alumno"
+              startId="Package\Tarea Flujo de datos\Conditional Split.Outputs[Con ID Alumno]" />
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[Con ID Alumno1]"
+              endId="Package\Tarea Flujo de datos\Busca Asignatura.Inputs[Lookup Input]"
+              name="Con ID Alumno"
+              startId="Package\Tarea Flujo de datos\Conditional Split 1.Outputs[Con ID Alumno]" />
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[Derived Column Output]"
+              endId="Package\Tarea Flujo de datos\Parametros.Inputs[Entrada de columna derivada]"
+              name="Derived Column Output"
+              startId="Package\Tarea Flujo de datos\Reemplaza Valores.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[Lookup Match Output]"
+              endId="Package\Tarea Flujo de datos\Sort Notas.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\Tarea Flujo de datos\Busca Asignatura.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[Merge Join Output]"
+              endId="Package\Tarea Flujo de datos\Reemplaza Valores.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\Tarea Flujo de datos\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
+              endId="Package\Tarea Flujo de datos\Busca Rut.Inputs[Entrada de búsqueda]"
+              name="OLE DB Source Output"
+              startId="Package\Tarea Flujo de datos\Notas Alumnos.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[OLE DB Source Output1]"
+              endId="Package\Tarea Flujo de datos\Conditional Split.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\Tarea Flujo de datos\FT Asistencia.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[Salida de columna derivada]"
+              endId="Package\Tarea Flujo de datos\FT Notas Asistencia.Inputs[OLE DB Destination Input]"
+              name="Salida de columna derivada"
+              startId="Package\Tarea Flujo de datos\Parametros.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
+              endId="Package\Tarea Flujo de datos\Conditional Split 1.Inputs[Conditional Split Input]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\Tarea Flujo de datos\Busca Rut.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[Sort Output]"
+              endId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Tarea Flujo de datos\Sort Asistencia.Outputs[Sort Output]" />
+            <path
+              refId="Package\Tarea Flujo de datos.Paths[Sort Output1]"
+              endId="Package\Tarea Flujo de datos\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Tarea Flujo de datos\Sort Notas.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{A2506CAE-9E4F-4E9A-B736-42583D82DE90}"
+      DTS:From="Package\Medicion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Semestre" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F9D235B5-5474-4091-AA04-11C5A8157A52}"
+      DTS:From="Package\Semestre"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\Tarea Flujo de datos" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Medicion"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Semestre"
+          TopLeft="93,86" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Tarea Flujo de datos"
+          TopLeft="357,88" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="65.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="89,38.5"
+              Start="0,0"
+              End="89,31">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.25"
+                    Point2="0,19.25"
+                    Point3="4,19.25" />
+                  <mssgle:LineSegment
+                    End="85,19.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="85,19.25"
+                    Point2="89,19.25"
+                    Point3="89,23.25" />
+                  <mssgle:LineSegment
+                    End="89,31" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="216,108">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="141,0"
+              Start="0,0"
+              End="133.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="133.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Tarea Flujo de datos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Tarea Flujo de datos\FT Notas Asistencia"
+          TopLeft="330,786" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Tarea Flujo de datos\Reemplaza Valores"
+          TopLeft="330,604" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Tarea Flujo de datos\Merge Join"
+          TopLeft="355,497" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Tarea Flujo de datos\Busca Rut"
+          TopLeft="536,114" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Tarea Flujo de datos\Notas Alumnos"
+          TopLeft="529,25" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Tarea Flujo de datos\Parametros"
+          TopLeft="349,695" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Tarea Flujo de datos\Conditional Split 1"
+          TopLeft="519,189" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Tarea Flujo de datos\Conditional Split"
+          TopLeft="105,153" />
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Tarea Flujo de datos\Sort Notas"
+          TopLeft="549,378" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Tarea Flujo de datos\FT Asistencia"
+          TopLeft="102,20" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Tarea Flujo de datos\Sort Asistencia"
+          TopLeft="112,301" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Tarea Flujo de datos\Busca Asignatura"
+          TopLeft="527,293" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Sort Output1]"
+          TopLeft="613,420">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-172.666666666667,77"
+              Start="0,0"
+              End="-172.666666666667,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.6382978723404" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.6382978723404"
+                    Point2="0,45.6382978723404"
+                    Point3="-4,45.6382978723404" />
+                  <mssgle:LineSegment
+                    End="-168.666666666667,45.6382978723404" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-168.666666666667,45.6382978723404"
+                    Point2="-172.666666666667,45.6382978723404"
+                    Point3="-172.666666666667,49.6382978723404" />
+                  <mssgle:LineSegment
+                    End="-172.666666666667,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Sort Output]"
+          TopLeft="186,343">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="213.666666666667,154"
+              Start="0,0"
+              End="213.666666666667,146.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.2765957446808" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,87.2765957446808"
+                    Point2="0,91.2765957446808"
+                    Point3="4,91.2765957446808" />
+                  <mssgle:LineSegment
+                    End="209.666666666667,91.2765957446808" />
+                  <mssgle:CubicBezierSegment
+                    Point1="209.666666666667,91.2765957446808"
+                    Point2="213.666666666667,91.2765957446808"
+                    Point3="213.666666666667,95.2765957446808" />
+                  <mssgle:LineSegment
+                    End="213.666666666667,146.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="600,156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,6.65234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Salida de columna derivada]"
+          TopLeft="415.25,737">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output1]"
+          TopLeft="172.5,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10,91"
+              Start="0,0"
+              End="10,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.5"
+                    Point2="0,45.5"
+                    Point3="4,45.5" />
+                  <mssgle:LineSegment
+                    End="6,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6,45.5"
+                    Point2="10,45.5"
+                    Point3="10,49.5" />
+                  <mssgle:LineSegment
+                    End="10,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
+          TopLeft="601.25,67">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Merge Join Output]"
+          TopLeft="417,539">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Lookup Match Output]"
+          TopLeft="610,335">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Derived Column Output]"
+          TopLeft="414.5,646">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Con ID Alumno1]"
+          TopLeft="604,231">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62"
+              Start="0,0"
+              End="0,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.23455078125,22.37548828125,68.4691015625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[Con ID Alumno]"
+          TopLeft="184.25,195">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,106"
+              Start="0,0"
+              End="0,98.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,98.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.23455078125,44.37548828125,68.4691015625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Notas Alumnos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Busca Rut">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[LK_Alumno]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\FT Asistencia">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\FT Notas Asistencia">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Busca Asignatura">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[LK_Asignatura]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

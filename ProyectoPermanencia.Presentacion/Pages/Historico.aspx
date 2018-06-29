@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolderTitle" runat="server">
     <asp:Label runat="server">
-        <h3 style="color:azure"> Historico  </h3>
+        <h3 style="color:azure"> Detalle Notas  </h3>
     </asp:Label>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderFicha" runat="server">
@@ -31,7 +31,7 @@
                             </div>-->
                         </div>
                     </div>
-                    <div id="InformacionAlumno" class="SideColumn" style="float: left; align-content: center; padding-left: 20px">
+                   <!-- <div id="InformacionAlumno" class="SideColumn" style="float: left; align-content: center; padding-left: 20px">
                         <h4 style="text-align: center">Información Personal</h4>
                         <asp:Label runat="server" Font-Bold="true">Rut:</asp:Label>
                         <asp:Label ID="lblRut" runat="server"></asp:Label>
@@ -63,7 +63,7 @@
                         <asp:Label runat="server" ID="lblMail">alumno@alumnos.duoc.cl</asp:Label>
                         <br />
                         <br />
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="Tabs col-md-6" style="float: left;">
@@ -79,7 +79,15 @@
                 <!-- Información Histórico-->
 
                 
-
+                <div class="row" style="padding-left: 30px">
+                    <div id="DetalleNotas" class="ScoreNotas">
+                        <h3>Detalle de notas por asignatura </h3>
+                        <asp:GridView ID="grvDetalleNotas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
+                            <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
+                        </asp:GridView>
+                    </div>
+                </div>
                 
                 
 

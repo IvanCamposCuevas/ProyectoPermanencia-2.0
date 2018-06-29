@@ -1,0 +1,1335 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/22/2017 10:26:25 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="AGC_W8"
+  DTS:CreatorName="AGC_W8\Arturo"
+  DTS:DTSID="{50A78E5F-9F2A-4D26-8E5F-1198B9F46C37}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="STG_CargaMora_old"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{779F4BEB-403B-4AC4-85E8-500EB7566030}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Borra Tabla Morosos"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{257A6949-7783-4252-B688-02011C3DBA13}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Borra Tabla Morosos"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C3F8CEF7-4BE3-4443-88B7-B9025810EAE8}"
+          SQLTask:SqlStatementSource="Truncate Table Morosos_STG" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga Tabla Moroso"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{43626213-A4CE-4040-AA02-0A98FCF7FC43}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga Tabla Moroso">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga Tabla Moroso\Destino de ADO NET"
+              componentClassID="DTS.ManagedComponentWrapper.3"
+              contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
+              description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
+              name="Destino de ADO NET"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Nombre de la tabla de la base de datos de destino."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">"dbo"."Morosos_STG"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si se debe usar la interfaz SqlBulkCopy para mejorar el rendimiento de las operaciones de inserción masiva. No todos los proveedores admiten esta interfaz."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ADONETDestination, Microsoft.SqlServer.ADONETDest, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Tabla Moroso\Destino de ADO NET.Connections[IDbConnection]"
+                  connectionManagerID="{C3F8CEF7-4BE3-4443-88B7-B9025810EAE8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[BD Permanencia]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de ADO NET">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Nº documento]"
+                      cachedDataType="r8"
+                      cachedName="Nº documento"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Nº documento]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Nº documento]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Sostenedor]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sostenedor"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Sostenedor]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Sostenedor]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[StatCompen]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="StatCompen"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[StatCompen]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[StatCompen]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Venc-neto]"
+                      cachedDataType="date"
+                      cachedName="Venc-neto"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Venc-neto]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Venc-neto]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Texto]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Texto"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Texto]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Texto]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[ClvP]"
+                      cachedDataType="r8"
+                      cachedName="ClvP"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ClvP]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ClvP]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[FeCompens]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FeCompens"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[FeCompens]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FeCompens]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[MCn]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="MCn"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[MCn]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[MCn]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[FeContComp]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FeContComp"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[FeContComp]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FeContComp]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Mc]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Mc"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Mc]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Mc]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[CD]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CD"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CD]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CD]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Referencia]"
+                      cachedDataType="r8"
+                      cachedName="Referencia"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Referencia]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Referencia]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[ClOb]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ClOb"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ClOb]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ClOb]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Posición presupuestaria]"
+                      cachedDataType="r8"
+                      cachedName="Posición presupuestaria"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Posición presupuestaria]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Posición presupuestaria]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Centro gestor]"
+                      cachedDataType="r8"
+                      cachedName="Centro gestor"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Centro gestor]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Centro gestor]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[CeBe]"
+                      cachedDataType="r8"
+                      cachedName="CeBe"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CeBe]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CeBe]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Orden]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Orden"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Orden]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Orden]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[ Pos]"
+                      cachedDataType="r8"
+                      cachedName=" Pos"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Pos]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ Pos]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Soc#]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Soc#"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Soc]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Soc#]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Div#]"
+                      cachedDataType="r8"
+                      cachedName="Div#"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Div]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Div#]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Int#cial#]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Int#cial#"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Rut]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Int#cial#]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Cta#contrato]"
+                      cachedDataType="r8"
+                      cachedName="Cta#contrato"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Ctacontrato]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cta#contrato]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Cta#mayor]"
+                      cachedDataType="r8"
+                      cachedName="Cta#mayor"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Ctamayor]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cta#mayor]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Cta# Mayor Comp]"
+                      cachedDataType="r8"
+                      cachedName="Cta# Mayor Comp"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CtaMayorComp]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cta# Mayor Comp]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Fecha doc#]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fecha doc#"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Fecha doc]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha doc#]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Fe#contab#]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fe#contab#"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Fecontab]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fe#contab#]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Mon#]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Mon#"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Mon]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Mon#]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Venc#DPP]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Venc#DPP"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[VencDPP]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Venc#DPP]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Impte#moneda local]"
+                      cachedDataType="r8"
+                      cachedName="Impte#moneda local"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Imptemoneda local]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Impte#moneda local]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Doc#compens#]"
+                      cachedDataType="r8"
+                      cachedName="Doc#compens#"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Doccompens]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Doc#compens#]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Clv#recon#]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Clv#recon#"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Clvrecon]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Clv#recon#]" />
+                    <inputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].Columns[Clave Recon# Comp#]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Clave Recon# Comp#"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ClaveReconComp]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Clave Recon# Comp#]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Nº documento]"
+                      dataType="r8"
+                      name="Nº documento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Pos]"
+                      dataType="r8"
+                      name="Pos" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Soc]"
+                      dataType="wstr"
+                      length="255"
+                      name="Soc" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Div]"
+                      dataType="r8"
+                      name="Div" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Rut]"
+                      dataType="wstr"
+                      length="50"
+                      name="Rut" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Sostenedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sostenedor" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[StatCompen]"
+                      dataType="wstr"
+                      length="255"
+                      name="StatCompen" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Ctacontrato]"
+                      dataType="r8"
+                      name="Ctacontrato" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Ctamayor]"
+                      dataType="r8"
+                      name="Ctamayor" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CtaMayorComp]"
+                      dataType="r8"
+                      name="CtaMayorComp" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Fecha doc]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fecha doc" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Fecontab]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fecontab" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Mon]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mon" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Venc-neto]"
+                      dataType="dbTimeStamp"
+                      name="Venc-neto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[VencDPP]"
+                      dataType="wstr"
+                      length="255"
+                      name="VencDPP" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Texto]"
+                      dataType="wstr"
+                      length="255"
+                      name="Texto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ClvP]"
+                      dataType="r8"
+                      name="ClvP" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Imptemoneda local]"
+                      dataType="r8"
+                      name="Imptemoneda local" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[FeCompens]"
+                      dataType="wstr"
+                      length="255"
+                      name="FeCompens" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Doccompens]"
+                      dataType="r8"
+                      name="Doccompens" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[MCn]"
+                      dataType="wstr"
+                      length="255"
+                      name="MCn" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[FeContComp]"
+                      dataType="wstr"
+                      length="255"
+                      name="FeContComp" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Mc]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mc" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CD]"
+                      dataType="wstr"
+                      length="255"
+                      name="CD" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Referencia]"
+                      dataType="r8"
+                      name="Referencia" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ClOb]"
+                      dataType="wstr"
+                      length="255"
+                      name="ClOb" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Posición presupuestaria]"
+                      dataType="r8"
+                      name="Posición presupuestaria" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Centro gestor]"
+                      dataType="r8"
+                      name="Centro gestor" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[CeBe]"
+                      dataType="r8"
+                      name="CeBe" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Orden]"
+                      dataType="wstr"
+                      length="255"
+                      name="Orden" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[Clvrecon]"
+                      dataType="wstr"
+                      length="255"
+                      name="Clvrecon" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET].ExternalColumns[ClaveReconComp]"
+                      dataType="wstr"
+                      length="255"
+                      name="ClaveReconComp" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Tabla Moroso\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de ADO NET"
+                  synchronousInputId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Tabla Moroso\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Tabla Moroso\Destino de ADO NET.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Tabla Moroso\Origen de Excel"
+              componentClassID="DTSAdapter.ExcelSource.3"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="Origen de Excel"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">'total mora$'</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Tabla Moroso\Origen de Excel.Connections[OleDbConnection]"
+                  connectionManagerID="{5A9663DF-1A40-4AE2-8510-E84C227D489E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Morosos_Old]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Nº documento]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Nº documento]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Nº documento]"
+                      name="Nº documento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ Pos]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ Pos]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ Pos]"
+                      name=" Pos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Soc#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Soc#]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Soc#]"
+                      name="Soc#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Div#]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Div#]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Div#]"
+                      name="Div#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Int#cial#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Int#cial#]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Int#cial#]"
+                      name="Int#cial#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Sostenedor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Sostenedor]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Sostenedor]"
+                      name="Sostenedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[StatCompen]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[StatCompen]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[StatCompen]"
+                      name="StatCompen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cta#contrato]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Cta#contrato]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cta#contrato]"
+                      name="Cta#contrato"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cta#mayor]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Cta#mayor]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cta#mayor]"
+                      name="Cta#mayor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cta# Mayor Comp]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Cta# Mayor Comp]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Cta# Mayor Comp]"
+                      name="Cta# Mayor Comp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha doc#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Fecha doc#]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fecha doc#]"
+                      name="Fecha doc#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fe#contab#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Fe#contab#]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fe#contab#]"
+                      name="Fe#contab#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Mon#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Mon#]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Mon#]"
+                      name="Mon#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Venc-neto]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Venc-neto]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Venc-neto]"
+                      name="Venc-neto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Venc#DPP]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Venc#DPP]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Venc#DPP]"
+                      name="Venc#DPP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Texto]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Texto]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Texto]"
+                      name="Texto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ClvP]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ClvP]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ClvP]"
+                      name="ClvP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Impte#moneda local]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Impte#moneda local]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Impte#moneda local]"
+                      name="Impte#moneda local"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FeCompens]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[FeCompens]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FeCompens]"
+                      name="FeCompens"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Doc#compens#]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Doc#compens#]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Doc#compens#]"
+                      name="Doc#compens#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[MCn]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[MCn]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[MCn]"
+                      name="MCn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FeContComp]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[FeContComp]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[FeContComp]"
+                      name="FeContComp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Mc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Mc]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Mc]"
+                      name="Mc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CD]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CD]"
+                      name="CD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Referencia]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Referencia]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Referencia]"
+                      name="Referencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ClOb]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ClOb]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[ClOb]"
+                      name="ClOb"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Posición presupuestaria]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Posición presupuestaria]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Posición presupuestaria]"
+                      name="Posición presupuestaria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Centro gestor]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Centro gestor]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Centro gestor]"
+                      name="Centro gestor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CeBe]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CeBe]"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[CeBe]"
+                      name="CeBe"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Orden]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Orden]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Orden]"
+                      name="Orden"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Clv#recon#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Clv#recon#]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Clv#recon#]"
+                      name="Clv#recon#"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Clave Recon# Comp#]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Clave Recon# Comp#]"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Clave Recon# Comp#]"
+                      name="Clave Recon# Comp#"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Nº documento]"
+                      dataType="r8"
+                      name="Nº documento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ Pos]"
+                      dataType="r8"
+                      name=" Pos" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Soc#]"
+                      dataType="wstr"
+                      length="255"
+                      name="Soc#" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Div#]"
+                      dataType="r8"
+                      name="Div#" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Int#cial#]"
+                      dataType="wstr"
+                      length="255"
+                      name="Int#cial#" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Sostenedor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sostenedor" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[StatCompen]"
+                      dataType="wstr"
+                      length="255"
+                      name="StatCompen" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Cta#contrato]"
+                      dataType="r8"
+                      name="Cta#contrato" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Cta#mayor]"
+                      dataType="r8"
+                      name="Cta#mayor" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Cta# Mayor Comp]"
+                      dataType="r8"
+                      name="Cta# Mayor Comp" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Fecha doc#]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fecha doc#" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Fe#contab#]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fe#contab#" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Mon#]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mon#" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Venc-neto]"
+                      dataType="date"
+                      name="Venc-neto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Venc#DPP]"
+                      dataType="wstr"
+                      length="255"
+                      name="Venc#DPP" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Texto]"
+                      dataType="wstr"
+                      length="255"
+                      name="Texto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ClvP]"
+                      dataType="r8"
+                      name="ClvP" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Impte#moneda local]"
+                      dataType="r8"
+                      name="Impte#moneda local" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[FeCompens]"
+                      dataType="wstr"
+                      length="255"
+                      name="FeCompens" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Doc#compens#]"
+                      dataType="r8"
+                      name="Doc#compens#" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[MCn]"
+                      dataType="wstr"
+                      length="255"
+                      name="MCn" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[FeContComp]"
+                      dataType="wstr"
+                      length="255"
+                      name="FeContComp" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Mc]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mc" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CD]"
+                      dataType="wstr"
+                      length="255"
+                      name="CD" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Referencia]"
+                      dataType="r8"
+                      name="Referencia" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[ClOb]"
+                      dataType="wstr"
+                      length="255"
+                      name="ClOb" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Posición presupuestaria]"
+                      dataType="r8"
+                      name="Posición presupuestaria" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Centro gestor]"
+                      dataType="r8"
+                      name="Centro gestor" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[CeBe]"
+                      dataType="r8"
+                      name="CeBe" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Orden]"
+                      dataType="wstr"
+                      length="255"
+                      name="Orden" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Clv#recon#]"
+                      dataType="wstr"
+                      length="255"
+                      name="Clv#recon#" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Clave Recon# Comp#]"
+                      dataType="wstr"
+                      length="255"
+                      name="Clave Recon# Comp#" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Nº documento]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Nº documento]"
+                      name="Nº documento" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ Pos]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ Pos]"
+                      name=" Pos" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Soc#]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Soc#]"
+                      name="Soc#" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Div#]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Div#]"
+                      name="Div#" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Int#cial#]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Int#cial#]"
+                      name="Int#cial#" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Sostenedor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Sostenedor]"
+                      name="Sostenedor" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[StatCompen]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[StatCompen]"
+                      name="StatCompen" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Cta#contrato]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Cta#contrato]"
+                      name="Cta#contrato" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Cta#mayor]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Cta#mayor]"
+                      name="Cta#mayor" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Cta# Mayor Comp]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Cta# Mayor Comp]"
+                      name="Cta# Mayor Comp" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Fecha doc#]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Fecha doc#]"
+                      name="Fecha doc#" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Fe#contab#]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Fe#contab#]"
+                      name="Fe#contab#" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Mon#]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Mon#]"
+                      name="Mon#" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Venc-neto]"
+                      dataType="date"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Venc-neto]"
+                      name="Venc-neto" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Venc#DPP]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Venc#DPP]"
+                      name="Venc#DPP" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Texto]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Texto]"
+                      name="Texto" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ClvP]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ClvP]"
+                      name="ClvP" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Impte#moneda local]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Impte#moneda local]"
+                      name="Impte#moneda local" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[FeCompens]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[FeCompens]"
+                      name="FeCompens" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Doc#compens#]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Doc#compens#]"
+                      name="Doc#compens#" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[MCn]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[MCn]"
+                      name="MCn" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[FeContComp]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[FeContComp]"
+                      name="FeContComp" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Mc]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Mc]"
+                      name="Mc" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CD]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CD]"
+                      name="CD" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Referencia]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Referencia]"
+                      name="Referencia" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ClOb]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ClOb]"
+                      name="ClOb" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Posición presupuestaria]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Posición presupuestaria]"
+                      name="Posición presupuestaria" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Centro gestor]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Centro gestor]"
+                      name="Centro gestor" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CeBe]"
+                      dataType="r8"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[CeBe]"
+                      name="CeBe" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Orden]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Orden]"
+                      name="Orden" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Clv#recon#]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Clv#recon#]"
+                      name="Clv#recon#" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Clave Recon# Comp#]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Clave Recon# Comp#]"
+                      name="Clave Recon# Comp#" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga Tabla Moroso.Paths[Salida de origen de Excel]"
+              endId="Package\Carga Tabla Moroso\Destino de ADO NET.Inputs[Entrada de destino de ADO NET]"
+              name="Salida de origen de Excel"
+              startId="Package\Carga Tabla Moroso\Origen de Excel.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{FFFBBD72-94E9-4235-BB7A-7E3A652213A6}"
+      DTS:From="Package\Borra Tabla Morosos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Carga Tabla Moroso" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Borra Tabla Morosos"
+          TopLeft="198,49" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Carga Tabla Moroso"
+          TopLeft="195.5,170.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="284,91">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,79.5"
+              Start="0,0"
+              End="0,72">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga Tabla Moroso">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Carga Tabla Moroso\Destino de ADO NET"
+          TopLeft="203,198" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Carga Tabla Moroso\Origen de Excel"
+          TopLeft="189,53" />
+        <EdgeLayout
+          Id="Package\Carga Tabla Moroso.Paths[Salida de origen de Excel]"
+          TopLeft="265.5,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.5,103"
+              Start="0,0"
+              End="25.5,95.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.5"
+                    Point2="0,51.5"
+                    Point3="4,51.5" />
+                  <mssgle:LineSegment
+                    End="21.5,51.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.5,51.5"
+                    Point2="25.5,51.5"
+                    Point3="25.5,55.5" />
+                  <mssgle:LineSegment
+                    End="25.5,95.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Tabla Moroso\Destino de ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Tabla Moroso\Origen de Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

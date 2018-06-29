@@ -13,15 +13,17 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
             if (!IsPostBack)
             {
-                string[] info = (string[])Session["Info Alumnos"];
-                this.lblRut.Text = info[0];
-                this.lblNombre.Text = info[1];
-                this.lblCarrera.Text = info[2];
-                this.lblEscuela.Text = info[3];
-                this.lblSede.Text = info[4];
+                //string[] info = (string[])Session["Info Alumnos"];
+                //this.lblRut.Text = info[0];
+                //this.lblNombre.Text = info[1];
+                //this.lblCarrera.Text = info[2];
+                //this.lblEscuela.Text = info[3];
+                //this.lblSede.Text = info[4];
                 //new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out System.Data.DataSet notas,
-                    //out System.Data.DataSet asistencias, out System.Data.DataSet morosos);               
-
+                //out System.Data.DataSet asistencias, out System.Data.DataSet morosos);               
+                string[] info_notas = (string[])Session["Info Notas"];
+                grvDetalleNotas.DataSource = new Negocio.NegocioFichaAlumno().consultaDetNotas(info_notas[1], info_notas[0]);
+                grvDetalleNotas.DataBind();
             }
         }
     }

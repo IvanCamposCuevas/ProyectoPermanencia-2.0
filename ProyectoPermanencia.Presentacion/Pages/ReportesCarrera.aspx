@@ -24,6 +24,50 @@
             </div>
             <div class="col-md-8 jumbotron modal-content" style="border: solid; margin: 10px; padding-right: 0px" />
 
+            <asp:Chart ID="Chart2" runat="server" DataSourceID="SqlDataSource2" Width="387px" Height="270px">
+                    <Series>
+                        <asp:Series ChartType="StackedColumn" Color="0, 192, 0" Legend="Legend1" Name="Bajo" XValueMember="Desc_Carrera" YValueMembers="Bajo" ChartArea="ChartArea1">
+                        </asp:Series>
+                        <asp:Series ChartArea="ChartArea1" Color="Yellow" Legend="Legend1" Name="Medio" ChartType="StackedColumn">
+                        </asp:Series>
+                        <asp:Series ChartArea="ChartArea1" Color="Red" Legend="Legend1" Name="Alto" ChartType="StackedColumn">
+                        </asp:Series>
+                    </Series>
+                    <ChartAreas>
+                        <asp:ChartArea Name="ChartArea1">
+                            <AxisY Title="Porcentaje ">
+                            </AxisY>
+                            <AxisX Title="Carreras">
+                            </AxisX>
+                        </asp:ChartArea>
+                    </ChartAreas>
+                    <Legends>
+                        <asp:Legend Name="Legend1">
+                        </asp:Legend>
+                    </Legends>
+                    <Titles>
+                        <asp:Title Name="Title1" Text="Reporte Carreras">
+                        </asp:Title>
+                    </Titles>
+                </asp:Chart>
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT (SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&lt;=0.4) Bajo, 
+(SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;=0.41 AND Score&lt;0.7) Medio, 
+(SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;0.7) Alto,
+c.Desc_Carrera
+FROM 
+Permanencia_2.dbo.Score_Alumnos s, 
+Permanencia_2.dbo.LK_Alumno a , 
+Permanencia_2.dbo.LK_Carrera c,
+Permanencia_2.dbo.LK_Escuela e 
+WHERE 
+s.Id_Alumno = a.Id_Alumno 
+AND 
+a.Id_Carrera = c.Id_Carrera 
+AND 
+c.Id_Escuela = e.Id_Escuela
+GROUP BY
+c.Desc_Carrera;"></asp:SqlDataSource>
+
         </div>
 
     </div>

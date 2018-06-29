@@ -1,0 +1,947 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/27/2017 1:16:08 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="AGC_W8"
+  DTS:CreatorName="AGC_W8\Arturo"
+  DTS:DTSID="{EF10C78B-CDAF-495A-ACD0-C0BDADC6B7CC}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="STG_CargaAsistencia"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{47C9E776-2E7A-497C-A0CC-E90DE8A906FD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Borra Tabla AsistenciaSTG"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Borra AsistenciaSTG"
+      DTS:DTSID="{7FB4E171-38CD-48D9-8968-35ED2395D3B6}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Borra Tabla AsistenciaSTG"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{ABE3BB7B-3727-4206-8217-22EE2832F292}"
+          SQLTask:SqlStatementSource="Truncate Table AsistenciaSTG" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga Asistencia"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{C815D690-236A-4541-A289-91ED1B385790}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga Asistencia"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga Asistencia\Asistencia"
+              componentClassID="DTSAdapter.ExcelSource.3"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="Asistencia"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">'Tasas de Asist# AlumnoEvento ($'</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Asistencia\Asistencia.Connections[OleDbConnection]"
+                  connectionManagerID="{F31372F8-66AB-4F98-878C-F0A03C92CF25}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Asistencia]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Asistencia]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Asistencia]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Asistencia]"
+                      name="Asistencia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Sede]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Sede]"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Sede]"
+                      name="Sede"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[CarreraGenérica]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[CarreraGenérica]"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[CarreraGenérica]"
+                      name="CarreraGenérica"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Carrera del Alumno]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Carrera del Alumno]"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Carrera del Alumno]"
+                      name="Carrera del Alumno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[IDEvento]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[IDEvento]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[IDEvento]"
+                      name="IDEvento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Evento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Evento]"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Evento]"
+                      name="Evento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[DescEvento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[DescEvento]"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[DescEvento]"
+                      name="DescEvento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Jornada]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Jornada]"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Jornada]"
+                      name="Jornada"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[ID Docente]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[ID Docente]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[ID Docente]"
+                      name="ID Docente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Rut Docente]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Rut Docente]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Rut Docente]"
+                      name="Rut Docente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Profesor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Profesor]"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Profesor]"
+                      name="Profesor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Id Alumno]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Id Alumno]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Id Alumno]"
+                      name="Id Alumno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Rut Alumno]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Rut Alumno]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Rut Alumno]"
+                      name="Rut Alumno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Alumno]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Alumno]"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Alumno]"
+                      name="Alumno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Asistencia Posible]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[# Asistencia Posible]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Asistencia Posible]"
+                      name="Asistencia Posible"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Clases]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[# Clases]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Clases]"
+                      name="Clases"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Por_Asistencia Real]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[% Asistencia Real]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Por_Asistencia Real]"
+                      name="Por_Asistencia Real"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Por_Asistenencia Reg]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[% Asistenencia Reg#]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Por_Asistenencia Reg]"
+                      name="Por_Asistenencia Reg"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Asistencia]"
+                      dataType="r8"
+                      name="Asistencia" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Sede]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sede" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[CarreraGenérica]"
+                      dataType="wstr"
+                      length="255"
+                      name="CarreraGenérica" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Carrera del Alumno]"
+                      dataType="wstr"
+                      length="255"
+                      name="Carrera del Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[IDEvento]"
+                      dataType="r8"
+                      name="IDEvento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Evento]"
+                      dataType="wstr"
+                      length="255"
+                      name="Evento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[DescEvento]"
+                      dataType="wstr"
+                      length="255"
+                      name="DescEvento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Jornada]"
+                      dataType="wstr"
+                      length="255"
+                      name="Jornada" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[ID Docente]"
+                      dataType="r8"
+                      name="ID Docente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Rut Docente]"
+                      dataType="r8"
+                      name="Rut Docente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Profesor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Profesor" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Id Alumno]"
+                      dataType="r8"
+                      name="Id Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Rut Alumno]"
+                      dataType="r8"
+                      name="Rut Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[Alumno]"
+                      dataType="wstr"
+                      length="255"
+                      name="Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[# Asistencia Posible]"
+                      dataType="r8"
+                      name="# Asistencia Posible" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[# Clases]"
+                      dataType="r8"
+                      name="# Clases" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[% Asistencia Real]"
+                      dataType="r8"
+                      name="% Asistencia Real" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].ExternalColumns[% Asistenencia Reg#]"
+                      dataType="r8"
+                      name="% Asistenencia Reg#" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Sede]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Sede]"
+                      name="Sede" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[CarreraGenérica]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[CarreraGenérica]"
+                      name="CarreraGenérica" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Carrera del Alumno]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Carrera del Alumno]"
+                      name="Carrera del Alumno" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[IDEvento]"
+                      dataType="r8"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[IDEvento]"
+                      name="IDEvento" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Evento]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Evento]"
+                      name="Evento" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[DescEvento]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[DescEvento]"
+                      name="DescEvento" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Jornada]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Jornada]"
+                      name="Jornada" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[ID Docente]"
+                      dataType="r8"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[ID Docente]"
+                      name="ID Docente" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Rut Docente]"
+                      dataType="r8"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Rut Docente]"
+                      name="Rut Docente" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Profesor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Profesor]"
+                      name="Profesor" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Id Alumno]"
+                      dataType="r8"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Id Alumno]"
+                      name="Id Alumno" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Rut Alumno]"
+                      dataType="r8"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Rut Alumno]"
+                      name="Rut Alumno" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Alumno]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Alumno]"
+                      name="Alumno" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Asistencia]"
+                      dataType="r8"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[Asistencia]"
+                      name="Asistencia" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[# Asistencia Posible]"
+                      dataType="r8"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[# Asistencia Posible]"
+                      name="# Asistencia Posible" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[# Clases]"
+                      dataType="r8"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[# Clases]"
+                      name="# Clases" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[% Asistencia Real]"
+                      dataType="r8"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[% Asistencia Real]"
+                      name="% Asistencia Real" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[% Asistenencia Reg#]"
+                      dataType="r8"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[% Asistenencia Reg#]"
+                      name="% Asistenencia Reg#" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Asistencia\OLE DB Destination"
+              componentClassID="DTSAdapter.OLEDBDestination.3"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AsistenciaSTG]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Asistencia\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{ABE3BB7B-3727-4206-8217-22EE2832F292}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Permanencia32]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Asistencia]"
+                      cachedDataType="r8"
+                      cachedName="Asistencia"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asistencia]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Asistencia]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sede]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sede"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sede]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Sede]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CarreraGenérica]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CarreraGenérica"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CarreraGenérica]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[CarreraGenérica]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Carrera del Alumno]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Carrera del Alumno"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Carrera del Alumno]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Carrera del Alumno]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IDEvento]"
+                      cachedDataType="r8"
+                      cachedName="IDEvento"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IDEvento]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[IDEvento]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Evento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Evento"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Evento]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Evento]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DescEvento]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DescEvento"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DescEvento]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[DescEvento]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Jornada]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Jornada"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Jornada]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Jornada]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID Docente]"
+                      cachedDataType="r8"
+                      cachedName="ID Docente"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID Docente]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[ID Docente]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Rut Docente]"
+                      cachedDataType="r8"
+                      cachedName="Rut Docente"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rut Docente]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Rut Docente]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Profesor]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Profesor"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Profesor]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Profesor]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Id Alumno]"
+                      cachedDataType="r8"
+                      cachedName="Id Alumno"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id Alumno]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Id Alumno]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Rut Alumno]"
+                      cachedDataType="r8"
+                      cachedName="Rut Alumno"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rut Alumno]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Rut Alumno]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Alumno]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Alumno"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Alumno]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Alumno]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Asistencia Posible]"
+                      cachedDataType="r8"
+                      cachedName="Asistencia Posible"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asistencia Posible]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Asistencia Posible]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Clases]"
+                      cachedDataType="r8"
+                      cachedName="Clases"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clases]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Clases]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Por_Asistencia Real]"
+                      cachedDataType="r8"
+                      cachedName="Por_Asistencia Real"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Por_Asistencia Real]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Por_Asistencia Real]" />
+                    <inputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Por_Asistenencia Reg]"
+                      cachedDataType="r8"
+                      cachedName="Por_Asistenencia Reg"
+                      externalMetadataColumnId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Por_Asistenencia Reg]"
+                      lineageId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel].Columns[Por_Asistenencia Reg]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asistencia]"
+                      dataType="r8"
+                      name="Asistencia" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sede]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sede" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CarreraGenérica]"
+                      dataType="wstr"
+                      length="255"
+                      name="CarreraGenérica" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Carrera del Alumno]"
+                      dataType="wstr"
+                      length="255"
+                      name="Carrera del Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IDEvento]"
+                      dataType="r8"
+                      name="IDEvento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Evento]"
+                      dataType="wstr"
+                      length="255"
+                      name="Evento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DescEvento]"
+                      dataType="wstr"
+                      length="255"
+                      name="DescEvento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Jornada]"
+                      dataType="wstr"
+                      length="255"
+                      name="Jornada" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID Docente]"
+                      dataType="r8"
+                      name="ID Docente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rut Docente]"
+                      dataType="r8"
+                      name="Rut Docente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Profesor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Profesor" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id Alumno]"
+                      dataType="r8"
+                      name="Id Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rut Alumno]"
+                      dataType="r8"
+                      name="Rut Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Alumno]"
+                      dataType="wstr"
+                      length="255"
+                      name="Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asistencia Posible]"
+                      dataType="r8"
+                      name="Asistencia Posible" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clases]"
+                      dataType="r8"
+                      name="Clases" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Por_Asistencia Real]"
+                      dataType="r8"
+                      name="Por_Asistencia Real" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Por_Asistenencia Reg]"
+                      dataType="r8"
+                      name="Por_Asistenencia Reg" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nombre Alumno]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nombre Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Apellido Alumno]"
+                      dataType="wstr"
+                      length="255"
+                      name="Apellido Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Carrera]"
+                      dataType="wstr"
+                      length="255"
+                      name="Carrera" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Asignatura]"
+                      dataType="wstr"
+                      length="255"
+                      name="Asignatura" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nombre Asignatura]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nombre Asignatura" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Asistencia\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Asistencia\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Asistencia\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Asistencia\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga Asistencia.Paths[Salida de origen de Excel]"
+              endId="Package\Carga Asistencia\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Salida de origen de Excel"
+              startId="Package\Carga Asistencia\Asistencia.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{DBC95079-4424-4A45-A603-D2AEB8ECF943}"
+      DTS:From="Package\Borra Tabla AsistenciaSTG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Carga Asistencia" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Borra Tabla AsistenciaSTG"
+          TopLeft="219,80" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Carga Asistencia"
+          TopLeft="232,208" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="320.5,122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.5,86"
+              Start="0,0"
+              End="-10.5,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="-4,43" />
+                  <mssgle:LineSegment
+                    End="-6.5,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.5,43"
+                    Point2="-10.5,43"
+                    Point3="-10.5,47" />
+                  <mssgle:LineSegment
+                    End="-10.5,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga Asistencia">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Carga Asistencia\Asistencia"
+          TopLeft="206,70" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Carga Asistencia\OLE DB Destination"
+          TopLeft="186,247" />
+        <EdgeLayout
+          Id="Package\Carga Asistencia.Paths[Salida de origen de Excel]"
+          TopLeft="270,112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,135"
+              Start="0,0"
+              End="0,127.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Asistencia\Asistencia">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Asistencia\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

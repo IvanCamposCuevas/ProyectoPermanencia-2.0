@@ -28,10 +28,21 @@ namespace ProyectoPermanencia.Presentacion
 
         protected void grvGlobal_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /*
+             *  row.Cells[1] = Rut
+             *  row.Cells[2] = Nombre alumno
+             *  row.Cells[3] = Nombre carrera
+             *  row.Cells[4] = Telefono
+             *  row.Cells[5] = Correo Institucional
+             *  row.Cells[6] = Correo Particular
+             *  row.Cells[7] = Nombre escuela
+             *  row.Cells[8] = Nombre sede
+             *  row.Cells[9] = Jornada
+             *  row.Cells[10] = Score**/
             GridViewRow row = this.grvGlobal.SelectedRow;
             string[] info_alumnos = new string[] { row.Cells[1].Text,
-                row.Cells[2].Text, row.Cells[3].Text, row.Cells[6].Text,
-                row.Cells[7].Text, row.Cells[4].Text, row.Cells[5].Text };
+                row.Cells[2].Text, row.Cells[3].Text, row.Cells[7].Text,
+                row.Cells[8].Text, row.Cells[4].Text, row.Cells[5].Text };
             Session["Info Alumnos"] = info_alumnos;
             Response.Redirect("FichaAlumno.aspx");
 
@@ -58,7 +69,7 @@ namespace ProyectoPermanencia.Presentacion
             try
             {
                 Negocio.Negocio auxNegocio = new Negocio.Negocio();
-                this.grvGlobal.DataSource = auxNegocio.consultaScore(this.txtRutNombre.Text, this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
+                this.grvGlobal.DataSource = auxNegocio.consultaScore(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
                 this.grvGlobal.DataBind();
             }
             catch (Exception ex)

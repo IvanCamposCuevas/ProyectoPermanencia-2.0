@@ -38,8 +38,8 @@
                     </asp:ContentPlaceHolder>
                 </div>
                 <ul class="nav navbar-nav" style="float: right">
-                    <li class="active"><a href="#" style="font-weight:500">Home</a></li>
-                    <li><a href="/Pages/VisionGlobal.aspx">Vision Global</a></li>
+                    <li class="active"><a href="#" style="font-weight:500">Inició</a></li>
+                    <li><a href="/Pages/VisionGlobal.aspx">Visión Global</a></li>
                     <li><a href="/Pages/Reportes.aspx">Reportes</a></li>
                     <li><a href="/Pages/CargarArchivos.aspx">Cargar</a></li>
 

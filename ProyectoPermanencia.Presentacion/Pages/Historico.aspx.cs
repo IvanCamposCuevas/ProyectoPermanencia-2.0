@@ -22,7 +22,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 //new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out System.Data.DataSet notas,
                 //out System.Data.DataSet asistencias, out System.Data.DataSet morosos);               
                 string[] info_notas = (string[])Session["Info Notas"];
-                grvDetalleNotas.DataSource = new Negocio.NegocioFichaAlumno().consultaDetNotas(info_notas[1], info_notas[0]);
+                grvDetalleNotas.DataSource = new Negocio.NegocioFichaAlumno().consultaDetNotas(info_notas[1]);
                 grvDetalleNotas.DataBind();
             }
         }

@@ -46,6 +46,10 @@
                         <asp:Label runat="server" Font-Bold="true">Carrera:</asp:Label>
                         <asp:Label runat="server" ID="lblCarrera"></asp:Label>
                         <br />
+                        <asp:Label runat="server" Font-Bold="true">Jornada:</asp:Label>
+                        <asp:Label runat="server" ID="lblJornada"></asp:Label>
+                        <br />
+
                         <asp:Label runat="server" Font-Bold="true">Escuela:</asp:Label>
                         <asp:Label runat="server" ID="lblEscuela"></asp:Label>
                         <br />
@@ -62,7 +66,7 @@
                         <asp:Label runat="server" ID="lblTelefono"></asp:Label>
                         <br />
                         <asp:Label runat="server" Font-Bold="true">Mail:</asp:Label>
-                        <asp:Label runat="server" ID="lblMail"></asp:Label>
+                        <asp:Label runat="server" ID="lblMail"> username@alumnos.duoc.cl</asp:Label>
                         <br />
                         <br />
                     </div>

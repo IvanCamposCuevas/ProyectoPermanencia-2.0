@@ -33,12 +33,12 @@
         </header>
         <nav class="navbar navbar-inverse" style="background-color: rgb(1,22,43);">
             <div class="container-fluid">
-                <div class="navbar-header" >
-                    <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderTitle"  >
+                <div class="navbar-header">
+                    <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderTitle">
                     </asp:ContentPlaceHolder>
                 </div>
                 <ul class="nav navbar-nav" style="float: right">
-                    <li class="active"><a href="#" style="font-weight:500">Home</a></li>
+                    <li class="active"><a href="#" style="font-weight: 500">Home</a></li>
                     <li><a href="/Pages/VisionGlobal.aspx">Vision Global</a></li>
                     <li><a href="/Pages/Reportes.aspx">Reportes</a></li>
                     <li><a href="/Pages/CargarArchivos.aspx">Cargar</a></li>
@@ -91,8 +91,8 @@
         </div>
         <footer style="position: static; margin-bottom: 0px" class="footer" id="footer">
             <br />
-            
-<!--            <p style="color: white"> &copy Copyright</p> -->
+
+            <!--            <p style="color: white"> &copy Copyright</p> -->
         </footer>
     </form>
 </body>

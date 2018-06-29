@@ -254,7 +254,6 @@ namespace ProyectoPermanencia.Negocio
             datosDetalleNotas = consultaDetNotas(rut);
             datosAsistencia = consultaAsistencia(rut);
             datosMorosos = consultaSituacionFinanciera(rut);
-
         }
     }
 }

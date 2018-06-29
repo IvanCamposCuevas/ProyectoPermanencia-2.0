@@ -66,7 +66,7 @@
                                 <h4>Escuela: </h4>
                                 <asp:DropDownList ID="ddlEscuelas" runat="server" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela" OnSelectedIndexChanged="ddlEscuelas_SelectedIndexChanged" AutoPostBack="True">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString3 %>" SelectCommand="SELECT DISTINCT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT DISTINCT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]"></asp:SqlDataSource>
                             </div>
                         </div>
 
@@ -91,7 +91,7 @@
                 <div class="row" style="margin: 0px">
                     <div id="ScoreGlobal" class="ScoreGlobal">
                         <asp:GridView ID="grvGlobal" CssClass="col-md-12 table table-bordered bs-table table-hover table-condensed table-responsive" 
-                            Font-Size="12px" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="1200px">
+                            Font-Size="12px" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="1200px" OnRowDataBound="grvGlobal_RowDataBound">
                             <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" ItemStyle-Width="200px" ItemStyle-Wrap="true" ButtonType="Button" ControlStyle-CssClass="btn btn-info btn-sm" SelectText="Ver detalle">

@@ -52,8 +52,8 @@ namespace ProyectoPermanencia.Presentacion
         {
             if (txtRutNombre.Text != "")
             {
-                Negocio.Negocio auxNegocio = new Negocio.Negocio();
-                this.grvGlobal.DataSource = auxNegocio.consultaScorePorRut(this.txtRutNombre.Text, ddlRutNom.SelectedValue);
+                Negocio.NegocioPaginaGlobal auxNegocio = new Negocio.NegocioPaginaGlobal();
+                this.grvGlobal.DataSource = auxNegocio.consultaScorePorRutNombre(this.txtRutNombre.Text, ddlRutNom.SelectedValue);
                 this.grvGlobal.DataBind();
             }
             else
@@ -68,8 +68,8 @@ namespace ProyectoPermanencia.Presentacion
         {
             try
             {
-                Negocio.Negocio auxNegocio = new Negocio.Negocio();
-                this.grvGlobal.DataSource = auxNegocio.consultaScore(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
+                Negocio.NegocioPaginaGlobal auxNegocio = new Negocio.NegocioPaginaGlobal();
+                this.grvGlobal.DataSource = auxNegocio.consultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
                 this.grvGlobal.DataBind();
             }
             catch (Exception ex)
@@ -80,11 +80,21 @@ namespace ProyectoPermanencia.Presentacion
 
         protected void ddlEscuelas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlCarrera.DataSource = new Negocio.Negocio().cargarListaCarrera(ddlEscuelas.SelectedValue);
+            ddlCarrera.DataSource = new Negocio.NegocioPaginaGlobal().cargarListaCarrera(ddlEscuelas.SelectedValue);
             ddlCarrera.DataBind();
             if (ddlCarrera.Items.Count == 0)
             {
                 ddlCarrera.Items.Add(new ListItem("--Datos Vacios--", ""));
+            }
+        }
+
+        protected void grvGlobal_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.Cells.Count > 1)
+            {
+                e.Row.Cells[4].Visible = false; //Ocultar fila "Telefono"
+                e.Row.Cells[5].Visible = false; //Ocultar fila "Correo Institucional"
+                e.Row.Cells[6].Visible = false; //Ocultar fila "Correo Privado"
             }
         }
     }

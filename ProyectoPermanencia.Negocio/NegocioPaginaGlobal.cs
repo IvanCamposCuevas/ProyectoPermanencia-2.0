@@ -16,16 +16,19 @@ namespace ProyectoPermanencia.Negocio
     /// Clase que servira para consultar y devolver los datos pedidos por la pagina VisionGlobal.aspx,
     /// esta traera todo los alumnos de la base de datos, previo filtro, y los llenara en una grilla.
     /// </summary>
-    public class Negocio
+    public class NegocioPaginaGlobal
     {       
             /// <summary>
             /// Este metodo servira para consultar a todos los Alumnos de la base de datos, previo filtro, con
-            /// los scores sacados de sus Notas, Asistencia y Pagos.
+            /// sus scores generales.
             /// </summary>
             /// <param name="rut"></param>
             /// <param name="jornada"></param>
+            /// <param name="sede"></param>
+            /// <param name="carrera"></param>
+            /// <param name="escuela"></param>
             /// <returns></returns>
-            public DataSet consultaScore(String sede, String jornada, String escuela, String carrera)
+            public DataSet consultaScorePorFiltro(String sede, String jornada, String escuela, String carrera)
             {
                 NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
                 con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
@@ -83,8 +86,15 @@ namespace ProyectoPermanencia.Negocio
                 return con.Conec1.DbDat; //Se retornan los datos en un DataSet.
             } // Fin metodo entrega
 
-
-        public DataSet consultaScorePorRut(String rn, String valorTipo)
+        /// <summary>
+        /// Metodo que sirva para buscar a un Alumno en especifico de la base de datos, 
+        /// ya sea tanto por el nombre o el rut, y con sus scores generales. (El resultado final
+        /// es el mismo que del metodo consultaScore.
+        /// </summary>
+        /// <param name="rn"></param>
+        /// <param name="valorTipo"></param>
+        /// <returns></returns>
+        public DataSet consultaScorePorRutNombre(String rn, String valorTipo)
         {
             NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
             con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
@@ -107,7 +117,7 @@ namespace ProyectoPermanencia.Negocio
             {
                 auxSQL = auxSQL + " AND AL.Desc_Alumno COLLATE Latin1_General_CI_AI LIKE '%" + rn + "%' COLLATE Latin1_General_CI_AI;";
             }
-                        /*
+            /*
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente
             */
@@ -199,148 +209,6 @@ namespace ProyectoPermanencia.Negocio
         //    }
         //}
 
-        /*Carga de Archivos Excel a SQL*/
-        
-
-        private String obtenerNombreHoja(OleDbConnection conexionExcel)
-        {
-            DataTable dbSchema = conexionExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-            string nombreHoja = dbSchema.Rows[0]["TABLE_NAME"].ToString();
-            return nombreHoja;
-        }
-
-        public void agregarArchivoAsistencia(String nombreArchivo, String tipoArchivo, String path) {
-            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path+nombreArchivo);
-            using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
-            {
-                try
-                {
-                    conExcel.Open();
-                    OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
-                    using (DbDataReader dr = comando.ExecuteReader())
-                    {
-                        NegocioConexionBD con = new NegocioConexionBD();
-                        con.configuraConexion();
-                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
-                        {
-                            bulkCopy.DestinationTableName = "dbo.AsistenciaSTG";
-                            bulkCopy.WriteToServer(dr);
-                            System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
-                        }
-                    }
-                }
-                catch (OleDbException ex)
-                {
-
-                    throw new Exception("Error en el archivo Excel, Excepcion:", ex);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al cargar el archivo, Excepcion:", ex);
-                }
-            }
-        }
-
-        public void agregarArchivoDeuda(String nombreArchivo, String tipoArchivo, String path)
-        {
-            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
-            using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
-            {
-                try
-                {
-                    conExcel.Open();
-                    OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
-                    using (DbDataReader dr = comando.ExecuteReader())
-                    {
-                        NegocioConexionBD con = new NegocioConexionBD();
-                        con.configuraConexion();
-                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
-                        {
-                            bulkCopy.DestinationTableName = "dbo.Morosos_STG";
-                            bulkCopy.WriteToServer(dr);
-                            System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
-                        }
-                    }
-                }
-                catch (OleDbException ex)
-                {
-
-                    throw new Exception("Error en el archivo Excel, Excepcion:", ex);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al cargar el archivo, Excepcion:", ex);
-                }
-            }
-        }
-
-        public void agregarArchivoNotas(String nombreArchivo, String tipoArchivo, String path)
-        {
-            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=YES'", path + nombreArchivo);
-            using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
-            {
-                try
-                {
-                    conExcel.Open();
-                    OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
-                    using (DbDataReader dr = comando.ExecuteReader())
-                    {
-                        NegocioConexionBD con = new NegocioConexionBD();
-                        con.configuraConexion();
-                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
-                        {
-                            bulkCopy.DestinationTableName = "dbo.Curso_STG";
-                            bulkCopy.WriteToServer(dr);
-                            System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
-                        }
-                    }
-                }
-                catch (OleDbException ex)
-                {
-
-                    throw new Exception("Error en el archivo Excel, Excepcion:", ex);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al cargar el archivo, Excepcion:",ex);
-                }
-            }
-        }
-
-        public void agregarArchivoIndice(String nombreArchivo, String tipoArchivo, String path)
-        {
-            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
-            using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
-            {
-                try
-                {
-                    conExcel.Open();
-                    OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
-                    using (DbDataReader dr = comando.ExecuteReader())
-                    {
-                        NegocioConexionBD con = new NegocioConexionBD();
-                        con.configuraConexion();
-                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
-                        {
-                            bulkCopy.DestinationTableName = "dbo.Indice_STG";
-                            bulkCopy.WriteToServer(dr);
-                            System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
-                        }
-
-                    }
-                }
-                catch(OleDbException ex)
-                {
-
-                    throw new Exception("Error en el archivo Excel, Excepcion:", ex);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al cargar el archivo, Excepcion:", ex);
-                }
-            }
-            
-        }
 
         public DataSet cargarListaCarrera(string escuela)
         {

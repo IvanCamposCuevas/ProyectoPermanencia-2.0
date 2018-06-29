@@ -18,10 +18,10 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 this.lblNombre.Text = info[1];
                 this.lblCarrera.Text = info[2];
                 this.lblJornada.Text = info[3];
-                this.lblEscuela.Text = info[5];
+                this.lblEscuela.Text = info[3];
                 this.lblSede.Text = info[6];
-                //this.lblTelefono.Text = info[7];
-                //this.lblMail.Text = info[8];
+                this.lblTelefono.Text = info[5];
+                this.lblMail.Text = info[4];
                 System.Data.DataSet notas = new System.Data.DataSet();
                 System.Data.DataSet asistencias = new System.Data.DataSet();
                 System.Data.DataSet morosos = new System.Data.DataSet();

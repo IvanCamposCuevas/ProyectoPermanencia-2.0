@@ -25,7 +25,7 @@ namespace ProyectoPermanencia.Negocio
             /// <param name="rut"></param>
             /// <param name="jornada"></param>
             /// <returns></returns>
-            public DataSet consultaScore(String rut, String sede, String jornada, String escuela, String carrera)
+            public DataSet consultaScore(String sede, String jornada, String escuela, String carrera)
             {
                 NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
                 con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
@@ -44,8 +44,6 @@ namespace ProyectoPermanencia.Negocio
            //+ "AL.Desc_Rut_Alumno = IN.RUT";
 
                 //Aplicar Filtros
-                if (!String.IsNullOrEmpty(rut))
-                    auxSQL = auxSQL + " AND AL.Desc_Rut_Alumno = '" + rut + "'";
                 if (!String.IsNullOrEmpty(sede))
                     auxSQL = auxSQL + " AND AL.Id_Sede = '" + sede + "'";
                 if (!String.IsNullOrEmpty(jornada))
@@ -61,14 +59,14 @@ namespace ProyectoPermanencia.Negocio
             */
             con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
                                                + "AL.Desc_Alumno AS Nombre,"
-                                               //+ "IN.TELEFONO AS Telefono,"
-                                               //+ "IN.CELULAR AS Celular,"
-                                               //+ "IN.USERNAME AS Correo,"
                                                + "CA.Desc_Carrera AS Carrera,"
+                                               + "AL.Desc_Telefono_Alumno AS Telefono,"
+                                               + "AL.Desc_Correo_Inst AS 'Correo Institucional',"
+                                               + "AL.Desc_Correo_Part AS 'Correo Privado',"
                                                + "ES.Desc_Escuela AS Escuela,"
                                                + "SE.Desc_Sede AS Sede,"
                                                + "JO.Desc_Jornada AS Jornada,"
-                                               + "SC.Score AS Score "+ "\n"
+                                               + "SC.Score AS Score " + "\n"
 
                                                + " FROM "
                                                + "Permanencia_2.dbo.Score_Alumnos SC,"
@@ -76,11 +74,10 @@ namespace ProyectoPermanencia.Negocio
                                                + "Permanencia_2.dbo.LK_Carrera CA,"
                                                + "Permanencia_2.dbo.LK_Escuela ES,"
                                                + "Permanencia_2.dbo.LK_Sede SE,"
-                                               //+ "Permanencia_2.dbo.Indice_STG IN,"
-                                               + "Permanencia_2.dbo.LK_Jornada JO"+ "\n"
+                                               + "Permanencia_2.dbo.LK_Jornada JO" + "\n"
                                                + auxSQL;
 
-                con.Conec1.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
+            con.Conec1.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
                 con.Conec1.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
 
                 return con.Conec1.DbDat; //Se retornan los datos en un DataSet.
@@ -117,9 +114,10 @@ namespace ProyectoPermanencia.Negocio
             con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
                                                + "AL.Desc_Alumno AS Nombre,"
                                                + "CA.Desc_Carrera AS Carrera,"
-                                               + "AL.Telefono_Alumno AS Telefono,"
-                                               + "AL.Correo_Alumno AS Correo,"
-                                               + "ES.Desc_Escuela AS Escuela,"
+                                               + "AL.Desc_Telefono_Alumno AS Telefono,"
+                                               + "AL.Desc_Correo_Inst AS 'Correo Institucional',"
+                                               + "AL.Desc_Correo_Part AS 'Correo Privado',"
+                                               + "ES.Desc_Escuela AS Escuela," 
                                                + "SE.Desc_Sede AS Sede,"
                                                + "JO.Desc_Jornada AS Jornada,"
                                                + "SC.Score AS Score " + "\n"

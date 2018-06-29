@@ -17,25 +17,29 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 this.lblRut.Text = info[0];
                 this.lblNombre.Text = info[1];
                 this.lblCarrera.Text = info[2];
-                this.lblEscuela.Text = info[3];
-                this.lblSede.Text = info[4];
-                this.lblTelefono.Text = info[5];
-                this.lblMail.Text = info[6];
+                this.lblJornada.Text = info[3];
+                this.lblEscuela.Text = info[5];
+                this.lblSede.Text = info[6];
+                //this.lblTelefono.Text = info[7];
+                //this.lblMail.Text = info[8];
                 System.Data.DataSet notas = new System.Data.DataSet();
                 System.Data.DataSet asistencias = new System.Data.DataSet();
                 System.Data.DataSet morosos = new System.Data.DataSet();
                 System.Data.DataSet detalleNotas = new System.Data.DataSet();
-                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out notas,
+                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out notas, out detalleNotas,
                     out asistencias, out morosos);
                 grvAsistencia.DataSource = asistencias;
                 grvAsistencia.DataBind();
                 grvNotas.DataSource = notas;
                 grvNotas.DataBind();
-                //grvDetalleNotas.DataSource = detalleNotas;
-                //grvDetalleNotas.DataBind();
+                grvDetalleNotas.DataSource = detalleNotas;
+                grvDetalleNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
                 lblBeneficio.Text = morosos.Tables[0].Rows[0].ItemArray[3].ToString();
+                //string[] info_notas = (string[])Session["Info Notas"];
+                //grvDetalleNotas.DataSource = new Negocio.NegocioFichaAlumno().consultaDetNotas(info_notas[1], info_notas[0]);
+                //grvDetalleNotas.DataBind();
             }
         }
 

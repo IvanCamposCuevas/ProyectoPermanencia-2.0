@@ -12,8 +12,8 @@
   DTS:ObjectName="FT_Nota_Asistencia"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{464735F7-3549-4959-BF85-B6DFD73D6061}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{C5659331-92D2-4513-8684-41CFC3C4DD77}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -81,7 +81,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{ABE3BB7B-3727-4206-8217-22EE2832F292}"
+          SQLTask:Connection="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}"
           SQLTask:SqlStatementSource="SELECT    Top 1 [Id_Medición] as Medicion&#xA;FROM            LK_Medición&#xA;Order By [Id_Medición] Desc"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -102,7 +102,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{ABE3BB7B-3727-4206-8217-22EE2832F292}"
+          SQLTask:Connection="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}"
           SQLTask:SqlStatementSource="SELECT    Top 1 Id_Semestre as Semestre&#xA;FROM            LK_Semestre&#xA;Order By  Id_Semestre Desc"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding

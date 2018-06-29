@@ -57,7 +57,6 @@
                                     <asp:ListItem Value="D">Diurno</asp:ListItem>
                                     <asp:ListItem Value="V">Vespertino</asp:ListItem>
                                 </asp:DropDownList>
-
                             </div>
                         </div>
 
@@ -91,10 +90,11 @@
                 <h3>Scores</h3>
                 <div class="row" style="margin: 0px">
                     <div id="ScoreGlobal" class="ScoreGlobal">
-                        <asp:GridView ID="grvGlobal" CssClass="col-md-12 table table-bordered bs-table table-hover" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="1200px">
+                        <asp:GridView ID="grvGlobal" CssClass="col-md-12 table table-bordered bs-table table-hover table-condensed table-responsive" 
+                            Font-Size="12px" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="1200px">
                             <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                             <Columns>
-                                <asp:CommandField ShowSelectButton="True" ItemStyle-Width="200px" ItemStyle-Wrap="true" ButtonType="Button" SelectText="Ver detalle">
+                                <asp:CommandField ShowSelectButton="True" ItemStyle-Width="200px" ItemStyle-Wrap="true" ButtonType="Button" ControlStyle-CssClass="btn btn-info btn-sm" SelectText="Ver detalle">
                                     <ItemStyle Wrap="True" Width="100px"></ItemStyle>
                                 </asp:CommandField>
                             </Columns>

@@ -71,7 +71,7 @@
             <div class="Tabs col-md-6" style="float: left;">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#">Ficha</a></li>
-                    <li><a href="#" >Historico</a></li>
+                    <li><a href="#">Historico</a></li>
                 </ul>
                 <br>
             </div>
@@ -82,30 +82,68 @@
                 <div class="row" style="padding-left: 30px">
                     <div id="ScoreNotas" class="ScoreNotas">
                         <h3>Score notas por asignatura </h3>
-                        <asp:GridView ID="grvNotas" runat="server" BackColor="#EFF4F8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px" OnSelectedIndexChanged="grvNotas_SelectedIndexChanged">
-                            <Columns>
-                                <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Notas" ShowHeader="True" Text="Detalle"/>
-                            </Columns>
+                        <asp:GridView ID="grvNotas" runat="server" BackColor="#EFF4F8" ShowHeaderWhenEmpty="True" 
+                            EmptyDataText="No se encontraron registros" Width="800px" OnSelectedIndexChanged="grvNotas_SelectedIndexChanged" 
+                            CssClass="table table-bordered bs-table table-condensed table-responsive" Font-Size="12px" >
                             <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" />
                             <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                         </asp:GridView>
-                    </div>
-                </div>
+                        <!-- POP CLIENT SIDE -->
+                        <asp:Button ID="ClientButton" runat="server" Text="Ver Detalle" CssClass="btn btn-info" />
+                        <asp:Panel ID="ModalPanel" runat="server" BackColor="White" CssClass="modal-content container-fluid" Width="800px">
+                            <div class="row overflow:auto" style="padding-left: 30px">
+                                <div id="DetalleNotas" class="ScoreNotas">
+                                    <h3>Detalle de notas por asignatura </h3>
+                                    <asp:GridView ID="grvDetalleNotas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" 
+                                        EmptyDataText="No se encontraron registros" Width="800px"
+                                        CssClass="table table-bordered bs-table table-condensed table-responsive" Font-Size="12px">
+                                        <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" />
+                                        <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
+                                        
+                                    </asp:GridView>
+                                </div>
+                                <asp:Button ID="OKButton" CssClass="btn-primary" runat="server" Text="Close" />
+                            </div>
+                            <br />
+                            
+                        </asp:Panel>
+                        <ajaxToolkit:ModalPopupExtender ID="mpe" BehaviorID="mpeID" runat="server" TargetControlID="ClientButton"
+                            PopupControlID="ModalPanel" OkControlID="OKButton" />
+                        <asp:ScriptManager ID="asm" runat="server" />
+                        <!-- FIN POP CLIENT-->
+                        <!-- POP SERVER SIDE -->
+                        <!--<asp:Button ID="ServerButton" runat="server" Text="Ver Detalle (Server)" OnClick="ServerButton_Click" />-->
 
-                <div class="row" style="padding-left: 30px">
-                    <div id="DetalleNotas" class="ScoreNotas">
-                        <h3>Detalle de notas por asignatura </h3>
-                        <asp:GridView ID="grvDetalleNotas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
-                            <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" />
-                            <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
-                        </asp:GridView>
+                        <script runat="server">
+                            protected void ServerButton_Click(object sender, EventArgs e)
+                            {
+                                ClientScript.RegisterStartupScript(this.GetType(), "key", "launchModal();", true);
+                            }
+                        </script>
+
+                        <script type="text/javascript">
+                            var launch = false;
+
+                            function launchModal() {
+                                launch = true;
+                            }
+
+                            function pageLoad() {
+                                if (launch) {
+                                    $find("mpeID").show();
+                                }
+                            }
+                        </script>
+                        <!--FIN POP SERVER -->
                     </div>
                 </div>
 
                 <div class="row" style="padding-left: 30px">
                     <div id="ScoreAsistencia" class="ScoreAsistencia">
                         <h3>Score asistencia por asignatura </h3>
-                        <asp:GridView ID="grvAsistencia" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px">
+                        <asp:GridView ID="grvAsistencia" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" 
+                            EmptyDataText="No se encontraron registros" Width="800px"
+                            CssClass="table table-bordered bs-table table-condensed table-responsive" Font-Size="12px">
                             <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                             <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                         </asp:GridView>
@@ -115,13 +153,15 @@
                 <div class="row" style="padding-left: 30px">
                     <div id="ScoreFinanzas" class="ScoreFinanzas">
                         <h3>Score situación financiera </h3>
-                        <asp:GridView ID="grvFinanzas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" Width="800px" OnRowDataBound="grvFinanzas_RowDataBound">
+                        <asp:GridView ID="grvFinanzas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" 
+                            EmptyDataText="No se encontraron registros" Width="800px" OnRowDataBound="grvFinanzas_RowDataBound"
+                            CssClass="table table-bordered bs-table table-condensed table-responsive" Font-Size="12px">
                             <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                             <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                         </asp:GridView>
                     </div>
                 </div>
-                
+
             </div>
 
         </div>

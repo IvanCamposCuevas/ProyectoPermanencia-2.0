@@ -161,7 +161,7 @@ namespace ProyectoPermanencia.Negocio
 
         }
 
-        public System.Data.DataSet consultaDetNotas(string rut, string cod_asignatura)
+        public System.Data.DataSet consultaDetNotas(string rut)
         {
             NegocioConexionBD con = new NegocioConexionBD(); // Instancia La Clase NegocioConexionBD
             con.configuraConexion();
@@ -174,7 +174,7 @@ namespace ProyectoPermanencia.Negocio
 				 * en la base de datos con el ingresado en el parametro de entrada.
 				 * */
 
-                auxSQL= "WHERE [RUT ALUMNO] = '" + rut + "' AND [CODIGO ASIGNATURA] = '"+cod_asignatura+"';";
+                auxSQL= "WHERE [RUT ALUMNO] = '" + rut + "';";
                 /*
 				 * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
 				 * que incluye los las uniones y filtros correspondientes.
@@ -249,10 +249,10 @@ namespace ProyectoPermanencia.Negocio
         /// <param name="rut"></param>
         /// <param name="datosNotas"></param>
         /// <param name="datosAsistencia"></param>
-        public void consultaGeneral(string rut, out System.Data.DataSet datosNotas, /**out System.Data.DataSet datosDetalleNotas,*/ out System.Data.DataSet datosAsistencia, out System.Data.DataSet datosMorosos)
+        public void consultaGeneral(string rut, out System.Data.DataSet datosNotas, out System.Data.DataSet datosDetalleNotas, out System.Data.DataSet datosAsistencia, out System.Data.DataSet datosMorosos)
         {
             datosNotas = consultaNota(rut);
-            //datosDetalleNotas = consultaDetNotas(rut);
+            datosDetalleNotas = consultaDetNotas(rut);
             datosAsistencia = consultaAsistencia(rut);
             datosMorosos = consultaSituacionFinanciera(rut);
         }

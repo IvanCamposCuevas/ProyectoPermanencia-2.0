@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="ProyectoPermanencia.Presentacion.Master" %>
+  <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <!DOCTYPE html>
 
@@ -38,12 +39,10 @@
                     </asp:ContentPlaceHolder>
                 </div>
                 <ul class="nav navbar-nav" style="float: right">
-                    <li class="active"><a href="#" style="font-weight: 500">Home</a></li>
+                    <li class="active"><a href="#" style="font-weight: 500">Inicio</a></li>
                     <li><a href="/Pages/VisionGlobal.aspx">Vision Global</a></li>
                     <li><a href="/Pages/Reportes.aspx">Reportes</a></li>
                     <li><a href="/Pages/CargarArchivos.aspx">Cargar</a></li>
-
-
                 </ul>
             </div>
         </nav>

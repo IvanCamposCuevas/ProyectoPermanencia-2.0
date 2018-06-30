@@ -69,7 +69,7 @@ namespace ProyectoPermanencia.Presentacion
             try
             {
                 Negocio.NegocioPaginaGlobal auxNegocio = new Negocio.NegocioPaginaGlobal();
-                this.grvGlobal.DataSource = auxNegocio.consultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
+                this.grvGlobal.DataSource = auxNegocio.ConsultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
                 this.grvGlobal.DataBind();
             }
             catch (Exception ex)

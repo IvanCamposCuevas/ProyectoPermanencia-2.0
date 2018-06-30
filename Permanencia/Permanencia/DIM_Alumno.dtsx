@@ -12,8 +12,8 @@
   DTS:ObjectName="DIM_Alumno"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{AD29DC92-ECCE-43F9-A13E-C8FDFFBB5FFB}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{0AFC7FD4-4872-4DD8-99CA-FC3B76BF1CED}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>

@@ -97,7 +97,7 @@ namespace ProyectoPermanencia.Negocio
 				 * que incluye los las uniones y filtros correspondientes.
 				 * */
                 con.Conec1.IntruccioneSQL = "SELECT [CODIGO ASIGNATURA], "+
-                                                   "[DESC ASIGNATURA], "+
+                                                   "[DESC ASIGNATURA] AS 'NOMBRE ASIGNATURA', "+
                                                    "[SECCION], "+
                                                    "[AÑO], "+
                                                    "[SEMESTRE], "+
@@ -174,12 +174,13 @@ namespace ProyectoPermanencia.Negocio
 				 * en la base de datos con el ingresado en el parametro de entrada.
 				 * */
 
-                auxSQL= "WHERE [RUT ALUMNO] = '" + rut + "';";
+                auxSQL= "WHERE [RUT ALUMNO] = '" + rut + "' ORDER BY [CODIGO ASIGNATURA] ASC;";
                 /*
 				 * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
 				 * que incluye los las uniones y filtros correspondientes.
 				 * */
                 con.Conec1.IntruccioneSQL = "SELECT [CODIGO ASIGNATURA]," +
+                                            "[DESC ASIGNATURA] AS 'NOMBRE ASIGNATURA', "+
                                             "[SEMESTRE], " +
                                             "[Nº NOTAS PARCIALES], " +
                                             "[Nº NOTAS EXAMEN], " +

@@ -36,6 +36,7 @@
                 <br />
                 <asp:Button ID="btnCargarAr" runat="server" Text="Cargar" CssClass="btn btn-danger" OnClick="btnCargarAr_Click"/>
             </div>
+            <asp:Label ID="Label1" runat="server" ForeColor="Red" Text="* Solo se pueden ingresar archivos Excels, con extension .xls o .xlsx"></asp:Label>
         </div>
 
     </div>

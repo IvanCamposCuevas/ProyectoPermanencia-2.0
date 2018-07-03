@@ -28,7 +28,7 @@ namespace ProyectoPermanencia.Negocio
             /// <param name="carrera"></param>
             /// <param name="escuela"></param>
             /// <returns></returns>
-            public DataSet consultaScorePorFiltro(String sede, String jornada, String escuela, String carrera)
+            public DataSet ConsultaScorePorFiltro(String sede, String jornada, String escuela, String carrera)
             {
                 NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
                 con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos

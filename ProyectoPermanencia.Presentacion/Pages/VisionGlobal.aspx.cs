@@ -21,10 +21,6 @@ namespace ProyectoPermanencia.Presentacion
             //this.grvGlobal.DataBind();
         }
 
-        protected void btoFiltrar_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void grvGlobal_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -48,7 +44,7 @@ namespace ProyectoPermanencia.Presentacion
 
         }
 
-        protected void btoFiltrar_Click1(object sender, EventArgs e)
+        protected void btoFiltrar_Click(object sender, EventArgs e)
         {
             if (txtRutNombre.Text != "")
             {

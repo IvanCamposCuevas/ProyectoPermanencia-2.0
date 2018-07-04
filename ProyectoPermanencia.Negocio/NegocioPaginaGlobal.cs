@@ -51,7 +51,7 @@ namespace ProyectoPermanencia.Negocio
                     auxSQL = auxSQL + " AND AL.Id_Sede = '" + sede + "'";
                 if (!String.IsNullOrEmpty(jornada))
                         auxSQL = auxSQL + " AND AL.Id_Jornada = '" + jornada + "'";
-                if (!String.IsNullOrEmpty(escuela))
+                if (!String.IsNullOrEmpty(escuela) && int.Parse(escuela) >= 1)
                     auxSQL = auxSQL + " AND CA.Id_Escuela = '" + escuela + "'";
                 if (!String.IsNullOrEmpty(carrera))
                         auxSQL = auxSQL + " AND CA.Desc_Carrera = '" + carrera + "'";
@@ -72,12 +72,12 @@ namespace ProyectoPermanencia.Negocio
                                                + "SC.Score AS Score " + "\n"
 
                                                + " FROM "
-                                               + "Permanencia_2.dbo.Score_Alumnos SC,"
-                                               + "Permanencia_2.dbo.LK_Alumno AL,"
-                                               + "Permanencia_2.dbo.LK_Carrera CA,"
-                                               + "Permanencia_2.dbo.LK_Escuela ES,"
-                                               + "Permanencia_2.dbo.LK_Sede SE,"
-                                               + "Permanencia_2.dbo.LK_Jornada JO" + "\n"
+                                               + "dbo.Score_Alumnos SC,"
+                                               + "dbo.LK_Alumno AL,"
+                                               + "dbo.LK_Carrera CA,"
+                                               + "dbo.LK_Escuela ES,"
+                                               + "dbo.LK_Sede SE,"
+                                               + "dbo.LK_Jornada JO" + "\n"
                                                + auxSQL;
 
             con.Conec1.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
@@ -133,12 +133,12 @@ namespace ProyectoPermanencia.Negocio
                                                + "SC.Score AS Score " + "\n"
 
                                                + " FROM "
-                                               + "Permanencia_2.dbo.Score_Alumnos SC,"
-                                               + "Permanencia_2.dbo.LK_Alumno AL,"
-                                               + "Permanencia_2.dbo.LK_Carrera CA,"
-                                               + "Permanencia_2.dbo.LK_Escuela ES,"
-                                               + "Permanencia_2.dbo.LK_Sede SE,"
-                                               + "Permanencia_2.dbo.LK_Jornada JO" + "\n"
+                                               + "dbo.Score_Alumnos SC,"
+                                               + "dbo.LK_Alumno AL,"
+                                               + "dbo.LK_Carrera CA,"
+                                               + "dbo.LK_Escuela ES,"
+                                               + "dbo.LK_Sede SE,"
+                                               + "dbo.LK_Jornada JO" + "\n"
                                                + auxSQL;
 
             con.Conec1.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
@@ -214,7 +214,14 @@ namespace ProyectoPermanencia.Negocio
         {
             NegocioConexionBD conexion = new NegocioConexionBD();
             conexion.configuraConexion();
-            conexion.Conec1.IntruccioneSQL = String.Format("SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera] WHERE Id_Escuela = {0} ORDER BY [Desc_Carrera]", escuela);
+            if (escuela.Equals("0"))
+            {
+                conexion.Conec1.IntruccioneSQL = "SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera] ORDER BY [Desc_Carrera]";
+            }
+            else
+            {
+                conexion.Conec1.IntruccioneSQL = String.Format("SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera] WHERE Id_Escuela = {0} ORDER BY [Desc_Carrera]", escuela);
+            }
             conexion.Conec1.EsSelect = true;
             conexion.Conec1.conectar();
             return conexion.Conec1.DbDat;

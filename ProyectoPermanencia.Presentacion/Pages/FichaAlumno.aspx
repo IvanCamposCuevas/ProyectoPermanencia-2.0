@@ -76,6 +76,8 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#">Ficha</a></li>
                     <li><a href="#">Historico</a></li>
+                    <li><a href="#">Interacciónes</a></li>
+
                 </ul>
                 <br>
             </div>

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProyectoPermanencia.Presentacion
+namespace ProyectoPermanencia.Presentacion.Pages
 {
     public partial class EtapasResolucion : System.Web.UI.Page
     {

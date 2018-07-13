@@ -140,7 +140,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\EtapasResolucion.aspx" />
     <Content Include="Pages\CargarArchivos.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -161,7 +160,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Master.Master" />
-    <Content Include="Pages\EtapasResolucion2.aspx" />
+    <Content Include="Pages\EtapasResolucion.aspx" />
     <Content Include="Pages\FichaAlumno.aspx" />
     <Content Include="Pages\Historico.aspx" />
     <Content Include="Pages\Interacciones.aspx" />
@@ -240,13 +239,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Pages\EtapasResolucion.aspx.cs">
-      <DependentUpon>EtapasResolucion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\EtapasResolucion.aspx.designer.cs">
-      <DependentUpon>EtapasResolucion.aspx</DependentUpon>
-    </Compile>
     <Compile Include="FichaMaster.master.cs">
       <DependentUpon>FichaMaster.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -293,12 +285,12 @@
     <Compile Include="Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EtapasResolucion2.aspx.cs">
-      <DependentUpon>EtapasResolucion2.aspx</DependentUpon>
+    <Compile Include="Pages\EtapasResolucion.aspx.cs">
+      <DependentUpon>EtapasResolucion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\EtapasResolucion2.aspx.designer.cs">
-      <DependentUpon>EtapasResolucion2.aspx</DependentUpon>
+    <Compile Include="Pages\EtapasResolucion.aspx.designer.cs">
+      <DependentUpon>EtapasResolucion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\FichaAlumno.aspx.cs">
       <DependentUpon>FichaAlumno.aspx</DependentUpon>

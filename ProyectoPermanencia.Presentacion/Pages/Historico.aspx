@@ -10,7 +10,7 @@
         <ul class="nav nav-tabs">
             <li><a href="/Pages/FichaAlumno.aspx">Ficha</a></li>
             <li class="active"><a href="/Pages/Historico.aspx">Historico</a></li>
-            <li><a href="/Pages/Interacciones.aspx">Interacciónes</a></li>
+            <li><a href="/Pages/Interacciones.aspx">Interacciones</a></li>
 
         </ul>
         <br>

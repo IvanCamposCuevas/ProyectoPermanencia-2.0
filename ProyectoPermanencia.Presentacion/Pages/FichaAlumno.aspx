@@ -11,7 +11,7 @@
         <ul class="nav nav-tabs">
             <li class="active"><a href="#">Ficha</a></li>
             <li><a href="/Pages/Historico.aspx">Historico</a></li>
-            <li><a href="/Pages/Interacciones.aspx">Interacciónes</a></li>
+            <li><a href="/Pages/Interacciones.aspx">Interacciones</a></li>
 
         </ul>
         <br>

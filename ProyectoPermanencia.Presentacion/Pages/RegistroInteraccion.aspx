@@ -13,7 +13,6 @@
                 <div class="col-md-12 panel panel-body" style="padding-left=100px">
                     <div class="col-md-4">
                         <asp:Label runat="server" Font-Bold="true">Rut:</asp:Label>
-                        <asp:Label runat="server"></asp:Label>
                         <asp:Label ID="lblRut" runat="server"></asp:Label>
 
                         <br />
@@ -52,7 +51,6 @@
 
         <div class="row jumbotron" style="margin-top: 0px; border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none; padding: 0px;">
             <div class="col-md-4 panel-group" style="padding-left: 0px;">
-
                 <div class="panel panel-primary">
                     <div class="panel-heading" style="background-color: rgb(1,40,69);">A qué caso corresponde?</div>
                     <div class="panel-body">

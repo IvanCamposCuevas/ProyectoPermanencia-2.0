@@ -12,10 +12,26 @@
   DTS:ObjectName="DIM_Varios"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{4F531315-BF31-44F7-AA0B-E9F354D6201C}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{66761D75-8E6A-47FF-8B6F-C4894F93816E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2.sa]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{F20501BA-534B-475D-99F5-3E3A4A84BC7D}"
+      DTS:ObjectName="LAPTOP-9N5AEVQ2\.Permanencia_2.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-9N5AEVQ2\;User ID=sa;Initial Catalog=Permanencia_2;Application Name=SSIS-DIM_Varios-{F20501BA-534B-475D-99F5-3E3A4A84BC7D}LAPTOP-9N5AEVQ2\.Permanencia_2.sa;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -30,7 +46,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C3F8CEF7-4BE3-4443-88B7-B9025810EAE8}"
+          SQLTask:Connection="{F20501BA-534B-475D-99F5-3E3A4A84BC7D}"
           SQLTask:SqlStatementSource="INSERT INTO [dbo].[LK_Jornada]    ([Id_Jornada]  ,[Desc_Jornada])&#xA;     VALUES  ('D', 'Diurna');&#xA;&#xA;INSERT INTO [dbo].[LK_Jornada]    ([Id_Jornada]  ,[Desc_Jornada])&#xA;     VALUES  ('V', 'Vespertina');&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -46,7 +62,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C3F8CEF7-4BE3-4443-88B7-B9025810EAE8}"
+          SQLTask:Connection="{F20501BA-534B-475D-99F5-3E3A4A84BC7D}"
           SQLTask:SqlStatementSource="INSERT INTO [dbo].[LK_Semestre]    ([Desc_Semestre])&#xA;     VALUES  ('2017-1');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>

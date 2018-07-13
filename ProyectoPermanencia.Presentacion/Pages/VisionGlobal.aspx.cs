@@ -21,10 +21,6 @@ namespace ProyectoPermanencia.Presentacion
             //this.grvGlobal.DataBind();
         }
 
-        protected void btoFiltrar_Click(object sender, EventArgs e)
-        {
-
-        }
 
         protected void grvGlobal_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -48,7 +44,7 @@ namespace ProyectoPermanencia.Presentacion
 
         }
 
-        protected void btoFiltrar_Click1(object sender, EventArgs e)
+        protected void btoFiltrar_Click(object sender, EventArgs e)
         {
             if (txtRutNombre.Text != "")
             {
@@ -64,7 +60,7 @@ namespace ProyectoPermanencia.Presentacion
 
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
+        protected void LinkButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -80,12 +76,12 @@ namespace ProyectoPermanencia.Presentacion
 
         protected void ddlEscuelas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlCarrera.DataSource = new Negocio.NegocioPaginaGlobal().cargarListaCarrera(ddlEscuelas.SelectedValue);
-            ddlCarrera.DataBind();
-            if (ddlCarrera.Items.Count == 0)
-            {
-                ddlCarrera.Items.Add(new ListItem("--Datos Vacios--", ""));
-            }
+                ddlCarrera.DataSource = new Negocio.NegocioPaginaGlobal().cargarListaCarrera(ddlEscuelas.SelectedValue);
+                ddlCarrera.DataBind();
+                if (ddlCarrera.Items.Count == 0)
+                {
+                    ddlCarrera.Items.Add(new ListItem("--Datos Vacios--", ""));
+                }
         }
 
         protected void grvGlobal_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -96,6 +92,11 @@ namespace ProyectoPermanencia.Presentacion
                 e.Row.Cells[5].Visible = false; //Ocultar fila "Correo Institucional"
                 e.Row.Cells[6].Visible = false; //Ocultar fila "Correo Privado"
             }
+        }
+
+        protected void sqlEscuela_Selected(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            ddlEscuelas.Items.Add(new ListItem("Todos", "0"));
         }
     }
 }

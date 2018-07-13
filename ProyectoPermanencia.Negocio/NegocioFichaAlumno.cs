@@ -75,15 +75,6 @@ namespace ProyectoPermanencia.Negocio
             NegocioConexionBD con = new NegocioConexionBD(); // Instancia La Clase NegocioConexionBD
             con.configuraConexion();
 
-            /*
-			 *  Se unen las tablas que deben ser usadas para efecuar la consulta
-			 * 
-            auxSQL = "WHERE NA.Id_Asignatura = SIG.Id_Asignatura " +
-                            "AND NA.Id_Alumno = SC.Id_Alumno " +
-                            "AND NA.Id_Alumno = AL.Id_Alumno ";
-
-            */
-
             if (!string.IsNullOrEmpty(rut))
             {
                 /*

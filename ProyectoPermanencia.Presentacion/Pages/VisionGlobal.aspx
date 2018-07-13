@@ -30,7 +30,7 @@
                             <asp:ListItem Value="2">Nombre Alumno</asp:ListItem>
                         </asp:DropDownList>
                         <asp:TextBox runat="server" CssClass="”form-control”" Width="115px" Height="30px" ID="txtRutNombre"></asp:TextBox>
-                        <asp:Button runat="server" Text="Buscar" ID="btoFiltrar" CssClass="btn btn-info" OnClick="btoFiltrar_Click1" />
+                        <asp:Button runat="server" Text="Buscar" ID="btoFiltrar" CssClass="btn btn-info" OnClick="btoFiltrar_Click" />
                     </div>
 
                     <!-- FILTROS DE BUSQUEDA -->
@@ -64,9 +64,9 @@
                             <!-- Filtrar por escuela -->
                             <div id="Escuela" style="width: 100px; align-self: center;">
                                 <h4>Escuela: </h4>
-                                <asp:DropDownList ID="ddlEscuelas" runat="server" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela" OnSelectedIndexChanged="ddlEscuelas_SelectedIndexChanged" AutoPostBack="True">
+                                <asp:DropDownList ID="ddlEscuelas" runat="server" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela" OnSelectedIndexChanged="ddlEscuelas_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true">
                                 </asp:DropDownList>
-                                <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString %>" SelectCommand="SELECT DISTINCT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT DISTINCT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]" OnSelected="sqlEscuela_Selected"></asp:SqlDataSource>
                             </div>
                         </div>
 
@@ -82,7 +82,7 @@
                         </div>
                         <!-- Filtrar resultados -->
                         <div class="col-md-1" style="float: right; height: 50px;">
-                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Filtrar" OnClick="LinkButton1_Click"></asp:LinkButton>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Filtrar" OnClick="LinkButton_Click"></asp:LinkButton>
                         </div>
                     </div>
                 </div>

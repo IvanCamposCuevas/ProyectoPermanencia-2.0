@@ -11,12 +11,18 @@ namespace ProyectoPermanencia.Negocio
 {
     public class NegocioCargaArchivo
     {
+        /// <summary>
+        /// Obtiene el nombre de la hoja a traves del archivo excel.
+        /// </summary>
+        /// <param name="conexionExcel"></param>
+        /// <returns></returns>
         private String obtenerNombreHoja(OleDbConnection conexionExcel)
         {
             DataTable dbSchema = conexionExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
             string nombreHoja = dbSchema.Rows[0]["TABLE_NAME"].ToString();
             return nombreHoja;
         }
+
 
         public void agregarArchivoAsistencia(String nombreArchivo, String tipoArchivo, String path)
         {

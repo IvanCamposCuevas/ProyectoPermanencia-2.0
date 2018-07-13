@@ -7,10 +7,19 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ProyectoPermanencia.Presentacion.Pages {
+namespace ProyectoPermanencia.Presentacion {
     
     
-    public partial class FichaAlumno {
+    public partial class FichaMaster {
+        
+        /// <summary>
+        /// Control ContentPlaceHolderTitle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderTitle;
         
         /// <summary>
         /// Control lblRut.
@@ -22,93 +31,102 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Label lblRut;
         
         /// <summary>
-        /// Control grvNotas.
+        /// Control lblNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvNotas;
+        protected global::System.Web.UI.WebControls.Label lblNombre;
         
         /// <summary>
-        /// Control ClientButton.
+        /// Control lblCarrera.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ClientButton;
+        protected global::System.Web.UI.WebControls.Label lblCarrera;
         
         /// <summary>
-        /// Control ModalPanel.
+        /// Control lblJornada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ModalPanel;
+        protected global::System.Web.UI.WebControls.Label lblJornada;
         
         /// <summary>
-        /// Control grvDetalleNotas.
+        /// Control lblEscuela.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvDetalleNotas;
+        protected global::System.Web.UI.WebControls.Label lblEscuela;
         
         /// <summary>
-        /// Control OKButton.
+        /// Control lblSede.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button OKButton;
+        protected global::System.Web.UI.WebControls.Label lblSede;
         
         /// <summary>
-        /// Control mpe.
+        /// Control lblBeneficio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender mpe;
+        protected global::System.Web.UI.WebControls.Label lblBeneficio;
         
         /// <summary>
-        /// Control asm.
+        /// Control lblTelefono.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager asm;
+        protected global::System.Web.UI.WebControls.Label lblTelefono;
         
         /// <summary>
-        /// Control ServerButton.
+        /// Control lblMail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ServerButton;
+        protected global::System.Web.UI.WebControls.Label lblMail;
         
         /// <summary>
-        /// Control grvAsistencia.
+        /// Control ContentPlaceHolderFicha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvAsistencia;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderFicha;
         
         /// <summary>
-        /// Control grvFinanzas.
+        /// Control ContentPlaceHolderHistorico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvFinanzas;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderHistorico;
+        
+        /// <summary>
+        /// Control ContentPlaceHolderInteracciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderInteracciones;
     }
 }

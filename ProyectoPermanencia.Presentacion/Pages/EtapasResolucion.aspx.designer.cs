@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ProyectoPermanencia.Presentacion.Pages {
+namespace ProyectoPermanencia.Presentacion {
     
     
-    public partial class Historico {
+    public partial class EtapasResolucion {
     }
 }

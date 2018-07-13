@@ -7,14 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace ProyectoPermanencia.Presentacion.Pages
 {
-    public partial class Historico : System.Web.UI.Page
+    public partial class Interacciones : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
 
-            }
+        }
+
+        protected void btnNuevaInteraccion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Pages/RegistroInteraccion.aspx");
         }
     }
 }

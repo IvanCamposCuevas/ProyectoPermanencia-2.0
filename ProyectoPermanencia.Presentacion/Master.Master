@@ -12,6 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <title>Sistema Permanencia</title>
 
 </head>
 <body>
@@ -43,6 +44,8 @@
                     <li><a href="/Pages/VisionGlobal.aspx">Vision Global</a></li>
                     <li><a href="/Pages/Reportes.aspx">Reportes</a></li>
                     <li><a href="/Pages/CargarArchivos.aspx">Cargar</a></li>
+                    <li><a href="/Pages/EtapasResolucion.aspx">Etapas Resolución</a></li>
+
                 </ul>
             </div>
         </nav>
@@ -54,7 +57,7 @@
                 </asp:ContentPlaceHolder>
             </div>
             <div>
-                <asp:ContentPlaceHolder ID="ContentPlaceHolderHistorico" runat="server">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderRegistroInter" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
             <div>
@@ -83,6 +86,10 @@
             </div>
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolderReportesJo" runat="server">
+                </asp:ContentPlaceHolder>
+            </div
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderEtapasResolucion" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
 

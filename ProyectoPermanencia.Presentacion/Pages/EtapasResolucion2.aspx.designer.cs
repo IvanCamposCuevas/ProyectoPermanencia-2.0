@@ -10,105 +10,114 @@
 namespace ProyectoPermanencia.Presentacion.Pages {
     
     
-    public partial class FichaAlumno {
+    public partial class EtapasResolucion {
         
         /// <summary>
-        /// Control lblRut.
+        /// Control ScriptManager1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRut;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// Control grvNotas.
+        /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvNotas;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// Control ClientButton.
+        /// Control ddlRutNom.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ClientButton;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRutNom;
         
         /// <summary>
-        /// Control ModalPanel.
+        /// Control txtRutNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ModalPanel;
+        protected global::System.Web.UI.WebControls.TextBox txtRutNombre;
         
         /// <summary>
-        /// Control grvDetalleNotas.
+        /// Control btoFiltrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvDetalleNotas;
+        protected global::System.Web.UI.WebControls.Button btoFiltrar;
         
         /// <summary>
-        /// Control OKButton.
+        /// Control ddlSede.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button OKButton;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSede;
         
         /// <summary>
-        /// Control mpe.
+        /// Control ddlJornada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender mpe;
+        protected global::System.Web.UI.WebControls.DropDownList ddlJornada;
         
         /// <summary>
-        /// Control asm.
+        /// Control ddlEscuelas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager asm;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEscuelas;
         
         /// <summary>
-        /// Control ServerButton.
+        /// Control sqlEscuela.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ServerButton;
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlEscuela;
         
         /// <summary>
-        /// Control grvAsistencia.
+        /// Control ddlCarrera.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvAsistencia;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCarrera;
         
         /// <summary>
-        /// Control grvFinanzas.
+        /// Control sqlCarrera.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvFinanzas;
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlCarrera;
+        
+        /// <summary>
+        /// Control LinkButton1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
     }
 }

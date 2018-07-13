@@ -1,20 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="VisionGlobal.aspx.cs" Inherits="ProyectoPermanencia.Presentacion.VisionGlobal" %>
-
-<asp:Content ID="ContentHeadGlobal" ContentPlaceHolderID="head" runat="server">
-    <title>Vision Global</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../css/VisionGlobalStyleSheet.css" rel="stylesheet" type="text/css" />
+﻿<%@ Page Title="Estapas de Resolucion" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="EtapasResolucion.aspx.cs" Inherits="ProyectoPermanencia.Presentacion.Pages.EtapasResolucion" %>
+<asp:Content ID="ContentHeadEtapas" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolderTitle" runat="server">
     <asp:Label runat="server">
-        <h3 style="color:azure"> Vision Global  </h3>
+        <h3 style="color:azure"> Etapas de Resolución  </h3>
     </asp:Label>
 </asp:Content>
-<asp:Content ID="ContentGlobal" ContentPlaceHolderID="ContentPlaceHolderGlobal" runat="server">
+<asp:Content ID="ContentEtapasResolucion" ContentPlaceHolderID="ContentPlaceHolderEtapasResolucion" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -87,22 +79,6 @@
                     </div>
                 </div>
 
-                <h3>Scores</h3>
-                <div class="row" style="margin: 0px">
-                    <div id="ScoreGlobal" class="ScoreGlobal">
-                        <asp:GridView ID="grvGlobal" CssClass="col-md-12 table table-bordered bs-table table-hover table-condensed table-responsive" 
-                            Font-Size="12px" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="1200px" OnRowDataBound="grvGlobal_RowDataBound">
-                            <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
-                            <Columns>
-                                <asp:CommandField ShowSelectButton="True" ItemStyle-Width="200px" ItemStyle-Wrap="true" ButtonType="Button" ControlStyle-CssClass="btn btn-info btn-sm" SelectText="Ver detalle">
-                                    <ItemStyle Wrap="True" Width="100px"></ItemStyle>
-                                </asp:CommandField>
-                            </Columns>
-                        </asp:GridView>
-
-                    </div>
-                </div>
-                <!-- GRILLA PRINCIPAL -->
 
             </div>
         </ContentTemplate>

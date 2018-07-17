@@ -125,7 +125,7 @@ namespace ProyectoPermanencia.Negocio
 
         public void agregarArchivoIndice(String nombreArchivo, String tipoArchivo, String path)
         {
-            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
+            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
                 try
@@ -139,6 +139,7 @@ namespace ProyectoPermanencia.Negocio
                         using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
                         {
                             bulkCopy.DestinationTableName = "dbo.Indice_STG";
+                            
                             bulkCopy.WriteToServer(dr);
                             System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
                         }

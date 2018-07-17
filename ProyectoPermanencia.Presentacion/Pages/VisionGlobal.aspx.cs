@@ -13,15 +13,6 @@ namespace ProyectoPermanencia.Presentacion
         }
 
 
-
-        private void CargarGrilla()
-        {
-            //Negocio.Negocio auxNegocio = new Negocio.Negocio();
-            //this.grvGlobal.DataSource = auxNegocio.consultaScorePorRut(this.txtRutNombre.Text);
-            //this.grvGlobal.DataBind();
-        }
-
-
         protected void grvGlobal_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*
@@ -66,7 +57,15 @@ namespace ProyectoPermanencia.Presentacion
             try
             {
                 Negocio.NegocioPaginaGlobal auxNegocio = new Negocio.NegocioPaginaGlobal();
-                this.grvGlobal.DataSource = auxNegocio.ConsultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarrera.SelectedValue);
+                System.Collections.Generic.List<String> listaCarreras = new System.Collections.Generic.List<string>();
+                foreach (ListItem item in chkListaCarreras.Items)
+                {
+                    if (item.Selected == true)
+                    {
+                        listaCarreras.Add(item.Text);
+                    }
+                }
+                this.grvGlobal.DataSource = auxNegocio.ConsultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, listaCarreras);
                 this.grvGlobal.DataBind();
             }
             catch (Exception ex)
@@ -77,12 +76,11 @@ namespace ProyectoPermanencia.Presentacion
 
         protected void ddlEscuelas_SelectedIndexChanged(object sender, EventArgs e)
         {
-                ddlCarrera.DataSource = new Negocio.NegocioPaginaGlobal().cargarListaCarrera(ddlEscuelas.SelectedValue);
-                ddlCarrera.DataBind();
-                if (ddlCarrera.Items.Count == 0)
-                {
-                    ddlCarrera.Items.Add(new ListItem("--Datos Vacios--", ""));
-                }
+            chkListaCarreras.DataSource = new Negocio.NegocioPaginaGlobal().cargarListaCarrera(ddlEscuelas.SelectedValue);
+            chkListaCarreras.DataTextField = "Desc_Carrera";
+            chkListaCarreras.DataValueField = "Desc_Carrera";
+            chkListaCarreras.DataBind();
+            mpe.Show();
         }
 
         protected void grvGlobal_RowDataBound(object sender, GridViewRowEventArgs e)

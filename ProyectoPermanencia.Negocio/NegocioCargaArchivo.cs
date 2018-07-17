@@ -26,7 +26,7 @@ namespace ProyectoPermanencia.Negocio
 
         public void agregarArchivoAsistencia(String nombreArchivo, String tipoArchivo, String path)
         {
-            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
+            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
                 try
@@ -59,7 +59,7 @@ namespace ProyectoPermanencia.Negocio
 
         public void agregarArchivoDeuda(String nombreArchivo, String tipoArchivo, String path)
         {
-            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0", path + nombreArchivo);
+            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
                 try
@@ -92,7 +92,7 @@ namespace ProyectoPermanencia.Negocio
 
         public void agregarArchivoNotas(String nombreArchivo, String tipoArchivo, String path)
         {
-            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=YES'", path + nombreArchivo);
+            string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'", path + nombreArchivo);
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
                 try

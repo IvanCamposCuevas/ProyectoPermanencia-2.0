@@ -50,10 +50,10 @@ namespace ProyectoPermanencia.Negocio
                                         "ROUND(SI.[F_Asistencia] * 100, 2, 1) AS 'Porcentaje Asistencia'," +
                                         "SC.ScoreAsistencia AS 'Score' " + "\n" +
                                         "FROM " +
-                                        "Permanencia_2.dbo.Score_Alumnos SC," +
-                                        "Permanencia_2.dbo.[FT_Asistencia] SI," +
-                                        "Permanencia_2.dbo.[LK_Asignatura] SIG," +
-                                        "Permanencia_2.dbo.LK_Alumno AL" + "\n" +
+                                        "dbo.Score_Alumnos SC," +
+                                        "dbo.[FT_Asistencia] SI," +
+                                        "dbo.[LK_Asignatura] SIG," +
+                                        "dbo.LK_Alumno AL" + "\n" +
                                         auxSQL;
 
                 con.Conec1.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.
@@ -99,7 +99,7 @@ namespace ProyectoPermanencia.Negocio
                                                    "[NOTA FINAL] " +                                                   
                                                    "\n" +
                                                    "FROM " +
-                                                   "Permanencia_2.dbo.Curso_STG" + 
+                                                   "dbo.Curso_STG" + 
                                                    "\n" +
                                                    auxSQL;
 
@@ -141,9 +141,9 @@ namespace ProyectoPermanencia.Negocio
                                             "MO.[Monto Adeudado] AS 'Monto Adeudado', MO.[BENEFICIO] AS 'Beneficio', " + 
                                             "SC.[ScoreDeuda] AS 'Score' "+"\n" +
                                             "FROM " +
-                                            "Permanencia_2.dbo.Morosos_STG MO, " +
-                                            "Permanencia_2.dbo.Score_Alumnos SC, " +
-                                            "Permanencia_2.dbo.LK_Alumno AL " + "\n" +
+                                            "dbo.Morosos_STG MO, " +
+                                            "dbo.Score_Alumnos SC, " +
+                                            "dbo.LK_Alumno AL " + "\n" +
                                             auxSQL;
                 con.Conec1.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.
                 con.Conec1.conectar(); //Se ejecuta el metodo "conectar()" de la clase NegocioConexionBD.
@@ -203,7 +203,7 @@ namespace ProyectoPermanencia.Negocio
                                             "[NOTA FINAL]" +
                                             "\n" +
                                             "FROM " +
-                                            "Permanencia_2.dbo.Curso_STG" +
+                                            "dbo.Curso_STG" +
                                             "\n" +
                                             auxSQL;
                 con.Conec1.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.
@@ -212,26 +212,6 @@ namespace ProyectoPermanencia.Negocio
             return con.Conec1.DbDat; //Se retorna el DataSet generado luego de ser llenado por la consulta.
 
         }
-
-        /*
-        public DataSet getDatos(string rut)
-        {
-            NegocioConexionBD conn = new NegocioConexionBD();
-            conn.configuraConexion();
-
-            //string query = "SELECT TELEFONO FROM Permanencia_2.dbo.Indice_STG WHERE RUT = " + rut + ";";
-
-            if (!string.IsNullOrEmpty(rut))
-            {
-                //conn.Conec1.IntruccioneSQL = "SELECT TELEFONO FROM Permanencia_2.dbo.Indice_STG WHERE RUT = " + rut + ";";
-                conn.Conec1.IntruccioneSQL = String.Format("SELECT TELEFONO, CELULAR, EMAIL FROM Permanencia_2.dbo.Indice_STG WHERE RUT = {0}", rut);
-                conn.Conec1.EsSelect = true;
-                conn.Conec1.conectar();
-                return conn.Conec1.DbDat;
-            }
-            return null;
-        }
-        */
 
         /// <summary>
         /// Metodo que actuara como rutina para los demas funciones de la misma clase. El metodo

@@ -17,22 +17,22 @@ namespace ProyectoPermanencia.Negocio
     /// esta traera todo los alumnos de la base de datos, previo filtro, y los llenara en una grilla.
     /// </summary>
     public class NegocioPaginaGlobal
-    {       
-            /// <summary>
-            /// Este metodo servira para consultar a todos los Alumnos de la base de datos, previo filtro, con
-            /// sus scores generales.
-            /// </summary>
-            /// <param name="rut"></param>
-            /// <param name="jornada"></param>
-            /// <param name="sede"></param>
-            /// <param name="carrera"></param>
-            /// <param name="escuela"></param>
-            /// <returns></returns>
-            public DataSet ConsultaScorePorFiltro(String sede, String jornada, String escuela, String carrera)
-            {
-                NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
-                con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
-                                         //Se crean una variable de texto, que permitira establecer las uniones con las tablas de la base datos
+    {
+        /// <summary>
+        /// Este metodo servira para consultar a todos los Alumnos de la base de datos, previo filtro, con
+        /// sus scores generales.
+        /// </summary>
+        /// <param name="rut"></param>
+        /// <param name="jornada"></param>
+        /// <param name="sede"></param>
+        /// <param name="carrera"></param>
+        /// <param name="escuela"></param>
+        /// <returns></returns>
+        public DataSet ConsultaScorePorFiltro(String sede, String jornada, String escuela, List<string> carrera)
+        {
+            NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
+            con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
+                                     //Se crean una variable de texto, que permitira establecer las uniones con las tablas de la base datos
             String auxSQL = " WHERE "
        + "AL.Id_Alumno = SC.Id_Alumno"
        + " AND "
@@ -43,18 +43,20 @@ namespace ProyectoPermanencia.Negocio
        + "AL.Id_Sede = SE.Id_Sede"
        + " AND "
        + "AL.Id_Jornada = JO.Id_Jornada";
-           //+ " AND "
-           //+ "AL.Desc_Rut_Alumno = IN.RUT";
+            //+ " AND "
+            //+ "AL.Desc_Rut_Alumno = IN.RUT";
 
-                //Aplicar Filtros
-                if (!String.IsNullOrEmpty(sede))
-                    auxSQL = auxSQL + " AND AL.Id_Sede = '" + sede + "'";
-                if (!String.IsNullOrEmpty(jornada))
-                        auxSQL = auxSQL + " AND AL.Id_Jornada = '" + jornada + "'";
-                if (!String.IsNullOrEmpty(escuela) && int.Parse(escuela) >= 1)
-                    auxSQL = auxSQL + " AND CA.Id_Escuela = '" + escuela + "'";
-                if (!String.IsNullOrEmpty(carrera))
-                        auxSQL = auxSQL + " AND CA.Desc_Carrera = '" + carrera + "'";
+            //Aplicar Filtros
+            if (!String.IsNullOrEmpty(sede))
+                auxSQL = auxSQL + " AND AL.Id_Sede = '" + sede + "'";
+            if (!String.IsNullOrEmpty(jornada))
+                auxSQL = auxSQL + " AND AL.Id_Jornada = '" + jornada + "'";
+            if (!String.IsNullOrEmpty(escuela) && int.Parse(escuela) >= 1)
+                auxSQL = auxSQL + " AND CA.Id_Escuela = '" + escuela + "'";
+            foreach (string item in carrera)
+            {
+                auxSQL = auxSQL + " AND CA.Desc_Carrera = '" + item + "'";
+            }
 
             /*
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
@@ -81,10 +83,11 @@ namespace ProyectoPermanencia.Negocio
                                                + auxSQL;
 
             con.Conec1.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
-                con.Conec1.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
+            con.Conec1.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
 
-                return con.Conec1.DbDat; //Se retornan los datos en un DataSet.
-            } // Fin metodo entrega
+            return con.Conec1.DbDat; //Se retornan los datos en un DataSet.
+        } // Fin metodo entrega
+
 
         /// <summary>
         /// Metodo que sirva para buscar a un Alumno en especifico de la base de datos, 

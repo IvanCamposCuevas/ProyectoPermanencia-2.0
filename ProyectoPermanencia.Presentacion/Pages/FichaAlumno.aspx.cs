@@ -30,23 +30,12 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 grvDetalleNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
-                //string[] info_notas = (string[])Session["Info Notas"];
-                //grvDetalleNotas.DataSource = new Negocio.NegocioFichaAlumno().consultaDetNotas(info_notas[1], info_notas[0]);
-                //grvDetalleNotas.DataBind();
             }
         }
 
         protected void grvFinanzas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             e.Row.Cells[3].Visible = false;
-        }
-
-        protected void grvNotas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GridViewRow row = grvNotas.SelectedRow;
-            string [] info_notas =  new string[] { row.Cells[1].Text, lblRut.Text };
-            Session["Info Notas"] = info_notas;
-            Response.Redirect("Historico.aspx");
         }
     }
 }

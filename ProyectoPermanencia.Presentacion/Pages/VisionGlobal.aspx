@@ -25,7 +25,7 @@
                     <!-- Buscar por rut o nombre -->
                     <div class="row filtrobox input-group" style="height: 100px; padding-left: 20px;">
                         <h4>Buscar Alumno:</h4>
-                        <asp:DropDownList ID="ddlRutNom" runat="server" Width="138px" Height="30px">
+                        <asp:DropDownList ID="ddlRutNom" runat="server" Width="138px" Height="30px" CssClass="form-control">
                             <asp:ListItem Value="1" Text="Rut Alumno">Rut Alumno</asp:ListItem>
                             <asp:ListItem Value="2">Nombre Alumno</asp:ListItem>
                         </asp:DropDownList>
@@ -39,7 +39,7 @@
                             <!-- Filtrar por Sede -->
                             <div id="Sede" class="form-row align-items-center" style="width: 150px;">
                                 <h4>Sede: </h4>
-                                <asp:DropDownList ID="ddlSede" runat="server" Width="120px">
+                                <asp:DropDownList ID="ddlSede" runat="server" Width="100%" CssClass="form-control ">
                                     <asp:ListItem Value="">Todas</asp:ListItem>
                                     <asp:ListItem Value="3">Antonio Varas</asp:ListItem>
                                     <asp:ListItem Value="4">San Carlos</asp:ListItem>
@@ -50,9 +50,9 @@
 
                         <div class="col-sm-2 filtrobox" style="padding-left: 20px; height: 90px; top: 0px; left: 0px;">
                             <!-- Filtrar por jornada -->
-                            <div id="Jornada" class="form-row align-items-center" style="width: 100px;">
+                            <div id="Jornada" class="form-row align-items-center" style="width: 100%;">
                                 <h4>Jornada: </h4>
-                                <asp:DropDownList ID="ddlJornada" runat="server" Width="120px">
+                                <asp:DropDownList ID="ddlJornada" runat="server" Width="100%" CssClass="form-control">
                                     <asp:ListItem Value="">Ambas</asp:ListItem>
                                     <asp:ListItem Value="D">Diurno</asp:ListItem>
                                     <asp:ListItem Value="V">Vespertino</asp:ListItem>
@@ -62,9 +62,9 @@
 
                         <div class="col-sm-4 filtrobox" style="height: 90px">
                             <!-- Filtrar por escuela -->
-                            <div id="Escuela" style="width: 100px; align-self: center;">
+                            <div id="Escuela" style="width: 100%; align-self: center;">
                                 <h4>Escuela: </h4>
-                                <asp:DropDownList ID="ddlEscuelas" runat="server" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela" OnSelectedIndexChanged="ddlEscuelas_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true">
+                                <asp:DropDownList ID="ddlEscuelas" Width="100%" runat="server" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela" OnSelectedIndexChanged="ddlEscuelas_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true" CssClass="form-control">
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT DISTINCT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]" OnSelected="sqlEscuela_Selected"></asp:SqlDataSource>
                             </div>
@@ -72,9 +72,9 @@
 
                         <div class="col-sm-4 filtrobox" style="margin-left: 0px; padding-left: 0px; height: 90px">
                             <!-- Filtrar por carrera -->
-                            <div id="Carrera" style="width: 100px;">
+                            <div id="Carrera" style="width: 100%;">
                                 <h4>Carrera: </h4>
-                                <asp:DropDownList ID="ddlCarrera" runat="server" DataTextField="Desc_Carrera" DataValueField="Desc_Carrera">
+                                <asp:DropDownList ID="ddlCarrera" Width="100%" runat="server" DataTextField="Desc_Carrera" DataValueField="Desc_Carrera" CssClass="form-control">
                                     <asp:ListItem>--Escoja Una Escuela--</asp:ListItem>
                                 </asp:DropDownList>
                                 <!--<asp:SqlDataSource ID="sqlCarrera" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString2 %>" SelectCommand="SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera] ORDER BY [Desc_Carrera]"></asp:SqlDataSource>-->

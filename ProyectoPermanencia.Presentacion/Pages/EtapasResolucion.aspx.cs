@@ -7,14 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace ProyectoPermanencia.Presentacion.Pages
 {
-    public partial class Historico : System.Web.UI.Page
+    public partial class EtapasResolucion : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
 
-            }
         }
     }
 }

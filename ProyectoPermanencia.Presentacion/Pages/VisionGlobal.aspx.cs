@@ -41,6 +41,7 @@ namespace ProyectoPermanencia.Presentacion
                 row.Cells[5].Text, row.Cells[7].Text, row.Cells[8].Text, row.Cells[9].Text };
             Session["Info Alumnos"] = info_alumnos;
             Response.Redirect("FichaAlumno.aspx");
+            //Response.Redirect("FichaMaster.aspx");
 
         }
 

@@ -7,13 +7,8 @@
         <h3 style="color:azure"> Cargar Archivos  </h3>
     </asp:Label>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderFicha" runat="server">
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolderGlobal" runat="server">
-</asp:Content>
-<asp:Content ID="Content5" ContentPlaceHolderID="ContentPlaceHolderReportes" runat="server">
-</asp:Content>
-<asp:Content ID="Content6" ContentPlaceHolderID="ContentPlaceHolderCargar" runat="server">
+
+<asp:Content ID="ContentCargar" ContentPlaceHolderID="ContentPlaceHolderCargar" runat="server">
     <div class="container">
         <div class="row jumbotron" style="border-radius:2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow:none;">
             <div class="col-md-4" style="height:50px; padding-top:10px">

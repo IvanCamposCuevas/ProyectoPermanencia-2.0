@@ -20,13 +20,13 @@
                             <div class="panel-body">
                                 <div class="row input-group center-block" style="margin-bottom: 20px; height: 120px;">
                                     <h4>Buscar Caso:</h4>
-                                    <asp:DropDownList ID="DropDownList1" runat="server" Width="138px" Height="30px" CssClass="form-control">
+                                    <asp:DropDownList ID="ddlTipoBusqueda" runat="server" Width="138px" Height="30px" CssClass="form-control">
                                         <asp:ListItem Value="1" Text="Id Caso">Id Caso</asp:ListItem>
                                         <asp:ListItem Value="2" Text="Sigla Curso">Sigla Curso</asp:ListItem>
                                         <asp:ListItem Value="3" Text="Rut Alumno">Rut Alumno</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:TextBox runat="server" CssClass="”form-control”" Width="115px" Height="30px" ID="TextBox1"></asp:TextBox>
-                                    <asp:Button runat="server" Text="Buscar" ID="Button1" CssClass="btn btn-info" />
+                                    <asp:TextBox runat="server" CssClass="”form-control”" Width="115px" Height="30px" ID="txtIngresoBusqueda"></asp:TextBox>
+                                    <asp:Button runat="server" Text="Buscar" ID="btnBuscarCasoSinFiltro" CssClass="btn btn-info" OnClick="btnBuscarCasoSinFiltro_Click" />
                                 </div>
                                 <div class="row" style="align-content: center; margin-bottom: 0px;">
                                 </div>
@@ -60,9 +60,75 @@
                                     <div class="col-md-5" style="height: 100px;">
                                         <h4>Rango de fechas</h4>
                                         <asp:Label runat="server" Font-Bold="true">Fecha Inicio:</asp:Label>
-                                        <input type="date" id="fechainicio" class="glyphicon-calendar" /></br>
+                                        <input type="date" id="fechainicio" class="glyphicon-calendar" />
+                                        <br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
                                         <asp:Label runat="server" Font-Bold="true">Fecha Termino:</asp:Label>
                                         <input type="date" id="fechatermino" class="glyphicon-calendar" />
+                                        </br>
                                     </div>
                                     <div style="float: right">
                                         <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="btn btn-info" BorderStyle="Solid"></asp:Button>
@@ -84,7 +150,7 @@
 
                 <div class="row" style="margin: 0px">
                     <div id="ScoreGlobal" class="ScoreGlobal">
-                        <asp:GridView ID="grvGlobal" CssClass="col-md-12 table table-bordered bs-table table-hover table-condensed table-responsive"
+                        <asp:GridView ID="grvIntervenciones" CssClass="col-md-12 table table-bordered bs-table table-hover table-condensed table-responsive"
                             Font-Size="12px" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
                             <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                             <Columns>

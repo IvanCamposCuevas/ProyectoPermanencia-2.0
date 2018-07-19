@@ -31,31 +31,31 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// Control DropDownList1.
+        /// Control ddlTipoBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoBusqueda;
         
         /// <summary>
-        /// Control TextBox1.
+        /// Control txtIngresoBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtIngresoBusqueda;
         
         /// <summary>
-        /// Control Button1.
+        /// Control btnBuscarCasoSinFiltro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnBuscarCasoSinFiltro;
         
         /// <summary>
         /// Control ckblTipoCaso.
@@ -112,12 +112,12 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Button btnFinalizadas;
         
         /// <summary>
-        /// Control grvGlobal.
+        /// Control grvIntervenciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvGlobal;
+        protected global::System.Web.UI.WebControls.GridView grvIntervenciones;
     }
 }

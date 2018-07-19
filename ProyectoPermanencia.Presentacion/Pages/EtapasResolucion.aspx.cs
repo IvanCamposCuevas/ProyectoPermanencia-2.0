@@ -13,5 +13,22 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
 
         }
+
+        protected void btnBuscarCasoSinFiltro_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(txtIngresoBusqueda.Text))
+                {
+                    grvIntervenciones.DataSource = new Negocio.NegocioResolucion().buscarCasoSinFiltro(ddlTipoBusqueda.SelectedValue, txtIngresoBusqueda.Text);
+                    grvIntervenciones.DataBind();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

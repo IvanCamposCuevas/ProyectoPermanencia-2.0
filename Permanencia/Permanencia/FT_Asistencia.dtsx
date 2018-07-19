@@ -12,8 +12,8 @@
   DTS:ObjectName="FT_Asistencia"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="60"
-  DTS:VersionGUID="{3D4DD7D3-81CE-411D-8B4F-0A524D47A285}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{F685401C-9182-4A1D-BBAA-D3DED92A4C8E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -642,7 +642,7 @@ where [refTable].[Cod_Asignatura] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\Tarea Flujo de datos\168:invalid};</property>
+                  name="ParameterMap">#{Package\Tarea Flujo de datos\172:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -670,7 +670,7 @@ where [refTable].[Cod_Asignatura] = ?</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Asignatura"
-                      lineageId="Package\Tarea Flujo de datos\168:invalid">
+                      lineageId="Package\Tarea Flujo de datos\172:invalid">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1360,10 +1360,6 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
           Id="Package\Tarea Flujo de datos\Parametros"
           TopLeft="336,406" />
         <NodeLayout
-          Size="126,42"
-          Id="Package\Tarea Flujo de datos\Busca Rut"
-          TopLeft="325,136" />
-        <NodeLayout
           Size="143,42"
           Id="Package\Tarea Flujo de datos\FT_Asistencia"
           TopLeft="332,515" />
@@ -1375,6 +1371,10 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
           Size="125,42"
           Id="Package\Tarea Flujo de datos\Asistencia"
           TopLeft="336,32" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Tarea Flujo de datos\Busca Rut"
+          TopLeft="325,136" />
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda1]"
           TopLeft="390.5,178">
@@ -1495,6 +1495,29 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos\Busca Rut">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">true</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[LK_Alumno]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Tarea Flujo de datos\FT_Asistencia">
     <Properties>
       <Property>
@@ -1532,29 +1555,6 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[LK_Asignatura]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Busca Rut">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">true</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[LK_Alumno]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>

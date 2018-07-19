@@ -12,8 +12,8 @@
   DTS:ObjectName="DIM_Asignatura"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{AC10B266-786E-4DFE-9E38-C706C8440D85}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{ACFF182C-657D-453F-9694-73FDBF73B09B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables />

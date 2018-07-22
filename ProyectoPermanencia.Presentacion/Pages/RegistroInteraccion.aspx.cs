@@ -26,5 +26,16 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
             Response.Redirect("/Pages/Interacciones.aspx");
         }
+
+        protected void rbtnExistentes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnExistentes.Checked)
+            {
+                rbtnNuevo.Enabled = false;
+            }
+        }
+
+
+
     }
 }

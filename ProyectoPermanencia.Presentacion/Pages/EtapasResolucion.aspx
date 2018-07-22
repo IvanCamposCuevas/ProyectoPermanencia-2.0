@@ -14,7 +14,7 @@
         <ContentTemplate>
             <div class="container">
                 <div class="row jumbotron" style="margin-top: 0px; border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none; padding: 0px;">
-                    <div class="col-md-4" style="padding-left: 0px;">
+                    <div class="col-md-4" style="padding: 5px">
                         <div class="card card-primary">
                             <div class="card-header" style="background-color: rgb(1,40,69); color: white;">Buscar Caso</div>
                             <div class="card-body">
@@ -27,22 +27,22 @@
                                         <asp:ListItem Value="2" Text="Sigla Curso">Sigla Curso</asp:ListItem>
                                         <asp:ListItem Value="3" Text="Rut Alumno">Rut Alumno</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:TextBox runat="server" CssClass="”form-control”" Width="140px" Height="30px" ID="txtBusqueda"></asp:TextBox>
+                                    <asp:TextBox runat="server" CssClass="form-control" Width="150px" Height="30px" ID="txtIngresoBusqueda"></asp:TextBox>
                                 </div>
-                                <div class="row container d-flex justify-content-end" style="">
+                                <div class="row container d-flex justify-content-end">
                                     <asp:Button runat="server" Text="Buscar" ID="Button1" CssClass="btn btn-info btn-sm" />
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-md-8 card-group" style="padding-right: 0px">
+                    <div class="col-md-8 card-group" style="padding: 5px">
                         <div class="card card-primary">
                             <div class="card-header" style="background-color: rgb(1,40,69); color: white;">Filtrar Casos</div>
                             <div class="card-body">
-                                <div class="d-flex container justify-content-center " style="padding-top: 0px;">
-                                    <div class="col-md-3" style="height: 180px;">
-                                        <h5>Tipo de Caso</h5>
+                                <div class="d-flex container justify-content-center " style="padding-top: 0px;  font-size:small">
+                                    <div class="col-md-3" style="height: 120px;">
+                                        <h6>Tipo de Caso</h6>
                                         <asp:CheckBoxList runat="server" ID="ckblTipoCaso" CssClass="checkbox">
                                             <asp:ListItem>Asistencia</asp:ListItem>
                                             <asp:ListItem>Finanzas</asp:ListItem>
@@ -50,8 +50,8 @@
                                             <asp:ListItem>Otros</asp:ListItem>
                                         </asp:CheckBoxList>
                                     </div>
-                                    <div class="col-md-4" style="height: 150px;">
-                                        <h5>Tipo de Intervención</h5>
+                                    <div class="col-md-4" style="height: 120px;">
+                                        <h6>Tipo de Intervención</h6>
                                         <asp:CheckBoxList runat="server" ID="ckblTipoIntervención" CssClass="checkbox">
                                             <asp:ListItem>Correo</asp:ListItem>
                                             <asp:ListItem>Derivación</asp:ListItem>
@@ -60,7 +60,7 @@
                                         </asp:CheckBoxList>
                                     </div>
                                     <div class="col-md-5" style="height: 100px;">
-                                        <h5>Rango de fechas</h5>
+                                        <h6>Rango de fechas</h6>
                                         <asp:Label runat="server" Font-Bold="true">Fecha Inicio:</asp:Label>
                                         <input type="date" id="fechainicio" class="glyphicon-calendar" /></br>
                                         <asp:Label runat="server" Font-Bold="true">Fecha Termino:</asp:Label>
@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
 
-                                <div class="d-flex container justify-content-center" >
+                                <div class="d-flex container justify-content-end" >
                                     <div style="float: right">
                                         <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="btn btn-info" BorderStyle="Solid"></asp:Button>
                                     </div>
@@ -88,7 +88,7 @@
 
                 <div class="row" style="margin: 0px">
                     <div id="ScoreGlobal" class="ScoreGlobal">
-                        <asp:GridView ID="grvGlobal" CssClass="col-md-12 table table-bordered bs-table table-hover table-condensed table-responsive"
+                        <asp:GridView ID="grvIntervenciones" CssClass="col-md-12 table table-bordered bs-table table-hover table-condensed table-responsive"
                             Font-Size="12px" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
                             <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                             <Columns>

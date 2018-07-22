@@ -11,7 +11,15 @@ namespace ProyectoPermanencia.Presentacion.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string[] info = (string[])Session["Info Alumnos"];
+            this.lblRut.Text = info[0];
+            this.lblNombre.Text = info[1];
+            this.lblCarrera.Text = info[2];
+            this.lblJornada.Text = info[7];
+            this.lblEscuela.Text = info[5];
+            this.lblSede.Text = info[6];
+            this.lblTelefono.Text = info[3];
+            this.lblMail.Text = info[4];
         }
     }
 }

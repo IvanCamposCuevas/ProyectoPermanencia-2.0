@@ -175,40 +175,40 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Button btnEditar;
         
         /// <summary>
-        /// Control lblIntervencion2.
+        /// Control lblTipoI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIntervencion2;
+        protected global::System.Web.UI.WebControls.Label lblTipoI;
         
         /// <summary>
-        /// Control lblPartcipar2.
+        /// Control lblParti.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPartcipar2;
+        protected global::System.Web.UI.WebControls.Label lblParti;
         
         /// <summary>
-        /// Control lblADerivacion.
+        /// Control lblArea.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblADerivacion;
+        protected global::System.Web.UI.WebControls.Label lblArea;
         
         /// <summary>
-        /// Control lblFecha2.
+        /// Control lblFechaa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFecha2;
+        protected global::System.Web.UI.WebControls.Label lblFechaa;
         
         /// <summary>
         /// Control TextBox1.
@@ -220,13 +220,13 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// Control btnEditar2.
+        /// Control btnEdd.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditar2;
+        protected global::System.Web.UI.WebControls.Button btnEdd;
         
         /// <summary>
         /// Control Button2.

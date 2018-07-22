@@ -40,22 +40,22 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoBusqueda;
         
         /// <summary>
-        /// Control txtBusqueda.
+        /// Control txtIngresoBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBusqueda;
+        protected global::System.Web.UI.WebControls.TextBox txtIngresoBusqueda;
         
         /// <summary>
-        /// Control Button1.
+        /// Control btnBuscarCasoSinFiltro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnBuscarCasoSinFiltro;
         
         /// <summary>
         /// Control ckblTipoCaso.
@@ -112,12 +112,12 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Button btnFinalizadas;
         
         /// <summary>
-        /// Control grvGlobal.
+        /// Control grvIntervenciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvGlobal;
+        protected global::System.Web.UI.WebControls.GridView grvIntervenciones;
     }
 }

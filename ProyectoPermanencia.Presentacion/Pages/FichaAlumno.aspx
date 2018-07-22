@@ -7,7 +7,7 @@
     </asp:Label>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolderTabs" runat="server">
-    <div class="container">
+    <div class="container" style="font-size:small">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="#">Ficha</a>

@@ -10,7 +10,7 @@
     </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="container">
+            <div class="container" style="font-size:small">
                 <div class="row">
                     <!-- BUSQUEDA Y FILTROS -->
                     <div class="jumbotron modal-content col-md-4" style="height: 150px; padding: 5px; padding-right: 0px; box-shadow: none; box-sizing: border-box; margin: 0px; border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none;">

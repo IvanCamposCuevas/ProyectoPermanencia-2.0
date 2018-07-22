@@ -6,7 +6,7 @@
     </asp:Label>
 </asp:Content>
 <asp:Content runat="server" ID="ContentRegistroInter" ContentPlaceHolderID="ContentPlaceHolderRegistroInter">
-    <div class="container">
+    <div class="container" style="font-size:small">
         <div class="row jumbotron" style="border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none; padding: 0px; margin-bottom: 0px;">
             <div class="container" style="padding:5px">
                 <div class="card card-primary">
@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <div class="row d-flex justify-content-center" style="margin-top: 30px;">
-                            <asp:Button runat="server" ID="btnAgregarInter" CssClass="btn btn-warning center-block" Text="Agregar Intervención " />
+                            <asp:Button runat="server" ID="btnAgregarInter" CssClass="btn btn-sm btn-warning center-block" Text="Agregar Intervención " />
                         </div>
                     </div>
                 </div>

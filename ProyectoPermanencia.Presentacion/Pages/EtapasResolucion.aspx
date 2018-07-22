@@ -42,7 +42,7 @@
                             <div class="card-body">
                                 <div class="d-flex container justify-content-center " style="padding-top: 0px;  font-size:small">
                                     <div class="col-md-3" style="height: 120px;">
-                                        <h6>Tipo de Caso</h6>
+                                        <h5>Tipo de Caso</h5>
                                         <asp:CheckBoxList runat="server" ID="ckblTipoCaso" CssClass="checkbox">
                                             <asp:ListItem>Asistencia</asp:ListItem>
                                             <asp:ListItem>Finanzas</asp:ListItem>
@@ -51,7 +51,7 @@
                                         </asp:CheckBoxList>
                                     </div>
                                     <div class="col-md-4" style="height: 120px;">
-                                        <h6>Tipo de Intervención</h6>
+                                        <h5>Tipo de Intervención</h5>
                                         <asp:CheckBoxList runat="server" ID="ckblTipoIntervención" CssClass="checkbox">
                                             <asp:ListItem>Correo</asp:ListItem>
                                             <asp:ListItem>Derivación</asp:ListItem>
@@ -60,7 +60,7 @@
                                         </asp:CheckBoxList>
                                     </div>
                                     <div class="col-md-5" style="height: 100px;">
-                                        <h6>Rango de fechas</h6>
+                                        <h5>Rango de fechas</h5>
                                         <asp:Label runat="server" Font-Bold="true">Fecha Inicio:</asp:Label>
                                         <input type="date" id="fechainicio" class="glyphicon-calendar" /></br>
                                         <asp:Label runat="server" Font-Bold="true">Fecha Termino:</asp:Label>

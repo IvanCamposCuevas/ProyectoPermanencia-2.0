@@ -14,33 +14,35 @@
         <ContentTemplate>
             <div class="container">
                 <div class="row jumbotron" style="margin-top: 0px; border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none; padding: 0px;">
-                    <div class="col-md-4 panel-group" style="padding-left: 0px;">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading" style="background-color: rgb(1,40,69);">Buscar Caso</div>
-                            <div class="panel-body">
-                                <div class="row input-group center-block" style="margin-bottom: 20px; height: 120px;">
-                                    <h4>Buscar Caso:</h4>
-                                    <asp:DropDownList ID="DropDownList1" runat="server" Width="138px" Height="30px" CssClass="form-control">
+                    <div class="col-md-4" style="padding-left: 0px;">
+                        <div class="card card-primary">
+                            <div class="card-header" style="background-color: rgb(1,40,69); color: white;">Buscar Caso</div>
+                            <div class="card-body">
+                                <div class="row container" style="margin-bottom: 10px;">
+                                    <h5>Buscar por:</h5>
+                                </div>
+                                <div class="row container d-flex justify-content-center">
+                                    <asp:DropDownList ID="ddlTipoBusqueda" runat="server" Width="140px" Height="30px" CssClass="form-control form-control-sm">
                                         <asp:ListItem Value="1" Text="Id Caso">Id Caso</asp:ListItem>
                                         <asp:ListItem Value="2" Text="Sigla Curso">Sigla Curso</asp:ListItem>
                                         <asp:ListItem Value="3" Text="Rut Alumno">Rut Alumno</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:TextBox runat="server" CssClass="”form-control”" Width="115px" Height="30px" ID="TextBox1"></asp:TextBox>
-                                    <asp:Button runat="server" Text="Buscar" ID="Button1" CssClass="btn btn-info" />
+                                    <asp:TextBox runat="server" CssClass="”form-control”" Width="140px" Height="30px" ID="txtBusqueda"></asp:TextBox>
                                 </div>
-                                <div class="row" style="align-content: center; margin-bottom: 0px;">
+                                <div class="row container d-flex justify-content-end" style="">
+                                    <asp:Button runat="server" Text="Buscar" ID="Button1" CssClass="btn btn-info btn-sm" />
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                    <div class="col-md-8 panel-group" style="padding-right: 0px">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading" style="background-color: rgb(1,40,69);">Filtrar Casos</div>
-                            <div class="panel-body" style="padding-top: 0px;">
-                                <div class="row center-block" style="padding-top: 0px;">
-                                    <div class="col-md-3" style="height: 150px;">
-                                        <h4>Tipo de Caso</h4>
+                    <div class="col-md-8 card-group" style="padding-right: 0px">
+                        <div class="card card-primary">
+                            <div class="card-header" style="background-color: rgb(1,40,69); color: white;">Filtrar Casos</div>
+                            <div class="card-body">
+                                <div class="d-flex container justify-content-center " style="padding-top: 0px;">
+                                    <div class="col-md-3" style="height: 180px;">
+                                        <h5>Tipo de Caso</h5>
                                         <asp:CheckBoxList runat="server" ID="ckblTipoCaso" CssClass="checkbox">
                                             <asp:ListItem>Asistencia</asp:ListItem>
                                             <asp:ListItem>Finanzas</asp:ListItem>
@@ -49,7 +51,7 @@
                                         </asp:CheckBoxList>
                                     </div>
                                     <div class="col-md-4" style="height: 150px;">
-                                        <h4>Tipo de Intervención</h4>
+                                        <h5>Tipo de Intervención</h5>
                                         <asp:CheckBoxList runat="server" ID="ckblTipoIntervención" CssClass="checkbox">
                                             <asp:ListItem>Correo</asp:ListItem>
                                             <asp:ListItem>Derivación</asp:ListItem>
@@ -58,15 +60,17 @@
                                         </asp:CheckBoxList>
                                     </div>
                                     <div class="col-md-5" style="height: 100px;">
-                                        <h4>Rango de fechas</h4>
+                                        <h5>Rango de fechas</h5>
                                         <asp:Label runat="server" Font-Bold="true">Fecha Inicio:</asp:Label>
                                         <input type="date" id="fechainicio" class="glyphicon-calendar" /></br>
                                         <asp:Label runat="server" Font-Bold="true">Fecha Termino:</asp:Label>
                                         <input type="date" id="fechatermino" class="glyphicon-calendar" />
                                     </div>
+                                </div>
+
+                                <div class="d-flex container justify-content-center" >
                                     <div style="float: right">
                                         <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="btn btn-info" BorderStyle="Solid"></asp:Button>
-
                                     </div>
 
                                 </div>
@@ -75,7 +79,7 @@
                     </div>
                 </div>
                 <h3>Intervenciones</h3>
-                <div style="float: right; padding:0px; margin:0px;">
+                <div style="float: right; padding: 0px; margin: 0px;">
                     <asp:Button runat="server" ID="btnPendientes" Text="Pendientes" CssClass="btn btn-warning" />
                     <asp:Button runat="server" ID="btnEnCurso" Text="En Curso" CssClass="btn btn-success" />
                     <asp:Button runat="server" ID="btnFinalizadas" Text="Finalizadas" CssClass="btn btn-default" />
@@ -96,7 +100,7 @@
 
                     </div>
                 </div>
-                
+
 
 
             </div>

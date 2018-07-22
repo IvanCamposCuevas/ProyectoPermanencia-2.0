@@ -18,5 +18,10 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
             Response.Redirect("/Pages/RegistroInteraccion.aspx");
         }
+
+        /*protected void btnDetalle_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Pages/DetalleCaso.aspx");
+        }*/
     }
 }

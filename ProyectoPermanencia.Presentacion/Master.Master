@@ -19,23 +19,13 @@
 </head>
 <body>
     <form id="formPrincipal" class="container-fluid" runat="server">
-        <header>
-            <img runat="server" src="~/imgs/logo_50años_avaras_blanco_01.png" width="260" />
-            <!--
-            <div id="MenuPrincipal" class="MenuPrincipal">
-                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal"
-                    CssClass=".MenuPrincipal" BackColor="#092845" DynamicHorizontalOffset="2"
-                    Font-Names="Lucida Sans Unicode" Font-Size="20px" ForeColor="#ffffff"
-                    DynamicMenuItemStyle-BorderStyle="Solid">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Pages/FichaAlumno.aspx" Text=" [Ficha] " />
-                        <asp:MenuItem NavigateUrl="~/Pages/VisionGlobal.aspx" Text=" [Global] " />
-                    </Items>
-                </asp:Menu>
-            </div>
-                -->
-        </header>
-        <nav class="navbar navbar-expand-lg" style="background-color: rgb(1,22,43); text-decoration:none;">
+        <div class="">
+            <header>
+                <img runat="server" src="~/imgs/logo_50años_avaras_blanco_01.png" width="260" />
+            </header>
+        </div>
+
+        <nav class="navbar navbar-expand-lg container-fluid" style="background-color: rgb(1,22,43); text-decoration: none; ">
             <div class="navbar-text navbar-header">
                 <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderTitle">
                 </asp:ContentPlaceHolder>
@@ -43,30 +33,34 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse flex-md-row-reverse" id="navbarNav" >
-                <ul class="navbar-nav" style="color:azure">
-                    <li class="nav-item active" >
-                        <a class="nav-link" style="color:azure" href="#">Inicio</a>
+            <div class="collapse navbar-collapse flex-md-row-reverse table-hover" id="navbarNav">
+                <ul class="navbar-nav" style="color: azure">
+                    <li class="nav-item active">
+                        <a class="nav-link" style="color: azure" href="#">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color:azure" href="/Pages/VisionGlobal.aspx">Visión Global</a>
+                        <a class="nav-link" style="color: azure" href="/Pages/VisionGlobal.aspx">Visión Global</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color:azure" href="/Pages/Reportes.aspx">Reportes</a>
+                        <a class="nav-link" style="color: azure" href="/Pages/Reportes.aspx">Reportes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color:azure" href="/Pages/CargarArchivos.aspx">Cargar</a>
+                        <a class="nav-link" style="color: azure" href="/Pages/CargarArchivos.aspx">Cargar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color:azure" href="/Pages/EtapasResolucion.aspx">Etapas de Resolución</a>
+                        <a class="nav-link" style="color: azure" href="/Pages/EtapasResolucion.aspx">Etapas de Resolución</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: azure" href="/Pages/MantenedorSemestre.aspx">Cambio de Semestre</a>
+                    </li>
+
                 </ul>
             </div>
         </nav>
-        
+
 
         <!-- CONTENIDO DINAMICO DE LA MASTER -->
-        <div>
+        <div class="container visible">
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolderFicha" runat="server">
                 </asp:ContentPlaceHolder>
@@ -118,11 +112,14 @@
 
 
         </div>
-        <footer style="position: static; margin-bottom: 0px" class="footer" id="footer">
-            <br />
+        <div class="align-bottom ">
+            <footer style="position: static; margin-bottom: 0px" class="footer" id="footer">
+                <br />
 
-            <!--            <p style="color: white"> &copy Copyright</p> -->
-        </footer>
+                <!--            <p style="color: white"> &copy Copyright</p> -->
+            </footer>
+        </div>
+
     </form>
 </body>
 </html>

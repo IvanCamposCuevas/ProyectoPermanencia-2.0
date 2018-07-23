@@ -23,7 +23,7 @@
 
 </asp:Content>
 <asp:Content ID="ContentFicha" ContentPlaceHolderID="ContentPlaceHolderFicha" runat="server">
-    <div class="container">
+    <div class="container" >
         <div class="row">
             <asp:Label runat="server" ID="lblRut" Visible="false"></asp:Label>
             <!-- GRILLAS-->

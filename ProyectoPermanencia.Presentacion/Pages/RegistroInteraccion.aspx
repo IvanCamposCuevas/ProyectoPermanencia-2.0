@@ -60,10 +60,10 @@
 
                         <div class="row" style="align-content: center; margin-bottom: 20px;">
                             <div class="col-md-4">
-                                <asp:RadioButton runat="server" ID="rbtnExistentes" Text="Existente " CssClass="radio-inline" OnCheckedChanged="rbtnExistentes_CheckedChanged" />
+                                <asp:RadioButton runat="server" ID="rbtnExistentes" Text="Existente " CssClass="radio-inline form-control-sm" OnCheckedChanged="rbtnExistentes_CheckedChanged" />
                             </div>
                             <div class="col-md-8">
-                                <asp:DropDownList runat="server" ID="ddlCasos" CssClass="form-control">
+                                <asp:DropDownList runat="server" ID="ddlCasos" CssClass="form-control form-control-sm">
                                     <asp:ListItem>Seleccione</asp:ListItem>
                                     <asp:ListItem>03-Finanzas-info-info</asp:ListItem>
                                     <asp:ListItem>05-Asistencia-info-info</asp:ListItem>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="row" style="align-content: center; margin-bottom: 0px;">
                             <div class="col-md-6">
-                                <asp:RadioButton runat="server" ID="rbtnNuevo" Text="Nuevo Caso" CssClass="radio-inline" />
+                                <asp:RadioButton runat="server" ID="rbtnNuevo" Text="Nuevo Caso" CssClass="radio-inline form-control-sm" />
                             </div>
                         </div>
                         <div class="row" style="align-content: flex-end; margin-bottom: 20px;">
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                             <div class="col-md-7" style="padding-right: 0px; justify-content: flex-end;">
-                                <asp:DropDownList runat="server" ID="ddlTipoCaso" CssClass="form-control">
+                                <asp:DropDownList runat="server" ID="ddlTipoCaso" CssClass="form-control form-control-sm">
                                     <asp:ListItem>Seleccione</asp:ListItem>
                                     <asp:ListItem>Asistencia</asp:ListItem>
                                     <asp:ListItem>Financiamiento</asp:ListItem>
@@ -99,7 +99,7 @@
                                 </div>
                             </div>
                             <div class="col-md-7" style="padding-right: 0px; justify-content: flex-end;">
-                                <asp:DropDownList runat="server" ID="ddlCurso" CssClass="form-control">
+                                <asp:DropDownList runat="server" ID="ddlCurso" CssClass="form-control form-control-sm">
                                     <asp:ListItem>Seleccione</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
@@ -119,7 +119,7 @@
                             <div class="col-md-4" style="margin-left: 20px;">
                                 <asp:Label runat="server" Font-Bold="true">Tipo de Intervención :</asp:Label>
                                 <div class="dropdown dropdown-toggle" style="width: 70%;">
-                                    <asp:DropDownList runat="server" ID="ddlTipoIntervencion" CssClass="form-control">
+                                    <asp:DropDownList runat="server" ID="ddlTipoIntervencion" CssClass="form-control form-control-sm">
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>Correo</asp:ListItem>
                                         <asp:ListItem>Derivación</asp:ListItem>
@@ -143,7 +143,7 @@
                             <div class="col-md-4">
                                 <asp:Label runat="server" Font-Bold="true">Área de derivación :</asp:Label>
                                 <div class="dropdown dropdown-toggle" style="width: 90%;">
-                                    <asp:DropDownList runat="server" ID="ddlArederiv" CssClass="form-control">
+                                    <asp:DropDownList runat="server" ID="ddlArederiv" CssClass="form-control form-control-sm">
                                         <asp:ListItem>Seleccione</asp:ListItem>
                                         <asp:ListItem>Asuntos Estudiantiles</asp:ListItem>
                                         <asp:ListItem>CETIR</asp:ListItem>

@@ -31,15 +31,6 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlForm formPrincipal;
         
         /// <summary>
-        /// Control Menu1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu Menu1;
-        
-        /// <summary>
         /// Control ContentPlaceHolderTitle.
         /// </summary>
         /// <remarks>

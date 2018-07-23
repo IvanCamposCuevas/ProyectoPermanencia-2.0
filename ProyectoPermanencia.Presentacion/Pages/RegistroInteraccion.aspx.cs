@@ -20,6 +20,11 @@ namespace ProyectoPermanencia.Presentacion.Pages
             this.lblSede.Text = info[6];
             this.lblTelefono.Text = info[3];
             this.lblMail.Text = info[4];
+
+            ddlCurso.DataSource = new Negocio.NegocioRegistroInteraccion().cargarddlCurso(lblRut.Text);
+            ddlCurso.DataTextField = "CURSO";
+            ddlCurso.DataBind();
+
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)

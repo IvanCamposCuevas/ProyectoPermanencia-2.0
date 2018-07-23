@@ -13,15 +13,6 @@ namespace ProyectoPermanencia.Presentacion.Pages {
     public partial class Interacciones {
         
         /// <summary>
-        /// Control btnNuevaInteraccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevaInteraccion;
-        
-        /// <summary>
         /// Control btnDetalle.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDetalle;
+        
+        /// <summary>
+        /// Control btnNuevaInteraccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNuevaInteraccion;
         
         /// <summary>
         /// Control grvCasos.

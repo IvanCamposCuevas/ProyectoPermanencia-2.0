@@ -86,7 +86,7 @@
                                 <asp:Button ID="btnBuscarCarreras" runat="server" Text="Seleccionar Carrera" Font-Size="Small" CssClass="btn btn-sm btn-warning" />
 
                                 <div id="popupCarreras" class="justify-content-center" style="padding: 0px">
-                                    <asp:Panel ID="Panel1" runat="server" BackColor="White" Width="450px" Height="400px"  CssClass="modal-content" ScrollBars="Vertical">
+                                    <asp:Panel ID="Panel1" runat="server" BackColor="White" Width="450px" Height="600px"  CssClass="modal-content" ScrollBars="Vertical">
                                         <div id="Carrera" class="card" style="padding: 20px">
                                             <asp:CheckBoxList ID="chkListaCarreras" runat="server">
                                             </asp:CheckBoxList>

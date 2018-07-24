@@ -16,61 +16,68 @@
     </asp:ContentPlaceHolder>
 </asp:Content>
 <asp:Content ID="ContentFicha" ContentPlaceHolderID="ContentPlaceHolderFicha" runat="server">
-    <div class="container" style="margin-top:10px; font-size:small">
+    <div class="container" style="margin-top: 10px; font-size: small">
         <div class="row">
-            <div class="col-md-3 jumbotron modal-content" style=" padding: 15px; border-radius: 5px; box-shadow: none">
+            <div class="col-md-3 card card-primary modal-content" style="padding: 0px; border-radius: 5px; box-shadow: none">
                 <!-- COLUMNA LATERAL CON INFORMACION DEL ALUMNO -->
-                <div>
+                <div class="container-fluid card-header">
+                    <h6 style="text-align: center">Información Personal</h6>
+                </div>
+                <div class="card-body" style="">
                     <div>
                         <img src="~/imgs/avatar.png" height="150" runat="server" style="padding-left: 50px; margin: 10px; position: center;" />
                     </div>
-                    <div style="padding-left: 25px; padding-top: 0px; margin-top: 0px; position: center;">
-                        <h6>Estado de riesgo: </h6>
-                        <div class="progress" style="width: 200px">
-                            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                            <!--<div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div style="padding-top: 0px; margin-top: 10px;">
+                        <h6 class="d-flex justify-content-start">Estado de riesgo: </h6>
+                        <div class="d-flex justify-content-center">
+                            <div class="progress" style="width: 200px">
+                                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                                <!--<div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                             </div>
                             <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                             </div>-->
+                            </div>
                         </div>
                     </div>
-                    <div id="InformacionAlumno" class="SideColumn" style="float: left; align-content: center; padding-left: 20px; margin-top: 20px;">
-                        <h6 style="text-align: center">Información Personal</h6>
-                        <asp:Label runat="server" Font-Bold="true">Rut:</asp:Label>
-                        <asp:Label ID="lblRut" runat="server"></asp:Label>
-                        <br />
-                        <asp:Label runat="server" Font-Bold="true">Nombre:</asp:Label>
-                        <asp:Label runat="server" ID="lblNombre"></asp:Label>
-                        <br />
-                        <asp:Label runat="server" Font-Bold="true">Carrera:</asp:Label>
-                        <asp:Label runat="server" ID="lblCarrera"></asp:Label>
-                        <br />
-                        <asp:Label runat="server" Font-Bold="true">Jornada:</asp:Label>
-                        <asp:Label runat="server" ID="lblJornada"></asp:Label>
-                        <br />
+                    <div class="container d-flex justify-content-start" style="padding-left:0; padding-right:0px">
+                        <div id="InformacionAlumno" style="float: left; align-content: center; margin-top: 20px; justify-content:flex-start">
+                            <asp:Label runat="server" Font-Bold="true">Rut:</asp:Label>
+                            <asp:Label ID="lblRut" runat="server"></asp:Label>
+                            <br />
+                            <asp:Label runat="server" Font-Bold="true">Nombre:</asp:Label>
+                            <asp:Label runat="server" ID="lblNombre"></asp:Label>
+                            <br />
+                            <asp:Label runat="server" Font-Bold="true">Carrera:</asp:Label>
+                            <asp:Label runat="server" ID="lblCarrera"></asp:Label>
+                            <br />
+                            <asp:Label runat="server" Font-Bold="true">Jornada:</asp:Label>
+                            <asp:Label runat="server" ID="lblJornada"></asp:Label>
+                            <br />
 
-                        <asp:Label runat="server" Font-Bold="true">Escuela:</asp:Label>
-                        <asp:Label runat="server" ID="lblEscuela"></asp:Label>
-                        <br />
-                        <asp:Label runat="server" Font-Bold="true">Sede:</asp:Label>
-                        <asp:Label runat="server" ID="lblSede"></asp:Label>
-                        <br />
-                        <br />
-                        <h6 style="text-align: center">Situación Financiera</h6>
-                        <asp:Label runat="server" Font-Bold="true">Tipo de beneficio:</asp:Label>
-                        <asp:Label runat="server" ID="lblBeneficio"></asp:Label>
-                        <br />
-                        <h5 style="text-align: center">Contacto</h5>
-                        <asp:Label runat="server" Font-Bold="true">Teléfono:</asp:Label>
-                        <asp:Label runat="server" ID="lblTelefono"></asp:Label>
-                        <br />
-                        <asp:Label runat="server" Font-Bold="true">Mail:</asp:Label>
-                        <asp:Label runat="server" ID="lblMail"> username@alumnos.duoc.cl</asp:Label>
-                        <br />
-                        <br />
+                            <asp:Label runat="server" Font-Bold="true">Escuela:</asp:Label>
+                            <asp:Label runat="server" ID="lblEscuela"></asp:Label>
+                            <br />
+                            <asp:Label runat="server" Font-Bold="true">Sede:</asp:Label>
+                            <asp:Label runat="server" ID="lblSede"></asp:Label>
+                            <br />
+                            <br />
+                            <h6 style="text-align: center">Situación Financiera</h6>
+                            <asp:Label runat="server" Font-Bold="true">Tipo de beneficio:</asp:Label>
+                            <asp:Label runat="server" ID="lblBeneficio"></asp:Label>
+                            <br />
+                            <h5 style="text-align: center">Contacto</h5>
+                            <asp:Label runat="server" Font-Bold="true">Teléfono:</asp:Label>
+                            <asp:Label runat="server" ID="lblTelefono"></asp:Label>
+                            <br />
+                            <asp:Label runat="server" Font-Bold="true">Mail:</asp:Label>
+                            <asp:Label runat="server" ID="lblMail"> username@alumnos.duoc.cl</asp:Label>
+                            <br />
+                            <br />
+                        </div>
                     </div>
                 </div>
+
             </div>
 
 

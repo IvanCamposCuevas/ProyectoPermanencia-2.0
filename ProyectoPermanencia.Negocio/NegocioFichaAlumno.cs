@@ -87,16 +87,16 @@ namespace ProyectoPermanencia.Negocio
 				 * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
 				 * que incluye los las uniones y filtros correspondientes.
 				 * */
-                con.Conec1.IntruccioneSQL = "SELECT [CODIGO ASIGNATURA], "+
-                                                   "[DESC ASIGNATURA] AS 'NOMBRE ASIGNATURA', "+
-                                                   "[SECCION], "+
-                                                   "[AÑO], "+
-                                                   "[SEMESTRE], "+
-                                                   "[Nº NOTAS PARCIALES], "+
-                                                   "[Nº NOTAS EXAMEN], "+
-                                                   "[PROMEDIO CATEDRA], "+
-                                                   "[PROMEDIO EXAMEN], "+
-                                                   "[NOTA FINAL] " +                                                   
+                con.Conec1.IntruccioneSQL = "SELECT [CODIGO ASIGNATURA] AS 'Codigo', "+
+                                                   "[DESC ASIGNATURA] AS 'Asignatura', " +
+                                                   "[SECCION] AS 'Sección', " +
+                                                   "[AÑO] AS 'Año', " +
+                                                   "[SEMESTRE] AS 'Semestre', " +
+                                                   "[Nº NOTAS PARCIALES] AS 'N° de notas parciales', " +
+                                                   "[Nº NOTAS EXAMEN] AS 'N° de notas de exámen', " +
+                                                   "[PROMEDIO CATEDRA] AS 'Promedio Cátedra', " +
+                                                   "[PROMEDIO EXAMEN] AS 'Promedio Exámen', " +
+                                                   "[NOTA FINAL] AS 'Nota Final' " +                                                   
                                                    "\n" +
                                                    "FROM " +
                                                    "dbo.Curso_STG" + 

@@ -16,6 +16,38 @@
     </asp:ContentPlaceHolder>
     <title>Sistema Permanencia</title>
 
+    <!--
+    <style type="text/css">
+        .message {
+            width: 100%;
+            position: fixed;
+            top: 50px;
+            z-index: 100000;
+            padding: 0;
+            font-size: 15px;
+        }
+    </style>
+    <script type="text/javascript">
+        function ShowMessage(message, messagetype) {
+            var cssclass;
+            switch (messagetype) {
+                case 'Success':
+                    cssclass = 'alert-success'
+                    break;
+                case 'Error':
+                    cssclass = 'alert-danger'
+                    break;
+                case 'Warning':
+                    cssclass = 'alert-warning'
+                    break;
+                default:
+                    cssclass = 'alert-info'
+            }
+            $('body').append('<div id="alert_div" style="margin: 0 10%; -webkit-box-shadow: 3px 4px 6px #999;width:40%" class="alert fade in ' + cssclass + '"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>' + messagetype + '!</strong> <span>' + message + '</span></div>');
+        }
+    </script>
+    -->
+
 </head>
 <body>
     <form id="formPrincipal" class="container-fluid" runat="server">
@@ -25,7 +57,7 @@
             </header>
         </div>
 
-        <nav class="navbar navbar-expand-lg container-fluid" style="background-color: rgb(1,22,43); text-decoration: none; ">
+        <nav class="navbar navbar-expand-lg container-fluid" style="background-color: rgb(1,22,43); text-decoration: none;">
             <div class="navbar-text navbar-header">
                 <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderTitle">
                 </asp:ContentPlaceHolder>
@@ -57,6 +89,7 @@
                 </ul>
             </div>
         </nav>
+
 
 
         <!-- CONTENIDO DINAMICO DE LA MASTER -->
@@ -121,5 +154,7 @@
         </div>
 
     </form>
+
+
 </body>
 </html>

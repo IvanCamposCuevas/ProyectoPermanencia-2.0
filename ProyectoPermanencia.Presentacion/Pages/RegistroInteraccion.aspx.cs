@@ -21,9 +21,30 @@ namespace ProyectoPermanencia.Presentacion.Pages
             this.lblTelefono.Text = info[3];
             this.lblMail.Text = info[4];
 
+
             ddlCurso.DataSource = new Negocio.NegocioRegistroInteraccion().cargarddlCurso(lblRut.Text);
             ddlCurso.DataTextField = "CURSO";
             ddlCurso.DataBind();
+
+            ddlTipoCaso.DataSource = new Negocio.NegocioRegistroInteraccion().cargarddlTipoCaso();
+            ddlTipoCaso.DataValueField = "Id_TipoCaso";
+            ddlTipoCaso.DataTextField = "Desc_TipoCaso";
+            ddlTipoCaso.DataBind();
+
+            ddlTipoIntervencion.DataSource = new Negocio.NegocioRegistroInteraccion().cargarddlTipoInteraccion();
+            ddlTipoIntervencion.DataValueField = "Id_TipoInteraccion";
+            ddlTipoIntervencion.DataTextField = "Desc_TipoInteraccion";
+            ddlTipoIntervencion.DataBind();
+
+
+            //comentado porque la query tiene error de sintaxis
+            //ddlCasos.DataSource = new Negocio.NegocioRegistroInteraccion().cargarddlCasos(lblRut.Text);
+            //ddlCurso.DataTextField = "CASO";
+            //ddlCurso.DataBind();
+
+            //grv de prueba para traer los datos
+            //grvOpcionCasos.DataSource = new Negocio.NegocioRegistroInteraccion().cargarddlCasos(lblRut.Text);
+            //grvOpcionCasos.DataBind();
 
         }
 

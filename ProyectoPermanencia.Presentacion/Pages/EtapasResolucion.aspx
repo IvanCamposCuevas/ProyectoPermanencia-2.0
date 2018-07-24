@@ -22,12 +22,12 @@
                                     <h5>Buscar por:</h5>
                                 </div>
                                 <div class="row container d-flex justify-content-center">
-                                    <asp:DropDownList ID="ddlTipoBusqueda" runat="server" Width="140px" Height="30px" CssClass="form-control form-control-sm">
+                                    <asp:DropDownList ID="ddlTipoBusqueda" runat="server" Width="130px" Height="30px" CssClass="form-control form-control-sm">
                                         <asp:ListItem Value="1" Text="Id Caso">Id Caso</asp:ListItem>
                                         <asp:ListItem Value="2" Text="Sigla Curso">Sigla Curso</asp:ListItem>
                                         <asp:ListItem Value="3" Text="Rut Alumno">Rut Alumno</asp:ListItem>
                                     </asp:DropDownList>
-                                    <asp:TextBox runat="server" CssClass="form-control" Width="150px" Height="30px" ID="txtIngresoBusqueda"></asp:TextBox>
+                                    <asp:TextBox runat="server" CssClass="form-control" Width="140px" Height="30px" ID="txtIngresoBusqueda"></asp:TextBox>
                                 </div>
                                 <div class="row container d-flex justify-content-end">
                                     <asp:Button runat="server" Text="Buscar" ID="Button1" CssClass="btn btn-info btn-sm" />

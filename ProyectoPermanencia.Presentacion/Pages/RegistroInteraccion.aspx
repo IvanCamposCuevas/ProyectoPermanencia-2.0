@@ -63,12 +63,14 @@
                                 <asp:RadioButton runat="server" ID="rbtnExistentes" Text="Existente " CssClass="radio-inline form-control-sm" OnCheckedChanged="rbtnExistentes_CheckedChanged" />
                             </div>
                             <div class="col-md-8">
+                                <!--DDL ideal-->
                                 <asp:DropDownList runat="server" ID="ddlCasos" CssClass="form-control form-control-sm">
                                     <asp:ListItem>Seleccione</asp:ListItem>
-                                    <asp:ListItem>03-Finanzas-info-info</asp:ListItem>
-                                    <asp:ListItem>05-Asistencia-info-info</asp:ListItem>
-
                                 </asp:DropDownList>
+                                <!--GridView en caso de no poder poblar el ddl con el concat con la información-->
+                                <asp:GridView ID="grvOpcionCasos" runat="server">
+
+                                </asp:GridView>
                             </div>
                         </div>
                         <div class="row" style="align-content: center; margin-bottom: 0px;">
@@ -111,7 +113,7 @@
                 </div>
 
             </div>
-            <div class="col-md-8 panel-group" style="padding: 5px">
+            <div class="col-md-8 card-group disabled" style="padding: 5px">
                 <div class="card card-primary">
                     <div class="card-header" style="background-color: rgb(1,40,69); color: white;">Interacción</div>
                     <div class="card-body">

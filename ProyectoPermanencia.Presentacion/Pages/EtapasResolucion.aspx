@@ -60,13 +60,13 @@
                                     <div class="col-md-5" style="height: 100px;">
                                         <h4>Rango de fechas</h4>
                                         <asp:Label runat="server" Font-Bold="true">Fecha Inicio:</asp:Label>
-                                        <input type="date" id="fechainicio" class="glyphicon-calendar" />
+                                        <input type="date" id="fechainicio" name="Fecha_Inicio" class="glyphicon-calendar"/>
                                         <asp:Label runat="server" Font-Bold="true">Fecha Termino:</asp:Label>
-                                        <input type="date" id="fechatermino" class="glyphicon-calendar" />
-                                        </br>
+                                        <input type="date" id="fechatermino" name="Fecha_Termino" class="glyphicon-calendar" />
+
                                     </div>
                                     <div style="float: right">
-                                        <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="btn btn-info" BorderStyle="Solid"></asp:Button>
+                                        <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="btn btn-info" BorderStyle="Solid" OnClick="btnFiltrar_Click"></asp:Button>
 
                                     </div>
 
@@ -77,9 +77,9 @@
                 </div>
                 <h3>Intervenciones</h3>
                 <div style="float: right; padding:0px; margin:0px;">
-                    <asp:Button runat="server" ID="btnPendientes" Text="Pendientes" CssClass="btn btn-warning" />
-                    <asp:Button runat="server" ID="btnEnCurso" Text="En Curso" CssClass="btn btn-success" />
-                    <asp:Button runat="server" ID="btnFinalizadas" Text="Finalizadas" CssClass="btn btn-default" />
+                    <asp:Button runat="server" ID="btnPendientes" Text="Pendientes" CssClass="btn btn-warning" OnClick="btnPendientes_Click" />
+                    <asp:Button runat="server" ID="btnEnCurso" Text="En Curso" CssClass="btn btn-success" OnClick="btnEnCurso_Click" />
+                    <asp:Button runat="server" ID="btnFinalizadas" Text="Finalizadas" CssClass="btn btn-default" OnClick="btnFinalizadas_Click" />
                 </div>
 
 

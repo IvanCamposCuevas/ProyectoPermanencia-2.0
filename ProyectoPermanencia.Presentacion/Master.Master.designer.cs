@@ -31,6 +31,15 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlForm formPrincipal;
         
         /// <summary>
+        /// Control scrp1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager scrp1;
+        
+        /// <summary>
         /// Control ContentPlaceHolderTitle.
         /// </summary>
         /// <remarks>
@@ -146,5 +155,14 @@ namespace ProyectoPermanencia.Presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderMantenedorSemestre;
+        
+        /// <summary>
+        /// Control lblfechaprueba.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblfechaprueba;
     }
 }

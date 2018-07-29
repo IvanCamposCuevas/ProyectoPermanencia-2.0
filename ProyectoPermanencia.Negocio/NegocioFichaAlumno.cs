@@ -69,7 +69,6 @@ namespace ProyectoPermanencia.Negocio
         /// </summary>
         /// <param name="rut"></param>
         /// <returns></returns>
-
         private System.Data.DataSet consultaNota(string rut)
         {
             NegocioConexionBD con = new NegocioConexionBD(); // Instancia La Clase NegocioConexionBD
@@ -152,6 +151,9 @@ namespace ProyectoPermanencia.Negocio
 
         }
 
+        //Metodo que trae el detalle de las notas por asignatura de un alumno
+        //(param) rut
+        //(return) "arreglo" DataSet con resultado de la consulta
         public System.Data.DataSet consultaDetNotas(string rut)
         {
             NegocioConexionBD con = new NegocioConexionBD(); // Instancia La Clase NegocioConexionBD
@@ -228,5 +230,40 @@ namespace ProyectoPermanencia.Negocio
             datosAsistencia = consultaAsistencia(rut);
             datosMorosos = consultaSituacionFinanciera(rut);
         }
+
+        //Cargar grilla con display de los casos que tiene activos el alumno
+        //(param) string con el rut del alumno
+        //(return) "arreglo" DataSet con información de resultado de la query
+        public DataSet CargargrvCasos(string rutAlumno)
+        {
+            //Instancia conexión
+            NegocioConexionBD conexion = new NegocioConexionBD();
+            conexion.configuraConexion();
+
+            //validar que rut no llegue vacío
+            if (!String.IsNullOrEmpty(rutAlumno))
+            {
+                //Consulta para traer el id del alumno por su rut
+                conexion.Conec1.IntruccioneSQL = String.Format("SELECT Id_Alumno FROM LK_Alumno WHERE Desc_Rut_Alumno = '{0}';", rutAlumno);
+                conexion.Conec1.EsSelect = true;
+                conexion.Conec1.conectar();
+                string idalumno = conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
+
+
+                //Consulta que trae información de los casos a desplegar
+                conexion.Conec1.IntruccioneSQL = String.Format("SELECT DISTINCT CA.Id_Caso AS 'Id', CONVERT(nvarchar, CONVERT(date, CA.Fecha_Inicio), 103) AS 'Fecha Inicio', TC.Desc_TipoCaso AS 'Tipo de Caso', IIF((TC.Id_TipoCaso = 1) OR(TC.Id_TipoCaso = 3), CONCAT(ASI.Cod_Asignatura, '-', ASI.Seccion), 'No aplica') AS 'Curso', INTE.Id_Interaccion AS 'Id interaccion', CONCAT('Tipo: ', TI.Desc_TipoInteraccion, ', el día ', CONVERT(nvarchar, CONVERT(date, INTE.Fecha_Interaccion), 103)) AS 'Ultima Interaccion', EC.Desc_Estado AS 'Estado del Caso', CA.Fecha_Termino AS 'Fecha Termino' FROM Caso CA, Tipo_Caso TC, LK_Asignatura ASI, Estado_Caso EC, Tipo_Interaccion TI INNER JOIN Interaccion INTE ON Id_Caso = INTE.Id_Caso WHERE CA.Id_Alumno = '{0}' AND CA.Id_TipoCaso = TC.Id_TipoCaso AND(CA.Id_Asignatura = ASI.Id_Asignatura OR CA.Id_Asignatura IS NULL) AND CA.Id_Estado = EC.Id_Estado AND INTE.Id_TipoInteraccion = TI.Id_TipoInteraccion AND INTE.Id_Interaccion = (SELECT MAX(Id_Interaccion) FROM Interaccion INTE WHERE INTE.Id_Caso = CA.Id_Caso) GROUP BY INTE.Id_Interaccion, CA.Id_Caso, CA.Fecha_Inicio, TC.Id_TipoCaso, TC.Desc_TipoCaso, ASI.Cod_Asignatura,	ASI.Seccion, EC.Desc_Estado, CA.Fecha_Termino, TI.Desc_TipoInteraccion, INTE.Fecha_Interaccion", idalumno);
+                conexion.Conec1.EsSelect = true;
+                conexion.Conec1.conectar();
+            }
+
+            return conexion.Conec1.DbDat;
+        }
+
+
+
+
+
+
+
     }
 }

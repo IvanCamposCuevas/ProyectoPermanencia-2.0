@@ -20,6 +20,19 @@ namespace ProyectoPermanencia.Presentacion.Pages
             this.lblSede.Text = info[6];
             this.lblTelefono.Text = info[3];
             this.lblMail.Text = info[4];
+
+            string[] infoCaso = (string[])Session["Info Caso"];
+            this.lblIdCaso.Text = infoCaso[0];
+            this.lblTipoCaso.Text = infoCaso[2];
+            this.lblCurso.Text = infoCaso[3];
+            this.lblEstado.Text = infoCaso[6];
+        }
+
+
+        protected void btnVolver_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("/Pages/Interacciones.aspx");
+
         }
     }
 }

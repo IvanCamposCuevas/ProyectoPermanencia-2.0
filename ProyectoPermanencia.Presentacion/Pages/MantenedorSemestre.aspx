@@ -11,9 +11,9 @@
             <div class=" col-md-12 card card-primary" style="margin: 0px">
                 <div class="row card-header" style="background-color: rgb(1,40,69); color: white">Cambiar semestre actual</div>
                 <div class="row card-body">
-                    <div class="col-md-5" >
+                    <div class="col-md-4" >
                         <div>
-                            <h5>Crear Nuevo Semestre</h5>
+                            <h6>1. Crear Nuevo Semestre</h6>
                             <br />
                             <div class="row">
                                 <div class="col-md-1">
@@ -36,9 +36,10 @@
                             <asp:Button ID="btnAgregaSemestre"  runat="server" CssClass="btn btn-sm btn-info" Text="Agregar Semestre" OnClick="btnAgregaSemestre_Click" />
                         </div>
                     </div>
+                    <div class="col-md-1"></div>
                     <div class="col-md-4">
                         <div>
-                            <h5>Seleccionar Semestre</h5>
+                            <h6>2. Seleccionar Semestre</h6>
                             <br />
                             <asp:DropDownList ID="ddlSemestres" runat="server" CssClass="form-control form-control-sm" Width="150px">
                                 <asp:ListItem> Seleccione:  </asp:ListItem>

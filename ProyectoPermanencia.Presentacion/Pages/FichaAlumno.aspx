@@ -29,7 +29,7 @@
             <!-- GRILLAS-->
             <div class="row container" style="padding-left: 30px; padding-top: 10px;">
                 <div id="ScoreNotas" class="ScoreNotas">
-                    <h3>Score notas por asignatura </h3>
+                    <h5>Score notas por asignatura </h5>
                     <asp:GridView ID="grvNotas" runat="server" BackColor="#EFF4F8" ShowHeaderWhenEmpty="True"
                         EmptyDataText="No se encontraron registros" Width="800px"
                         CssClass="table table-sm table-bordered bs-table table-responsive " Font-Size="12px">
@@ -40,7 +40,7 @@
                     <asp:Button ID="ClientButton" runat="server" Text="Ver Detalle" CssClass="btn btn-sm btn-info" />
                     <asp:Panel ID="ModalPanel" runat="server" BackColor="White" CssClass="modal-content container-fluid" Width="800px">
                         <div class="row" style="padding: 20px; padding-top: 5px;">
-                            <h3 style="font-family: 'Open Sans',sans-serif">Detalle de notas por asignatura </h3>
+                            <h5>Detalle de notas por asignatura </h5>
                             <div id="DetalleNotas" style="overflow: auto; width: 100%" class="ScoreNotas">
                                 <asp:GridView ID="grvDetalleNotas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True"
                                     EmptyDataText="No se encontraron registros" Width="800px"
@@ -57,7 +57,6 @@
                     </asp:Panel>
                     <ajaxToolkit:ModalPopupExtender ID="mpe" BehaviorID="mpeID" runat="server" TargetControlID="ClientButton"
                         PopupControlID="ModalPanel" OkControlID="OKButton" />
-                    <asp:ScriptManager ID="asm" runat="server" />
                     <!-- FIN POP CLIENT-->
                     <!-- POP SERVER SIDE -->
                     <!--<asp:Button ID="ServerButton" runat="server" Text="Ver Detalle (Server)" OnClick="ServerButton_Click" />
@@ -87,7 +86,7 @@
 
             <div class="row container" style="padding-left: 30px; padding-top: 30px;">
                 <div id="ScoreAsistencia" class="ScoreAsistencia">
-                    <h3>Score asistencia por asignatura </h3>
+                    <h5>Score asistencia por asignatura </h5>
                     <asp:GridView ID="grvAsistencia" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True"
                         EmptyDataText="No se encontraron registros" Width="100%"
                         CssClass="table table-bordered bs-table table-sm table-responsive" Font-Size="12px">
@@ -99,7 +98,7 @@
 
             <div class="row container" style="padding-left: 30px; padding-top: 30px;">
                 <div id="ScoreFinanzas" class="ScoreFinanzas">
-                    <h3>Score situación financiera </h3>
+                    <h5>Score situación financiera </h5>
                     <asp:GridView ID="grvFinanzas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True"
                         EmptyDataText="No se encontraron registros" Width="100%" OnRowDataBound="grvFinanzas_RowDataBound"
                         CssClass="table table-bordered bs-table table-sm table-responsive" Font-Size="12px">

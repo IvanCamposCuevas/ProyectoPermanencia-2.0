@@ -11,7 +11,10 @@ namespace ProyectoPermanencia.Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                this.lblfechaprueba.Text = DateTime.Now.ToString();
+            }
         }
 
         

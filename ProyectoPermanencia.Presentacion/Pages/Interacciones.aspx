@@ -24,25 +24,38 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <asp:Button ID="btnDetalle" runat="server" Text="Detalle Caso" CssClass="btn btn-info center-block" OnClientClick="window.open('/Pages/DetalleCaso.aspx');" />
             </div>
             <div class="col-md-6 ">
+                <i class="material-icons"></i>
                 <asp:Button ID="btnNuevaInteraccion" runat="server" Text="Registrar Nueva Interaccion" CssClass="btn btn-info flex-row-reverse" OnClick="btnNuevaInteraccion_Click" />
+                <asp:LinkButton runat="server"><i class="material-icons md-18">face</i></asp:LinkButton>
             </div>
         </div>
-        <div class="row">
+        <asp:Label ID="lblRut" runat="server" Visible="false"></asp:Label>
+
+        <div class="row container" style="padding-left: 20px">
             <!-- Grilla con historial de intervenciones -->
             <div id="HistorialCasos" class="ScoreAsistencia">
                 <h5>Historial de Casos </h5>
                 <h6>Grilla</h6>
-                <asp:GridView ID="grvCasos" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True"
-                    EmptyDataText="No se encontraron registros" Width="800px"
-                    CssClass="table table-bordered bs-table table-condensed table-responsive" Font-Size="12px">
-                    <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
-                    <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
+                <asp:GridView ID="grvCasos" runat="server" BackColor="#EFF4F8" ShowHeaderWhenEmpty="True" Width="600px" Font-Size="12px"
+                    CssClass=" table table-bordered bs-table table-sm table-responsive" HorizontalAlign="Right" AutoGenerateColumns="false"
+                    EmptyDataText="No se han abierto casos para intervenir con el alumno" OnSelectedIndexChanged="grvCasos_SelectedIndexChanged">
                     <Columns>
-                        <asp:TemplateField></asp:TemplateField>
+                        <asp:BoundField Visible="true" DataField="Id" HeaderText="Id" />
+                        <asp:BoundField DataField="Fecha Inicio" HeaderText="Fecha Inicio" />
+                        <asp:BoundField DataField="Tipo de Caso" HeaderText="Tipo de Caso" />
+                        <asp:BoundField DataField="Curso" HeaderText="Curso" />
+                        <asp:BoundField Visible="false" DataField="Id interaccion" HeaderText="Id interaccion" />
+                        <asp:BoundField DataField="Ultima Interaccion" HeaderText="Ultima Interaccion" />
+                        <asp:BoundField DataField="Estado del Caso" HeaderText="Estado del Caso" />
+                        <asp:BoundField DataField="Fecha Termino" HeaderText="Fecha Termino" />
+                        <asp:CommandField ButtonType="Button" ShowSelectButton="true" SelectText="Ver Detalle">
+                            <ControlStyle CssClass="btn btn-sm btn-success" />
+                        </asp:CommandField>
                     </Columns>
+                    <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                 </asp:GridView>
             </div>
 

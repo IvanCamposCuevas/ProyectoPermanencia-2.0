@@ -121,58 +121,13 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Label lblEstado;
         
         /// <summary>
-        /// Control lblTipoIntervencion.
+        /// Control dlInteracciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTipoIntervencion;
-        
-        /// <summary>
-        /// Control lblParticipa.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblParticipa;
-        
-        /// <summary>
-        /// Control lblAreaDeriv.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAreaDeriv;
-        
-        /// <summary>
-        /// Control lblFecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFecha;
-        
-        /// <summary>
-        /// Control tbComentarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbComentarios;
-        
-        /// <summary>
-        /// Control btnEditar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditar;
+        protected global::System.Web.UI.WebControls.DataList dlInteracciones;
         
         /// <summary>
         /// Control lblTipoI.
@@ -229,12 +184,30 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Button btnEdd;
         
         /// <summary>
-        /// Control Button2.
+        /// Control btnAgregarInteraccion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnAgregarInteraccion;
+        
+        /// <summary>
+        /// Control btnVolver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVolver;
+        
+        /// <summary>
+        /// Control btnFinalizarCaso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFinalizarCaso;
     }
 }

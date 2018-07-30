@@ -6,11 +6,9 @@
     </asp:Label>
 </asp:Content>
 <asp:Content ID="ContentGlobal" ContentPlaceHolderID="ContentPlaceHolderGlobal" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <div class="container" style="font-size:small">
+            <div class="container" style="font-size: small">
                 <div class="row">
                     <!-- BUSQUEDA Y FILTROS -->
                     <div class="jumbotron modal-content col-md-4" style="height: 150px; padding: 5px; padding-right: 0px; box-shadow: none; box-sizing: border-box; margin: 0px; border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none;">
@@ -34,8 +32,16 @@
                                 </div>
 
                             </div>
-                            <div class="row container" style="flex-direction: row-reverse; margin-left: 30px;">
+                            <div class="row container " style="flex-direction:row; padding: 0px; " >
+                                <div class="col-md-6">
+                                    
+                                </div>
+                                <div class="col-md-4" style="font-size:smaller; padding-left:0px; ">
+                                    <label class="col-form-label" > (Ej: XXXXXXXX-X) </label>
+                                </div>
+                                <div class="col-md-2" style="flex-direction: row-reverse;">
                                 <asp:Button runat="server" Text="Buscar" ID="btoFiltrar" CssClass="btn btn-info btn-sm" OnClick="btoFiltrar_Click" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -83,18 +89,23 @@
                             <div class="col-md-6">
                             </div>
                             <div class="col-md-4">
-                                <asp:Button ID="btnBuscarCarreras" runat="server" Text="Seleccionar Carrera" Font-Size="Small" CssClass="btn btn-sm btn-warning" />
+                                <asp:Button ID="btnBuscarCarreras" runat="server" Text="Seleccionar Carrera" Font-Size="Small" CssClass="btn btn-sm btn-warning" OnClientClick="ddlEscuelas_SelectedIndexChanged" />
 
-                                <div id="popupCarreras" class="justify-content-center" style="padding: 0px">
-                                    <asp:Panel ID="Panel1" runat="server" BackColor="White" Width="450px" Height="600px"  CssClass="modal-content" ScrollBars="Vertical">
+                                <div id="popupCarreras" class="justify-content-center" style="padding: 0px; height: auto; max-height: 500px;">
+                                    <asp:Panel ID="Panel1" runat="server" BackColor="White" Width="450px" Height="500px" CssClass="modal-content" ScrollBars="Vertical" HorizontalAlign="Justify" >
+
                                         <div id="Carrera" class="card" style="padding: 20px">
                                             <asp:CheckBoxList ID="chkListaCarreras" runat="server">
                                             </asp:CheckBoxList>
+
                                         </div>
-                                        <div class="d-flex justify-content-center">
+                                        <div class="d-flex justify-content-center ">
                                             <asp:Button ID="OKButton" CssClass="btn btn-sm btn-success" Height="30px" runat="server" Text="Cerrar" />
                                         </div>
+
+
                                     </asp:Panel>
+
                                 </div>
                                 <ajaxToolkit:ModalPopupExtender ID="mpe" BehaviorID="mpeID" runat="server" TargetControlID="btnBuscarCarreras"
                                     PopupControlID="Panel1" OkControlID="OKButton" />
@@ -122,8 +133,8 @@
                 <div class="row container-fluid" style="margin: 0px">
                     <div id="ScoreGlobal" class="ScoreGlobal">
                         <asp:GridView ID="grvGlobal" CssClass="col-md-12 table table-sm table-bordered bs-table table-hover table-responsive"
-                            Font-Size="12px" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros"
-                            OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" Width="100%" OnRowDataBound="grvGlobal_RowDataBound">
+                            Font-Size="12px" runat="server"  ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros"
+                            OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" OnRowDataBound="grvGlobal_RowDataBound">
                             <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" ItemStyle-Width="200px" ItemStyle-Wrap="true" ButtonType="Button" ControlStyle-CssClass="btn btn-sm btn-info" SelectText="Ver detalle">

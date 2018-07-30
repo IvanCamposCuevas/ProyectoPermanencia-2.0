@@ -1,0 +1,8 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "devDependencies": {
+    "install": "^0.12.1",
+    "material-design-icons": "^3.0.1"
+  }
+}

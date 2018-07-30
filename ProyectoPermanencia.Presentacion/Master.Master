@@ -51,12 +51,16 @@
 </head>
 <body>
     <form id="formPrincipal" class="container-fluid" runat="server">
+        <asp:ScriptManager ID="scrp1" runat="server"></asp:ScriptManager>
+
+        <!-- Header -->
         <div class="">
             <header>
                 <img runat="server" src="~/imgs/logo_50años_avaras_blanco_01.png" width="260" />
             </header>
         </div>
 
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg container-fluid" style="background-color: rgb(1,22,43); text-decoration: none;">
             <div class="navbar-text navbar-header">
                 <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderTitle">
@@ -89,7 +93,6 @@
                 </ul>
             </div>
         </nav>
-
 
 
         <!-- CONTENIDO DINAMICO DE LA MASTER -->
@@ -145,10 +148,12 @@
 
 
         </div>
+
+        <!-- Footer -->
         <div class="align-bottom ">
             <footer style="position: static; margin-bottom: 0px" class="footer" id="footer">
                 <br />
-
+                <asp:Label ID="lblfechaprueba" runat="server"></asp:Label>
                 <!--            <p style="color: white"> &copy Copyright</p> -->
             </footer>
         </div>

@@ -30,7 +30,7 @@
                                     <asp:TextBox runat="server" CssClass="form-control" Width="140px" Height="30px" ID="txtIngresoBusqueda"></asp:TextBox>
                                 </div>
                                 <div class="row container d-flex justify-content-end">
-                                    <asp:Button runat="server" Text="Buscar" ID="Button1" CssClass="btn btn-info btn-sm" />
+                                    <asp:Button runat="server" Text="Buscar" ID="Button1" CssClass="btn btn-info btn-sm" OnClick="btnBuscarCasoSinFiltro_Click" />
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                 <div class="row" style="margin: 0px">
                     <div id="ScoreGlobal" class="ScoreGlobal">
                         <asp:GridView ID="grvIntervenciones" CssClass="col-md-12 table table-bordered bs-table table-hover table-condensed table-responsive"
-                            Font-Size="12px" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros">
+                            Font-Size="12px" runat="server" BorderStyle="Solid" ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros" OnRowDataBound="grvIntervenciones_RowDataBound" OnSelectedIndexChanged="grvIntervenciones_SelectedIndexChanged">
                             <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                             <Columns>
                                 <asp:CommandField ShowSelectButton="True" ItemStyle-Width="200px" ItemStyle-Wrap="true" ButtonType="Button" ControlStyle-CssClass="btn btn-info btn-sm" SelectText="Ver detalle">

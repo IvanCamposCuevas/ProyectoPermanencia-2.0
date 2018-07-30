@@ -40,5 +40,11 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 lblEstado.Text = info[11];
             }
         }
+
+        protected void btnVolver_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("/Pages/Interacciones.aspx");
+
+        }
     }
 }

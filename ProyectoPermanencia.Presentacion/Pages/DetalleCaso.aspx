@@ -51,8 +51,8 @@
             </div>
         </div>
 
-        <div class="row jumbotron detCasoContainer" style="padding: 0px">
-            <div class="container" style="padding: 5px; padding-top: 0px">
+        <div class="row jumbotron detCasoContainer" style="padding:0px">
+            <div class="container" style="padding: 5px; padding-top:0px">
                 <div class="card card-primary">
                     <div id="cardDetalle" class="card card-primary ">
                         <div class="card-header" style="background-color: rgb(1,40,69); color: white;">Detalles del Caso</div>
@@ -113,49 +113,29 @@
                                 </div>
 
                             </div>
-
-                            <div class="row container detInterContainer">
-                                <asp:GridView ID="grvDetInteracciones" runat="server" BackColor="#EFF4F8" ShowHeaderWhenEmpty="True" Width="800px" Font-Size="15px"
-                                    CssClass=" table table-bordered bs-table table-sm table-responsive" HorizontalAlign="Right" AutoGenerateColumns="false"
-                                    EmptyDataText="No se han registrado interacciones para este caso" >
-                                    <Columns>
-                                        <asp:BoundField Visible="true" DataField="Id" HeaderText="Id" />
-                                        <asp:BoundField DataField="Fecha Inicio" HeaderText="Fecha Inicio" />
-                                        <asp:BoundField DataField="Tipo de Caso" HeaderText="Tipo de Caso" />
-                                        <asp:BoundField DataField="Curso" HeaderText="Curso" />
-                                        <asp:BoundField Visible="false" DataField="Id interaccion" HeaderText="Id interaccion" />
-                                        <asp:BoundField DataField="Ultima Interaccion" HeaderText="Ultima Interaccion" />
-                                        <asp:BoundField DataField="Estado del Caso" HeaderText="Estado del Caso" />
-                                        <asp:BoundField DataField="Fecha Termino" HeaderText="Fecha Termino" />
-                                        <asp:CommandField ButtonType="Button" ShowSelectButton="true" SelectText="Ver Detalle">
-                                            <ControlStyle CssClass="btn btn-sm btn-success" />
-                                        </asp:CommandField>
-                                    </Columns>
-                                    <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" />
-                                    <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
-                                </asp:GridView>
-
-                            </div>
-
-                            <div class="row container detInterContainer">
+                            <asp:Repeater ID="rpDetalle" runat="server">
+                                <HeaderTemplate>
+                                    <div class="row container detInterContainer">
+                                </HeaderTemplate>
+                                <ItemTemplate>
                                 <div class="col-md-4">
                                     <asp:Label runat="server" Font-Bold="true">Tipo de Intervención:</asp:Label>
-                                    <asp:Label ID="lblTipoI" runat="server">blablablablabla</asp:Label><br />
+                                    <asp:Label ID="lblTipoI" runat="server"><%#Eval("Tipo Interaccion")%></asp:Label><br />
 
                                     <asp:Label runat="server" Font-Bold="true">Participa:</asp:Label>
-                                    <asp:Label ID="lblParti" runat="server">blablablabla, blablablabla</asp:Label><br />
+                                    <asp:Label ID="lblParti" runat="server"><%#Eval("Participantes") %></asp:Label><br />
 
 
                                     <asp:Label runat="server" Font-Bold="true">Area de derivación:</asp:Label>
-                                    <asp:Label ID="lblArea" runat="server">blablablablabla</asp:Label><br />
+                                    <asp:Label ID="lblArea" runat="server"><%#Eval("Area Derivacion") %></asp:Label><br />
 
                                     <asp:Label runat="server" Font-Bold="true">Fecha:</asp:Label>
-                                    <asp:Label ID="lblFechaa" runat="server">12/02/2018</asp:Label><br />
+                                    <asp:Label ID="lblFechaa" runat="server"><%#Eval("Fecha Interaccion") %></asp:Label><br />
                                 </div>
                                 <div class="col-md-8" style="padding-left: 20px">
                                     <div class="row">
                                         <asp:Label runat="server" Font-Bold="true">Comentarios:</asp:Label><br />
-                                        <asp:TextBox runat="server" ID="TextBox1" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="txbComentario" TextMode="MultiLine" Width="100%"></asp:TextBox>
 
                                     </div>
                                     <div class="row d-flex flex-row-reverse" style="margin-top: 5px">
@@ -163,25 +143,16 @@
 
                                     </div>
                                 </div>
-
-                            </div>
-
-
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    </div>
+                                </FooterTemplate>
+                            </asp:Repeater>
+                            
                             <div class="row container" style="margin: 10px; padding: 20px; border-top-width: 2px; border-top-style: solid; border-color: rgb(1,40,69); justify-content: center;">
-                                <div class="col-md-4 d-flex justify-content-start">
-                                    <asp:Button runat="server" ID="btnVolver" Text="Volver" CssClass="btn btn-warning" OnClick="btnVolver_Click1" />
-
-                                </div>
-                                <div class="col-md-4 d-flex justify-content-center">
-                                    <asp:Button runat="server" ID="btnAgregarInteraccion" Text="Agregar Interacción" CssClass="btn btn-success" />
-
-                                </div>
-                                <div class="col-md-4 d-flex justify-content-end">
-                                    <asp:Button runat="server" ID="btnFinalizarCaso" Text="Finalizar Caso" CssClass="btn btn-danger" />
-
-                                </div>
-
-
+                                <asp:Button runat="server" ID="btnAgregarInteraccion" Text="Agregar Interacción" CssClass="btn btn-success" />
+                                <asp:Button runat="server" ID="btnVolver" Text="Volver" CssClass="btn btn-warning" OnClick="btnVolver_Click1"/>
+                                <asp:Button runat="server" ID="btnFinalizarCaso" Text="Finalizar Caso" CssClass="btn btn-danger" />
                             </div>
                         </div>
                     </div>

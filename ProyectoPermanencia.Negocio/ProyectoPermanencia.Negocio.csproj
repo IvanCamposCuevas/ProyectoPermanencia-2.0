@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NegocioCargaArchivo.cs" />
+    <Compile Include="NegocioDetalleCaso.cs" />
     <Compile Include="NegocioMantSemestre.cs" />
     <Compile Include="NegocioPaginaGlobal.cs" />
     <Compile Include="NegocioConexionBD.cs" />

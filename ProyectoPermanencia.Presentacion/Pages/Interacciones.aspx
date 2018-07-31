@@ -28,7 +28,6 @@
             <div class="col-md-6 ">
                 <i class="material-icons"></i>
                 <asp:Button ID="btnNuevaInteraccion" runat="server" Text="Registrar Nueva Interaccion" CssClass="btn btn-info flex-row-reverse" OnClick="btnNuevaInteraccion_Click" />
-                <asp:LinkButton runat="server"><i class="material-icons md-18">face</i></asp:LinkButton>
             </div>
         </div>
         <asp:Label ID="lblRut" runat="server" Visible="false"></asp:Label>

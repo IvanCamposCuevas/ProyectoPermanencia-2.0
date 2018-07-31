@@ -113,25 +113,29 @@
                                 </div>
 
                             </div>
-                            <div class="row container detInterContainer">
+                            <asp:Repeater ID="rpDetalle" runat="server">
+                                <HeaderTemplate>
+                                    <div class="row container detInterContainer">
+                                </HeaderTemplate>
+                                <ItemTemplate>
                                 <div class="col-md-4">
                                     <asp:Label runat="server" Font-Bold="true">Tipo de Intervención:</asp:Label>
-                                    <asp:Label ID="lblTipoI" runat="server">blablablablabla</asp:Label><br />
+                                    <asp:Label ID="lblTipoI" runat="server"><%#Eval("Tipo Interaccion")%></asp:Label><br />
 
                                     <asp:Label runat="server" Font-Bold="true">Participa:</asp:Label>
-                                    <asp:Label ID="lblParti" runat="server">blablablabla, blablablabla</asp:Label><br />
+                                    <asp:Label ID="lblParti" runat="server"><%#Eval("Participantes") %></asp:Label><br />
 
 
                                     <asp:Label runat="server" Font-Bold="true">Area de derivación:</asp:Label>
-                                    <asp:Label ID="lblArea" runat="server">blablablablabla</asp:Label><br />
+                                    <asp:Label ID="lblArea" runat="server"><%#Eval("Area Derivacion") %></asp:Label><br />
 
                                     <asp:Label runat="server" Font-Bold="true">Fecha:</asp:Label>
-                                    <asp:Label ID="lblFechaa" runat="server">12/02/2018</asp:Label><br />
+                                    <asp:Label ID="lblFechaa" runat="server"><%#Eval("Fecha Interaccion") %></asp:Label><br />
                                 </div>
                                 <div class="col-md-8" style="padding-left: 20px">
                                     <div class="row">
                                         <asp:Label runat="server" Font-Bold="true">Comentarios:</asp:Label><br />
-                                        <asp:TextBox runat="server" ID="TextBox1" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="txbComentario" TextMode="MultiLine" Width="100%"></asp:TextBox>
 
                                     </div>
                                     <div class="row d-flex flex-row-reverse" style="margin-top: 5px">
@@ -139,10 +143,12 @@
 
                                     </div>
                                 </div>
-
-                            </div>
-
-
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    </div>
+                                </FooterTemplate>
+                            </asp:Repeater>
+                            
                             <div class="row container" style="margin: 10px; padding: 20px; border-top-width: 2px; border-top-style: solid; border-color: rgb(1,40,69); justify-content: center;">
                                 <asp:Button runat="server" ID="btnAgregarInteraccion" Text="Agregar Interacción" CssClass="btn btn-success" />
                                 <asp:Button runat="server" ID="btnVolver" Text="Volver" CssClass="btn btn-warning" OnClick="btnVolver_Click1"/>

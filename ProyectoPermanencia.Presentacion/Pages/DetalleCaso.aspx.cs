@@ -39,6 +39,9 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 lblCurso.Text = info[2];
                 lblEstado.Text = info[11];
             }
+
+            rpDetalle.DataSource = new Negocio.NegocioDetalleCaso().obtenerDetalleInteraccion(int.Parse(lblIdCaso.Text));
+            rpDetalle.DataBind();
         }
 
         protected void btnVolver_Click1(object sender, EventArgs e)

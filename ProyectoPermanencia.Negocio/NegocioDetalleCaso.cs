@@ -21,7 +21,8 @@ namespace ProyectoPermanencia.Negocio
                             + "ON "
                             + "PI.Id_Participante = P.Id_Participante "
                             + "WHERE "
-                            + "PI.Id_Interaccion = I.Id_Interaccion FOR XML PATH('')),1,1,'') AS 'Participantes' "
+                            + "PI.Id_Interaccion = I.Id_Interaccion FOR XML PATH('')),1,1,'') AS 'Participantes', "
+                            + "I.Id_Interaccion AS 'ID' "
                             + "FROM Interaccion I "
                             + "LEFT JOIN "
                             + "Tipo_Interaccion TI "
@@ -42,7 +43,8 @@ namespace ProyectoPermanencia.Negocio
             conexion.configuraConexion();
 
             conexion.Conec1.IntruccioneSQL = consulta() +
-                            " WHERE I.Id_Caso = "+idCaso;
+                            " WHERE I.Id_Caso = " + idCaso + " "
+                            + " ORDER BY I.Id_Interaccion DESC";
 
             conexion.Conec1.EsSelect = true;
             conexion.Conec1.conectar();

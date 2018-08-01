@@ -40,26 +40,38 @@ namespace ProyectoPermanencia.Presentacion.Pages
 
         protected void btnPendientes_Click(object sender, EventArgs e)
         {
-            DataView dv = (DataView)Session["dvGeneral"];
-            dv.RowFilter = "Estado = 'Pendiente'";
-            grvIntervenciones.DataSource = dv;
-            grvIntervenciones.DataBind();
+            if (Session["dvGeneral"] != null)
+            {
+                DataView dv = (DataView)Session["dvGeneral"];
+                dv.RowFilter = "Estado = 'Pendiente'";
+                grvIntervenciones.DataSource = dv;
+                grvIntervenciones.DataBind();
+            }
+
         }
 
         protected void btnEnCurso_Click(object sender, EventArgs e)
         {
-            DataView dv = (DataView)Session["dvGeneral"];
-            dv.RowFilter = "Estado = 'En Curso'";
-            grvIntervenciones.DataSource = dv;
-            grvIntervenciones.DataBind();
+            if (Session["dvGeneral"] != null)
+            {
+                DataView dv = (DataView)Session["dvGeneral"];
+                dv.RowFilter = "Estado = 'En Curso'";
+                grvIntervenciones.DataSource = dv;
+                grvIntervenciones.DataBind();
+            }
+
         }
 
         protected void btnFinalizadas_Click(object sender, EventArgs e)
         {
-            DataView dv = (DataView)Session["dvGeneral"];
-            dv.RowFilter = "Estado = 'Finalizadas'";
-            grvIntervenciones.DataSource = dv;
-            grvIntervenciones.DataBind();
+            if (Session["dvGeneral"] != null)
+            {
+                DataView dv = (DataView)Session["dvGeneral"];
+                dv.RowFilter = "Estado = 'Finalizadas'";
+                grvIntervenciones.DataSource = dv;
+                grvIntervenciones.DataBind();
+            }
+
         }
 
         protected void btnFiltrar_Click(object sender, EventArgs e)

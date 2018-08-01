@@ -49,6 +49,14 @@ namespace ProyectoPermanencia.Presentacion.Pages
             rpDetalle.DataBind();
         }
 
+
+        protected void btnEditar_Click (object sender, EventArgs e)
+        {
+            RepeaterItem item = (RepeaterItem)((Button)sender).NamingContainer;
+            HiddenField campoId = (HiddenField)item.FindControl("hfID");
+            string id = campoId.Value;
+        }
+
         protected void btnVolver_Click1(object sender, EventArgs e)
         {
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="DetalleCaso.aspx.cs" Inherits="ProyectoPermanencia.Presentacion.Pages.DetalleCaso" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="DetalleCaso.aspx.cs" Inherits="ProyectoPermanencia.Presentacion.Pages.DetalleCaso" EnableEventValidation="false" %>
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolderTitle" runat="server">
     <asp:Label runat="server">
@@ -51,8 +51,8 @@
             </div>
         </div>
 
-        <div class="row jumbotron detCasoContainer" style="padding: 0px">
-            <div class="container" style="padding: 5px; padding-top: 0px">
+        <div class="row jumbotron detCasoContainer" style="padding:0px">
+            <div class="container" style="padding: 5px; padding-top:0px">
                 <div class="card card-primary">
                     <div id="cardDetalle" class="card card-primary ">
                         <div class="card-header" style="background-color: rgb(1,40,69); color: white;">Detalles del Caso</div>
@@ -118,47 +118,41 @@
                                     <div class="row container detInterContainer">
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <div class="col-md-4">
-                                        <asp:Label runat="server" Font-Bold="true">Tipo de Intervención:</asp:Label>
-                                        <asp:Label ID="lblTipoI" runat="server"><%#Eval("Tipo Interaccion")%></asp:Label><br />
+                                <div class="col-md-4">
+                                    <asp:HiddenField runat="server" ID="hfID" Value='<%#Eval("ID") %>'/>    
+                                    <asp:Label runat="server" Font-Bold="true">Tipo de Intervención:</asp:Label>
+                                    <asp:Label ID="lblTipoI" runat="server" Text='<%#Eval("Tipo Interaccion")%>'></asp:Label><br />
 
-                                        <asp:Label runat="server" Font-Bold="true">Participa:</asp:Label>
-                                        <asp:Label ID="lblParti" runat="server"><%#Eval("Participantes") %></asp:Label><br />
+                                    <asp:Label runat="server" Font-Bold="true">Participa:</asp:Label>
+                                    <asp:Label ID="lblParti" runat="server" Text='<%#Eval("Participantes") %>'></asp:Label><br />
 
 
-                                        <asp:Label runat="server" Font-Bold="true">Area de derivación:</asp:Label>
-                                        <asp:Label ID="lblArea" runat="server"><%#Eval("Area Derivacion") %></asp:Label><br />
+                                    <asp:Label runat="server" Font-Bold="true">Area de derivación:</asp:Label>
+                                    <asp:Label ID="lblArea" runat="server" Text='<%#Eval("Area Derivacion") %>'></asp:Label><br />
 
-                                        <asp:Label runat="server" Font-Bold="true">Fecha:</asp:Label>
-                                        <asp:Label ID="lblFechaa" runat="server"><%#Eval("Fecha Interaccion") %></asp:Label><br />
+                                    <asp:Label runat="server" Font-Bold="true">Fecha:</asp:Label>
+                                    <asp:Label ID="lblFechaa" runat="server" Text='<%#Eval("Fecha Interaccion") %>'></asp:Label><br />
+                                </div>
+                                <div class="col-md-8" style="padding-left: 20px">
+                                    <div class="row">
+                                        <asp:Label runat="server" Font-Bold="true">Comentarios:</asp:Label><br />
+                                        <asp:TextBox runat="server" ID="txbComentario" TextMode="MultiLine" Width="100%" Text='<%#Eval("Comentario") %>'></asp:TextBox>
+
                                     </div>
-                                    <div class="col-md-8" style="padding-left: 20px">
-                                        <div class="row">
-                                            <asp:Label runat="server" Font-Bold="true">Comentarios:</asp:Label><br />
-                                            <asp:TextBox runat="server" ID="txbComentario" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                                    <div class="row d-flex flex-row-reverse" style="margin-top: 5px">
+                                        <asp:Button runat="server" ID="btnEdd" Text="Editar" CssClass="btn btn-warning btn-sm" OnClick="btnEditar_Click"/>
 
-                                        </div>
-                                        <div class="row d-flex flex-row-reverse" style="margin-top: 5px">
-                                            <asp:Button runat="server" ID="btnEdd" Text="Editar" CssClass="btn btn-warning btn-sm" />
-
-                                        </div>
                                     </div>
+                                </div>
                                 </ItemTemplate>
                                 <FooterTemplate>
                                     </div>
                                 </FooterTemplate>
                             </asp:Repeater>
-
-                            <div class="row container" style="margin: 0px; padding:0px; padding-top:20px; border-top-width: 2px; border-top-style: solid; border-color: rgb(1,40,69);">
-                                <div class="col-md-4 d-flex justify-content-start">
-                                    <asp:Button runat="server" ID="btnVolver" Text="Volver" CssClass="btn btn-warning" OnClick="btnVolver_Click1" />                                    
-                                </div>
-                                <div class="col-md-4 d-flex justify-content-center">
-                                    <asp:Button runat="server" ID="btnAgregarInteraccion" Text="Agregar Interacción" CssClass="btn btn-success" />                                    
-                                </div>
-                                <div class="col-md-4 d-flex justify-content-end">
-                                    <asp:Button runat="server" ID="btnFinalizarCaso" Text="Finalizar Caso" CssClass="btn btn-danger" OnClick="btnFinalizarCaso_Click" />
-                                </div>
+                            <div class="row container" style="margin: 10px; padding: 20px; border-top-width: 2px; border-top-style: solid; border-color: rgb(1,40,69); justify-content: center;">
+                                <asp:Button runat="server" ID="btnAgregarInteraccion" Text="Agregar Interacción" CssClass="btn btn-success" />
+                                <asp:Button runat="server" ID="btnVolver" Text="Volver" CssClass="btn btn-warning" OnClick="btnVolver_Click1"/>
+                                <asp:Button runat="server" ID="btnFinalizarCaso" Text="Finalizar Caso" CssClass="btn btn-danger" />
                             </div>
                         </div>
                     </div>

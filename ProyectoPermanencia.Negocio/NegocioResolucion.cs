@@ -110,7 +110,7 @@ namespace ProyectoPermanencia.Negocio
                 auxSQL = string.Format(" base.[Rut Alumno] = '{0}'", busqueda);
             }
 
-
+            auxSQL += " ORDER BY base.ID DESC ";
             conexion.Conec1.IntruccioneSQL = consulta() + auxSQL;
             conexion.Conec1.EsSelect = true;
             conexion.Conec1.conectar();
@@ -187,6 +187,8 @@ namespace ProyectoPermanencia.Negocio
             }
 
             #endregion
+
+            auxSQL += " ORDER BY base.ID DESC ";
 
             conexion.Conec1.IntruccioneSQL = consulta() + auxSQL;
             conexion.Conec1.EsSelect = true;

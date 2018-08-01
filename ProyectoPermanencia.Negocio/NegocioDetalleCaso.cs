@@ -8,7 +8,7 @@ namespace ProyectoPermanencia.Negocio
 {
     public class NegocioDetalleCaso
     {
-        private string consulta() {
+        private string consultaDetalleCaso() {
 
             string query = "SELECT I.Desc_Comentario AS 'Comentario',"
                             + "I.Fecha_Interaccion AS 'Fecha Interaccion', "
@@ -41,12 +41,32 @@ namespace ProyectoPermanencia.Negocio
             NegocioConexionBD conexion = new NegocioConexionBD();
             conexion.configuraConexion();
 
-            conexion.Conec1.IntruccioneSQL = consulta() +
+            conexion.Conec1.IntruccioneSQL = consultaDetalleCaso() +
                             " WHERE I.Id_Caso = "+idCaso;
 
             conexion.Conec1.EsSelect = true;
             conexion.Conec1.conectar();
             return conexion.Conec1.DbDat;
         }
+
+
+        public bool finalizaCaso(string idCaso)
+        {
+            if (!String.IsNullOrEmpty(idCaso))
+            {
+                NegocioConexionBD conexion = new NegocioConexionBD();
+                conexion.configuraConexion();
+
+                //Query cambia id_estadoCaso, para pasar de pendiente a finalizado, no elimina el caso.
+                conexion.Conec1.IntruccioneSQL = String.Format("UPDATE Caso SET Id_Estado = '3' WHERE Id_Caso = '{0}'", idCaso);
+
+                conexion.Conec1.EsSelect = false;
+                conexion.Conec1.conectar();
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }

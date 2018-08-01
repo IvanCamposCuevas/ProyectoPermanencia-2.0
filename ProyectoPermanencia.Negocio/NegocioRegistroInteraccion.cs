@@ -146,13 +146,31 @@ namespace ProyectoPermanencia.Negocio
             }
         }
 
+        //Metodo que cambia el estado del caso de pendiente a en curso
+        //(param) id del caso a iniciar
+        private bool iniciarCaso(string idCaso)
+        {
+            if (!String.IsNullOrEmpty(idCaso))
+            {
+                NegocioConexionBD conexion = new NegocioConexionBD();
+                conexion.configuraConexion();
+
+                //Query cambia id_estadoCaso, no elimina el caso.
+                conexion.Conec1.IntruccioneSQL = String.Format("UPDATE Caso SET Id_Estado = '2' WHERE Id_Caso = '{0}'", idCaso);
+
+                conexion.Conec1.EsSelect = false;
+                conexion.Conec1.conectar();
+                return true;
+            }
+
+            return false;
+        }
         //Método que crea la interaccion asociada al caso elegido anteriormente
         //(param) rut del alumno y el id del caso
         public bool AgregaInteraccion(string rutalumno, string idcaso, string tipointer, string idarea, string comentarios, string participantes)
         {
             NegocioConexionBD conexion = new NegocioConexionBD();
             conexion.configuraConexion();
-
 
             //Si el rut viene con información
             if (!String.IsNullOrEmpty(rutalumno))
@@ -163,6 +181,17 @@ namespace ProyectoPermanencia.Negocio
                 conexion.Conec1.EsSelect = true;
                 conexion.Conec1.conectar();
                 string idalumno = conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
+
+
+                //Consulta si hay interacciones 
+                conexion.Conec1.IntruccioneSQL = String.Format("SELECT COUNT(Id_Interaccion) FROM Interaccion WHERE Id_Caso = '{0}';", idcaso);
+                conexion.Conec1.EsSelect = true;
+                conexion.Conec1.conectar();
+                string cantInte = conexion.Conec1.DbDat.ToString();
+
+                //Si no existen interacciones con el id del caso asociado (o sea esta que estamos agregando es la primera intervención), 
+                //se inicializa el caso pasando su estado de pendiente a en curso
+                if (cantInte == "0") { iniciarCaso(idcaso); }
 
                 //Insert de interaccion derivacion 
                 if ((!String.IsNullOrEmpty(idcaso)) && (!String.IsNullOrEmpty(tipointer)) && (!String.IsNullOrEmpty(idarea)) && (!String.IsNullOrEmpty(comentarios)) && (!String.IsNullOrEmpty(participantes)))
@@ -190,10 +219,13 @@ namespace ProyectoPermanencia.Negocio
                     throw new ArgumentNullException(nameof(comentarios));
 
                 }
+
             }
             else
             {
+                //Agregar mensaje: Rut del alumno no es válido
                 throw new ArgumentNullException(nameof(rutalumno));
+
             }
         }
 

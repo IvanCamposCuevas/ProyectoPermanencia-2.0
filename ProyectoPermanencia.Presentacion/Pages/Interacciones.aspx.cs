@@ -13,8 +13,8 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
             string[] info = (string[])Session["Info Alumnos"];
             this.lblRut.Text = info[0];
-            grvCasos.DataSource = new Negocio.NegocioFichaAlumno().CargargrvCasos(lblRut.Text);
-            grvCasos.DataBind();
+            //grvCasos.DataSource = new Negocio.NegocioFichaAlumno().CargargrvCasos(lblRut.Text);
+            //grvCasos.DataBind();
 
 
 
@@ -47,6 +47,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text,
                 row.Cells[5].Text, row.Cells[7].Text };
             Session["Info Caso"] = info_caso;
+            Session["Proveniencia"] = "ficha";
             Response.Redirect("/Pages/DetalleCaso.aspx");
         }
 

@@ -57,7 +57,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
         protected void btnFinalizadas_Click(object sender, EventArgs e)
         {
             DataView dv = (DataView)Session["dvGeneral"];
-            dv.RowFilter = "Estado = 'Finalizadas'";
+            dv.RowFilter = "Estado = 'Finalizado'";
             grvIntervenciones.DataSource = dv;
             grvIntervenciones.DataBind();
         }
@@ -113,12 +113,13 @@ namespace ProyectoPermanencia.Presentacion.Pages
         protected void grvIntervenciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = this.grvIntervenciones.SelectedRow;
-            string[] info_caso = new string[] {row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text,
+            string[] info_caso = new string[] {"etapa", row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text,
                                                row.Cells[4].Text, row.Cells[5].Text, row.Cells[6].Text,
                                                row.Cells[7].Text, row.Cells[8].Text, row.Cells[9].Text,
                                                row.Cells[10].Text, row.Cells[11].Text, row.Cells[15].Text};
             Session["info_caso"] = info_caso;
             Session["dvGeneral"] = null;
+            Session["Proveniencia"] = "etapa";
             Response.Redirect("DetalleCaso.aspx");
         }
 

@@ -38,7 +38,7 @@
                 <h5>Historial de Casos </h5>
                 <h6>Grilla</h6>
                 <asp:GridView ID="grvCasos" runat="server" BackColor="#EFF4F8" ShowHeaderWhenEmpty="True" Width="600px" Font-Size="12px"
-                    CssClass=" table table-bordered bs-table table-sm table-responsive" HorizontalAlign="Right" AutoGenerateColumns="false"
+                    CssClass=" table table-hover table-bordered bs-table table-sm table-responsive" HorizontalAlign="Right" AutoGenerateColumns="false"
                     EmptyDataText="No se han abierto casos para intervenir con el alumno" OnSelectedIndexChanged="grvCasos_SelectedIndexChanged">
                     <Columns>
                         <asp:BoundField Visible="true" DataField="Id" HeaderText="Id" />

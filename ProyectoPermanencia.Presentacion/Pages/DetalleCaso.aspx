@@ -76,43 +76,7 @@
                                     <asp:Label ID="lblEstado" runat="server"></asp:Label>
                                 </div>
                             </div>
-                            <div class="row container detInterContainer">
-                                intento de DataList para traer la información de las interacciones con el formato de abajo para cada una
-                                <asp:DataList ID="dlInteracciones" runat="server" RepeatDirection="Horizontal">
-                                    <ItemTemplate>
-                                        <asp:Label runat="server" Font-Bold="true">Tipo de Intervención:</asp:Label>
-                                        <asp:Label ID="lblTipoIntervencion" runat="server">blablablablabla</asp:Label><br />
-
-                                        <asp:Label runat="server" Font-Bold="true">Participa:</asp:Label>
-                                        <asp:Label ID="lblParticipa" runat="server">blablablabla, blablablabla</asp:Label><br />
-
-
-                                        <asp:Label runat="server" Font-Bold="true">Area de derivación:</asp:Label>
-                                        <asp:Label ID="lblAreaDeriv" runat="server">blablablablabla</asp:Label><br />
-
-                                        <asp:Label runat="server" Font-Bold="true">Fecha:</asp:Label>
-                                        <asp:Label ID="lblFecha" runat="server">12/02/2018</asp:Label><br />
-
-
-                                        <asp:Label runat="server" Font-Bold="true">Comentarios:</asp:Label><br />
-                                        <asp:TextBox runat="server" ID="tbComentarios" TextMode="MultiLine" Width="100%"></asp:TextBox>
-
-                                        <asp:Button runat="server" ID="btnEditar" Text="Editar" CssClass="btn btn-warning btn-sm" />
-
-                                    </ItemTemplate>
-
-
-
-                                </asp:DataList>
-
-                                <div class="col-md-8" style="padding-left: 20px">
-                                    <div class="row">
-                                    </div>
-                                    <div class="row d-flex flex-row-reverse" style="margin-top: 5px">
-                                    </div>
-                                </div>
-
-                            </div>
+                            
                             <asp:Repeater ID="rpDetalle" runat="server" OnItemCommand="rpDetalle_ItemCommand">
                                 <HeaderTemplate>
                                     <div class="row container detInterContainer">
@@ -136,7 +100,7 @@
                                 <div class="col-md-8" style="padding-left: 20px">
                                     <div class="row">
                                         <asp:Label runat="server" Font-Bold="true">Comentarios:</asp:Label><br />
-                                        <asp:TextBox runat="server" ID="txbComentario" TextMode="MultiLine" Width="100%" Text='<%#Eval("Comentario") %>'></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="txbComentario" TextMode="MultiLine" Width="100%" Text='<%#Eval("Comentario") %>' Enabled="False"></asp:TextBox>
 
                                     </div>
                                     <div class="row d-flex flex-row-reverse" style="margin-top: 5px">
@@ -150,7 +114,7 @@
                                 </FooterTemplate>
                             </asp:Repeater>
                             <div class="row container" style="margin: 10px; padding: 20px; border-top-width: 2px; border-top-style: solid; border-color: rgb(1,40,69); justify-content: center;">
-                                <asp:Button runat="server" ID="btnAgregarInteraccion" Text="Agregar Interacción" CssClass="btn btn-success" />
+                                <asp:Button runat="server" ID="btnAgregarInteraccion" Text="Agregar Interacción" CssClass="btn btn-success" OnClick="btnAgregarInteraccion_Click" />
                                 <asp:Button runat="server" ID="btnVolver" Text="Volver" CssClass="btn btn-warning" OnClick="btnVolver_Click1"/>
                                 <asp:Button runat="server" ID="btnFinalizarCaso" Text="Finalizar Caso" CssClass="btn btn-danger" />
                             </div>

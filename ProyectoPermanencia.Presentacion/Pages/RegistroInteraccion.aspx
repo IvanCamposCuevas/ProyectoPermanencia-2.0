@@ -59,7 +59,7 @@
                             <div class="card-header" style="background-color: rgb(1,40,69); color: white;">1. A qué caso corresponde?</div>
                             <div class="card-body">
                                 <div class="row" style="align-content: center; margin-bottom: 20px;">
-                                    <div class="col-md-4" style="border:solid">
+                                    <div class="col-md-4">
 
                                         <!--<input type="radio" name="corresponde" ID="rbtnExistentes" class="form-control form-control-sm" value="E" style="display:inline-flex" />Existentes>-->
                                         <asp:RadioButton runat="server" ID="rbtnExistentes" GroupName="corresponde" AutoPostBack="true" Text="Existente" CssClass="radio-inline form-control-sm" OnCheckedChanged="rbtnExistentes_CheckedChanged" Checked="True" />
@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="row" style="align-content: center; margin-bottom: 0px;">
-                                    <div class="col-md-6" style="border:solid">
+                                    <div class="col-md-6">
                                         <asp:RadioButton runat="server" ID="rbtnNuevo" GroupName="corresponde" AutoPostBack="true" Text="Nuevo Caso" CssClass="radio-inline form-control-sm" OnCheckedChanged="rbtnNuevo_CheckedChanged" />
                                     </div>
                                 </div>

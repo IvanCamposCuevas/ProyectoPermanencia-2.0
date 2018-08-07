@@ -274,10 +274,6 @@ namespace ProyectoPermanencia.Negocio
             conexion.Conec1.IntruccioneSQL = String.Format("SELECT TOP(1) I.Id_interaccion FROM dbo.Interaccion I LEFT JOIN Caso C ON I.Id_Caso = C.Id_Caso WHERE C.Id_Alumno = {0} ORDER BY I.Id_Interaccion DESC", idAlumno);
             conexion.Conec1.EsSelect = true;
             conexion.Conec1.conectar();
-
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            return conexion.Conec1.DbDat;
         }
         
         public void EnviarMail(MailMessage mensaje)

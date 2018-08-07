@@ -19,15 +19,17 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
             if (!IsPostBack)
             {
-                string[] info = (string[])Session["Info Alumnos"];
-                this.lblRut.Text = info[0];
-                this.lblNombre.Text = info[1];
-                this.lblCarrera.Text = info[2];
-                this.lblJornada.Text = info[7];
-                this.lblEscuela.Text = info[5];
-                this.lblSede.Text = info[6];
-                this.lblTelefono.Text = info[3];
-                this.lblMail.Text = info[4];
+                string[] info = (string[])Session["info_caso"];
+                this.lblRut.Text = info[3];
+                lblNombre.Text = info[4];
+                lblMail.Text = info[5];
+                lblTelefono.Text = info[6];
+                lblCarrera.Text = info[7];
+                lblEscuela.Text = info[8];
+                lblJornada.Text = info[9];
+                lblSede.Text = info[10];
+                lblTipoCaso.Text = info[1];
+                lblCurso.Text = info[2];
 
                 ddlCurso.DataSource = new Negocio.NegocioRegistroInteraccion().CargarddlCurso(lblRut.Text);
                 ddlCurso.DataValueField = "Id_Asignatura";
@@ -146,46 +148,46 @@ namespace ProyectoPermanencia.Presentacion.Pages
             }
         }
 
-        #endregion
 
-        protected void btnGuardar_Click(object sender, EventArgs e)
-        {
-            string rutalumno = lblRut.Text;
-            string idcaso = ddlCasos.SelectedValue.ToString();
-            string tipointer = ddlTipoInteraccion.SelectedValue.ToString();
-            string idarea = null;
-            string comentarios = tbComentarios.Text;
-            string participantes = null;
 
-            foreach (ListItem item in ckblParticipan.Items)
-            {
-                if (item.Selected)
-                {
-                    participantes += item.Text + ", ";
-                }
-            }
+        //protected void btnGuardar_Click(object sender, EventArgs e)
+        //{
+        //    string rutalumno = lblRut.Text;
+        //    string idcaso = ddlCasos.SelectedValue.ToString();
+        //    string tipointer = ddlTipoInteraccion.SelectedValue.ToString();
+        //    string idarea = null;
+        //    string comentarios = tbComentarios.Text;
+        //    string participantes = null;
 
-            if (ddlTipoInteraccion.SelectedItem.Value.Equals("2"))
-            {
-                idarea = ddlArederiv.SelectedValue.ToString();
-                if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(idarea)) || (!String.IsNullOrEmpty(comentarios)))
-                {
-                    new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes);
-                }
-            }
-            else
-            {
-                if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(comentarios)))
-                {
-                    new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes);
-                }
-            }
+        //    foreach (ListItem item in ckblParticipan.Items)
+        //    {
+        //        if (item.Selected)
+        //        {
+        //            participantes += item.Text + ", ";
+        //        }
+        //    }
 
-            string[] detalleInteraccion = new string[] {ddlTipoInteraccion.SelectedItem.ToString(), participantes, ddlArederiv.SelectedItem.ToString(), comentarios };
-            sendMail(detalleCaso, detalleInteraccion);
-            Response.Redirect("/Pages/Interacciones.aspx");
+        //    if (ddlTipoInteraccion.SelectedItem.Value.Equals("2"))
+        //    {
+        //        idarea = ddlArederiv.SelectedValue.ToString();
+        //        if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(idarea)) || (!String.IsNullOrEmpty(comentarios)))
+        //        {
+        //            new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(comentarios)))
+        //        {
+        //            new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes);
+        //        }
+        //    }
 
-        }
+        //    string[] detalleInteraccion = new string[] {ddlTipoInteraccion.SelectedItem.ToString(), participantes, ddlArederiv.SelectedItem.ToString(), comentarios };
+        //    sendMail(detalleCaso, detalleInteraccion);
+        //    Response.Redirect("/Pages/Interacciones.aspx");
+
+        //}
 
 
         protected void btnCreaCaso_Click(object sender, EventArgs e)
@@ -221,8 +223,21 @@ namespace ProyectoPermanencia.Presentacion.Pages
 
                 detalleCaso = new string[] { rutalumno, ddlTipoCaso.SelectedItem.ToString(), ddlCurso.SelectedItem.ToString() };
                 //sendMailCaso(detalleCaso);
-                Response.Redirect("/Pages/RegistroInteraccion.aspx");
+                Response.Redirect(HttpContext.Current.Request.Url.ToString(), true);
 
+            }
+        }
+
+        protected void sqlAreaDerivacion_Selected(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            ddlArederiv.Items.Add(new ListItem("Seleccione", "0"));
+        }
+
+        protected void ddlCasos_DataBound(object sender, EventArgs e)
+        {
+            if (ddlCasos.Items.Count == 0)
+            {
+                fdsInteraccion.Disabled = true;
             }
         }
 

@@ -22,9 +22,10 @@ namespace ProyectoPermanencia.Presentacion
                 this.lblSede.Text = info[6];
                 this.lblTelefono.Text = info[3];
                 this.lblMail.Text = info[4];
-                //string[] info_notas = (string[])Session["Info Notas"];
-                //grvDetalleNotas.DataSource = new Negocio.NegocioFichaAlumno().consultaDetNotas(info_notas[1], info_notas[0]);
-                //grvDetalleNotas.DataBind();
+                if (info[8] != null)
+                {
+                    this.lblBeneficio.Text = info[8];
+                }
                 
             }
         }

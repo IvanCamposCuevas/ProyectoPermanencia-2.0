@@ -33,19 +33,6 @@ namespace ProyectoPermanencia.Presentacion.Pages
                     lblEstado.Text = info[11];
                 }
 
-                if (Session["Info Alumnos"] != null)
-                {
-                    string[] info = (string[])Session["Info Alumnos"];
-                    this.lblRut.Text = info[0];
-                    this.lblNombre.Text = info[1];
-                    this.lblCarrera.Text = info[2];
-                    this.lblJornada.Text = info[7];
-                    this.lblEscuela.Text = info[5];
-                    this.lblSede.Text = info[6];
-                    this.lblTelefono.Text = info[3];
-                    this.lblMail.Text = info[4];
-                }
-
                 if (lblEstado.Text == "Finalizado")
                 {
                     btnAgregarInteraccion.Visible = false;
@@ -87,6 +74,11 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 Response.TransmitFile(Server.MapPath("~/ArchivoInteraccion/") + e.CommandArgument);
                 Response.End();
             }
+        }
+
+        protected void btnAgregarInteraccion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RegistroInteraccion.aspx");
         }
     }
 }

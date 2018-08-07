@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -10,6 +11,10 @@ namespace ProyectoPermanencia.Presentacion.Pages
 {
     public partial class RegistroInteraccion : System.Web.UI.Page
     {
+        public string[] detalleCaso = new string[3];
+        public string[] detalleInteraccion = new string[4];
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -141,6 +146,48 @@ namespace ProyectoPermanencia.Presentacion.Pages
             }
         }
 
+        #endregion
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string rutalumno = lblRut.Text;
+            string idcaso = ddlCasos.SelectedValue.ToString();
+            string tipointer = ddlTipoInteraccion.SelectedValue.ToString();
+            string idarea = null;
+            string comentarios = tbComentarios.Text;
+            string participantes = null;
+
+            foreach (ListItem item in ckblParticipan.Items)
+            {
+                if (item.Selected)
+                {
+                    participantes += item.Text + ", ";
+                }
+            }
+
+            if (ddlTipoInteraccion.SelectedItem.Value.Equals("2"))
+            {
+                idarea = ddlArederiv.SelectedValue.ToString();
+                if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(idarea)) || (!String.IsNullOrEmpty(comentarios)))
+                {
+                    new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes);
+                }
+            }
+            else
+            {
+                if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(comentarios)))
+                {
+                    new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes);
+                }
+            }
+
+            string[] detalleInteraccion = new string[] {ddlTipoInteraccion.SelectedItem.ToString(), participantes, ddlArederiv.SelectedItem.ToString(), comentarios };
+            sendMail(detalleCaso, detalleInteraccion);
+            Response.Redirect("/Pages/Interacciones.aspx");
+
+        }
+
+
         protected void btnCreaCaso_Click(object sender, EventArgs e)
         {
             if (rbtnExistentes.Checked == true)
@@ -172,21 +219,44 @@ namespace ProyectoPermanencia.Presentacion.Pages
                     }
                 }
 
-                Response.Redirect(HttpContext.Current.Request.Url.ToString(), true);
+                detalleCaso = new string[] { rutalumno, ddlTipoCaso.SelectedItem.ToString(), ddlCurso.SelectedItem.ToString() };
+                //sendMailCaso(detalleCaso);
+                Response.Redirect("/Pages/RegistroInteraccion.aspx");
+
             }
         }
 
-        protected void sqlAreaDerivacion_Selected(object sender, SqlDataSourceStatusEventArgs e)
+        //metodo de prueba para envio de mails solo al crear el caso por ahora
+        //FUNCIONANDO.
+        /*
+        protected MailMessage sendMailCaso(string[] detalleCaso)
         {
-            ddlArederiv.Items.Add(new ListItem("Seleccione", "0"));
+            MailMessage mensaje = new MailMessage("donotreply@permanencia.cl", "permanenciamail@gmail.com");
+            mensaje.Body = string.Format("Se ha ingresado con éxito para el alumno {0} el caso N° xxx."+
+                                         "\nDe tipo {1} y asociado al curso {2}.", detalleCaso[0], detalleCaso[1], detalleCaso[2]);
+
+            mensaje.Subject = "probando";
+            new Negocio.NegocioRegistroInteraccion().EnviarMail(mensaje);
+
+            return mensaje;
+        }
+        */
+
+        protected MailMessage sendMail(string[] detalleCaso, string[] detalleInteraccion)
+        {
+            MailMessage mensaje = new MailMessage("donotreply@permanencia.cl", "permanenciamail@gmail.com");
+            mensaje.Body = string.Format("Se ha ingresado con éxito para el alumno {0} el caso N° xxx." +
+                                         "\nDe tipo {1} y asociado al curso {2}." +
+                                         "\n" +
+                                         "\nHubo una intervención de tipo {3} en la cual participó: {4}. Se derivó al area {5}" +
+                                         "\nDetalles: {6}", detalleCaso[0], detalleCaso[1], detalleCaso[2], detalleInteraccion[0], detalleInteraccion[1], detalleInteraccion[2], detalleInteraccion[3]);
+
+            mensaje.Subject = "probando";
+            new Negocio.NegocioRegistroInteraccion().EnviarMail(mensaje);
+
+            return mensaje;
         }
 
-        protected void ddlCasos_DataBound(object sender, EventArgs e)
-        {
-            if (ddlCasos.Items.Count == 0)
-            {
-                fdsInteraccion.Disabled = true;
-            }
-        }
+
     }
 }

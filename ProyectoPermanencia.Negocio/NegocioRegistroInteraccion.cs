@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using ProyectoPermanencia.DTO;
@@ -273,13 +275,21 @@ namespace ProyectoPermanencia.Negocio
             conexion.Conec1.EsSelect = true;
             conexion.Conec1.conectar();
 
-            foreach (string item in participantes)
-            {
-                conexion.Conec1.IntruccioneSQL = String.Format("INSERT INTO Paricipante_Interaccion (Id_Interaccion, Id_Participante) VALUES ({0},{1})",conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_interaccion"].ToString(), item);
-                conexion.Conec1.EsSelect = true;
-                conexion.Conec1.conectar();
-            }
-            
+            conexion.Conec1.EsSelect = true;
+            conexion.Conec1.conectar();
+            return conexion.Conec1.DbDat;
+        }
+        
+        public void EnviarMail(MailMessage mensaje)
+        {
+            SmtpClient client = new SmtpClient();
+            client.Host = "smtp.googlemail.com";
+            client.Port = 587;
+            client.UseDefaultCredentials = false;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.EnableSsl = true;
+            client.Credentials = new NetworkCredential("permanenciamail@gmail.com", "perma123.nencia456");
+            client.Send(mensaje);
         }
 
     }

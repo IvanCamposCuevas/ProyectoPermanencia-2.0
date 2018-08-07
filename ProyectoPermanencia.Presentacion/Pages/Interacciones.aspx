@@ -30,7 +30,6 @@
                 <asp:Button ID="btnNuevaInteraccion" runat="server" Text="Registrar Nueva Interaccion" CssClass="btn btn-info flex-row-reverse" OnClick="btnNuevaInteraccion_Click" />
             </div>
         </div>
-        <asp:Label ID="lblRut" runat="server" Visible="false"></asp:Label>
 
         <div class="row container" style="padding-left: 20px">
             <!-- Grilla con historial de intervenciones -->
@@ -38,17 +37,9 @@
                 <h5>Historial de Casos </h5>
                 <h6>Grilla</h6>
                 <asp:GridView ID="grvCasos" runat="server" BackColor="#EFF4F8" ShowHeaderWhenEmpty="True" Width="600px" Font-Size="12px"
-                    CssClass=" table table-hover table-bordered bs-table table-sm table-responsive" HorizontalAlign="Right" AutoGenerateColumns="false"
-                    EmptyDataText="No se han abierto casos para intervenir con el alumno" OnSelectedIndexChanged="grvCasos_SelectedIndexChanged">
+                    CssClass=" table table-hover table-bordered bs-table table-sm table-responsive" HorizontalAlign="Right"
+                    EmptyDataText="No se han abierto casos para intervenir con el alumno" OnSelectedIndexChanged="grvCasos_SelectedIndexChanged" OnRowDataBound="grvCasos_RowDataBound">
                     <Columns>
-                        <asp:BoundField Visible="true" DataField="Id" HeaderText="Id" />
-                        <asp:BoundField DataField="Fecha Inicio" HeaderText="Fecha Inicio" />
-                        <asp:BoundField DataField="Tipo de Caso" HeaderText="Tipo de Caso" />
-                        <asp:BoundField DataField="Curso" HeaderText="Curso" />
-                        <asp:BoundField Visible="false" DataField="Id interaccion" HeaderText="Id interaccion" />
-                        <asp:BoundField DataField="Ultima Interaccion" HeaderText="Ultima Interaccion" />
-                        <asp:BoundField DataField="Estado del Caso" HeaderText="Estado del Caso" />
-                        <asp:BoundField DataField="Fecha Termino" HeaderText="Fecha Termino" />
                         <asp:CommandField ButtonType="Button" ShowSelectButton="true" SelectText="Ver Detalle">
                             <ControlStyle CssClass="btn btn-sm btn-success" />
                         </asp:CommandField>

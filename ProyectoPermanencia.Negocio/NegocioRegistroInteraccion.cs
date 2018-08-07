@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ProyectoPermanencia.DTO;
 namespace ProyectoPermanencia.Negocio
 {
     //Clase que interactúa con la pagina que registra las interacciones. CRUD.
@@ -30,35 +30,35 @@ namespace ProyectoPermanencia.Negocio
             return conexion.Conec1.DbDat;
         }
 
-        //Metodo que carga DDL de tipo de caso que se puede abrir
-        //(return) "arreglo" DataSet con información de resultado de la query
-        public DataSet CargarddlTipoCaso()
-        {
-            //Instancia conexión
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
+        ////Metodo que carga DDL de tipo de caso que se puede abrir
+        ////(return) "arreglo" DataSet con información de resultado de la query
+        //public DataSet CargarddlTipoCaso()
+        //{
+        //    //Instancia conexión
+        //    NegocioConexionBD conexion = new NegocioConexionBD();
+        //    conexion.configuraConexion();
 
-            conexion.Conec1.IntruccioneSQL = "SELECT Id_TipoCaso, Desc_TipoCaso FROM Tipo_Caso;";
+        //    conexion.Conec1.IntruccioneSQL = "SELECT Id_TipoCaso, Desc_TipoCaso FROM Tipo_Caso;";
 
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            return conexion.Conec1.DbDat;
-        }
+        //    conexion.Conec1.EsSelect = true;
+        //    conexion.Conec1.conectar();
+        //    return conexion.Conec1.DbDat;
+        //}
 
-        //Metodo que carga DDL de tipo de interaccion que se puede ingresar a los casos
-        //(return) "arreglo" DataSet con información de resultado de la query
-        public DataSet CargarddlTipoInteraccion()
-        {
-            //Instancia conexión
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
+        ////Metodo que carga DDL de tipo de interaccion que se puede ingresar a los casos
+        ////(return) "arreglo" DataSet con información de resultado de la query
+        //public DataSet CargarddlTipoInteraccion()
+        //{
+        //    //Instancia conexión
+        //    NegocioConexionBD conexion = new NegocioConexionBD();
+        //    conexion.configuraConexion();
 
-            conexion.Conec1.IntruccioneSQL = "SELECT Id_TipoInteraccion, Desc_TipoInteraccion FROM Tipo_Interaccion;";
+        //    conexion.Conec1.IntruccioneSQL = "SELECT Id_TipoInteraccion, Desc_TipoInteraccion FROM Tipo_Interaccion;";
 
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            return conexion.Conec1.DbDat;
-        }
+        //    conexion.Conec1.EsSelect = true;
+        //    conexion.Conec1.conectar();
+        //    return conexion.Conec1.DbDat;
+        //}
 
         //Cargar DDL casos que tiene activos el alumno
         //(param) string con el rut del alumno
@@ -167,83 +167,120 @@ namespace ProyectoPermanencia.Negocio
         }
         //Método que crea la interaccion asociada al caso elegido anteriormente
         //(param) rut del alumno y el id del caso
-        public bool AgregaInteraccion(string rutalumno, string idcaso, string tipointer, string idarea, string comentarios, string participantes)
+        public bool AgregaInteraccion(string rutAlumno, string idCaso, string tipoInter, string idArea, string comentarios, DataTable participantes, DateTime fecha, string ruta)
         {
             NegocioConexionBD conexion = new NegocioConexionBD();
             conexion.configuraConexion();
 
-            //Si el rut viene con información
-            if (!String.IsNullOrEmpty(rutalumno))
+            ////Si el rut viene con información
+            //if (!String.IsNullOrEmpty(rutalumno))
+            //{
+
+            //    //Consulta para traer el id del alumno por su rut
+            //    conexion.Conec1.IntruccioneSQL = String.Format("SELECT Id_Alumno FROM LK_Alumno WHERE Desc_Rut_Alumno = '{0}';", rutalumno);
+            //    conexion.Conec1.EsSelect = true;
+            //    conexion.Conec1.conectar();
+            //    string idalumno = conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
+
+
+            //    //Consulta si hay interacciones 
+            //    conexion.Conec1.IntruccioneSQL = String.Format("SELECT COUNT(Id_Interaccion) FROM Interaccion WHERE Id_Caso = '{0}';", idcaso);
+            //    conexion.Conec1.EsSelect = true;
+            //    conexion.Conec1.conectar();
+            //    string cantInte = conexion.Conec1.DbDat.ToString();
+
+            //    //Si no existen interacciones con el id del caso asociado (o sea esta que estamos agregando es la primera intervención), 
+            //    //se inicializa el caso pasando su estado de pendiente a en curso
+            //    if (cantInte == "0") { iniciarCaso(idcaso); }
+
+            //    //Insert de interaccion derivacion 
+            //    if ((!String.IsNullOrEmpty(idcaso)) && (!String.IsNullOrEmpty(tipointer)) && (!String.IsNullOrEmpty(idarea)) && (!String.IsNullOrEmpty(comentarios)))
+            //    {
+            //        conexion.Conec1.IntruccioneSQL = String.Format("INSERT INTO Interaccion (Fecha_Interaccion, Desc_Comentario, Id_Caso, Id_AreaDerivacion, Id_TipoInteraccion, Id_EstadoInteraccion) " +
+            //                                                                        "VALUES(SYSDATETIME(), '{0}', {1}, {2}, {3} , 1)", comentarios, idcaso, idarea, tipointer);
+            //        conexion.Conec1.EsSelect = false;
+            //        conexion.Conec1.conectar();
+            //        insertarParticipantes(participantes, idalumno);
+            //        return true;
+            //    }
+            //    //Insert de interaccion no derivacion
+            //    else if ((!String.IsNullOrEmpty(idcaso)) && (!String.IsNullOrEmpty(tipointer)) && (String.IsNullOrEmpty(idarea)) && (!String.IsNullOrEmpty(comentarios)))
+            //    {
+            //        conexion.Conec1.IntruccioneSQL = String.Format("INSERT INTO Interaccion (Fecha_Interaccion, Desc_Comentario, Id_Caso, Id_TipoInteraccion, Id_EstadoInteraccion) " +
+            //                                                                        "VALUES(SYSDATETIME(), '{0}', {1}, {2}, 1)", comentarios, idcaso, tipointer);
+            //        conexion.Conec1.EsSelect = false;
+            //        conexion.Conec1.conectar();
+            //        insertarParticipantes(participantes, idalumno);
+            //        return true;
+            //    }
+            //    else
+            //    {
+            //        return false;
+            //        throw new ArgumentNullException(nameof(idcaso));
+            //        throw new ArgumentNullException(nameof(tipointer));
+            //        throw new ArgumentNullException(nameof(comentarios));
+
+            //    }
+
+            //}
+            //else
+            //{
+            //    //Agregar mensaje: Rut del alumno no es válido
+            //    throw new ArgumentNullException(nameof(rutalumno));
+
+            //}
+
+            conexion.Conec1.IntruccioneSQL = "prc_InsertarInteraccion";
+            DTOInteraccion datosInteraccion = new DTOInteraccion();
+            datosInteraccion.rutAlumno = rutAlumno;
+            datosInteraccion.tipoInteraccion = int.Parse(tipoInter);
+            datosInteraccion.idCaso = int.Parse(idCaso);
+            if (idArea != null)
             {
-
-                //Consulta para traer el id del alumno por su rut
-                conexion.Conec1.IntruccioneSQL = String.Format("SELECT Id_Alumno FROM LK_Alumno WHERE Desc_Rut_Alumno = '{0}';", rutalumno);
-                conexion.Conec1.EsSelect = true;
-                conexion.Conec1.conectar();
-                string idalumno = conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
-
-
-                //Consulta si hay interacciones 
-                conexion.Conec1.IntruccioneSQL = String.Format("SELECT COUNT(Id_Interaccion) FROM Interaccion WHERE Id_Caso = '{0}';", idcaso);
-                conexion.Conec1.EsSelect = true;
-                conexion.Conec1.conectar();
-                string cantInte = conexion.Conec1.DbDat.ToString();
-
-                //Si no existen interacciones con el id del caso asociado (o sea esta que estamos agregando es la primera intervención), 
-                //se inicializa el caso pasando su estado de pendiente a en curso
-                if (cantInte == "0") { iniciarCaso(idcaso); }
-
-                //Insert de interaccion derivacion 
-                if ((!String.IsNullOrEmpty(idcaso)) && (!String.IsNullOrEmpty(tipointer)) && (!String.IsNullOrEmpty(idarea)) && (!String.IsNullOrEmpty(comentarios)) && (!String.IsNullOrEmpty(participantes)))
-                {
-                    conexion.Conec1.IntruccioneSQL = String.Format("INSERT INTO Interaccion (Fecha_Interaccion, Desc_Comentario, Participantes, Id_Caso, Id_AreaDerivacion, Id_TipoInteraccion, Id_EstadoInteraccion, Id_Alumno) " +
-                                                                                    "VALUES(SYSDATETIME(), '{0}', '{1}', {2}, {3}, {4}, 1, {5})", comentarios, participantes, idcaso, idarea, tipointer, idalumno);
-                    conexion.Conec1.EsSelect = false;
-                    conexion.Conec1.conectar();
-                    return true;
-                }
-                //Insert de interaccion no derivacion
-                else if ((!String.IsNullOrEmpty(idcaso)) && (!String.IsNullOrEmpty(tipointer)) && (String.IsNullOrEmpty(idarea)) && (!String.IsNullOrEmpty(comentarios)) && (!String.IsNullOrEmpty(participantes)))
-                {
-                    conexion.Conec1.IntruccioneSQL = String.Format("INSERT INTO Interaccion (Fecha_Interaccion, Desc_Comentario, Participantes, Id_Caso, Id_TipoInteraccion, Id_EstadoInteraccion, Id_Alumno) " +
-                                                                                    "VALUES(SYSDATETIME(), '{0}', '{1}', {2}, {3}, 1, {4})", comentarios, participantes, idcaso, tipointer, idalumno);
-                    conexion.Conec1.EsSelect = false;
-                    conexion.Conec1.conectar();
-                    return true;
-                }
-                else
-                {
-                    return false;
-                    throw new ArgumentNullException(nameof(idcaso));
-                    throw new ArgumentNullException(nameof(tipointer));
-                    throw new ArgumentNullException(nameof(comentarios));
-
-                }
-
+                datosInteraccion.idArea = int.Parse(idArea);
             }
-            else
+            datosInteraccion.comentarios = comentarios;
+            datosInteraccion.participantes = participantes;
+            datosInteraccion.fechaInteraccion = fecha;
+            if (ruta != "")
             {
-                //Agregar mensaje: Rut del alumno no es válido
-                throw new ArgumentNullException(nameof(rutalumno));
-
+                datosInteraccion.rutaArchivo = ruta;
             }
+            conexion.Conec1.conectarProcInsertarInteraccion(datosInteraccion);
+            return true;
         }
 
         //Metodo que carga Check Box List con Participantes de una interaccion
         //(return) "arreglo" DataSet con información de resultado de la query
-        public DataSet cargarckbxParticipante()
-        {
-            //Instancia conexión
+        //public DataSet cargarckbxParticipante()
+        //{
+        //    //Instancia conexión
+        //    NegocioConexionBD conexion = new NegocioConexionBD();
+        //    conexion.configuraConexion();
+
+        //    conexion.Conec1.IntruccioneSQL = "SELECT Id_Participante, Desc_Participante FROM Participante ORDER BY Desc_Participante ASC;";
+
+        //    conexion.Conec1.EsSelect = true;
+        //    conexion.Conec1.conectar();
+        //    return conexion.Conec1.DbDat;
+        //}
+
+        public void insertarParticipantes(List<string> participantes, string idAlumno) {
             NegocioConexionBD conexion = new NegocioConexionBD();
             conexion.configuraConexion();
 
-            conexion.Conec1.IntruccioneSQL = "SELECT Id_Participante, Desc_Participante FROM Participante ORDER BY Desc_Participante ASC;";
-
+            conexion.Conec1.IntruccioneSQL = String.Format("SELECT TOP(1) I.Id_interaccion FROM dbo.Interaccion I LEFT JOIN Caso C ON I.Id_Caso = C.Id_Caso WHERE C.Id_Alumno = {0} ORDER BY I.Id_Interaccion DESC", idAlumno);
             conexion.Conec1.EsSelect = true;
             conexion.Conec1.conectar();
-            return conexion.Conec1.DbDat;
-        }
 
+            foreach (string item in participantes)
+            {
+                conexion.Conec1.IntruccioneSQL = String.Format("INSERT INTO Paricipante_Interaccion (Id_Interaccion, Id_Participante) VALUES ({0},{1})",conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_interaccion"].ToString(), item);
+                conexion.Conec1.EsSelect = true;
+                conexion.Conec1.conectar();
+            }
+            
+        }
 
     }
 }

@@ -113,7 +113,7 @@
                                 </div>
 
                             </div>
-                            <asp:Repeater ID="rpDetalle" runat="server">
+                            <asp:Repeater ID="rpDetalle" runat="server" OnItemCommand="rpDetalle_ItemCommand">
                                 <HeaderTemplate>
                                     <div class="row container detInterContainer">
                                 </HeaderTemplate>
@@ -140,7 +140,7 @@
 
                                     </div>
                                     <div class="row d-flex flex-row-reverse" style="margin-top: 5px">
-                                        <asp:Button runat="server" ID="btnEdd" Text="Editar" CssClass="btn btn-warning btn-sm" OnClick="btnEditar_Click"/>
+                                        <asp:Button runat="server" ID="btnDesc" Text="Descargar" CssClass="btn btn-warning btn-sm" CommandArgument='<%#Eval("Ruta Archivo") %>' CommandName="Download"/>
 
                                     </div>
                                 </div>

@@ -101,5 +101,17 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grvFinanzas;
+        
+        /// <summary>
+        /// Propiedad Master.
+        /// </summary>
+        /// <remarks>
+        /// Propiedad generada automáticamente.
+        /// </remarks>
+        public new ProyectoPermanencia.Presentacion.FichaMaster Master {
+            get {
+                return ((ProyectoPermanencia.Presentacion.FichaMaster)(base.Master));
+            }
+        }
     }
 }

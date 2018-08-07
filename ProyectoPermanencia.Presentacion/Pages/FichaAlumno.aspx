@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FichaMaster.master" AutoEventWireup="true" CodeBehind="FichaAlumno.aspx.cs" Inherits="ProyectoPermanencia.Presentacion.Pages.FichaAlumno" %>
-
-
+<%@ MasterType VirtualPath="~/FichaMaster.master" %>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolderTitle" runat="server">
     <asp:Label runat="server">
         <h3 style="color:azure" > Ficha Alumno  </h3>

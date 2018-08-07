@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <!--DDL ideal-->
-                                        <asp:DropDownList runat="server" ID="ddlCasos" CssClass="form-control form-control-sm">
+                                        <asp:DropDownList runat="server" ID="ddlCasos" CssClass="form-control form-control-sm" OnDataBound="ddlCasos_DataBound">
                                             <asp:ListItem>Seleccione</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
@@ -83,9 +83,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7" style="padding-right: 0px; justify-content: flex-end;">
-                                        <asp:DropDownList runat="server" ID="ddlTipoCaso" AutoPostBack="true" CssClass="form-control form-control-sm" AppendDataBoundItems="True" Enabled="False" OnSelectedIndexChanged="ddlTipoCaso_SelectedIndexChanged">
+                                        <asp:DropDownList runat="server" ID="ddlTipoCaso" AutoPostBack="True" CssClass="form-control form-control-sm" AppendDataBoundItems="True" Enabled="False" OnSelectedIndexChanged="ddlTipoCaso_SelectedIndexChanged" DataSourceID="sqlTipoCaso" DataTextField="Desc_TipoCaso" DataValueField="Id_TipoCaso">
                                             <asp:ListItem Selected="True">Seleccione</asp:ListItem>
                                         </asp:DropDownList>
+                                        <asp:SqlDataSource ID="sqlTipoCaso" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Tipo_Caso]"></asp:SqlDataSource>
                                     </div>
                                 </div>
                                 <div class="row" style="align-content: flex-end;">
@@ -115,29 +116,26 @@
                                     <div class="col-md-4" style="margin-left: 20px;">
                                         <asp:Label runat="server" Font-Bold="true">Tipo de Intervención :</asp:Label>
                                         <div class="dropdown dropdown-toggle disabled" style="width: 70%;">
-                                            <asp:DropDownList runat="server" ID="ddlTipoInteraccion" AppendDataBoundItems="true" AutoPostBack="true" CssClass="form-control form-control-sm" OnSelectedIndexChanged="ddlTipoInteraccion_SelectedIndexChanged">
-                                                <asp:ListItem>Seleccione</asp:ListItem>
+                                            <asp:DropDownList runat="server" ID="ddlTipoInteraccion" AppendDataBoundItems="True" AutoPostBack="True" CssClass="form-control form-control-sm" OnSelectedIndexChanged="ddlTipoInteraccion_SelectedIndexChanged" DataSourceID="sqlTipoInteraccion" DataTextField="Desc_TipoInteraccion" DataValueField="Id_TipoInteraccion">
+                                                <asp:ListItem Value="0">Seleccione</asp:ListItem>
 
                                             </asp:DropDownList>
+                                            <asp:SqlDataSource ID="sqlTipoInteraccion" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Tipo_Interaccion]"></asp:SqlDataSource>
                                         </div>
                                     </div>
                                     <div class="col-md-3 ">
                                         <asp:Label runat="server" Font-Bold="true">Participa(n) :</asp:Label>
-                                        <asp:CheckBoxList runat="server" ID="ckblParticipan" CssClass="checkbox ">
-                                            <asp:ListItem Value="0">Seleccione</asp:ListItem>
+                                        <asp:CheckBoxList runat="server" ID="ckblParticipan" CssClass="checkbox " DataSourceID="sqlParticipantes" DataTextField="Desc_Participante" DataValueField="Id_Participante">
+                                            
                                         </asp:CheckBoxList>
+                                        <asp:SqlDataSource ID="sqlParticipantes" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Participante]"></asp:SqlDataSource>
                                     </div>
                                     <div class="col-md-4">
                                         <asp:Label runat="server" Font-Bold="true">Área de derivación :</asp:Label>
                                         <div class="dropdown dropdown-toggle" style="width: 90%;">
-                                            <asp:DropDownList runat="server" ID="ddlArederiv" Enabled="false" AutoPostBack="true" CssClass="form-control form-control-sm">
-                                                <asp:ListItem Value="0">Seleccione</asp:ListItem>
-                                                <asp:ListItem Value="1">Asuntos Estudiantiles</asp:ListItem>
-                                                <asp:ListItem Value="2">CETIR</asp:ListItem>
-                                                <asp:ListItem Value="3">Secretaría Académica</asp:ListItem>
-                                                <asp:ListItem Value="4">Finanzas</asp:ListItem>
-
+                                            <asp:DropDownList runat="server" ID="ddlArederiv" Enabled="False" AutoPostBack="True" CssClass="form-control form-control-sm" DataSourceID="sqlAreaDerivacion" DataTextField="Desc_AreaDerivacion" DataValueField="Id_AreaDerivacion">
                                             </asp:DropDownList>
+                                            <asp:SqlDataSource ID="sqlAreaDerivacion" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Area_Derivacion]" OnSelected="sqlAreaDerivacion_Selected"></asp:SqlDataSource>
                                         </div>
                                     </div>
                                 </div>
@@ -178,6 +176,7 @@
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="rbtnExistentes" />
+                <asp:PostBackTrigger ControlID="btnGuardar" />
             </Triggers>
 
         </asp:UpdatePanel>

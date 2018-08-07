@@ -37,8 +37,8 @@ namespace ProyectoPermanencia.Negocio
                                     + "AND "
                                     + "C.Id_Caso = I.Id_Caso "
                                     + "ORDER BY I.Id_Interaccion DESC) AS 'Ultima Intervencion',"
-                                    + "CAST (C.Fecha_Inicio AS date) AS 'Fecha inicio',"
-                                    + "CAST (C.Fecha_Termino AS date) AS 'Fecha Termino',"
+                                    + "CONVERT(nvarchar, CONVERT(date, C.Fecha_Inicio), 103) AS 'Fecha inicio',"
+                                    + "CONVERT(nvarchar, CONVERT(date, C.Fecha_Termino), 103) AS 'Fecha Termino',"
                                     + "EC.Desc_Estado AS 'Estado' "
                                     + "FROM "
                                     + "dbo.Caso C "
@@ -191,6 +191,20 @@ namespace ProyectoPermanencia.Negocio
             auxSQL += " ORDER BY base.ID DESC ";
 
             conexion.Conec1.IntruccioneSQL = consulta() + auxSQL;
+            conexion.Conec1.EsSelect = true;
+            conexion.Conec1.conectar();
+            return conexion.Conec1.DbDat;
+        }
+
+        public DataSet buscarCasoPorRut(string rut)
+        {
+            NegocioConexionBD conexion = new NegocioConexionBD();
+            conexion.configuraConexion();
+
+            conexion.Conec1.IntruccioneSQL = consulta()
+                                             + "base.[Rut Alumno] = '" + rut + "' "
+                                             + " ORDER BY base.ID DESC";
+
             conexion.Conec1.EsSelect = true;
             conexion.Conec1.conectar();
             return conexion.Conec1.DbDat;

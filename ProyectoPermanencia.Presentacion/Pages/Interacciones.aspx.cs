@@ -12,48 +12,40 @@ namespace ProyectoPermanencia.Presentacion.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             string[] info = (string[])Session["Info Alumnos"];
-            this.lblRut.Text = info[0];
-            //grvCasos.DataSource = new Negocio.NegocioFichaAlumno().CargargrvCasos(lblRut.Text);
-            //grvCasos.DataBind();
-
-
+            grvCasos.DataSource = new Negocio.NegocioResolucion().buscarCasoPorRut(info[0]);
+            grvCasos.DataBind();
 
         }
 
         protected void btnNuevaInteraccion_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Pages/RegistroInteraccion.aspx");
-        }
-
-        protected void grvCasos_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-
+            Response.Redirect("RegistroInteraccion.aspx");
         }
 
         protected void grvCasos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /* [0] Id Caso
-             * [1] Fecha Inicio
-             * [2] Tipo Caso
-             * [3] Curso
-             * [4] Id interaccion
-             * [5] Ultima interaccion
-             * [6] Estado del caso
-             * [7] Fecha termino
-             * 
-             */
+
             GridViewRow row = this.grvCasos.SelectedRow;
-            string[] info_caso = new string[] {row.Cells[0].Text, row.Cells[1].Text,
-                row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text,
-                row.Cells[5].Text, row.Cells[7].Text };
-            Session["Info Caso"] = info_caso;
-            Session["Proveniencia"] = "ficha";
-            Response.Redirect("/Pages/DetalleCaso.aspx");
+            string[] info_caso = new string[] {row.Cells[1].Text, row.Cells[2].Text, row.Cells[3].Text,
+                                               row.Cells[4].Text, row.Cells[5].Text, row.Cells[6].Text,
+                                               row.Cells[7].Text, row.Cells[8].Text, row.Cells[9].Text,
+                                               row.Cells[10].Text, row.Cells[11].Text, row.Cells[15].Text};
+            Session["info_caso"] = info_caso;
+            Response.Redirect("DetalleCaso.aspx");
         }
 
-        /*protected void btnDetalle_Click(object sender, EventArgs e)
+        protected void grvCasos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            Response.Redirect("/Pages/DetalleCaso.aspx");
-        }*/
+            if (e.Row.Cells.Count > 1)
+            {
+                e.Row.Cells[5].Visible = false; //Oculta la fila "Nombre Alumno"
+                e.Row.Cells[6].Visible = false; //Oculta la fila "Correo"
+                e.Row.Cells[7].Visible = false; //Oculta la fila "Telefono"
+                e.Row.Cells[8].Visible = false; //Oculta la fila "Carrera"
+                e.Row.Cells[9].Visible = false; //Oculta la fila "Escuela"
+                e.Row.Cells[10].Visible = false;//Oculta la fila "Jornada"
+                e.Row.Cells[11].Visible = false;//Oculta la fila "Sede"
+            }
+        }
     }
 }

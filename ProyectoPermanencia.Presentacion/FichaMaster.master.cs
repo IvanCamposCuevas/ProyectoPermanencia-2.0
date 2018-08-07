@@ -25,10 +25,17 @@ namespace ProyectoPermanencia.Presentacion
                 //string[] info_notas = (string[])Session["Info Notas"];
                 //grvDetalleNotas.DataSource = new Negocio.NegocioFichaAlumno().consultaDetNotas(info_notas[1], info_notas[0]);
                 //grvDetalleNotas.DataBind();
+                
             }
         }
 
-       
 
+        public Label obtenerLblTipoBeneficio
+        {
+            get
+            {
+                return this.lblBeneficio;
+            }
+        }
     }
 }

@@ -139,6 +139,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoCaso;
         
         /// <summary>
+        /// Control sqlTipoCaso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlTipoCaso;
+        
+        /// <summary>
         /// Control lblCurso.
         /// </summary>
         /// <remarks>
@@ -184,6 +193,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoInteraccion;
         
         /// <summary>
+        /// Control sqlTipoInteraccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlTipoInteraccion;
+        
+        /// <summary>
         /// Control ckblParticipan.
         /// </summary>
         /// <remarks>
@@ -193,6 +211,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.CheckBoxList ckblParticipan;
         
         /// <summary>
+        /// Control sqlParticipantes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlParticipantes;
+        
+        /// <summary>
         /// Control ddlArederiv.
         /// </summary>
         /// <remarks>
@@ -200,6 +227,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlArederiv;
+        
+        /// <summary>
+        /// Control sqlAreaDerivacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlAreaDerivacion;
         
         /// <summary>
         /// Control tbComentarios.

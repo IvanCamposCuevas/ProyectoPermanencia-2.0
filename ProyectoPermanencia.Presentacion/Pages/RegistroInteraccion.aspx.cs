@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Windows.Forms;
 namespace ProyectoPermanencia.Presentacion.Pages
 {
     public partial class RegistroInteraccion : System.Web.UI.Page
@@ -23,17 +24,6 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 this.lblTelefono.Text = info[3];
                 this.lblMail.Text = info[4];
 
-
-                ddlTipoCaso.DataSource = new Negocio.NegocioRegistroInteraccion().CargarddlTipoCaso();
-                ddlTipoCaso.DataValueField = "Id_TipoCaso";
-                ddlTipoCaso.DataTextField = "Desc_TipoCaso";
-                ddlTipoCaso.DataBind();
-
-                ddlTipoInteraccion.DataSource = new Negocio.NegocioRegistroInteraccion().CargarddlTipoInteraccion();
-                ddlTipoInteraccion.DataValueField = "Id_TipoInteraccion";
-                ddlTipoInteraccion.DataTextField = "Desc_TipoInteraccion";
-                ddlTipoInteraccion.DataBind();
-
                 ddlCurso.DataSource = new Negocio.NegocioRegistroInteraccion().CargarddlCurso(lblRut.Text);
                 ddlCurso.DataValueField = "Id_Asignatura";
                 ddlCurso.DataTextField = "CURSO";
@@ -43,50 +33,67 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 ddlCasos.DataValueField = "Id_Caso";
                 ddlCasos.DataTextField = "CASO";
                 ddlCasos.DataBind();
-
-                ckblParticipan.DataSource = new Negocio.NegocioRegistroInteraccion().cargarckbxParticipante();
-                ckblParticipan.DataValueField = "Id_Participante";
-                ckblParticipan.DataTextField = "Desc_Participante";
-                ckblParticipan.DataBind();
-
             }
 
 
         }
 
-        protected void btnGuardar_Click(object sender, EventArgs e)
+        private DataTable crearTablaIdParticipantes()
         {
-            string rutalumno = lblRut.Text;
-            string idcaso = ddlCasos.SelectedValue.ToString();
-            string tipointer = ddlTipoInteraccion.SelectedValue.ToString();
-            string idarea = null;
-            string comentarios = tbComentarios.Text;
-            string participantes = null;
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
 
             foreach (ListItem item in ckblParticipan.Items)
             {
                 if (item.Selected)
                 {
-                    participantes += item.Text + ", ";
+                    dt.Rows.Add(item.Value);
                 }
             }
 
-            if (ddlTipoInteraccion.SelectedItem.Value.Equals("2"))
+            return dt;
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string rutalumno = lblRut.Text;
+            string idcaso = ddlCasos.SelectedValue;
+            string tipointer = ddlTipoInteraccion.SelectedValue;
+            string idarea = null;
+            string comentarios = tbComentarios.Text;
+            string rutaAbsoluta = string.Empty;
+            string nombreArchivo = string.Empty;
+            DateTime fecha = calFecha.SelectedDate;
+            DataTable participantes = crearTablaIdParticipantes();
+            if (flInteraccion.HasFile)
             {
-                idarea = ddlArederiv.SelectedValue.ToString();
-                if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(idarea)) || (!String.IsNullOrEmpty(comentarios)))
-                {
-                    new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes);
-                }
+                rutaAbsoluta = string.Concat(Server.MapPath("~/ArchivoInteraccion/"), flInteraccion.FileName);
+                nombreArchivo = flInteraccion.FileName;
+            }
+            if (ddlArederiv.SelectedValue.Equals("0") || ddlTipoInteraccion.SelectedValue.Equals("0") || participantes.Rows.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleccione una opcion o varias opciones de la pantalla");
             }
             else
             {
-                if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(comentarios)))
+                if (ddlArederiv.Enabled == true)
                 {
-                    new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes);
+                    idarea = ddlArederiv.SelectedValue;
+                    if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(idarea)) || (!String.IsNullOrEmpty(comentarios)))
+                    {
+                        new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes, fecha, nombreArchivo);
+                        flInteraccion.SaveAs(rutaAbsoluta);
+                    }
+                }
+                else
+                {
+                    if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(comentarios)))
+                    {
+                        new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes, fecha, nombreArchivo);
+                        flInteraccion.SaveAs(rutaAbsoluta);
+                    }
                 }
             }
-            Response.Redirect("/Pages/Interacciones.aspx");
         }
 
         protected void rbtnExistentes_CheckedChanged(object sender, EventArgs e)
@@ -138,12 +145,15 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
             if (rbtnExistentes.Checked == true)
             {
-                //Significa que no está creando ningun caso, hay que poner un mensajito o aviso.
+                if (ddlCasos.Items.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar la opcion de crear un nuevo caso");
+                }
             }
             if (rbtnNuevo.Checked == true)
             {
                 string rutalumno = lblRut.Text;
-                string tipo = ddlTipoCaso.SelectedValue.ToString();
+                string tipo = ddlTipoCaso.SelectedValue;
                 string idcurso = null;
 
                 if (ddlTipoCaso.SelectedItem.Value.Equals("2"))
@@ -161,7 +171,21 @@ namespace ProyectoPermanencia.Presentacion.Pages
                         new Negocio.NegocioRegistroInteraccion().CreaCaso(rutalumno, tipo, idcurso);
                     }
                 }
-                Response.Redirect("/Pages/RegistroInteraccion.aspx");
+
+                Response.Redirect(HttpContext.Current.Request.Url.ToString(), true);
+            }
+        }
+
+        protected void sqlAreaDerivacion_Selected(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            ddlArederiv.Items.Add(new ListItem("Seleccione", "0"));
+        }
+
+        protected void ddlCasos_DataBound(object sender, EventArgs e)
+        {
+            if (ddlCasos.Items.Count == 0)
+            {
+                fdsInteraccion.Disabled = true;
             }
         }
     }

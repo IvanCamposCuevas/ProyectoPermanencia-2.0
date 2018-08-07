@@ -223,7 +223,7 @@ namespace ProyectoPermanencia.Conexion
             }
             catch (SqlException ex)
             {
-                throw new Exception("Error en el SQL ", ex);
+                throw new Exception("Error en el SQL "+ex.Message);
             }
             cerrarConexion();
         }

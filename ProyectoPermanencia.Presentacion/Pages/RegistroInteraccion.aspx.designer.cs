@@ -49,13 +49,13 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Label lblEscuela;
         
         /// <summary>
-        /// Control Jornada.
+        /// Control lblJornada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Jornada;
+        protected global::System.Web.UI.WebControls.Label lblJornada;
         
         /// <summary>
         /// Control lblSede.
@@ -76,13 +76,22 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Label lblTelefono;
         
         /// <summary>
-        /// Control lblCorreo.
+        /// Control lblMail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCorreo;
+        protected global::System.Web.UI.WebControls.Label lblMail;
+        
+        /// <summary>
+        /// Control updateCasoInter.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updateCasoInter;
         
         /// <summary>
         /// Control rbtnExistentes.
@@ -130,6 +139,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoCaso;
         
         /// <summary>
+        /// Control sqlTipoCaso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlTipoCaso;
+        
+        /// <summary>
         /// Control lblCurso.
         /// </summary>
         /// <remarks>
@@ -148,22 +166,40 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddlCurso;
         
         /// <summary>
-        /// Control btnAgregarInter.
+        /// Control btnCreaCaso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarInter;
+        protected global::System.Web.UI.WebControls.Button btnCreaCaso;
         
         /// <summary>
-        /// Control ddlTipoIntervencion.
+        /// Control fdsInteraccion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoIntervencion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fdsInteraccion;
+        
+        /// <summary>
+        /// Control ddlTipoInteraccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoInteraccion;
+        
+        /// <summary>
+        /// Control sqlTipoInteraccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlTipoInteraccion;
         
         /// <summary>
         /// Control ckblParticipan.
@@ -175,6 +211,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.CheckBoxList ckblParticipan;
         
         /// <summary>
+        /// Control sqlParticipantes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlParticipantes;
+        
+        /// <summary>
         /// Control ddlArederiv.
         /// </summary>
         /// <remarks>
@@ -184,6 +229,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddlArederiv;
         
         /// <summary>
+        /// Control sqlAreaDerivacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlAreaDerivacion;
+        
+        /// <summary>
         /// Control tbComentarios.
         /// </summary>
         /// <remarks>
@@ -191,6 +245,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbComentarios;
+        
+        /// <summary>
+        /// Control calFecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calFecha;
         
         /// <summary>
         /// Control flInteraccion.

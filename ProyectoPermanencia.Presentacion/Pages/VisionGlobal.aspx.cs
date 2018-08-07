@@ -29,11 +29,9 @@ namespace ProyectoPermanencia.Presentacion
             GridViewRow row = this.grvGlobal.SelectedRow;
             string[] info_alumnos = new string[] { row.Cells[1].Text,
                 row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text,
-                row.Cells[5].Text, row.Cells[7].Text, row.Cells[8].Text, row.Cells[9].Text };
+                row.Cells[5].Text, row.Cells[7].Text, row.Cells[8].Text, row.Cells[9].Text, null };
             Session["Info Alumnos"] = info_alumnos;
             Response.Redirect("FichaAlumno.aspx");
-            //Response.Redirect("FichaMaster.aspx");
-
         }
 
         protected void btoFiltrar_Click(object sender, EventArgs e)

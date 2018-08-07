@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 using System.Windows;
-
+using ProyectoPermanencia.DTO;
 namespace ProyectoPermanencia.Conexion
 {
     public class Conexion
@@ -74,6 +75,8 @@ namespace ProyectoPermanencia.Conexion
             set { esSelect = value; }
         }
 
+        private SqlCommand variableSQL { get; set; }
+
         public void abrirConexion()
         {
             try
@@ -100,7 +103,7 @@ namespace ProyectoPermanencia.Conexion
             }
         }
 
-        public void conectar()
+        private void comprobarConexion()
         {
             if (this.NombreBaseDeDatos == "")
             {
@@ -138,8 +141,12 @@ namespace ProyectoPermanencia.Conexion
             }
 
             this.abrirConexion();
+        }
 
-            //if(this.EsSelect == true)
+        public void conectar()
+        {
+
+            comprobarConexion();
 
             if (this.EsSelect)
             {
@@ -159,7 +166,7 @@ namespace ProyectoPermanencia.Conexion
             {
                 try
                 {
-                    SqlCommand variableSQL = new SqlCommand(this.IntruccioneSQL, this.DbConnection);
+                    variableSQL = new SqlCommand(this.IntruccioneSQL, this.DbConnection);
                     variableSQL.ExecuteNonQuery();
                 }
                 catch (SqlException ex)
@@ -170,6 +177,55 @@ namespace ProyectoPermanencia.Conexion
 
             }
             this.cerrarConexion();
+        }
+
+        public void conectarProcInsertarInteraccion(DTOInteraccion interaccion) {
+
+            comprobarConexion();
+
+            try
+            {
+                variableSQL = new SqlCommand(this.IntruccioneSQL, this.DbConnection);
+                variableSQL.CommandType = CommandType.StoredProcedure;
+                SqlParameter paramRut = new SqlParameter();
+                paramRut.ParameterName = "@rut";
+                paramRut.Value = interaccion.rutAlumno;
+                SqlParameter paramIdCaso = new SqlParameter();
+                paramIdCaso.ParameterName = "@idCaso";
+                paramIdCaso.Value = interaccion.idCaso;
+                SqlParameter paramTipoint = new SqlParameter();
+                paramTipoint.ParameterName = "@tipoInteraccion";
+                paramTipoint.Value = interaccion.tipoInteraccion;
+                SqlParameter paramIdArea = new SqlParameter();
+                paramIdArea.ParameterName = "@idArea";
+                paramIdArea.Value = interaccion.idArea;
+                SqlParameter paramComentario = new SqlParameter();
+                paramComentario.ParameterName = "@comentario";
+                paramComentario.Value = interaccion.comentarios;
+                SqlParameter paramParticipantes = new SqlParameter();
+                paramParticipantes.ParameterName = "@valores";
+                paramParticipantes.Value = interaccion.participantes;
+                SqlParameter paramFechaInt = new SqlParameter();
+                paramFechaInt.ParameterName = "@fechaInteraccion";
+                paramFechaInt.Value = interaccion.fechaInteraccion;
+                SqlParameter paramArchivo = new SqlParameter();
+                paramArchivo.ParameterName = "@rutaArchivo";
+                paramArchivo.Value = interaccion.rutaArchivo;
+                variableSQL.Parameters.Add(paramRut);
+                variableSQL.Parameters.Add(paramIdCaso);
+                variableSQL.Parameters.Add(paramTipoint);
+                variableSQL.Parameters.Add(paramIdArea);
+                variableSQL.Parameters.Add(paramComentario);
+                variableSQL.Parameters.Add(paramParticipantes);
+                variableSQL.Parameters.Add(paramFechaInt);
+                variableSQL.Parameters.Add(paramArchivo);
+                variableSQL.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error en el SQL ", ex);
+            }
+            cerrarConexion();
         }
     }
 }

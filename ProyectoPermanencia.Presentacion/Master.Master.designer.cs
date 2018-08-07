@@ -31,13 +31,13 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlForm formPrincipal;
         
         /// <summary>
-        /// Control Menu1.
+        /// Control scrp1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu Menu1;
+        protected global::System.Web.UI.ScriptManager scrp1;
         
         /// <summary>
         /// Control ContentPlaceHolderTitle.
@@ -137,5 +137,32 @@ namespace ProyectoPermanencia.Presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderEtapasResolucion;
+        
+        /// <summary>
+        /// Control ContentPlaceHolderDetalleCaso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderDetalleCaso;
+        
+        /// <summary>
+        /// Control ContentPlaceHolderMantenedorSemestre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderMantenedorSemestre;
+        
+        /// <summary>
+        /// Control lblfechaprueba.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblfechaprueba;
     }
 }

@@ -1,5 +1,5 @@
 ﻿body {
-    font-family: 'Open Sans',sans-serif;   
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 header {
@@ -29,6 +29,40 @@ footer {
     bottom: 0;
     text-align:center;
     margin-bottom: 0;
+    
+}
+
+.infocasoContainer {
+    height: 50px; 
+    padding: 5px; 
+    box-shadow: none; 
+    box-sizing: border-box; 
+    margin: 0px; 
+    border-radius: 2px;
+    border-left: 5px solid rgb(252,173,24); 
+    border-right: 5px solid rgb(252,173,24); 
+    box-shadow: none; 
+    margin-bottom: 20px; 
+    background-color: rgb( 209, 210, 221 );
+}
+
+.detCasoContainer {
+    margin-top: 0px; 
+    border-radius: 2px; 
+    border-left: 5px solid rgb(252,173,24);
+    border-right: 5px solid rgb(252,173,24); 
+    box-shadow: none; 
+    padding: 0px;
+}
+
+.detInterContainer {
+    margin: 5px; 
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+    padding-left: 0px; 
+    border-top-width: 2px; 
+    border-top-style: solid; 
+    border-color: rgb(1,40,69);
 }
 
 

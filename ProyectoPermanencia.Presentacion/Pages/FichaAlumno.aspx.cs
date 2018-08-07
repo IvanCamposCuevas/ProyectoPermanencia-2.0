@@ -14,13 +14,12 @@ namespace ProyectoPermanencia.Presentacion.Pages
             if (!IsPostBack)
             {
                 string[] info = (string[])Session["Info Alumnos"];
-                this.lblRut.Text = info[0];
                 System.Data.DataSet notas = new System.Data.DataSet();
                 System.Data.DataSet asistencias = new System.Data.DataSet();
                 System.Data.DataSet morosos = new System.Data.DataSet();
                 System.Data.DataSet detalleNotas = new System.Data.DataSet();
 
-                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out notas, out detalleNotas,
+                new Negocio.NegocioFichaAlumno().consultaGeneral(info[0], out notas, out detalleNotas,
                     out asistencias, out morosos);
                 grvAsistencia.DataSource = asistencias;
                 grvAsistencia.DataBind();
@@ -30,6 +29,9 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 grvDetalleNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
+                info[8] = morosos.Tables[0].Rows[0].ItemArray[3].ToString();
+                Master.obtenerLblTipoBeneficio.Text = info[8];
+                Session["Info Alumnos"] = info;
             }
         }
 

@@ -50,8 +50,8 @@
     <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <HintPath>..\packages\AjaxControlToolkit.18.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="AspNet.ScriptManager.bootstrap, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.4.0.0\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    <Reference Include="AspNet.ScriptManager.bootstrap, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.4.1.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
     </Reference>
     <Reference Include="AspNet.ScriptManager.jQuery, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.0.0\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
@@ -94,6 +94,7 @@
     </Reference>
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Extensions.Design" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -140,13 +141,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\CargarArchivos.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Pages\CargarArchivos.aspx" />
     <Content Include="css\FichaStyleSheet.css" />
     <Content Include="css\MasterStyleSheet.css" />
     <Content Include="css\VisionGlobalStyleSheet.css" />
@@ -160,16 +161,19 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Master.Master" />
+    <Content Include="Pages\DetalleCaso.aspx" />
     <Content Include="Pages\EtapasResolucion.aspx" />
     <Content Include="Pages\FichaAlumno.aspx" />
     <Content Include="Pages\Historico.aspx" />
     <Content Include="Pages\Interacciones.aspx" />
+    <Content Include="Pages\MantenedorSemestre.aspx" />
     <Content Include="Pages\RegistroInteraccion.aspx" />
     <Content Include="Pages\Reportes.aspx" />
     <Content Include="Pages\ReportesCarrera.aspx" />
     <Content Include="Pages\ReportesEscuela.aspx" />
     <Content Include="Pages\ReportesJornada.aspx" />
     <Content Include="Pages\ReportesSede.aspx" />
+    <Content Include="FichaMaster.master" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -192,7 +196,8 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="FichaMaster.master" />
+    <Content Include="bower.json" />
+    <Content Include="package.json" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -285,6 +290,13 @@
     <Compile Include="Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DetalleCaso.aspx.cs">
+      <DependentUpon>DetalleCaso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DetalleCaso.aspx.designer.cs">
+      <DependentUpon>DetalleCaso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EtapasResolucion.aspx.cs">
       <DependentUpon>EtapasResolucion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -312,6 +324,13 @@
     </Compile>
     <Compile Include="Pages\Interacciones.aspx.designer.cs">
       <DependentUpon>Interacciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MantenedorSemestre.aspx.cs">
+      <DependentUpon>MantenedorSemestre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MantenedorSemestre.aspx.designer.cs">
+      <DependentUpon>MantenedorSemestre.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\RegistroInteraccion.aspx.cs">
       <DependentUpon>RegistroInteraccion.aspx</DependentUpon>
@@ -387,6 +406,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ArchivoInteraccion\" />
     <Folder Include="imgs\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
@@ -411,9 +431,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
@@ -429,6 +446,9 @@
       <Project>{67df0031-91e1-4cbe-a760-f6a6ac6bd394}</Project>
       <Name>ProyectoPermanencia.Negocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

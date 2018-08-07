@@ -5,16 +5,22 @@
         <h3 style="color:azure"> Historia Académica  </h3>
     </asp:Label>
 </asp:Content>
-<asp:Content ID="ContentHistorico" ContentPlaceHolderID="ContentPlaceHolderHistorico" runat="server">
-    <div class="Tabs col-md-6" style="float: left;">
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderTabs" runat="server">
+    <div class="container">
         <ul class="nav nav-tabs">
-            <li><a href="/Pages/FichaAlumno.aspx">Ficha</a></li>
-            <li class="active"><a href="/Pages/Historico.aspx">Historico</a></li>
-            <li><a href="/Pages/Interacciones.aspx">Interacciones</a></li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="/Pages/FichaAlumno.aspx">Ficha</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/Pages/Historico.aspx">Historico</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Pages/Interacciones.aspx">Interacciones</a>
+            </li>
         </ul>
-        <br>
     </div>
+</asp:Content>
+<asp:Content ID="ContentHistorico" ContentPlaceHolderID="ContentPlaceHolderHistorico" runat="server">
     <div class="container">
         <div class="row">
             <div class="col-sm-9">

@@ -27,30 +27,9 @@ namespace ProyectoPermanencia.Negocio.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=Permanencia_2;Integrated Security=True")]
-        public string ConexionIvan {
+        public string ConexionGeneral {
             get {
-                return ((string)(this["ConexionIvan"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-9N5AEVQ2;Initial Catalog=Permanencia_2;Integrated Security=Tru" +
-            "e")]
-        public string ConexionMarce {
-            get {
-                return ((string)(this["ConexionMarce"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HP-CATALINA;Initial Catalog=Permanencia_2;Integrated Security=True")]
-        public string ConexionCata {
-            get {
-                return ((string)(this["ConexionCata"]));
+                return ((string)(this["ConexionGeneral"]));
             }
         }
         

@@ -12,8 +12,8 @@
   DTS:ObjectName="DIM_Asignatura"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{ACFF182C-657D-453F-9694-73FDBF73B09B}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{DA0A0747-FD81-42C2-BFE4-597A3B459454}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:Variables />
@@ -411,7 +411,7 @@ FROM            Curso_STG</property>
         <NodeLayout
           Size="176,42"
           Id="Package\Tarea Flujo de datos"
-          TopLeft="218,113" />
+          TopLeft="219,112" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

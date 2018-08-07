@@ -65,10 +65,10 @@
 (SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;0.7) Alto,
 c.Desc_Carrera
 FROM 
-Permanencia_2.dbo.Score_Alumnos s, 
-Permanencia_2.dbo.LK_Alumno a , 
-Permanencia_2.dbo.LK_Carrera c,
-Permanencia_2.dbo.LK_Escuela e 
+dbo.Score_Alumnos s, 
+dbo.LK_Alumno a , 
+dbo.LK_Carrera c,
+dbo.LK_Escuela e 
 WHERE 
 s.Id_Alumno = a.Id_Alumno 
 AND 
@@ -82,10 +82,10 @@ c.Desc_Carrera;"></asp:SqlDataSource>
 (SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;0.7) Alto,
 e.Desc_Escuela 
 FROM 
-Permanencia_2.dbo.Score_Alumnos s, 
-Permanencia_2.dbo.LK_Alumno a , 
-Permanencia_2.dbo.LK_Carrera c,
-Permanencia_2.dbo.LK_Escuela e 
+dbo.Score_Alumnos s, 
+dbo.LK_Alumno a , 
+.dbo.LK_Carrera c,
+.dbo.LK_Escuela e 
 WHERE 
 s.Id_Alumno = a.Id_Alumno 
 AND 
@@ -176,12 +176,12 @@ e.Desc_Escuela;"></asp:SqlDataSource>
 (SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;0.7) Alto,
 se.Desc_Sede
 FROM 
-Permanencia_2.dbo.Score_Alumnos s, 
-Permanencia_2.dbo.LK_Alumno a , 
-Permanencia_2.dbo.LK_Carrera c,
-Permanencia_2.dbo.LK_Escuela e,
-Permanencia_2.dbo.LK_Jornada j,
-Permanencia_2.dbo.LK_Sede se 
+dbo.Score_Alumnos s, 
+dbo.LK_Alumno a , 
+dbo.LK_Carrera c,
+dbo.LK_Escuela e,
+dbo.LK_Jornada j,
+dbo.LK_Sede se
 WHERE 
 s.Id_Alumno = a.Id_Alumno 
 AND 
@@ -199,11 +199,11 @@ se.Desc_Sede;"></asp:SqlDataSource>
 (SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;0.7) Alto,
 j.Desc_Jornada 
 FROM 
-Permanencia_2.dbo.Score_Alumnos s, 
-Permanencia_2.dbo.LK_Alumno a , 
-Permanencia_2.dbo.LK_Carrera c,
-Permanencia_2.dbo.LK_Escuela e,
-Permanencia_2.dbo.LK_Jornada j 
+dbo.Score_Alumnos s, 
+dbo.LK_Alumno a , 
+dbo.LK_Carrera c,
+dbo.LK_Escuela e,
+dbo.LK_Jornada j 
 WHERE 
 s.Id_Alumno = a.Id_Alumno 
 AND 

@@ -50,10 +50,10 @@ namespace ProyectoPermanencia.Negocio
                                         "ROUND(SI.[F_Asistencia] * 100, 2, 1) AS 'Porcentaje Asistencia'," +
                                         "SC.ScoreAsistencia AS 'Score' " + "\n" +
                                         "FROM " +
-                                        "Permanencia_2.dbo.Score_Alumnos SC," +
-                                        "Permanencia_2.dbo.[FT_Asistencia] SI," +
-                                        "Permanencia_2.dbo.[LK_Asignatura] SIG," +
-                                        "Permanencia_2.dbo.LK_Alumno AL" + "\n" +
+                                        "dbo.Score_Alumnos SC," +
+                                        "dbo.[FT_Asistencia] SI," +
+                                        "dbo.[LK_Asignatura] SIG," +
+                                        "dbo.LK_Alumno AL" + "\n" +
                                         auxSQL;
 
                 con.Conec1.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.
@@ -69,7 +69,6 @@ namespace ProyectoPermanencia.Negocio
         /// </summary>
         /// <param name="rut"></param>
         /// <returns></returns>
-
         private System.Data.DataSet consultaNota(string rut)
         {
             NegocioConexionBD con = new NegocioConexionBD(); // Instancia La Clase NegocioConexionBD
@@ -87,19 +86,19 @@ namespace ProyectoPermanencia.Negocio
 				 * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
 				 * que incluye los las uniones y filtros correspondientes.
 				 * */
-                con.Conec1.IntruccioneSQL = "SELECT [CODIGO ASIGNATURA], "+
-                                                   "[DESC ASIGNATURA] AS 'NOMBRE ASIGNATURA', "+
-                                                   "[SECCION], "+
-                                                   "[AÑO], "+
-                                                   "[SEMESTRE], "+
-                                                   "[Nº NOTAS PARCIALES], "+
-                                                   "[Nº NOTAS EXAMEN], "+
-                                                   "[PROMEDIO CATEDRA], "+
-                                                   "[PROMEDIO EXAMEN], "+
-                                                   "[NOTA FINAL] " +                                                   
+                con.Conec1.IntruccioneSQL = "SELECT [CODIGO ASIGNATURA] AS 'Codigo', "+
+                                                   "[DESC ASIGNATURA] AS 'Asignatura', " +
+                                                   "[SECCION] AS 'Sección', " +
+                                                   "[AÑO] AS 'Año', " +
+                                                   "[SEMESTRE] AS 'Semestre', " +
+                                                   "[Nº NOTAS PARCIALES] AS 'N° de notas parciales', " +
+                                                   "[Nº NOTAS EXAMEN] AS 'N° de notas de exámen', " +
+                                                   "[PROMEDIO CATEDRA] AS 'Promedio Cátedra', " +
+                                                   "[PROMEDIO EXAMEN] AS 'Promedio Exámen', " +
+                                                   "[NOTA FINAL] AS 'Nota Final' " +                                                   
                                                    "\n" +
                                                    "FROM " +
-                                                   "Permanencia_2.dbo.Curso_STG" + 
+                                                   "dbo.Curso_STG" + 
                                                    "\n" +
                                                    auxSQL;
 
@@ -141,9 +140,9 @@ namespace ProyectoPermanencia.Negocio
                                             "MO.[Monto Adeudado] AS 'Monto Adeudado', MO.[BENEFICIO] AS 'Beneficio', " + 
                                             "SC.[ScoreDeuda] AS 'Score' "+"\n" +
                                             "FROM " +
-                                            "Permanencia_2.dbo.Morosos_STG MO, " +
-                                            "Permanencia_2.dbo.Score_Alumnos SC, " +
-                                            "Permanencia_2.dbo.LK_Alumno AL " + "\n" +
+                                            "dbo.Morosos_STG MO, " +
+                                            "dbo.Score_Alumnos SC, " +
+                                            "dbo.LK_Alumno AL " + "\n" +
                                             auxSQL;
                 con.Conec1.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.
                 con.Conec1.conectar(); //Se ejecuta el metodo "conectar()" de la clase NegocioConexionBD.
@@ -152,6 +151,9 @@ namespace ProyectoPermanencia.Negocio
 
         }
 
+        //Metodo que trae el detalle de las notas por asignatura de un alumno
+        //(param) rut
+        //(return) "arreglo" DataSet con resultado de la consulta
         public System.Data.DataSet consultaDetNotas(string rut)
         {
             NegocioConexionBD con = new NegocioConexionBD(); // Instancia La Clase NegocioConexionBD
@@ -203,7 +205,7 @@ namespace ProyectoPermanencia.Negocio
                                             "[NOTA FINAL]" +
                                             "\n" +
                                             "FROM " +
-                                            "Permanencia_2.dbo.Curso_STG" +
+                                            "dbo.Curso_STG" +
                                             "\n" +
                                             auxSQL;
                 con.Conec1.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.
@@ -212,26 +214,6 @@ namespace ProyectoPermanencia.Negocio
             return con.Conec1.DbDat; //Se retorna el DataSet generado luego de ser llenado por la consulta.
 
         }
-
-        /*
-        public DataSet getDatos(string rut)
-        {
-            NegocioConexionBD conn = new NegocioConexionBD();
-            conn.configuraConexion();
-
-            //string query = "SELECT TELEFONO FROM Permanencia_2.dbo.Indice_STG WHERE RUT = " + rut + ";";
-
-            if (!string.IsNullOrEmpty(rut))
-            {
-                //conn.Conec1.IntruccioneSQL = "SELECT TELEFONO FROM Permanencia_2.dbo.Indice_STG WHERE RUT = " + rut + ";";
-                conn.Conec1.IntruccioneSQL = String.Format("SELECT TELEFONO, CELULAR, EMAIL FROM Permanencia_2.dbo.Indice_STG WHERE RUT = {0}", rut);
-                conn.Conec1.EsSelect = true;
-                conn.Conec1.conectar();
-                return conn.Conec1.DbDat;
-            }
-            return null;
-        }
-        */
 
         /// <summary>
         /// Metodo que actuara como rutina para los demas funciones de la misma clase. El metodo
@@ -248,5 +230,40 @@ namespace ProyectoPermanencia.Negocio
             datosAsistencia = consultaAsistencia(rut);
             datosMorosos = consultaSituacionFinanciera(rut);
         }
+
+        //Cargar grilla con display de los casos que tiene activos el alumno
+        //(param) string con el rut del alumno
+        //(return) "arreglo" DataSet con información de resultado de la query
+        public DataSet CargargrvCasos(string rutAlumno)
+        {
+            //Instancia conexión
+            NegocioConexionBD conexion = new NegocioConexionBD();
+            conexion.configuraConexion();
+
+            //validar que rut no llegue vacío
+            if (!String.IsNullOrEmpty(rutAlumno))
+            {
+                //Consulta para traer el id del alumno por su rut
+                conexion.Conec1.IntruccioneSQL = String.Format("SELECT Id_Alumno FROM LK_Alumno WHERE Desc_Rut_Alumno = '{0}';", rutAlumno);
+                conexion.Conec1.EsSelect = true;
+                conexion.Conec1.conectar();
+                string idalumno = conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
+
+
+                //Consulta que trae información de los casos a desplegar
+                conexion.Conec1.IntruccioneSQL = String.Format("SELECT DISTINCT CA.Id_Caso AS 'Id', CONVERT(nvarchar, CONVERT(date, CA.Fecha_Inicio), 103) AS 'Fecha Inicio', TC.Desc_TipoCaso AS 'Tipo de Caso', IIF((TC.Id_TipoCaso = 1) OR(TC.Id_TipoCaso = 3), CONCAT(ASI.Cod_Asignatura, '-', ASI.Seccion), 'No aplica') AS 'Curso', INTE.Id_Interaccion AS 'Id interaccion', CONCAT('Tipo: ', TI.Desc_TipoInteraccion, ', el día ', CONVERT(nvarchar, CONVERT(date, INTE.Fecha_Interaccion), 103)) AS 'Ultima Interaccion', EC.Desc_Estado AS 'Estado del Caso', CA.Fecha_Termino AS 'Fecha Termino' FROM Caso CA, Tipo_Caso TC, LK_Asignatura ASI, Estado_Caso EC, Tipo_Interaccion TI INNER JOIN Interaccion INTE ON Id_Caso = INTE.Id_Caso WHERE CA.Id_Alumno = '{0}' AND CA.Id_TipoCaso = TC.Id_TipoCaso AND(CA.Id_Asignatura = ASI.Id_Asignatura OR CA.Id_Asignatura IS NULL) AND CA.Id_Estado = EC.Id_Estado AND INTE.Id_TipoInteraccion = TI.Id_TipoInteraccion AND INTE.Id_Interaccion = (SELECT MAX(Id_Interaccion) FROM Interaccion INTE WHERE INTE.Id_Caso = CA.Id_Caso) GROUP BY INTE.Id_Interaccion, CA.Id_Caso, CA.Fecha_Inicio, TC.Id_TipoCaso, TC.Desc_TipoCaso, ASI.Cod_Asignatura,	ASI.Seccion, EC.Desc_Estado, CA.Fecha_Termino, TI.Desc_TipoInteraccion, INTE.Fecha_Interaccion", idalumno);
+                conexion.Conec1.EsSelect = true;
+                conexion.Conec1.conectar();
+            }
+
+            return conexion.Conec1.DbDat;
+        }
+
+
+
+
+
+
+
     }
 }

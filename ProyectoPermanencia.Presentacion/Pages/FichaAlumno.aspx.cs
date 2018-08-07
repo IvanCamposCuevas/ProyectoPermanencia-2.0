@@ -14,19 +14,12 @@ namespace ProyectoPermanencia.Presentacion.Pages
             if (!IsPostBack)
             {
                 string[] info = (string[])Session["Info Alumnos"];
-                this.lblRut.Text = info[0];
-                this.lblNombre.Text = info[1];
-                this.lblCarrera.Text = info[2];
-                this.lblJornada.Text = info[7];
-                this.lblEscuela.Text = info[5];
-                this.lblSede.Text = info[6];
-                this.lblTelefono.Text = info[3];
-                this.lblMail.Text = info[4];
                 System.Data.DataSet notas = new System.Data.DataSet();
                 System.Data.DataSet asistencias = new System.Data.DataSet();
                 System.Data.DataSet morosos = new System.Data.DataSet();
                 System.Data.DataSet detalleNotas = new System.Data.DataSet();
-                new Negocio.NegocioFichaAlumno().consultaGeneral(lblRut.Text, out notas, out detalleNotas,
+
+                new Negocio.NegocioFichaAlumno().consultaGeneral(info[0], out notas, out detalleNotas,
                     out asistencias, out morosos);
                 grvAsistencia.DataSource = asistencias;
                 grvAsistencia.DataBind();
@@ -36,24 +29,14 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 grvDetalleNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
-                lblBeneficio.Text = morosos.Tables[0].Rows[0].ItemArray[3].ToString();
-                //string[] info_notas = (string[])Session["Info Notas"];
-                //grvDetalleNotas.DataSource = new Negocio.NegocioFichaAlumno().consultaDetNotas(info_notas[1], info_notas[0]);
-                //grvDetalleNotas.DataBind();
+                
+                //Master.obtenerLblTipoBeneficio.Text = grvFinanzas.
             }
         }
 
         protected void grvFinanzas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             e.Row.Cells[3].Visible = false;
-        }
-
-        protected void grvNotas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GridViewRow row = grvNotas.SelectedRow;
-            string [] info_notas =  new string[] { row.Cells[1].Text, lblRut.Text };
-            Session["Info Notas"] = info_notas;
-            Response.Redirect("Historico.aspx");
         }
     }
 }

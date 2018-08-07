@@ -1,0 +1,19 @@
+﻿#ContentPlaceHolderGlobal_chkListaCarreras tbody tr td{
+padding-top: 5px;
+}
+
+#Carrera{
+margin-top: 90px;
+}
+
+#ContentPlaceHolderGlobal_chkListaCarreras tbody tr{
+display: inline-block;
+}
+
+#ContentPlaceHolderGlobal_chkListaCarreras tbody tr td input[type="checkbox"]{
+width:100px;
+}
+
+#ContentPlaceHolderGlobal_chkListaCarreras tbody tr td label{
+width:120px;
+}

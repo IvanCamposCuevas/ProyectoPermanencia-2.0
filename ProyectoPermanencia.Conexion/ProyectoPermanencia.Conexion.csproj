@@ -43,5 +43,11 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProyectoPermanencia.DTO\ProyectoPermanencia.DTO.csproj">
+      <Project>{5e7d3db3-d763-426b-8b67-320242ee81ea}</Project>
+      <Name>ProyectoPermanencia.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

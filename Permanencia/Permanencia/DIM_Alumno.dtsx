@@ -12,8 +12,8 @@
   DTS:ObjectName="DIM_Alumno"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{1A05A418-E5B9-4C4C-87A4-FB52AFF9E5F9}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{0AFC7FD4-4872-4DD8-99CA-FC3B76BF1CED}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -752,7 +752,7 @@ where [refTable].[Desc_Sede] = ?</property>
         <NodeLayout
           Size="102,42"
           Id="Package\Tarea Flujo de datos\Sede"
-          TopLeft="220,166" />
+          TopLeft="219,166" />
         <NodeLayout
           Size="129,42"
           Id="Package\Tarea Flujo de datos\LK Alumno"
@@ -763,7 +763,7 @@ where [refTable].[Desc_Sede] = ?</property>
           TopLeft="220,37" />
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="268.25,208">
+          TopLeft="267.75,208">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -791,9 +791,9 @@ where [refTable].[Desc_Sede] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8.5,87"
+              EndConnector="-9.5,87"
               Start="0,0"
-              End="-8.5,79.5">
+              End="-9.5,79.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -804,13 +804,13 @@ where [refTable].[Desc_Sede] = ?</property>
                     Point2="0,43.5"
                     Point3="-4,43.5" />
                   <mssgle:LineSegment
-                    End="-4.5,43.5" />
+                    End="-5.5,43.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-4.5,43.5"
-                    Point2="-8.5,43.5"
-                    Point3="-8.5,47.5" />
+                    Point1="-5.5,43.5"
+                    Point2="-9.5,43.5"
+                    Point3="-9.5,47.5" />
                   <mssgle:LineSegment
-                    End="-8.5,79.5" />
+                    End="-9.5,79.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

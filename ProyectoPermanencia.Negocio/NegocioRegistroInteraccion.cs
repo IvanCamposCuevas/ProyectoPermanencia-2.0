@@ -174,64 +174,6 @@ namespace ProyectoPermanencia.Negocio
             NegocioConexionBD conexion = new NegocioConexionBD();
             conexion.configuraConexion();
 
-            ////Si el rut viene con información
-            //if (!String.IsNullOrEmpty(rutalumno))
-            //{
-
-            //    //Consulta para traer el id del alumno por su rut
-            //    conexion.Conec1.IntruccioneSQL = String.Format("SELECT Id_Alumno FROM LK_Alumno WHERE Desc_Rut_Alumno = '{0}';", rutalumno);
-            //    conexion.Conec1.EsSelect = true;
-            //    conexion.Conec1.conectar();
-            //    string idalumno = conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
-
-
-            //    //Consulta si hay interacciones 
-            //    conexion.Conec1.IntruccioneSQL = String.Format("SELECT COUNT(Id_Interaccion) FROM Interaccion WHERE Id_Caso = '{0}';", idcaso);
-            //    conexion.Conec1.EsSelect = true;
-            //    conexion.Conec1.conectar();
-            //    string cantInte = conexion.Conec1.DbDat.ToString();
-
-            //    //Si no existen interacciones con el id del caso asociado (o sea esta que estamos agregando es la primera intervención), 
-            //    //se inicializa el caso pasando su estado de pendiente a en curso
-            //    if (cantInte == "0") { iniciarCaso(idcaso); }
-
-            //    //Insert de interaccion derivacion 
-            //    if ((!String.IsNullOrEmpty(idcaso)) && (!String.IsNullOrEmpty(tipointer)) && (!String.IsNullOrEmpty(idarea)) && (!String.IsNullOrEmpty(comentarios)))
-            //    {
-            //        conexion.Conec1.IntruccioneSQL = String.Format("INSERT INTO Interaccion (Fecha_Interaccion, Desc_Comentario, Id_Caso, Id_AreaDerivacion, Id_TipoInteraccion, Id_EstadoInteraccion) " +
-            //                                                                        "VALUES(SYSDATETIME(), '{0}', {1}, {2}, {3} , 1)", comentarios, idcaso, idarea, tipointer);
-            //        conexion.Conec1.EsSelect = false;
-            //        conexion.Conec1.conectar();
-            //        insertarParticipantes(participantes, idalumno);
-            //        return true;
-            //    }
-            //    //Insert de interaccion no derivacion
-            //    else if ((!String.IsNullOrEmpty(idcaso)) && (!String.IsNullOrEmpty(tipointer)) && (String.IsNullOrEmpty(idarea)) && (!String.IsNullOrEmpty(comentarios)))
-            //    {
-            //        conexion.Conec1.IntruccioneSQL = String.Format("INSERT INTO Interaccion (Fecha_Interaccion, Desc_Comentario, Id_Caso, Id_TipoInteraccion, Id_EstadoInteraccion) " +
-            //                                                                        "VALUES(SYSDATETIME(), '{0}', {1}, {2}, 1)", comentarios, idcaso, tipointer);
-            //        conexion.Conec1.EsSelect = false;
-            //        conexion.Conec1.conectar();
-            //        insertarParticipantes(participantes, idalumno);
-            //        return true;
-            //    }
-            //    else
-            //    {
-            //        return false;
-            //        throw new ArgumentNullException(nameof(idcaso));
-            //        throw new ArgumentNullException(nameof(tipointer));
-            //        throw new ArgumentNullException(nameof(comentarios));
-
-            //    }
-
-            //}
-            //else
-            //{
-            //    //Agregar mensaje: Rut del alumno no es válido
-            //    throw new ArgumentNullException(nameof(rutalumno));
-
-            //}
-
             conexion.Conec1.IntruccioneSQL = "prc_InsertarInteraccion";
             DTOInteraccion datosInteraccion = new DTOInteraccion();
             datosInteraccion.rutAlumno = rutAlumno;

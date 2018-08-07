@@ -19,17 +19,32 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
             if (!IsPostBack)
             {
-                string[] info = (string[])Session["info_caso"];
-                this.lblRut.Text = info[3];
-                lblNombre.Text = info[4];
-                lblMail.Text = info[5];
-                lblTelefono.Text = info[6];
-                lblCarrera.Text = info[7];
-                lblEscuela.Text = info[8];
-                lblJornada.Text = info[9];
-                lblSede.Text = info[10];
-                lblTipoCaso.Text = info[1];
-                lblCurso.Text = info[2];
+                string[] infoCaso = (string[])Session["info_caso"];
+                if (infoCaso != null)
+                {
+                    this.lblRut.Text = infoCaso[3];
+                    lblNombre.Text = infoCaso[4];
+                    lblMail.Text = infoCaso[5];
+                    lblTelefono.Text = infoCaso[6];
+                    lblCarrera.Text = infoCaso[7];
+                    lblEscuela.Text = infoCaso[8];
+                    lblJornada.Text = infoCaso[9];
+                    lblSede.Text = infoCaso[10];
+                    lblTipoCaso.Text = infoCaso[1];
+                    lblCurso.Text = infoCaso[2];
+                }
+                else
+                {
+                    string[] infoAlumno = (string[])Session["Info Alumnos"];
+                    this.lblRut.Text = infoAlumno[0];
+                    this.lblNombre.Text = infoAlumno[1];
+                    this.lblCarrera.Text = infoAlumno[2];
+                    this.lblJornada.Text = infoAlumno[7];
+                    this.lblEscuela.Text = infoAlumno[5];
+                    this.lblSede.Text = infoAlumno[6];
+                    this.lblTelefono.Text = infoAlumno[3];
+                    this.lblMail.Text = infoAlumno[4];
+                }
 
                 ddlCurso.DataSource = new Negocio.NegocioRegistroInteraccion().CargarddlCurso(lblRut.Text);
                 ddlCurso.DataValueField = "Id_Asignatura";

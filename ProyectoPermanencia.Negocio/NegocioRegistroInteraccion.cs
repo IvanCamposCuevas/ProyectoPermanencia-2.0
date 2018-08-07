@@ -171,27 +171,38 @@ namespace ProyectoPermanencia.Negocio
         //(param) rut del alumno y el id del caso
         public bool AgregaInteraccion(string rutAlumno, string idCaso, string tipoInter, string idArea, string comentarios, DataTable participantes, DateTime fecha, string ruta)
         {
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
+            try
+            {
+                NegocioConexionBD conexion = new NegocioConexionBD();
+                conexion.configuraConexion();
 
-            conexion.Conec1.IntruccioneSQL = "prc_InsertarInteraccion";
-            DTOInteraccion datosInteraccion = new DTOInteraccion();
-            datosInteraccion.rutAlumno = rutAlumno;
-            datosInteraccion.tipoInteraccion = int.Parse(tipoInter);
-            datosInteraccion.idCaso = int.Parse(idCaso);
-            if (idArea != null)
-            {
-                datosInteraccion.idArea = int.Parse(idArea);
+                conexion.Conec1.IntruccioneSQL = "prc_InsertarInteraccion";
+                DTOInteraccion datosInteraccion = new DTOInteraccion();
+                datosInteraccion.rutAlumno = rutAlumno;
+                datosInteraccion.tipoInteraccion = int.Parse(tipoInter);
+                datosInteraccion.idCaso = int.Parse(idCaso);
+                if (idArea != null)
+                {
+                    datosInteraccion.idArea = int.Parse(idArea);
+                }
+                datosInteraccion.comentarios = comentarios;
+                datosInteraccion.participantes = participantes;
+                datosInteraccion.fechaInteraccion = fecha;
+                if (ruta != "")
+                {
+                    datosInteraccion.rutaArchivo = ruta;
+                }else
+                {
+                    datosInteraccion.rutaArchivo = string.Empty;
+                }
+                conexion.Conec1.conectarProcInsertarInteraccion(datosInteraccion);
+                return true;
             }
-            datosInteraccion.comentarios = comentarios;
-            datosInteraccion.participantes = participantes;
-            datosInteraccion.fechaInteraccion = fecha;
-            if (ruta != "")
+            catch (Exception ex)
             {
-                datosInteraccion.rutaArchivo = ruta;
+                throw new Exception("Error, mensaje: ",ex);
             }
-            conexion.Conec1.conectarProcInsertarInteraccion(datosInteraccion);
-            return true;
+
         }
 
         //Metodo que carga Check Box List con Participantes de una interaccion
@@ -208,15 +219,6 @@ namespace ProyectoPermanencia.Negocio
         //    conexion.Conec1.conectar();
         //    return conexion.Conec1.DbDat;
         //}
-
-        public void insertarParticipantes(List<string> participantes, string idAlumno) {
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
-
-            conexion.Conec1.IntruccioneSQL = String.Format("SELECT TOP(1) I.Id_interaccion FROM dbo.Interaccion I LEFT JOIN Caso C ON I.Id_Caso = C.Id_Caso WHERE C.Id_Alumno = {0} ORDER BY I.Id_Interaccion DESC", idAlumno);
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-        }
         
         public void EnviarMail(MailMessage mensaje)
         {

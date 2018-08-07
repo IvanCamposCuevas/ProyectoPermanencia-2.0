@@ -12,11 +12,31 @@
   DTS:ObjectName="FT_Deuda"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{5A223F02-A458-4CD0-BA90-2F0CA11C792A}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{CCD908A3-38AF-4873-A081-BD83F40352DE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DE2769B6-A5FF-4E29-9979-5559A934908A}"
+      DTS:ObjectName="LAPTOP-9N5AEVQ2\.Permanencia_2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-9N5AEVQ2\;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2416D00B-3670-42FA-92BE-D9C3A1433E20}"
+      DTS:ObjectName="LAPTOP-9N5AEVQ2\.Permanencia_2 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-9N5AEVQ2\;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LocalHost.Permanencia.sa]"
       DTS:CreationName="OLEDB"
@@ -81,7 +101,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}"
+          SQLTask:Connection="{DE2769B6-A5FF-4E29-9979-5559A934908A}"
           SQLTask:SqlStatementSource="SELECT    Top 1 [Id_Medición] as Medicion&#xA;FROM            LK_Medición&#xA;Order By [Id_Medición] Desc"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -102,7 +122,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}"
+          SQLTask:Connection="{DE2769B6-A5FF-4E29-9979-5559A934908A}"
           SQLTask:SqlStatementSource="SELECT    Top 1 Id_Semestre as Semestre&#xA;FROM            LK_Semestre&#xA;Order By  Id_Semestre Desc"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -195,8 +215,8 @@ where [refTable].[Desc_Rut_Alumno] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Busca Alumno.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -336,7 +356,7 @@ where [refTable].[Desc_Beneficio] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id_Beneficio" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Beneficio" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id_Beneficio" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Beneficio" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -354,8 +374,8 @@ where [refTable].[Desc_Beneficio] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Busca Beneficio.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -513,8 +533,8 @@ where [refTable].[Desc_Mes_Deuda] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Busca Mes Deuda.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -658,8 +678,8 @@ where [refTable].[Desc_Mes_Deuda] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Deuda.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -853,8 +873,8 @@ where [refTable].[Desc_Mes_Deuda] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\FT Deuda.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

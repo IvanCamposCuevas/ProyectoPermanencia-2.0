@@ -12,10 +12,32 @@
   DTS:ObjectName="DIM_Asignatura"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{DA0A0747-FD81-42C2-BFE4-597A3B459454}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{F89562EB-142C-4349-B010-4861B2754251}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{BE306E21-A753-4443-9D8E-428C3DC98F1E}"
+      DTS:ObjectName="LAPTOP-9N5AEVQ2\.Permanencia_2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-9N5AEVQ2\;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{429099FC-FD0C-49B7-9600-0D30E8630A37}"
+      DTS:ObjectName="LAPTOP-9N5AEVQ2\.Permanencia_2 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-9N5AEVQ2\;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -84,8 +106,8 @@ FROM            Curso_STG</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Asignaturas.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -282,8 +304,8 @@ FROM            Curso_STG</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\LK Asignaturas.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

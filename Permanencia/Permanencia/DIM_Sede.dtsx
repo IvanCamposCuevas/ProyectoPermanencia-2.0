@@ -12,11 +12,21 @@
   DTS:ObjectName="DIM_Sede"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{8C65259B-37C6-4C3B-A531-8AA380BA8F72}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{422460FA-69EA-49D1-BEDB-7C4C9DAE711B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A9C014A8-7474-4935-A03C-A6C753FE57FA}"
+      DTS:ObjectName="LAPTOP-9N5AEVQ2\.Permanencia_2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-9N5AEVQ2\;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LocalHost.Permanencia.sa]"
       DTS:CreationName="OLEDB"
@@ -96,8 +106,8 @@ FROM            Curso_STG</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Carga Sedes.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -213,8 +223,8 @@ FROM            Curso_STG</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\LK Sede.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

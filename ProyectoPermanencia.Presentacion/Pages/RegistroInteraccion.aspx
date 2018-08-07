@@ -54,12 +54,12 @@
         <asp:UpdatePanel ID="updateCasoInter" runat="server">
             <ContentTemplate>
                 <div class="row jumbotron" style="margin-top: 0px; border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none; padding: 0px;">
-                    <fieldset id="fdsCaso" class="col-md-4 card-group" style="padding: 5px;">
+                    <fieldset id="fdsCaso" class="col-md-5 card-group p-1">
                         <div class="card card-primary">
                             <div class="card-header" style="background-color: rgb(1,40,69); color: white;">1. A qué caso corresponde?</div>
                             <div class="card-body">
                                 <div class="row" style="align-content: center; margin-bottom: 20px;">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" style="border:solid">
 
                                         <!--<input type="radio" name="corresponde" ID="rbtnExistentes" class="form-control form-control-sm" value="E" style="display:inline-flex" />Existentes>-->
                                         <asp:RadioButton runat="server" ID="rbtnExistentes" GroupName="corresponde" AutoPostBack="true" Text="Existente" CssClass="radio-inline form-control-sm" OnCheckedChanged="rbtnExistentes_CheckedChanged" Checked="True" />
@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="row" style="align-content: center; margin-bottom: 0px;">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6" style="border:solid">
                                         <asp:RadioButton runat="server" ID="rbtnNuevo" GroupName="corresponde" AutoPostBack="true" Text="Nuevo Caso" CssClass="radio-inline form-control-sm" OnCheckedChanged="rbtnNuevo_CheckedChanged" />
                                     </div>
                                 </div>
@@ -108,7 +108,8 @@
                         </div>
 
                     </fieldset>
-                    <fieldset id="fdsInteraccion" runat="server" class="col-md-8 card-group" style="padding: 5px">
+                    
+                    <fieldset id="fdsInteraccion" runat="server" class="col-md-7 card-group" style="padding: 5px">
                         <div class="card card-primary">
                             <div class="card-header" style="background-color: rgb(1,40,69); color: white;">2. Interacción</div>
                             <div class="card-body" style="padding-right: 35px">

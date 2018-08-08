@@ -55,6 +55,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
         protected void btnFinalizarCaso_Click(object sender, EventArgs e)
         {
             new Negocio.NegocioDetalleCaso().finalizaCaso(lblIdCaso.Text);
+            Response.Redirect(HttpContext.Current.Request.Url.ToString(), true);
             //Response.Redirect("/Pages/Interacciones.aspx");
         }
 
@@ -68,11 +69,14 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
             if (e.CommandName == "Download")
             {
-                Response.Clear();
-                Response.ContentType = "application/octect-stream";
-                Response.AppendHeader("content-disposition", "filename=" + e.CommandArgument);
-                Response.TransmitFile(Server.MapPath("~/ArchivoInteraccion/") + e.CommandArgument);
-                Response.End();
+                if (e.CommandArgument.ToString() != "")
+                {
+                    Response.Clear();
+                    Response.ContentType = "application/octect-stream";
+                    Response.AppendHeader("content-disposition", "filename=" + e.CommandArgument);
+                    Response.TransmitFile(Server.MapPath("~/ArchivoInteraccion/") + e.CommandArgument);
+                    Response.End();
+                }
             }
         }
 

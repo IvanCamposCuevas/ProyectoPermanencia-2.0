@@ -12,11 +12,21 @@
   DTS:ObjectName="FT_Asistencia"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="58"
-  DTS:VersionGUID="{6C69849B-1C07-4C66-BA3C-18B940FC6228}">
+  DTS:VersionBuild="60"
+  DTS:VersionGUID="{C79A746F-630B-4033-AEC7-C9A52EEA3AC8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{833C2D63-EF98-476F-B0BF-94EA65DBE842}"
+      DTS:ObjectName="LAPTOP-9N5AEVQ2\.Permanencia_2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-9N5AEVQ2\;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LocalHost.Permanencia.sa]"
       DTS:CreationName="OLEDB"
@@ -81,7 +91,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{ABE3BB7B-3727-4206-8217-22EE2832F292}"
+          SQLTask:Connection="{833C2D63-EF98-476F-B0BF-94EA65DBE842}"
           SQLTask:SqlStatementSource="SELECT    Top 1 [Id_Medición] as Medicion&#xA;FROM            LK_Medición&#xA;Order By [Id_Medición] Desc"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -102,7 +112,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{ABE3BB7B-3727-4206-8217-22EE2832F292}"
+          SQLTask:Connection="{833C2D63-EF98-476F-B0BF-94EA65DBE842}"
           SQLTask:SqlStatementSource="SELECT    Top 1 Id_Semestre as Semestre&#xA;FROM            LK_Semestre&#xA;Order By  Id_Semestre Desc"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -194,8 +204,8 @@
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Asistencia.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -642,7 +652,7 @@ where [refTable].[Cod_Asignatura] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\Tarea Flujo de datos\322:invalid};</property>
+                  name="ParameterMap">#{Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[DescEvento]};</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -655,8 +665,8 @@ where [refTable].[Cod_Asignatura] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Busca Asignatura.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -666,11 +676,11 @@ where [refTable].[Cod_Asignatura] = ?</property>
                   name="Entrada de búsqueda">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Tarea Flujo de datos\Busca Asignatura.Inputs[Entrada de búsqueda].Columns[Asignatura]"
+                      refId="Package\Tarea Flujo de datos\Busca Asignatura.Inputs[Entrada de búsqueda].Columns[DescEvento]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="Asignatura"
-                      lineageId="Package\Tarea Flujo de datos\322:invalid">
+                      cachedName="DescEvento"
+                      lineageId="Package\Tarea Flujo de datos\Asistencia.Outputs[OLE DB Source Output].Columns[DescEvento]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -811,7 +821,7 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
                 <property
                   dataType="System.String"
                   description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id_Alumno" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Sede" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Carrera" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Semestre" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Alumno" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Rut_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Telefono_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Correo_Inst" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Correo_Part" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Jornada" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id_Alumno" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Sede" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Carrera" dataType="DT_R8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Semestre" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Alumno" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Rut_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Telefono_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Correo_Inst" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Correo_Part" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Jornada" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -829,8 +839,8 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Busca Rut.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -992,8 +1002,8 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\FT_Asistencia.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1327,10 +1337,6 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="125,42"
-          Id="Package\Tarea Flujo de datos\Asistencia"
-          TopLeft="336,32" />
-        <NodeLayout
           Size="132,42"
           Id="Package\Tarea Flujo de datos\Parametros"
           TopLeft="336,406" />
@@ -1339,47 +1345,17 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
           Id="Package\Tarea Flujo de datos\Busca Rut"
           TopLeft="325,136" />
         <NodeLayout
+          Size="143,42"
+          Id="Package\Tarea Flujo de datos\FT_Asistencia"
+          TopLeft="332,515" />
+        <NodeLayout
           Size="160,42"
           Id="Package\Tarea Flujo de datos\Busca Asignatura"
           TopLeft="313,265" />
         <NodeLayout
-          Size="143,42"
-          Id="Package\Tarea Flujo de datos\FT_Asistencia"
-          TopLeft="332,515" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
-          TopLeft="398.5,74">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-10.5,62"
-              Start="0,0"
-              End="-10.5,54.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27"
-                    Point2="0,31"
-                    Point3="-4,31" />
-                  <mssgle:LineSegment
-                    End="-6.5,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-6.5,31"
-                    Point2="-10.5,31"
-                    Point3="-10.5,35" />
-                  <mssgle:LineSegment
-                    End="-10.5,54.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="125,42"
+          Id="Package\Tarea Flujo de datos\Asistencia"
+          TopLeft="336,32" />
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda1]"
           TopLeft="390.5,178">
@@ -1400,7 +1376,7 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-108.50701171875,31.75,217.0140234375,16"
+              BoundingBox="-99.8190234375,33.65234375,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1462,29 +1438,53 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
+          TopLeft="398.5,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.5,62"
+              Start="0,0"
+              End="-10.5,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
+                  <mssgle:LineSegment
+                    End="-6.5,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.5,31"
+                    Point2="-10.5,31"
+                    Point3="-10.5,35" />
+                  <mssgle:LineSegment
+                    End="-10.5,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\Busca Rut">
+    design-time-name="Package\Tarea Flujo de datos\FT_Asistencia">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">true</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[LK_Alumno]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -1517,7 +1517,7 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1525,15 +1525,25 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos\FT_Asistencia">
+    design-time-name="Package\Tarea Flujo de datos\Busca Rut">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">true</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[LK_Alumno]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

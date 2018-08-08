@@ -60,9 +60,10 @@ namespace ProyectoPermanencia.Presentacion.Pages
 
         }
 
-        private DataTable crearTablaIdParticipantes()
+        private DataTable crearTablaIdParticipantes(out List<string> descParticipantes)
         {
             DataTable dt = new DataTable();
+            descParticipantes = new List<string>();
             dt.Columns.Add("ID");
 
             foreach (ListItem item in ckblParticipan.Items)
@@ -70,6 +71,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 if (item.Selected)
                 {
                     dt.Rows.Add(item.Value);
+                    descParticipantes.Add(item.Text);
                 }
             }
 
@@ -86,7 +88,8 @@ namespace ProyectoPermanencia.Presentacion.Pages
             string rutaAbsoluta = string.Empty;
             string nombreArchivo = string.Empty;
             DateTime fecha = calFecha.SelectedDate;
-            DataTable participantes = crearTablaIdParticipantes();
+            List<string> descParticipantes = new List<string>();
+            DataTable participantes = crearTablaIdParticipantes(out descParticipantes);
             if (flInteraccion.HasFile)
             {
                 rutaAbsoluta = string.Concat(Server.MapPath("~/ArchivoInteraccion/"), flInteraccion.FileName);
@@ -98,22 +101,44 @@ namespace ProyectoPermanencia.Presentacion.Pages
             }
             else
             {
-                if (ddlArederiv.Enabled == true)
+                try
                 {
-                    idarea = ddlArederiv.SelectedValue;
-                    if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(idarea)) || (!String.IsNullOrEmpty(comentarios)))
+                    if (ddlArederiv.Enabled == true)
                     {
-                        new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes, fecha, nombreArchivo);
-                        flInteraccion.SaveAs(rutaAbsoluta);
+                        idarea = ddlArederiv.SelectedValue;
+                        if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(idarea)) || (!String.IsNullOrEmpty(comentarios)))
+                        {
+                            if (new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes, fecha, nombreArchivo))
+                            {
+                                if (rutaAbsoluta != "")
+                                {
+                                    flInteraccion.SaveAs(rutaAbsoluta);
+                                }
+                            }
+                        }
                     }
+                    else
+                    {
+                        if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(comentarios)))
+                        {
+                            if (new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes, fecha, nombreArchivo))
+                            {
+                                if (rutaAbsoluta != "")
+                                {
+                                    flInteraccion.SaveAs(rutaAbsoluta);
+                                }
+                            }
+                        }
+                    }
+                    string[] detalleInteraccion = new string[] { ddlTipoInteraccion.SelectedItem.ToString(), ddlArederiv.SelectedItem.ToString(), comentarios };
+                    sendMail(detalleInteraccion, descParticipantes);
+                    Response.Clear();
+                    Response.Redirect("/Pages/Interacciones.aspx");
                 }
-                else
+                catch (Exception ex)
                 {
-                    if ((!String.IsNullOrEmpty(rutalumno)) || (!String.IsNullOrEmpty(idcaso)) || (!String.IsNullOrEmpty(tipointer)) || (!String.IsNullOrEmpty(comentarios)))
-                    {
-                        new Negocio.NegocioRegistroInteraccion().AgregaInteraccion(rutalumno, idcaso, tipointer, idarea, comentarios, participantes, fecha, nombreArchivo);
-                        flInteraccion.SaveAs(rutaAbsoluta);
-                    }
+
+                    MessageBox.Show(ex.Message);
                 }
             }
 
@@ -238,7 +263,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
                     }
                 }
 
-                detalleCaso = new string[] { rutalumno, ddlTipoCaso.SelectedItem.ToString(), ddlCurso.SelectedItem.ToString() };
+                //detalleCaso = new string[] { rutalumno, ddlTipoCaso.SelectedItem.ToString(), ddlCurso.SelectedItem.ToString() };
                 //sendMailCaso(detalleCaso);
                 Response.Redirect(HttpContext.Current.Request.Url.ToString(), true);
 
@@ -274,19 +299,23 @@ namespace ProyectoPermanencia.Presentacion.Pages
         }
         */
 
-        protected MailMessage sendMail(string[] detalleCaso, string[] detalleInteraccion)
+        protected void sendMail(string[] detalleInteraccion, List<string> participantes)
         {
             MailMessage mensaje = new MailMessage("donotreply@permanencia.cl", "permanenciamail@gmail.com");
             mensaje.Body = string.Format("Se ha ingresado con éxito para el alumno {0} el caso N° xxx." +
                                          "\nDe tipo {1} y asociado al curso {2}." +
                                          "\n" +
-                                         "\nHubo una intervención de tipo {3} en la cual participó: {4}. Se derivó al area {5}" +
-                                         "\nDetalles: {6}", detalleCaso[0], detalleCaso[1], detalleCaso[2], detalleInteraccion[0], detalleInteraccion[1], detalleInteraccion[2], detalleInteraccion[3]);
+                                         "\nHubo una intervención de tipo {3} . Se derivó al area {4}" +
+                                         "\nDetalles: {5} \n", lblRut.Text, ddlTipoCaso.SelectedItem.ToString(), ddlCurso.SelectedItem.ToString(), detalleInteraccion[0], detalleInteraccion[1], detalleInteraccion[2]);
+            mensaje.Body += "Los participantes son: \n";
+
+            foreach (string item in participantes)
+            {
+                mensaje.Body += item;
+            }
 
             mensaje.Subject = "probando";
             new Negocio.NegocioRegistroInteraccion().EnviarMail(mensaje);
-
-            return mensaje;
         }
 
         protected void imbCalendario_Click(object sender, ImageClickEventArgs e)

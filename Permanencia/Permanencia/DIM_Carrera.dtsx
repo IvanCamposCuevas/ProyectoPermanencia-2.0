@@ -12,10 +12,22 @@
   DTS:ObjectName="DIM_Carrera"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{B3035601-BB04-4500-8550-9BDF95BBE587}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{DD8950D3-0BB2-402E-BE6A-008BD2C1D2D5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{510CF870-3C17-463B-997D-F134DC90E2B4}"
+      DTS:ObjectName="LAPTOP-9N5AEVQ2\.Permanencia_2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-9N5AEVQ2\;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -87,8 +99,8 @@ WHERE [COD_CARRERA] IS NOT NULL</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Carreras.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -99,10 +111,11 @@ WHERE [COD_CARRERA] IS NOT NULL</property>
                   <outputColumns>
                     <outputColumn
                       refId="Package\Tarea Flujo de datos\Carreras.Outputs[OLE DB Source Output].Columns[COD_CARRERA]"
-                      dataType="r8"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Tarea Flujo de datos\Carreras.Outputs[OLE DB Source Output].ExternalColumns[COD_CARRERA]"
+                      length="20"
                       lineageId="Package\Tarea Flujo de datos\Carreras.Outputs[OLE DB Source Output].Columns[COD_CARRERA]"
                       name="COD_CARRERA"
                       truncationRowDisposition="FailComponent" />
@@ -121,7 +134,8 @@ WHERE [COD_CARRERA] IS NOT NULL</property>
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Tarea Flujo de datos\Carreras.Outputs[OLE DB Source Output].ExternalColumns[COD_CARRERA]"
-                      dataType="r8"
+                      dataType="wstr"
+                      length="20"
                       name="COD_CARRERA" />
                     <externalMetadataColumn
                       refId="Package\Tarea Flujo de datos\Carreras.Outputs[OLE DB Source Output].ExternalColumns[NOM_CARRERA]"
@@ -137,7 +151,8 @@ WHERE [COD_CARRERA] IS NOT NULL</property>
                   <outputColumns>
                     <outputColumn
                       refId="Package\Tarea Flujo de datos\Carreras.Outputs[OLE DB Source Error Output].Columns[COD_CARRERA]"
-                      dataType="r8"
+                      dataType="wstr"
+                      length="20"
                       lineageId="Package\Tarea Flujo de datos\Carreras.Outputs[OLE DB Source Error Output].Columns[COD_CARRERA]"
                       name="COD_CARRERA" />
                     <outputColumn
@@ -222,8 +237,8 @@ WHERE [COD_CARRERA] IS NOT NULL</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\LK Carreras.Connections[OleDbConnection]"
-                  connectionManagerID="{1227FC12-A003-498E-AFFA-A74A0AAE7C0C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Permanencia sa]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -244,7 +259,8 @@ WHERE [COD_CARRERA] IS NOT NULL</property>
                       lineageId="Package\Tarea Flujo de datos\Carreras.Outputs[OLE DB Source Output].Columns[NOM_CARRERA]" />
                     <inputColumn
                       refId="Package\Tarea Flujo de datos\LK Carreras.Inputs[OLE DB Destination Input].Columns[COD_CARRERA]"
-                      cachedDataType="r8"
+                      cachedDataType="wstr"
+                      cachedLength="20"
                       cachedName="COD_CARRERA"
                       externalMetadataColumnId="Package\Tarea Flujo de datos\LK Carreras.Inputs[OLE DB Destination Input].ExternalColumns[Id_Carrera]"
                       lineageId="Package\Tarea Flujo de datos\Carreras.Outputs[OLE DB Source Output].Columns[COD_CARRERA]" />

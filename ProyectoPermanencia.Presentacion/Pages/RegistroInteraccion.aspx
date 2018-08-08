@@ -11,8 +11,8 @@
             <div class="container" style="padding: 5px">
                 <div class="card card-primary">
                     <div class="card-header" style="background-color: rgb(1,40,69); color: white;">Información del Alumno</div>
-                    <div class="row card-body" style="padding-left: 100px">
-                        <div class="col-md-4">
+                    <div class="row card-body pt-1 pb-1">
+                        <div class="col-md-3">
                             <asp:Label runat="server" Font-Bold="true">Rut:</asp:Label>
                             <asp:Label ID="lblRut" runat="server"></asp:Label>
 
@@ -20,14 +20,16 @@
                             <asp:Label runat="server" Font-Bold="true">Nombre:</asp:Label>
                             <asp:Label ID="lblNombre" runat="server"></asp:Label>
                             <br />
+                        </div>
+                        <div class="col-md-4">
                             <asp:Label runat="server" Font-Bold="true">Carrera:</asp:Label>
                             <asp:Label ID="lblCarrera" runat="server"></asp:Label>
                             <br />
-                        </div>
-                        <div class="col-md-5">
                             <asp:Label runat="server" Font-Bold="true">Escuela:</asp:Label>
                             <asp:Label ID="lblEscuela" runat="server"></asp:Label>
                             <br />
+                        </div>
+                        <div class="col-md-2">
                             <asp:Label runat="server" Font-Bold="true">Jornada:</asp:Label>
                             <asp:Label ID="lblJornada" runat="server"></asp:Label>
                             <br />
@@ -36,8 +38,6 @@
                             <br />
                         </div>
                         <div class="col-md-3" style="border-left-style: solid; border-left-width: 1px; border-left-color: rgb(7, 47, 115);">
-                            <asp:Label runat="server" Font-Bold="true">_  Contacto</asp:Label>
-                            <br />
                             <asp:Label runat="server" Font-Bold="true">Telefono:</asp:Label>
                             <asp:Label ID="lblTelefono" runat="server"></asp:Label>
                             <br />
@@ -54,49 +54,46 @@
         <asp:UpdatePanel ID="updateCasoInter" runat="server">
             <ContentTemplate>
                 <div class="row jumbotron" style="margin-top: 0px; border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none; padding: 0px;">
-                    <fieldset id="fdsCaso" class="col-md-5 card-group p-1">
+                    <fieldset id="fdsCaso" class="col-md-4 card-group p-1">
                         <div class="card card-primary">
                             <div class="card-header" style="background-color: rgb(1,40,69); color: white;">1. A qué caso corresponde?</div>
                             <div class="card-body">
-                                <div class="row" style="align-content: center; margin-bottom: 20px;">
-                                    <div class="col-md-4">
-
-                                        <!--<input type="radio" name="corresponde" ID="rbtnExistentes" class="form-control form-control-sm" value="E" style="display:inline-flex" />Existentes>-->
+                                <div class="row d-flex align-content-center">
+                                    <div class="col-md-4 pl-0 mb-4">
                                         <asp:RadioButton runat="server" ID="rbtnExistentes" GroupName="corresponde" AutoPostBack="true" Text="Existente" CssClass="radio-inline form-control-sm" OnCheckedChanged="rbtnExistentes_CheckedChanged" Checked="True" />
                                     </div>
-                                    <div class="col-md-8">
-                                        <!--DDL ideal-->
-                                        <asp:DropDownList runat="server" ID="ddlCasos" CssClass="form-control form-control-sm" OnDataBound="ddlCasos_DataBound">
+                                    <div class="col-md-8 container m-0 p-0">
+                                        <asp:DropDownList runat="server" ID="ddlCasos" CssClass="form-control form-control-sm" Font-Size="Smaller" OnDataBound="ddlCasos_DataBound">
                                             <asp:ListItem>Seleccione</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
-                                <div class="row" style="align-content: center; margin-bottom: 0px;">
-                                    <div class="col-md-6">
+                                <div class="row d-flex align-content-center mb-0 pt-0">
+                                    <div class="col-md-6 pl-0">
                                         <asp:RadioButton runat="server" ID="rbtnNuevo" GroupName="corresponde" AutoPostBack="true" Text="Nuevo Caso" CssClass="radio-inline form-control-sm" OnCheckedChanged="rbtnNuevo_CheckedChanged" />
                                     </div>
                                 </div>
-                                <div class="row" style="align-content: flex-end; margin-bottom: 20px;">
-                                    <div class="col-md-4" style="align-content: center; text-align: end;">
-                                        <div class="row" style="margin-top: 10px; padding-left: 40px;">
+                                <div class="row d-flex align-content-end mb-2">
+                                    <div class="col-md-3" style="align-content: center; text-align: end;">
+                                        <div class="row pl-5">
                                             <asp:Label runat="server" ID="lblTipoCaso" Text="Tipo: " />
                                         </div>
                                     </div>
                                     <div class="col-md-7" style="padding-right: 0px; justify-content: flex-end;">
-                                        <asp:DropDownList runat="server" ID="ddlTipoCaso" AutoPostBack="True" CssClass="form-control form-control-sm" AppendDataBoundItems="True" Enabled="False" OnSelectedIndexChanged="ddlTipoCaso_SelectedIndexChanged" DataSourceID="sqlTipoCaso" DataTextField="Desc_TipoCaso" DataValueField="Id_TipoCaso">
+                                        <asp:DropDownList runat="server" ID="ddlTipoCaso" AutoPostBack="True" CssClass="form-control form-control-sm ml-3" AppendDataBoundItems="True" Enabled="False" OnSelectedIndexChanged="ddlTipoCaso_SelectedIndexChanged" DataSourceID="sqlTipoCaso" DataTextField="Desc_TipoCaso" DataValueField="Id_TipoCaso">
                                             <asp:ListItem Selected="True">Seleccione</asp:ListItem>
                                         </asp:DropDownList>
                                         <asp:SqlDataSource ID="sqlTipoCaso" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Tipo_Caso]"></asp:SqlDataSource>
                                     </div>
                                 </div>
                                 <div class="row" style="align-content: flex-end;">
-                                    <div class="col-md-4" style="align-content: center; text-align: end;">
-                                        <div class="row" style="padding-left: 40px">
+                                    <div class="col-md-3" style="align-content: center; text-align: end;">
+                                        <div class="row pl-5">
                                             <asp:Label runat="server" ID="lblCurso" Text="Curso: " />
                                         </div>
                                     </div>
                                     <div class="col-md-7" style="padding-right: 0px; justify-content: flex-end;">
-                                        <asp:DropDownList runat="server" ID="ddlCurso" AppendDataBoundItems="true" AutoPostBack="true" CssClass="form-control form-control-sm" Enabled="False">
+                                        <asp:DropDownList runat="server" ID="ddlCurso" AppendDataBoundItems="true" AutoPostBack="true" CssClass="form-control form-control-sm ml-3" Enabled="False">
                                             <asp:ListItem>Seleccione</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
@@ -108,67 +105,89 @@
                         </div>
 
                     </fieldset>
-                    
-                    <fieldset id="fdsInteraccion" runat="server" class="col-md-7 card-group" style="padding: 5px">
+
+                    <fieldset id="fdsInteraccion" runat="server" class="col-md-8 card-group p-1">
                         <div class="card card-primary">
                             <div class="card-header" style="background-color: rgb(1,40,69); color: white;">2. Interacción</div>
                             <div class="card-body" style="padding-right: 35px">
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-md-4" style="margin-left: 20px;">
-                                        <asp:Label runat="server" Font-Bold="true">Tipo de Intervención :</asp:Label>
-                                        <div class="dropdown dropdown-toggle disabled" style="width: 70%;">
-                                            <asp:DropDownList runat="server" ID="ddlTipoInteraccion" AppendDataBoundItems="True" AutoPostBack="True" CssClass="form-control form-control-sm" OnSelectedIndexChanged="ddlTipoInteraccion_SelectedIndexChanged" DataSourceID="sqlTipoInteraccion" DataTextField="Desc_TipoInteraccion" DataValueField="Id_TipoInteraccion">
-                                                <asp:ListItem Value="0">Seleccione</asp:ListItem>
+                                <div class="row container">
+                                    <div class="col-4">
+                                        <div class="row">
+                                            <div class="row container pb-2">
+                                                <asp:Label runat="server" Font-Bold="true">Tipo de Intervención :</asp:Label>
+                                            </div>
+                                            <div class="row container dropdown dropdown-toggle disabled">
+                                                <asp:DropDownList runat="server" ID="ddlTipoInteraccion" AppendDataBoundItems="True" AutoPostBack="True"
+                                                    CssClass="form-control form-control-sm ml-2" OnSelectedIndexChanged="ddlTipoInteraccion_SelectedIndexChanged"
+                                                    DataSourceID="sqlTipoInteraccion" DataTextField="Desc_TipoInteraccion" DataValueField="Id_TipoInteraccion">
+                                                    <asp:ListItem Value="0">Seleccione</asp:ListItem>
 
-                                            </asp:DropDownList>
-                                            <asp:SqlDataSource ID="sqlTipoInteraccion" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Tipo_Interaccion]"></asp:SqlDataSource>
+                                                </asp:DropDownList>
+                                                <asp:SqlDataSource ID="sqlTipoInteraccion" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Tipo_Interaccion]"></asp:SqlDataSource>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-4">
+                                            <div class="row container pb-2">
+                                                <asp:Label runat="server" Font-Bold="true">Área de derivación :</asp:Label>
+                                            </div>
+                                            <div class="row container dropdown dropdown-toggle">
+                                                <asp:DropDownList runat="server" ID="ddlArederiv" Enabled="False" AutoPostBack="True"
+                                                    CssClass="form-control form-control-sm ml-2" DataSourceID="sqlAreaDerivacion" DataTextField="Desc_AreaDerivacion"
+                                                    DataValueField="Id_AreaDerivacion">
+                                                </asp:DropDownList>
+                                                <asp:SqlDataSource ID="sqlAreaDerivacion" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Area_Derivacion]" OnSelected="sqlAreaDerivacion_Selected"></asp:SqlDataSource>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 ">
+                                    <div class="col-md-4 pl-5 ">
                                         <asp:Label runat="server" Font-Bold="true">Participa(n) :</asp:Label>
-                                        <asp:CheckBoxList runat="server" ID="ckblParticipan" CssClass="checkbox " DataSourceID="sqlParticipantes" DataTextField="Desc_Participante" DataValueField="Id_Participante">
-                                            
+                                        <asp:CheckBoxList runat="server" ID="ckblParticipan" CssClass="checkbox mt-2" DataSourceID="sqlParticipantes" DataTextField="Desc_Participante" DataValueField="Id_Participante">
                                         </asp:CheckBoxList>
                                         <asp:SqlDataSource ID="sqlParticipantes" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Participante]"></asp:SqlDataSource>
                                     </div>
                                     <div class="col-md-4">
-                                        <asp:Label runat="server" Font-Bold="true">Área de derivación :</asp:Label>
-                                        <div class="dropdown dropdown-toggle" style="width: 90%;">
-                                            <asp:DropDownList runat="server" ID="ddlArederiv" Enabled="False" AutoPostBack="True" CssClass="form-control form-control-sm" DataSourceID="sqlAreaDerivacion" DataTextField="Desc_AreaDerivacion" DataValueField="Id_AreaDerivacion">
-                                            </asp:DropDownList>
-                                            <asp:SqlDataSource ID="sqlAreaDerivacion" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Area_Derivacion]" OnSelected="sqlAreaDerivacion_Selected"></asp:SqlDataSource>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row d-flex justify-content-center" style="margin-top: 20px;">
-                                    <div class="col-md-11 center-block" style="margin-left: 20px;">
-                                        <asp:Label runat="server" Font-Bold="true">Comentarios:</asp:Label>
-                                        <asp:TextBox runat="server" ID="tbComentarios" CssClass="form-control" Rows="6" MaxLength="1000" Height="100px" TextMode="MultiLine"></asp:TextBox>
-
-                                    </div>
-                                </div>
-                                <div class="row d-flex justify-content-center" style="margin-top: 30px;">
-                                    <div class="col-md-6 center-block" style="margin-left: 20px;">
                                         <div class="row">
-                                            <asp:Label runat="server" Font-Bold="true">Fecha:</asp:Label>
+                                            <div class="row container mb-2">
+                                                <asp:Label runat="server" Font-Bold="true">Fecha:</asp:Label>
+                                            </div>
+                                            <div class="row container">
+                                                <div class="col-md-3 pl-0 ml-0">
+                                                    <asp:ImageButton ID="imbCalendario" runat="server" AlternateText="Calendario" ToolTip="Calendario"
+                                                        ImageUrl="~/imgs/calendar.png" CssClass="small" Height="30px" OnClientClick="imbCalendario_Click" OnClick="imbCalendario_Click" />
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <asp:TextBox runat="server" ID="txtFecha" Enabled="false" Text="dd/mm/yyyy" Width="90px"></asp:TextBox>
+                                                </div>
+                                                <asp:Calendar ID="calFecha" Font-Size="Smaller" runat="server" Visible="false" Enabled="false"
+                                                    CellPadding="1" CssClass="form-control" OnSelectionChanged="calFecha_SelectionChanged"></asp:Calendar>
+                                            </div>
                                         </div>
-
-                                        <br>
-                                        <div class="row" style="border: solid;" >
-                                            <asp:Calendar ID="calFecha" Font-Size="Smaller" runat="server" CellPadding="1" CssClass="form-control" Width="100px"></asp:Calendar>
-
+                                        <div class="row mt-4">
+                                            <div class="row container mb-2">
+                                                <asp:Label runat="server" Font-Bold="true">Subir archivo:</asp:Label>
+                                            </div>
+                                            <asp:FileUpload runat="server" ID="flInteraccion" />
                                         </div>
-
                                     </div>
-                                    <div class="col-md-5 center-block">
-                                        <asp:Label runat="server" Font-Bold="true">Subir archivo:</asp:Label>
-                                        <asp:FileUpload runat="server" ID="flInteraccion" />
+                                </div>
+                                <div class="row container mt-1">
+                                    <div class="row container d-flex justify-content-start">
+                                        <asp:Label runat="server" Font-Bold="true">Comentarios:</asp:Label>
+                                    </div>
+                                    <div class="row container d-flex justify-content-center mt-2">
+                                        <div class="col-md-11">
+                                            <asp:TextBox runat="server" ID="tbComentarios" CssClass="form-control" Rows="6" MaxLength="1000" Height="100px" TextMode="MultiLine"></asp:TextBox>
+
+                                        </div>
+                                        <div class="col-md-1">
+                                            <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success btn-sm center-block" OnClick="btnGuardar_Click" />
+                                        </div>
                                     </div>
 
                                 </div>
-                                <div class="row d-flex justify-content-center" style="margin-top: 30px;">
-                                    <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success center-block" OnClick="btnGuardar_Click" />
-                                </div>
+
                             </div>
                         </div>
                     </fieldset>

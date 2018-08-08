@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FichaMaster.master" AutoEventWireup="true" CodeBehind="FichaAlumno.aspx.cs" Inherits="ProyectoPermanencia.Presentacion.Pages.FichaAlumno" %>
+
 <%@ MasterType VirtualPath="~/FichaMaster.master" %>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolderTitle" runat="server">
     <asp:Label runat="server">
@@ -6,7 +7,7 @@
     </asp:Label>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ContentPlaceHolderTabs" runat="server">
-    <div class="container" style="font-size:small">
+    <div class="container" style="font-size: small">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="#">Ficha</a>
@@ -22,7 +23,7 @@
 
 </asp:Content>
 <asp:Content ID="ContentFicha" ContentPlaceHolderID="ContentPlaceHolderFicha" runat="server">
-    <div class="container" >
+    <div class="container">
         <div class="row">
             <asp:Label runat="server" ID="lblRut" Visible="false"></asp:Label>
             <!-- GRILLAS-->
@@ -37,9 +38,17 @@
                     </asp:GridView>
                     <!-- POP CLIENT SIDE -->
                     <asp:Button ID="ClientButton" runat="server" Text="Ver Detalle" CssClass="btn btn-sm btn-info" />
-                    <asp:Panel ID="ModalPanel" runat="server" BackColor="White" CssClass="modal-content container-fluid" Width="800px">
+                    <asp:Panel ID="ModalPanel" runat="server" BackColor="White" CssClass="modal-content container-fluid border-info" Width="800px">
+                        <div class="row pt-2" >
+                            <div class="col-md-10">
+                                <h5>Detalle de notas por asignatura </h5>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-end">
+                                <asp:Button runat="server" ID="OKButton" Text="X" CssClass="btn btn-sm btn-hover" />
+                            </div>
+                        </div>
+
                         <div class="row" style="padding: 20px; padding-top: 5px;">
-                            <h5>Detalle de notas por asignatura </h5>
                             <div id="DetalleNotas" style="overflow: auto; width: 100%" class="ScoreNotas">
                                 <asp:GridView ID="grvDetalleNotas" runat="server" BackColor="#eff4f8" GridLines="Vertical" ShowHeaderWhenEmpty="True"
                                     EmptyDataText="No se encontraron registros" Width="800px"
@@ -48,7 +57,6 @@
                                     <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                                 </asp:GridView>
                             </div>
-                            <asp:Button ID="OKButton" CssClass="btn btn-sm btn-info justify-content-center" Height="30px" runat="server" Text="Cerrar" />
 
 
                         </div>

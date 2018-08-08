@@ -38,7 +38,7 @@
                         <div class="col-md-4" style="border-left-style: solid; border-left-width: 1px; border-left-color: rgb(7, 47, 115);">
                             <asp:Label runat="server" Font-Bold="true">_  Contacto</asp:Label>
                             <br />
-                            <asp:Label runat="server" Font-Bold="true">Telefono:</asp:Label>
+                            <asp:Label runat="server" Font-Bold="true">Teléfono:</asp:Label>
                             <asp:Label ID="lblTelefono" runat="server"></asp:Label>
                             <br />
                             <asp:Label runat="server" Font-Bold="true">Correo:</asp:Label>
@@ -51,8 +51,8 @@
             </div>
         </div>
 
-        <div class="row jumbotron detCasoContainer" style="padding:0px">
-            <div class="container" style="padding: 5px; padding-top:0px">
+        <div class="row jumbotron detCasoContainer" style="padding: 0px">
+            <div class="container" style="padding: 5px; padding-top: 0px">
                 <div class="card card-primary">
                     <div id="cardDetalle" class="card card-primary ">
                         <div class="card-header" style="background-color: rgb(1,40,69); color: white;">Detalles del Caso</div>
@@ -60,7 +60,7 @@
                             <div class="row align-content-center infocasoContainer">
 
                                 <div class="col-md-3">
-                                    <asp:Label runat="server" Font-Bold="true">Id:</asp:Label>
+                                    <asp:Label runat="server" Font-Bold="true">Id del caso:</asp:Label>
                                     <asp:Label ID="lblIdCaso" runat="server"></asp:Label>
                                 </div>
                                 <div class="col-md-3">
@@ -76,47 +76,73 @@
                                     <asp:Label ID="lblEstado" runat="server"></asp:Label>
                                 </div>
                             </div>
-                            
+
                             <asp:Repeater ID="rpDetalle" runat="server" OnItemCommand="rpDetalle_ItemCommand">
                                 <HeaderTemplate>
-                                    <div class="row container detInterContainer">
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                <div class="col-md-4">
-                                    <asp:HiddenField runat="server" ID="hfID" Value='<%#Eval("ID") %>'/>    
-                                    <asp:Label runat="server" Font-Bold="true">Tipo de Intervención:</asp:Label>
-                                    <asp:Label ID="lblTipoI" runat="server" Text='<%#Eval("Tipo Interaccion")%>'></asp:Label><br />
+                                    <div class="row container detInterContainer">
+                                        <div class="col-md-4">
+                                            <asp:HiddenField runat="server" ID="hfID" Value='<%#Eval("ID") %>' />
+                                            <asp:Label runat="server" Font-Bold="true">Tipo de Intervención:</asp:Label>
+                                            <asp:Label ID="lblTipoI" runat="server" Text='<%#Eval("Tipo Interaccion")%>'></asp:Label><br />
 
-                                    <asp:Label runat="server" Font-Bold="true">Participa:</asp:Label>
-                                    <asp:Label ID="lblParti" runat="server" Text='<%#Eval("Participantes") %>'></asp:Label><br />
+                                            <asp:Label runat="server" Font-Bold="true">Participa:</asp:Label>
+                                            <asp:Label ID="lblParti" runat="server" Text='<%#Eval("Participantes") %>'></asp:Label><br />
 
 
-                                    <asp:Label runat="server" Font-Bold="true">Area de derivación:</asp:Label>
-                                    <asp:Label ID="lblArea" runat="server" Text='<%#Eval("Area Derivacion") %>'></asp:Label><br />
+                                            <asp:Label runat="server" Font-Bold="true">Area de derivación:</asp:Label>
+                                            <asp:Label ID="lblArea" runat="server" Text='<%#Eval("Area Derivacion") %>'></asp:Label><br />
 
-                                    <asp:Label runat="server" Font-Bold="true">Fecha:</asp:Label>
-                                    <asp:Label ID="lblFechaa" runat="server" Text='<%#Eval("Fecha Interaccion") %>'></asp:Label><br />
-                                </div>
-                                <div class="col-md-8" style="padding-left: 20px">
-                                    <div class="row">
-                                        <asp:Label runat="server" Font-Bold="true">Comentarios:</asp:Label><br />
-                                        <asp:TextBox runat="server" ID="txbComentario" TextMode="MultiLine" Width="100%" Text='<%#Eval("Comentario") %>' Enabled="False"></asp:TextBox>
+                                            <asp:Label runat="server" Font-Bold="true">Fecha:</asp:Label>
+                                            <asp:Label ID="lblFechaa" runat="server" Text='<%#Eval("Fecha Interaccion") %>'></asp:Label><br />
+                                        </div>
+                                        <div class="col-md-8" style="padding-left: 20px">
+                                            <div class="row">
+                                                <asp:Label runat="server" Font-Bold="true">Comentarios:</asp:Label><br />
+                                                <asp:TextBox runat="server" ID="txbComentario" TextMode="MultiLine" Width="100%" Text='<%#Eval("Comentario") %>' Enabled="False"></asp:TextBox>
 
+                                            </div>
+                                            <div class="row d-flex flex-row-reverse" style="margin-top: 5px">
+                                                <asp:Button runat="server" ID="btnVerArchivo" Text=" Ver Archivo" data-toggle="modal" data-target="#myModal" CssClass="btn btn-info btn-sm" />
+                                                <asp:Panel ID="ModalPanel" runat="server" BackColor="White" CssClass="modal-content container-fluid pt-0" Width="800px">
+                                                    <div class="row d-flex justify-content-end pt-0 mt-0">
+                                                        <asp:Button runat="server" ID="OKButton" Text="X" CssClass="btn btn-sm btn-hover" />
+
+                                                    </div>
+                                                    <div class="row container d-flex justify-content-center">
+                                                        <h3>Previsualización</h3>
+                                                    </div>
+                                                    <div class="row d-flex justify-content-center">
+                                                        <asp:Button runat="server" ID="btnDesc" Text="Descargar" CssClass="btn btn-sm btn-success" CommandArgument='<%#Eval("Ruta Archivo") %>' CommandName="Download" />
+                                                    </div>
+
+                                                </asp:Panel>
+                                                <ajaxToolkit:ModalPopupExtender ID="mpe" BehaviorID="mpeID" runat="server" TargetControlID="btnVerArchivo"
+                                                    PopupControlID="ModalPanel" OkControlID="OKButton" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row d-flex flex-row-reverse" style="margin-top: 5px">
-                                        <asp:Button runat="server" ID="btnDesc" Text="Descargar" CssClass="btn btn-warning btn-sm" CommandArgument='<%#Eval("Ruta Archivo") %>' CommandName="Download"/>
 
-                                    </div>
-                                </div>
                                 </ItemTemplate>
                                 <FooterTemplate>
                                     </div>
                                 </FooterTemplate>
                             </asp:Repeater>
-                            <div class="row container" style="margin: 10px; padding: 20px; border-top-width: 2px; border-top-style: solid; border-color: rgb(1,40,69); justify-content: center;">
-                                <asp:Button runat="server" ID="btnAgregarInteraccion" Text="Agregar Interacción" CssClass="btn btn-success" OnClick="btnAgregarInteraccion_Click" />
-                                <asp:Button runat="server" ID="btnVolver" Text="Volver" CssClass="btn btn-warning" OnClick="btnVolver_Click1"/>
-                                <asp:Button runat="server" ID="btnFinalizarCaso" Text="Finalizar Caso" CssClass="btn btn-danger" />
+
+                            <div class="row container-fluid pt-3 ml-1" style="border-top-width: 2px; border-top-style: solid; border-color: rgb(1,40,69);">
+                                <div class="col-md-4 d-flex justify-content-start">
+                                    <asp:Button runat="server" ID="btnVolver" Text="Volver" CssClass="btn btn-warning" OnClick="btnVolver_Click1" />
+
+                                </div>
+                                <div class="col-md-4 d-flex justify-content-center">
+                                    <asp:Button runat="server" ID="btnAgregarInteraccion" Text="Agregar Interacción" CssClass="btn btn-success" OnClick="btnAgregarInteraccion_Click" />
+
+                                </div>
+                                <div class="col-md-4 d-flex justify-content-end">
+                                    <asp:Button runat="server" ID="btnFinalizarCaso" Text="Finalizar Caso" CssClass="btn btn-danger" />
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -124,6 +150,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 </asp:Content>

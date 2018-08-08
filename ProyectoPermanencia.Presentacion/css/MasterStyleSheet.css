@@ -60,9 +60,17 @@ footer {
     padding-top: 20px; 
     padding-bottom: 20px; 
     padding-left: 0px; 
-    border-top-width: 2px; 
+    border-top-width: 1px; 
     border-top-style: solid; 
     border-color: rgb(1,40,69);
 }
 
-
+.btn-hover:hover {
+    background: white;
+    border: solid 1px grey;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: Red;
+    height: 31px;
+}

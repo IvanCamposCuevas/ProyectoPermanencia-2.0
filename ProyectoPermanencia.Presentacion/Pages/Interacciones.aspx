@@ -23,11 +23,10 @@
 <asp:Content ID="ContentInteracciones" ContentPlaceHolderID="ContentPlaceHolderInteracciones" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
             </div>
-            <div class="col-md-6 ">
-                <i class="material-icons"></i>
-                <asp:Button ID="btnNuevaInteraccion" runat="server" Text="Registrar Nueva Interaccion" CssClass="btn btn-info flex-row-reverse" OnClick="btnNuevaInteraccion_Click" />
+            <div class="col-md-4 ">
+                <asp:Button ID="btnNuevaInteraccion" runat="server" Text="Registrar Nueva Interacción" CssClass="btn btn-info flex-row-reverse" OnClick="btnNuevaInteraccion_Click" />
             </div>
         </div>
 

@@ -49,15 +49,6 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Panel ModalPanel;
         
         /// <summary>
-        /// Control grvDetalleNotas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grvDetalleNotas;
-        
-        /// <summary>
         /// Control OKButton.
         /// </summary>
         /// <remarks>
@@ -65,6 +56,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button OKButton;
+        
+        /// <summary>
+        /// Control grvDetalleNotas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grvDetalleNotas;
         
         /// <summary>
         /// Control mpe.

@@ -18,9 +18,9 @@
 <asp:Content ID="ContentFicha" ContentPlaceHolderID="ContentPlaceHolderFicha" runat="server">
     <div class="container" style="margin-top: 10px; font-size: small">
         <div class="row">
-            <div class="col-md-3 card card-primary modal-content" style="padding: 0px; border-radius: 5px; box-shadow: none">
+            <div class="col-md-3 card card-primary modal-content p-0" style="border-radius: 5px; box-shadow: none">
                 <!-- COLUMNA LATERAL CON INFORMACION DEL ALUMNO -->
-                <div class="container-fluid card-header">
+                <div class="container-fluid card-header pb-0 pt-2">
                     <h6 style="text-align: center">Información Personal</h6>
                 </div>
                 <div class="card-body" style="">
@@ -40,8 +40,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container d-flex justify-content-start" style="padding-left:0; padding-right:0px">
-                        <div id="InformacionAlumno" style="float: left; align-content: center; margin-top: 20px; justify-content:flex-start">
+                    <div class="container d-flex justify-content-start" style="padding-left: 0; padding-right: 0px">
+                        <div id="InformacionAlumno" style="float: left; align-content: center; margin-top: 20px; justify-content: flex-start">
                             <asp:Label runat="server" Font-Bold="true">Rut:</asp:Label>
                             <asp:Label ID="lblRut" runat="server"></asp:Label>
                             <br />
@@ -101,7 +101,6 @@
                         <asp:ContentPlaceHolder ID="ContentPlaceHolderInteracciones" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
-
 
                 </div>
 

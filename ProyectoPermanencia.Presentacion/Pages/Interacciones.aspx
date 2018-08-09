@@ -35,7 +35,7 @@
             <div id="HistorialCasos" class="ScoreAsistencia">
                 <h5>Historial de Casos </h5>
                 <h6>Grilla</h6>
-                <asp:GridView ID="grvCasos" runat="server" BackColor="#EFF4F8" ShowHeaderWhenEmpty="True" Width="600px" Font-Size="12px"
+                <asp:GridView ID="grvCasos" runat="server" GridLines="None" BackColor="#EFF4F8" ShowHeaderWhenEmpty="True" Width="600px" Font-Size="12px"
                     CssClass=" table table-hover table-bordered bs-table table-sm table-responsive" HorizontalAlign="Right"
                     EmptyDataText="No se han abierto casos para intervenir con el alumno" OnSelectedIndexChanged="grvCasos_SelectedIndexChanged" OnRowDataBound="grvCasos_RowDataBound">
                     <Columns>

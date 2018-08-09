@@ -32,7 +32,7 @@
                     <h5>Score notas por asignatura </h5>
                     <asp:GridView ID="grvNotas" runat="server" BackColor="#EFF4F8" GridLines="none" ShowHeaderWhenEmpty="True"
                         EmptyDataText="No se encontraron registros" Width="800px"
-                        CssClass="table table-sm table-responsive " Font-Size="12px">
+                        CssClass="table table-sm table-responsive table-bordered" Font-Size="12px">
                         <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
                         <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                     </asp:GridView>
@@ -50,9 +50,9 @@
 
                         <div class="row" style="padding: 20px; padding-top: 5px;">
                             <div id="DetalleNotas" style="overflow: auto; width: 100%" class="ScoreNotas">
-                                <asp:GridView ID="grvDetalleNotas" runat="server" BackColor="#eff4f8" GridLines="Vertical" ShowHeaderWhenEmpty="True"
+                                <asp:GridView ID="grvDetalleNotas" runat="server" BackColor="#eff4f8" GridLines="None" BorderStyle="None" ShowHeaderWhenEmpty="True"
                                     EmptyDataText="No se encontraron registros" Width="800px"
-                                    CssClass="table table-sm table-responsive" Font-Size="12px">
+                                    CssClass="table table-sm table-responsive table-bordered" Font-Size="12px">
                                     <HeaderStyle BackColor="#092845" Font-Bold="false" ForeColor="White" HorizontalAlign="Center" />
                                     <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                                 </asp:GridView>
@@ -96,7 +96,7 @@
                     <h5>Score asistencia por asignatura </h5>
                     <asp:GridView ID="grvAsistencia" runat="server" BackColor="#eff4f8" GridLines="None" ShowHeaderWhenEmpty="True"
                         EmptyDataText="No se encontraron registros" Width="100%"
-                        CssClass="table table-sm table-responsive" Font-Size="12px">
+                        CssClass="table table-sm table-responsive table-bordered" Font-Size="12px">
                         <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                         <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                     </asp:GridView>
@@ -108,7 +108,7 @@
                     <h5>Score situación financiera </h5>
                     <asp:GridView ID="grvFinanzas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" GridLines="none"
                         EmptyDataText="No se encontraron registros" Width="100%" OnRowDataBound="grvFinanzas_RowDataBound"
-                        CssClass="table table-sm table-responsive" Font-Size="12px">
+                        CssClass="table table-sm table-responsive table-bordered" Font-Size="12px">
                         <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />
                         <RowStyle VerticalAlign="Middle" HorizontalAlign="Center" />
                     </asp:GridView>

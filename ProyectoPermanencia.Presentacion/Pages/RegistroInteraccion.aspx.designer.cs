@@ -166,13 +166,13 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddlCurso;
         
         /// <summary>
-        /// Control btnCreaCaso.
+        /// Control lbtnVolver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCreaCaso;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnVolver;
         
         /// <summary>
         /// Control fdsInteraccion.

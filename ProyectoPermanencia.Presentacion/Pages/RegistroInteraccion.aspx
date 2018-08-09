@@ -86,7 +86,7 @@
                                         <asp:SqlDataSource ID="sqlTipoCaso" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Tipo_Caso]"></asp:SqlDataSource>
                                     </div>
                                 </div>
-                                <div class="row" style="align-content: flex-end;">
+                                <div class="row mb-5" style="align-content: flex-end;">
                                     <div class="col-md-3" style="align-content: center; text-align: end;">
                                         <div class="row pl-5">
                                             <asp:Label runat="server" ID="lblCurso" Text="Curso: " />
@@ -98,8 +98,8 @@
                                         </asp:DropDownList>
                                     </div>
                                 </div>
-                                <div class="row d-flex justify-content-center" style="margin-top: 30px;">
-                                    <asp:Button runat="server" ID="btnCreaCaso" CssClass="btn btn-sm btn-warning center-block" Text="Crear Caso" OnClick="btnCreaCaso_Click" />
+                                <div class="row container mt-5">
+                                    <asp:LinkButton runat="server" ID="lbtnVolver" CssClass="btn btn-warning btn-sm" OnClick="lbtnVolver_Click"><i class="glyphicon glyphicon-circle-arrow-left"></i> Volver</asp:LinkButton>
                                 </div>
                             </div>
                         </div>

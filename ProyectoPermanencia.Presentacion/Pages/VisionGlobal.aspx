@@ -132,7 +132,7 @@
                 <h3>Scores</h3>
                 <div class="row container-fluid" style="margin: 0px">
                     <div id="ScoreGlobal" class="ScoreGlobal">
-                        <asp:GridView ID="grvGlobal" CssClass="col-md-12 table table-sm table-bordered bs-table table-hover table-responsive"
+                        <asp:GridView ID="grvGlobal" GridLines="None" CssClass="col-md-12 table table-sm table-hover table-responsive"
                             Font-Size="12px" runat="server"  ShowHeaderWhenEmpty="True" EmptyDataText="No se encontraron registros"
                             OnSelectedIndexChanged="grvGlobal_SelectedIndexChanged" OnRowDataBound="grvGlobal_RowDataBound">
                             <HeaderStyle BackColor="#092845" Font-Bold="True" ForeColor="White" />

@@ -232,5 +232,25 @@ namespace ProyectoPermanencia.Negocio
             client.Send(mensaje);
         }
 
+        public string UltimoCaso(string rutalumno)
+        {
+            NegocioConexionBD conexion = new NegocioConexionBD();
+            conexion.configuraConexion();
+
+            //Consulta para traer el id del alumno por su rut
+            conexion.Conec1.IntruccioneSQL = String.Format("SELECT Id_Alumno FROM LK_Alumno WHERE Desc_Rut_Alumno = '{0}';", rutalumno);
+            conexion.Conec1.EsSelect = true;
+            conexion.Conec1.conectar();
+            string idalumno = conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
+
+            //Consulta para traer el ultimo Id_Caso agregado para el alumno
+            conexion.Conec1.IntruccioneSQL = String.Format("SELECT MAX(Id_Caso) AS 'Id_Caso' FROM Caso WHERE Id_Alumno = '{0}'", idalumno);            
+            conexion.Conec1.EsSelect = true;
+            conexion.Conec1.conectar();
+            string idcaso = conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_Caso"].ToString();
+
+            return idcaso;
+        }
+
     }
 }

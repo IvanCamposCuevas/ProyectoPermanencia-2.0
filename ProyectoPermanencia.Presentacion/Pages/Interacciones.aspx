@@ -12,7 +12,7 @@
                 <a class="nav-link" href="/Pages/FichaAlumno.aspx">Ficha</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Pages/Historico.aspx">Histórico</a>
+                <a class="nav-link" href="/Pages/Historico.aspx">Historico</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="/Pages/Interacciones.aspx">Interacciones</a>
@@ -23,10 +23,9 @@
 <asp:Content ID="ContentInteracciones" ContentPlaceHolderID="ContentPlaceHolderInteracciones" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
             </div>
-            <div class="col-md-6 ">
-                <i class="material-icons"></i>
+            <div class="col-md-4 ">
                 <asp:Button ID="btnNuevaInteraccion" runat="server" Text="Registrar Nueva Interacción" CssClass="btn btn-info flex-row-reverse" OnClick="btnNuevaInteraccion_Click" />
             </div>
         </div>

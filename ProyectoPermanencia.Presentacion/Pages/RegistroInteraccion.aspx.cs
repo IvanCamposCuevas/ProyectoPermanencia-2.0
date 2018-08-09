@@ -141,6 +141,8 @@ namespace ProyectoPermanencia.Presentacion.Pages
                     MessageBox.Show(ex.Message);
                 }
             }
+
+            Response.Redirect("/Pages/Interacciones.aspx");
         }
 
         protected void rbtnExistentes_CheckedChanged(object sender, EventArgs e)
@@ -316,6 +318,16 @@ namespace ProyectoPermanencia.Presentacion.Pages
             new Negocio.NegocioRegistroInteraccion().EnviarMail(mensaje);
         }
 
+        protected void imbCalendario_Click(object sender, ImageClickEventArgs e)
+        {
+            calFecha.Visible = true;
+            calFecha.Enabled = true;
+        }
 
+        protected void calFecha_SelectionChanged(object sender, EventArgs e)
+        {
+            calFecha.Visible = false;
+            calFecha.Enabled = false;
+        }
     }
 }

@@ -12,7 +12,7 @@
                 <a class="nav-link active" href="#">Ficha</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Pages/Historico.aspx">Historico</a>
+                <a class="nav-link" href="/Pages/Historico.aspx">Histórico</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/Pages/Interacciones.aspx">Interacciones</a>

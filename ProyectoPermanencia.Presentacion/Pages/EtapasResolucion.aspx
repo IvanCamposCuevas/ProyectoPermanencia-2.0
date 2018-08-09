@@ -58,7 +58,7 @@
                                                 <asp:ListItem>Correo</asp:ListItem>
                                                 <asp:ListItem>Derivación</asp:ListItem>
                                                 <asp:ListItem>Presencial</asp:ListItem>
-                                                <asp:ListItem>Telefono</asp:ListItem>
+                                                <asp:ListItem>Teléfono</asp:ListItem>
                                             </asp:CheckBoxList>
                                         </div>
 
@@ -68,7 +68,7 @@
                                         <div class="row container" style="padding:0px; padding-left:10px">
                                             <div class="col-md-6" style="padding-top: 3px; margin-left:20px">
                                                 <asp:Label runat="server" CssClass="col-form-label-sm">Fecha Inicio:</asp:Label>
-                                                <asp:Label runat="server" CssClass="col-form-label-sm">Fecha Termino:</asp:Label>
+                                                <asp:Label runat="server" CssClass="col-form-label-sm">Fecha Término:</asp:Label>
 
                                             </div>
                                             <div class="col-md-5" style="padding-left: 0px">

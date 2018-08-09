@@ -12,7 +12,7 @@
                 <a class="nav-link" href="/Pages/FichaAlumno.aspx">Ficha</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Pages/Historico.aspx">Historico</a>
+                <a class="nav-link" href="/Pages/Historico.aspx">Histórico</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="/Pages/Interacciones.aspx">Interacciones</a>
@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-6 ">
                 <i class="material-icons"></i>
-                <asp:Button ID="btnNuevaInteraccion" runat="server" Text="Registrar Nueva Interaccion" CssClass="btn btn-info flex-row-reverse" OnClick="btnNuevaInteraccion_Click" />
+                <asp:Button ID="btnNuevaInteraccion" runat="server" Text="Registrar Nueva Interacción" CssClass="btn btn-info flex-row-reverse" OnClick="btnNuevaInteraccion_Click" />
             </div>
         </div>
 

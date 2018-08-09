@@ -26,7 +26,7 @@
             <div class="col-sm-9">
                 <!-- Información Histórico-->
 
-                <h4>Registros historicos de asistencia, notas y finanzas.</h4>
+                <h4>Registros históricos de asistencia, notas y finanzas.</h4>
             </div>
 
         </div>

@@ -38,7 +38,7 @@
                         <div class="col-md-4" style="border-left-style: solid; border-left-width: 1px; border-left-color: rgb(7, 47, 115);">
                             <asp:Label runat="server" Font-Bold="true">_  Contacto</asp:Label>
                             <br />
-                            <asp:Label runat="server" Font-Bold="true">Telefono:</asp:Label>
+                            <asp:Label runat="server" Font-Bold="true">Teléfono:</asp:Label>
                             <asp:Label ID="lblTelefono" runat="server"></asp:Label>
                             <br />
                             <asp:Label runat="server" Font-Bold="true">Correo:</asp:Label>
@@ -92,7 +92,7 @@
 
 
                                     <asp:Label runat="server" Font-Bold="true">Area de derivación:</asp:Label>
-                                    <asp:Label ID="lblArea" runat="server" Text='<%#Eval("Area Derivacion") %>'></asp:Label><br />
+                                    <asp:Label ID="lblArea" runat="server" Text='<%#Eval("Área Derivacion") %>'></asp:Label><br />
 
                                     <asp:Label runat="server" Font-Bold="true">Fecha:</asp:Label>
                                     <asp:Label ID="lblFechaa" runat="server" Text='<%#Eval("Fecha Interaccion") %>'></asp:Label><br />

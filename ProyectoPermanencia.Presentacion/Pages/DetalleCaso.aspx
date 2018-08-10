@@ -60,7 +60,7 @@
                             <div class="row align-content-center infocasoContainer">
 
                                 <div class="col-md-3">
-                                    <asp:Label runat="server" Font-Bold="true">Id del caso:</asp:Label>
+                                    <asp:Label runat="server" Font-Bold="true">Número de caso:</asp:Label>
                                     <asp:Label ID="lblIdCaso" runat="server"></asp:Label>
                                 </div>
                                 <div class="col-md-3">

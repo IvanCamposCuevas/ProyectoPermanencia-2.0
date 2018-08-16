@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Web.UI.WebControls;
 
 
@@ -46,7 +47,7 @@ namespace ProyectoPermanencia.Presentacion
             {
                 System.Windows.Forms.MessageBox.Show("Ingrese la informacion dentro del campo de texto");
             }
-           
+
 
         }
 
@@ -68,17 +69,37 @@ namespace ProyectoPermanencia.Presentacion
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message+";"+ex.InnerException);
+                System.Windows.Forms.MessageBox.Show(ex.Message + ";" + ex.InnerException);
             }
+        }
+
+        private void cargarCheckboxs(DataView listaCarrera)
+        {
+            if (!ddlEscuelas.SelectedValue.Equals("0"))
+            {
+                listaCarrera.RowFilter = "Id_Escuela = " + ddlEscuelas.SelectedValue;
+            }
+            chkListaCarreras.DataSource = listaCarrera;
+            chkListaCarreras.DataTextField = "Desc_Carrera";
+            chkListaCarreras.DataValueField = "Id_Escuela";
+            chkListaCarreras.DataBind();
+            mpe.Show();
         }
 
         protected void ddlEscuelas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chkListaCarreras.DataSource = new Negocio.NegocioPaginaGlobal().cargarListaCarrera(ddlEscuelas.SelectedValue);
-            chkListaCarreras.DataTextField = "Desc_Carrera";
-            chkListaCarreras.DataValueField = "Desc_Carrera";
-            chkListaCarreras.DataBind();
-            mpe.Show();
+            DataView listaCarrera = new DataView();
+            if (Session["Lista Carrera"] != null)
+            {
+                listaCarrera = (DataView)Session["Lista Carrera"];
+                cargarCheckboxs(listaCarrera);
+            }
+            else
+            {
+                listaCarrera = new Negocio.NegocioPaginaGlobal().cargarListaCarrera().Tables["clientes"].AsDataView();
+                Session["Lista Carrera"] = listaCarrera;
+                cargarCheckboxs(listaCarrera);
+            }
         }
 
         protected void grvGlobal_RowDataBound(object sender, GridViewRowEventArgs e)

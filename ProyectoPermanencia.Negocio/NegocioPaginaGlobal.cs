@@ -213,18 +213,11 @@ namespace ProyectoPermanencia.Negocio
         //}
 
 
-        public DataSet cargarListaCarrera(string escuela)
+        public DataSet cargarListaCarrera()
         {
             NegocioConexionBD conexion = new NegocioConexionBD();
             conexion.configuraConexion();
-            if (escuela.Equals("0"))
-            {
-                conexion.Conec1.IntruccioneSQL = "SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera] ORDER BY [Desc_Carrera]";
-            }
-            else
-            {
-                conexion.Conec1.IntruccioneSQL = String.Format("SELECT DISTINCT [Desc_Carrera] FROM [LK_Carrera] WHERE Id_Escuela = {0} ORDER BY [Desc_Carrera]", escuela);
-            }
+            conexion.Conec1.IntruccioneSQL = "SELECT DISTINCT [Desc_Carrera], [Id_Escuela] FROM [LK_Carrera] ORDER BY [Desc_Carrera]";
             conexion.Conec1.EsSelect = true;
             conexion.Conec1.conectar();
             return conexion.Conec1.DbDat;

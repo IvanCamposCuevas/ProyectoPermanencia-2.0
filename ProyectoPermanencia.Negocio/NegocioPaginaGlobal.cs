@@ -19,6 +19,45 @@ namespace ProyectoPermanencia.Negocio
     public class NegocioPaginaGlobal
     {
         /// <summary>
+        /// Metodo que devualve una consulta en forma de cadena de caracteres, 
+        /// y que sera utilizada en los demas metodos de esta clase.
+        /// </summary>
+        /// <returns></returns>
+        private string consulta() {
+            string consulta = "SELECT AL.Desc_Rut_Alumno AS Rut,"
+                            + "AL.Desc_Alumno AS Nombre,"
+                            + "CA.Desc_Carrera AS Carrera,"
+                            + "AL.Desc_Telefono_Alumno AS Telefono,"
+                            + "AL.Desc_Correo_Inst AS 'Correo Institucional',"
+                            + "AL.Desc_Correo_Part AS 'Correo Privado',"
+                            + "ES.Desc_Escuela AS Escuela,"
+                            + "SE.Desc_Sede AS Sede,"
+                            + "JO.Desc_Jornada AS Jornada,"
+                            + "SC.Score AS Score " + "\n"
+
+                            + " FROM "
+                            + "dbo.Score_Alumnos SC,"
+                            + "dbo.LK_Alumno AL,"
+                            + "dbo.LK_Carrera CA,"
+                            + "dbo.LK_Escuela ES,"
+                            + "dbo.LK_Sede SE,"
+                            + "dbo.LK_Jornada JO" + "\n"
+                            + " WHERE "
+                            + "AL.Id_Alumno = SC.Id_Alumno"
+                            + " AND "
+                            + "AL.Id_Carrera = CA.Id_Carrera"
+                            + " AND "
+                            + "CA.Id_Escuela = ES.Id_Escuela"
+                            + " AND "
+                            + "AL.Id_Sede = SE.Id_Sede"
+                            + " AND "
+                            + "AL.Id_Jornada = JO.Id_Jornada";
+
+            return consulta;
+
+        }
+
+        /// <summary>
         /// Este metodo servira para consultar a todos los Alumnos de la base de datos, previo filtro, con
         /// sus scores generales.
         /// </summary>
@@ -33,18 +72,7 @@ namespace ProyectoPermanencia.Negocio
             NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
             con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
                                      //Se crean una variable de texto, que permitira establecer las uniones con las tablas de la base datos
-            String auxSQL = " WHERE "
-       + "AL.Id_Alumno = SC.Id_Alumno"
-       + " AND "
-       + "AL.Id_Carrera = CA.Id_Carrera"
-       + " AND "
-       + "CA.Id_Escuela = ES.Id_Escuela"
-       + " AND "
-       + "AL.Id_Sede = SE.Id_Sede"
-       + " AND "
-       + "AL.Id_Jornada = JO.Id_Jornada";
-            //+ " AND "
-            //+ "AL.Desc_Rut_Alumno = IN.RUT";
+            String auxSQL = String.Empty;
 
             //Aplicar Filtros
             if (!String.IsNullOrEmpty(sede))
@@ -62,25 +90,7 @@ namespace ProyectoPermanencia.Negocio
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente
             */
-            con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
-                                               + "AL.Desc_Alumno AS Nombre,"
-                                               + "CA.Desc_Carrera AS Carrera,"
-                                               + "AL.Desc_Telefono_Alumno AS Telefono,"
-                                               + "AL.Desc_Correo_Inst AS 'Correo Institucional',"
-                                               + "AL.Desc_Correo_Part AS 'Correo Privado',"
-                                               + "ES.Desc_Escuela AS Escuela,"
-                                               + "SE.Desc_Sede AS Sede,"
-                                               + "JO.Desc_Jornada AS Jornada,"
-                                               + "SC.Score AS Score " + "\n"
-
-                                               + " FROM "
-                                               + "dbo.Score_Alumnos SC,"
-                                               + "dbo.LK_Alumno AL,"
-                                               + "dbo.LK_Carrera CA,"
-                                               + "dbo.LK_Escuela ES,"
-                                               + "dbo.LK_Sede SE,"
-                                               + "dbo.LK_Jornada JO" + "\n"
-                                               + auxSQL;
+            con.Conec1.IntruccioneSQL = consulta() + auxSQL;
 
             con.Conec1.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
             con.Conec1.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
@@ -102,16 +112,7 @@ namespace ProyectoPermanencia.Negocio
             NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
             con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
                                      //Se crean una variable de texto, que permitira establecer las uniones con las tablas de la base datos
-            String auxSQL = " WHERE "
-                               + "AL.Id_Alumno = SC.Id_Alumno"
-                               + " AND "
-                               + "AL.Id_Carrera = CA.Id_Carrera"
-                               + " AND "
-                               + "CA.Id_Escuela = ES.Id_Escuela"
-                               + " AND "
-                               + "AL.Id_Sede = SE.Id_Sede"
-                               + " AND "
-                               + "AL.Id_Jornada = JO.Id_Jornada";
+            String auxSQL = String.Empty;
 
             //Aplicar Filtros
             if (!String.IsNullOrEmpty(rn) && valorTipo.Equals("1"))
@@ -124,25 +125,7 @@ namespace ProyectoPermanencia.Negocio
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente
             */
-            con.Conec1.IntruccioneSQL = "SELECT AL.Desc_Rut_Alumno AS Rut,"
-                                               + "AL.Desc_Alumno AS Nombre,"
-                                               + "CA.Desc_Carrera AS Carrera,"
-                                               + "AL.Desc_Telefono_Alumno AS Telefono,"
-                                               + "AL.Desc_Correo_Inst AS 'Correo Institucional',"
-                                               + "AL.Desc_Correo_Part AS 'Correo Privado',"
-                                               + "ES.Desc_Escuela AS Escuela," 
-                                               + "SE.Desc_Sede AS Sede,"
-                                               + "JO.Desc_Jornada AS Jornada,"
-                                               + "SC.Score AS Score " + "\n"
-
-                                               + " FROM "
-                                               + "dbo.Score_Alumnos SC,"
-                                               + "dbo.LK_Alumno AL,"
-                                               + "dbo.LK_Carrera CA,"
-                                               + "dbo.LK_Escuela ES,"
-                                               + "dbo.LK_Sede SE,"
-                                               + "dbo.LK_Jornada JO" + "\n"
-                                               + auxSQL;
+            con.Conec1.IntruccioneSQL = consulta() + auxSQL;
 
             con.Conec1.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
             con.Conec1.conectar(); //Se inicia la conexion con la query anteriormente ingresada.

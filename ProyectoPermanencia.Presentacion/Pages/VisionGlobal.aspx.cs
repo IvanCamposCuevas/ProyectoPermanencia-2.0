@@ -83,6 +83,7 @@ namespace ProyectoPermanencia.Presentacion
             chkListaCarreras.DataTextField = "Desc_Carrera";
             chkListaCarreras.DataValueField = "Id_Escuela";
             chkListaCarreras.DataBind();
+            listaCarrera.RowFilter = "";
             mpe.Show();
         }
 

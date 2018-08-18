@@ -9,7 +9,7 @@ using System.Data.Common;
 using System.Data;
 namespace ProyectoPermanencia.Negocio
 {
-    public class NegocioCargaArchivo
+    public class NegocioCargaArchivo : NegocioConexionBD
     {
         /// <summary>
         /// Obtiene el nombre de la hoja a traves del archivo excel.
@@ -35,9 +35,7 @@ namespace ProyectoPermanencia.Negocio
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {
-                        NegocioConexionBD con = new NegocioConexionBD();
-                        con.configuraConexion();
-                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
+                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(Conexion.CadenaConexion))
                         {
                             bulkCopy.DestinationTableName = "dbo.AsistenciaSTG";
                             bulkCopy.WriteToServer(dr);
@@ -68,9 +66,7 @@ namespace ProyectoPermanencia.Negocio
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {
-                        NegocioConexionBD con = new NegocioConexionBD();
-                        con.configuraConexion();
-                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
+                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(Conexion.CadenaConexion))
                         {
                             bulkCopy.DestinationTableName = "dbo.Morosos_STG";
                             bulkCopy.WriteToServer(dr);
@@ -101,9 +97,7 @@ namespace ProyectoPermanencia.Negocio
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {
-                        NegocioConexionBD con = new NegocioConexionBD();
-                        con.configuraConexion();
-                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
+                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(Conexion.CadenaConexion))
                         {
                             bulkCopy.DestinationTableName = "dbo.Curso_STG";
                             bulkCopy.WriteToServer(dr);
@@ -134,9 +128,7 @@ namespace ProyectoPermanencia.Negocio
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {
-                        NegocioConexionBD con = new NegocioConexionBD();
-                        con.configuraConexion();
-                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(con.Conec1.CadenaConexion))
+                        using (SqlBulkCopy bulkCopy = new SqlBulkCopy(Conexion.CadenaConexion))
                         {
                             bulkCopy.DestinationTableName = "dbo.Indice_STG";
                             

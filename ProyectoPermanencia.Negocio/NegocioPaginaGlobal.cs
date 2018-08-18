@@ -16,7 +16,7 @@ namespace ProyectoPermanencia.Negocio
     /// Clase que servira para consultar y devolver los datos pedidos por la pagina VisionGlobal.aspx,
     /// esta traera todo los alumnos de la base de datos, previo filtro, y los llenara en una grilla.
     /// </summary>
-    public class NegocioPaginaGlobal
+    public class NegocioPaginaGlobal : NegocioConexionBD
     {
         /// <summary>
         /// Metodo que devualve una consulta en forma de cadena de caracteres, 
@@ -34,7 +34,6 @@ namespace ProyectoPermanencia.Negocio
                             + "SE.Desc_Sede AS Sede,"
                             + "JO.Desc_Jornada AS Jornada,"
                             + "SC.Score AS Score " + "\n"
-
                             + " FROM "
                             + "dbo.Score_Alumnos SC,"
                             + "dbo.LK_Alumno AL,"
@@ -69,11 +68,7 @@ namespace ProyectoPermanencia.Negocio
         /// <returns></returns>
         public DataSet ConsultaScorePorFiltro(String sede, String jornada, String escuela, List<string> carrera)
         {
-            NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
-            con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
-                                     //Se crean una variable de texto, que permitira establecer las uniones con las tablas de la base datos
             String auxSQL = String.Empty;
-
             //Aplicar Filtros
             if (!String.IsNullOrEmpty(sede))
                 auxSQL = auxSQL + " AND AL.Id_Sede = '" + sede + "'";
@@ -90,12 +85,12 @@ namespace ProyectoPermanencia.Negocio
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente
             */
-            con.Conec1.IntruccioneSQL = consulta() + auxSQL;
+            Conexion.IntruccioneSQL = consulta() + auxSQL;
 
-            con.Conec1.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
-            con.Conec1.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
+            Conexion.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
+            Conexion.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
 
-            return con.Conec1.DbDat; //Se retornan los datos en un DataSet.
+            return Conexion.DbDat; //Se retornan los datos en un DataSet.
         } // Fin metodo entrega
 
 
@@ -109,9 +104,6 @@ namespace ProyectoPermanencia.Negocio
         /// <returns></returns>
         public DataSet consultaScorePorRutNombre(String rn, String valorTipo)
         {
-            NegocioConexionBD con = new NegocioConexionBD(); //Instancia la Clase NegocioConexionBD.
-            con.configuraConexion(); //Se inicianalizan los parametros que me permitiran conectarme a la base de datos
-                                     //Se crean una variable de texto, que permitira establecer las uniones con las tablas de la base datos
             String auxSQL = String.Empty;
 
             //Aplicar Filtros
@@ -125,12 +117,12 @@ namespace ProyectoPermanencia.Negocio
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente
             */
-            con.Conec1.IntruccioneSQL = consulta() + auxSQL;
+            Conexion.IntruccioneSQL = consulta() + auxSQL;
 
-            con.Conec1.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
-            con.Conec1.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
+            Conexion.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
+            Conexion.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
 
-            return con.Conec1.DbDat; //Se retornan los datos en un DataSet.
+            return Conexion.DbDat; //Se retornan los datos en un DataSet.
         } // Fin metodo entrega
 
 
@@ -198,12 +190,10 @@ namespace ProyectoPermanencia.Negocio
 
         public DataSet cargarListaCarrera()
         {
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
-            conexion.Conec1.IntruccioneSQL = "SELECT DISTINCT [Desc_Carrera], [Id_Escuela] FROM [LK_Carrera] ORDER BY [Desc_Carrera]";
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            return conexion.Conec1.DbDat;
+            Conexion.IntruccioneSQL = "SELECT DISTINCT [Desc_Carrera], [Id_Escuela] FROM [LK_Carrera] ORDER BY [Desc_Carrera]";
+            Conexion.EsSelect = true;
+            Conexion.conectar();
+            return Conexion.DbDat;
         }
     }
 }

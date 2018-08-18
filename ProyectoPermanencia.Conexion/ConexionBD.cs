@@ -9,7 +9,7 @@ using System.Windows;
 using ProyectoPermanencia.DTO;
 namespace ProyectoPermanencia.Conexion
 {
-    public class Conexion
+    public class ConexionBD
     {
         private String nombreBaseDeDatos;
 

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Data;
 using System.Web.UI.WebControls;
-
+using ProyectoPermanencia.Negocio;
 
 
 namespace ProyectoPermanencia.Presentacion
 {
     public partial class VisionGlobal : System.Web.UI.Page
     {
+        static NegocioPaginaGlobal negocio = new NegocioPaginaGlobal();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -39,7 +41,7 @@ namespace ProyectoPermanencia.Presentacion
         {
             if (txtRutNombre.Text != "")
             {
-                Negocio.NegocioPaginaGlobal auxNegocio = new Negocio.NegocioPaginaGlobal();
+                NegocioPaginaGlobal auxNegocio = new NegocioPaginaGlobal();
                 this.grvGlobal.DataSource = auxNegocio.consultaScorePorRutNombre(this.txtRutNombre.Text, ddlRutNom.SelectedValue);
                 this.grvGlobal.DataBind();
             }
@@ -55,7 +57,6 @@ namespace ProyectoPermanencia.Presentacion
         {
             try
             {
-                Negocio.NegocioPaginaGlobal auxNegocio = new Negocio.NegocioPaginaGlobal();
                 System.Collections.Generic.List<String> listaCarreras = new System.Collections.Generic.List<string>();
                 foreach (ListItem item in chkListaCarreras.Items)
                 {
@@ -64,7 +65,7 @@ namespace ProyectoPermanencia.Presentacion
                         listaCarreras.Add(item.Text);
                     }
                 }
-                this.grvGlobal.DataSource = auxNegocio.ConsultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, listaCarreras);
+                this.grvGlobal.DataSource = negocio.ConsultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, listaCarreras);
                 this.grvGlobal.DataBind();
             }
             catch (Exception ex)
@@ -97,7 +98,7 @@ namespace ProyectoPermanencia.Presentacion
             }
             else
             {
-                listaCarrera = new Negocio.NegocioPaginaGlobal().cargarListaCarrera().Tables["clientes"].AsDataView();
+                listaCarrera = negocio.cargarListaCarrera().Tables[negocio.Conexion.NombreTabla].AsDataView();
                 Session["Lista Carrera"] = listaCarrera;
                 cargarCheckboxs(listaCarrera);
             }

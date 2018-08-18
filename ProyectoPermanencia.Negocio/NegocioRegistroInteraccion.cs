@@ -10,7 +10,7 @@ using ProyectoPermanencia.DTO;
 namespace ProyectoPermanencia.Negocio
 {
     //Clase que interactúa con la pagina que registra las interacciones. CRUD.
-    public class NegocioRegistroInteraccion
+    public class NegocioRegistroInteraccion : NegocioConexionBD
     {
         //Metodo que carga DDL de cursos (ramo-sección) en los que está inscrito el alumno
         //(param) string con el rut del alumno
@@ -18,18 +18,16 @@ namespace ProyectoPermanencia.Negocio
         public DataSet CargarddlCurso(string rutAlumno)
         {
             //Instancia conexión
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
 
             //validar que rut no llegue vacío
             if (!String.IsNullOrEmpty(rutAlumno))
             {
                 //Consulta
-                conexion.Conec1.IntruccioneSQL = String.Format("SELECT DISTINCT ASI.Id_Asignatura, CONCAT(CU.[CODIGO ASIGNATURA],' - ', CU.SECCION) AS CURSO FROM Curso_STG CU, LK_Asignatura ASI WHERE [RUT ALUMNO] = '{0}' AND CU.[CODIGO ASIGNATURA] = ASI.Cod_Asignatura AND CU.SECCION = ASI.Seccion;", rutAlumno);
+                Conexion.IntruccioneSQL = String.Format("SELECT DISTINCT ASI.Id_Asignatura, CONCAT(CU.[CODIGO ASIGNATURA],' - ', CU.SECCION) AS CURSO FROM Curso_STG CU, LK_Asignatura ASI WHERE [RUT ALUMNO] = '{0}' AND CU.[CODIGO ASIGNATURA] = ASI.Cod_Asignatura AND CU.SECCION = ASI.Seccion;", rutAlumno);
             }
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            return conexion.Conec1.DbDat;
+            Conexion.EsSelect = true;
+            Conexion.conectar();
+            return Conexion.DbDat;
         }
 
         ////Metodo que carga DDL de tipo de caso que se puede abrir
@@ -67,12 +65,10 @@ namespace ProyectoPermanencia.Negocio
         //(return) "arreglo" DataSet con información de resultado de la query
         public DataSet CargarddlCasos(string rutAlumno)
         {
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
 
             if (!String.IsNullOrEmpty(rutAlumno))
             {
-                conexion.Conec1.IntruccioneSQL =
+                Conexion.IntruccioneSQL =
                     String.Format("SELECT DISTINCT CA.Id_Caso, " +
                                                    "CA.Fecha_Inicio AS 'Fecha'," +
                                                    "CONCAT (CONVERT (nvarchar ,CONVERT(date, CA.Fecha_Inicio)), ' - ', " +
@@ -94,44 +90,40 @@ namespace ProyectoPermanencia.Negocio
                                        "AND AL.Desc_Rut_Alumno = '{0}' " +
                                        "ORDER BY Fecha DESC;", rutAlumno);
             }
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            return conexion.Conec1.DbDat;
+            Conexion.EsSelect = true;
+            Conexion.conectar();
+            return Conexion.DbDat;
         }
 
         //Método que crea el caso, sin asignarle una intervención aún
         //(param) rut del alumno, tipo de caso y id del curso
         public bool CreaCaso(string rutalumno, string tipo, string idcurso)
         {
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
-
-
             //Si el rut viene con información
             if (!String.IsNullOrEmpty(rutalumno))
             {
 
                 //Consulta para traer el id del alumno por su rut
-                conexion.Conec1.IntruccioneSQL = String.Format("SELECT Id_Alumno FROM LK_Alumno WHERE Desc_Rut_Alumno = '{0}';", rutalumno);
+                Conexion.IntruccioneSQL = String.Format("SELECT Id_Alumno FROM LK_Alumno WHERE Desc_Rut_Alumno = '{0}';", rutalumno);
 
-                conexion.Conec1.EsSelect = true;
-                conexion.Conec1.conectar();
-                string idalumno = conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
+                Conexion.EsSelect = true;
+                Conexion.conectar();
+                string idalumno = Conexion.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
 
                 //Insert de caso Asistencia/Noas 
                 if ((!String.IsNullOrEmpty(tipo)) && (!String.IsNullOrEmpty(idcurso)))
                 {
-                    conexion.Conec1.IntruccioneSQL = String.Format("INSERT INTO Caso (Fecha_Inicio, Id_Alumno, Id_Asignatura, Id_TipoCaso, Id_Estado) VALUES (SYSDATETIME(), {0}, {1}, {2}, 1)", idalumno, idcurso, tipo);
-                    conexion.Conec1.EsSelect = false;
-                    conexion.Conec1.conectar();
+                    Conexion.IntruccioneSQL = String.Format("INSERT INTO Caso (Fecha_Inicio, Id_Alumno, Id_Asignatura, Id_TipoCaso, Id_Estado) VALUES (SYSDATETIME(), {0}, {1}, {2}, 1)", idalumno, idcurso, tipo);
+                    Conexion.EsSelect = false;
+                    Conexion.conectar();
                     return true;
                 }
                 //Insert de caso finanzas
                 else if ((!String.IsNullOrEmpty(tipo)) && (String.IsNullOrEmpty(idcurso)))
                 {
-                    conexion.Conec1.IntruccioneSQL = String.Format("INSERT INTO Caso (Fecha_Inicio, Id_Alumno, Id_TipoCaso, Id_Estado) VALUES (SYSDATETIME(), {0}, {1}, 1)", idalumno, tipo);
-                    conexion.Conec1.EsSelect = false;
-                    conexion.Conec1.conectar();
+                    Conexion.IntruccioneSQL = String.Format("INSERT INTO Caso (Fecha_Inicio, Id_Alumno, Id_TipoCaso, Id_Estado) VALUES (SYSDATETIME(), {0}, {1}, 1)", idalumno, tipo);
+                    Conexion.EsSelect = false;
+                    Conexion.conectar();
                     return true;
                 }
                 else
@@ -154,14 +146,12 @@ namespace ProyectoPermanencia.Negocio
         {
             if (!String.IsNullOrEmpty(idCaso))
             {
-                NegocioConexionBD conexion = new NegocioConexionBD();
-                conexion.configuraConexion();
 
                 //Query cambia id_estadoCaso, no elimina el caso.
-                conexion.Conec1.IntruccioneSQL = String.Format("UPDATE Caso SET Id_Estado = '2' WHERE Id_Caso = '{0}'", idCaso);
+                Conexion.IntruccioneSQL = String.Format("UPDATE Caso SET Id_Estado = '2' WHERE Id_Caso = '{0}'", idCaso);
 
-                conexion.Conec1.EsSelect = false;
-                conexion.Conec1.conectar();
+                Conexion.EsSelect = false;
+                Conexion.conectar();
                 return true;
             }
 
@@ -173,10 +163,8 @@ namespace ProyectoPermanencia.Negocio
         {
             try
             {
-                NegocioConexionBD conexion = new NegocioConexionBD();
-                conexion.configuraConexion();
 
-                conexion.Conec1.IntruccioneSQL = "prc_InsertarInteraccion";
+                Conexion.IntruccioneSQL = "prc_InsertarInteraccion";
                 DTOInteraccion datosInteraccion = new DTOInteraccion();
                 datosInteraccion.rutAlumno = rutAlumno;
                 datosInteraccion.tipoInteraccion = int.Parse(tipoInter);
@@ -195,7 +183,7 @@ namespace ProyectoPermanencia.Negocio
                 {
                     datosInteraccion.rutaArchivo = string.Empty;
                 }
-                conexion.Conec1.conectarProcInsertarInteraccion(datosInteraccion);
+                Conexion.conectarProcInsertarInteraccion(datosInteraccion);
                 return true;
             }
             catch (Exception ex)
@@ -234,20 +222,18 @@ namespace ProyectoPermanencia.Negocio
 
         public string UltimoCaso(string rutalumno)
         {
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
 
             //Consulta para traer el id del alumno por su rut
-            conexion.Conec1.IntruccioneSQL = String.Format("SELECT Id_Alumno FROM LK_Alumno WHERE Desc_Rut_Alumno = '{0}';", rutalumno);
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            string idalumno = conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
+            Conexion.IntruccioneSQL = String.Format("SELECT Id_Alumno FROM LK_Alumno WHERE Desc_Rut_Alumno = '{0}';", rutalumno);
+            Conexion.EsSelect = true;
+            Conexion.conectar();
+            string idalumno = Conexion.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
 
             //Consulta para traer el ultimo Id_Caso agregado para el alumno
-            conexion.Conec1.IntruccioneSQL = String.Format("SELECT MAX(Id_Caso) AS 'Id_Caso' FROM Caso WHERE Id_Alumno = '{0}'", idalumno);            
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            string idcaso = conexion.Conec1.DbDat.Tables[0].Rows[0]["Id_Caso"].ToString();
+            Conexion.IntruccioneSQL = String.Format("SELECT MAX(Id_Caso) AS 'Id_Caso' FROM Caso WHERE Id_Alumno = '{0}'", idalumno);            
+            Conexion.EsSelect = true;
+            Conexion.conectar();
+            string idcaso = Conexion.DbDat.Tables[0].Rows[0]["Id_Caso"].ToString();
 
             return idcaso;
         }

@@ -55,10 +55,8 @@ namespace ProyectoPermanencia.Negocio
             if (!String.IsNullOrEmpty(idCaso))
             {
                 //Query cambia id_estadoCaso, para pasar de pendiente a finalizado, no elimina el caso.
-                Conexion.IntruccioneSQL = String.Format("UPDATE Caso SET Id_Estado = '3' WHERE Id_Caso = '{0}'", idCaso);
-
-                Conexion.EsSelect = false;
-                Conexion.conectar();
+                Conexion.IntruccioneSQL = "prc_FinalizarCasoInteraccion";
+                Conexion.conectarProcFinalizarCasoInteraccion(int.Parse(idCaso));
                 return true;
             }
 

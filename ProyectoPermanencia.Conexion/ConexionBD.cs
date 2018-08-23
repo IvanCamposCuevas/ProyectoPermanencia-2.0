@@ -179,7 +179,7 @@ namespace ProyectoPermanencia.Conexion
             this.cerrarConexion();
         }
 
-        public void conectarProcInsertarInteraccion(DTOInteraccion interaccion) {
+        public void conectarProcInsertarInteraccion(DataTable datosInteraccion, DataTable idParticipantes) {
 
             comprobarConexion();
 
@@ -187,44 +187,80 @@ namespace ProyectoPermanencia.Conexion
             {
                 variableSQL = new SqlCommand(this.IntruccioneSQL, this.DbConnection);
                 variableSQL.CommandType = CommandType.StoredProcedure;
-                SqlParameter paramRut = new SqlParameter();
-                paramRut.ParameterName = "@rut";
-                paramRut.Value = interaccion.rutAlumno;
-                SqlParameter paramIdCaso = new SqlParameter();
-                paramIdCaso.ParameterName = "@idCaso";
-                paramIdCaso.Value = interaccion.idCaso;
-                SqlParameter paramTipoint = new SqlParameter();
-                paramTipoint.ParameterName = "@tipoInteraccion";
-                paramTipoint.Value = interaccion.tipoInteraccion;
-                SqlParameter paramIdArea = new SqlParameter();
-                paramIdArea.ParameterName = "@idArea";
-                paramIdArea.Value = interaccion.idArea;
-                SqlParameter paramComentario = new SqlParameter();
-                paramComentario.ParameterName = "@comentario";
-                paramComentario.Value = interaccion.comentarios;
+                SqlParameter paramDatos = new SqlParameter();
+                paramDatos.ParameterName = "@datos";
+                paramDatos.Value = datosInteraccion;
                 SqlParameter paramParticipantes = new SqlParameter();
                 paramParticipantes.ParameterName = "@valores";
-                paramParticipantes.Value = interaccion.participantes;
-                SqlParameter paramFechaInt = new SqlParameter();
-                paramFechaInt.ParameterName = "@fechaInteraccion";
-                paramFechaInt.Value = interaccion.fechaInteraccion;
-                SqlParameter paramArchivo = new SqlParameter();
-                paramArchivo.ParameterName = "@rutaArchivo";
-                paramArchivo.Value = interaccion.rutaArchivo;
-                variableSQL.Parameters.Add(paramRut);
-                variableSQL.Parameters.Add(paramIdCaso);
-                variableSQL.Parameters.Add(paramTipoint);
-                variableSQL.Parameters.Add(paramIdArea);
-                variableSQL.Parameters.Add(paramComentario);
+                paramParticipantes.Value = idParticipantes;
+                SqlParameter paramIdCaso = new SqlParameter();
+                paramIdCaso.ParameterName = "@idCaso";
+                paramIdCaso.Value = 0;
+                variableSQL.Parameters.Add(paramDatos);
                 variableSQL.Parameters.Add(paramParticipantes);
-                variableSQL.Parameters.Add(paramFechaInt);
-                variableSQL.Parameters.Add(paramArchivo);
+                variableSQL.Parameters.Add(paramIdCaso);
                 variableSQL.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
                 throw new Exception("Error en el SQL "+ex.Message);
             }
+            cerrarConexion();
+        }
+
+        public void conectarProcInsertarCasoInteraccion(DataTable datosInteraccion, DataTable idParticipantes, int tipoCaso, int idcurso)
+        {
+            comprobarConexion();
+            try
+            {
+                variableSQL = new SqlCommand(this.IntruccioneSQL, this.DbConnection);
+                variableSQL.CommandType = CommandType.StoredProcedure;
+                SqlParameter paramDatos = new SqlParameter();
+                paramDatos.ParameterName = "@datos";
+                paramDatos.Value = datosInteraccion;
+                SqlParameter paramParticipantes = new SqlParameter();
+                paramParticipantes.ParameterName = "@valores";
+                paramParticipantes.Value = idParticipantes;
+                SqlParameter paramAsignatura = new SqlParameter();
+                paramAsignatura.ParameterName = "@idAsignatura";
+                paramAsignatura.Value = idcurso;
+                SqlParameter paramTipoCaso = new SqlParameter();
+                paramTipoCaso.ParameterName = "@idTipoCaso";
+                paramTipoCaso.Value = tipoCaso;
+                variableSQL.Parameters.Add(paramDatos);
+                variableSQL.Parameters.Add(paramParticipantes);
+                variableSQL.Parameters.Add(paramAsignatura);
+                variableSQL.Parameters.Add(paramTipoCaso);
+                variableSQL.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+
+                throw new Exception("Error en el SQL " + ex.Message);
+            }
+
+            cerrarConexion();
+        }
+
+        public void conectarProcFinalizarCasoInteraccion(int idCaso)
+        {
+            comprobarConexion();
+            try
+            {
+                variableSQL = new SqlCommand(this.IntruccioneSQL, this.DbConnection);
+                variableSQL.CommandType = CommandType.StoredProcedure;
+                SqlParameter paramIdCaso = new SqlParameter();
+                paramIdCaso.ParameterName = "@idCaso";
+                paramIdCaso.Value = idCaso;
+                variableSQL.Parameters.Add(paramIdCaso);
+                variableSQL.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+
+                throw new Exception("Error en el SQL " + ex.Message);
+            }
+
             cerrarConexion();
         }
     }

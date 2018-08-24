@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoPermanencia.Negocio
 {
-    public class NegocioDetalleCaso
+    public class NegocioDetalleCaso : NegocioConexionBD
     {
         private string consultaDetalleCaso() {
 
@@ -40,15 +40,13 @@ namespace ProyectoPermanencia.Negocio
 
         public System.Data.DataSet obtenerDetalleInteraccion(int idCaso)
         {
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
 
-            conexion.Conec1.IntruccioneSQL = consultaDetalleCaso() +
+            Conexion.IntruccioneSQL = consultaDetalleCaso() +
                             " WHERE I.Id_Caso = "+idCaso;
 
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            return conexion.Conec1.DbDat;
+            Conexion.EsSelect = true;
+            Conexion.conectar();
+            return Conexion.DbDat;
         }
 
 
@@ -56,14 +54,9 @@ namespace ProyectoPermanencia.Negocio
         {
             if (!String.IsNullOrEmpty(idCaso))
             {
-                NegocioConexionBD conexion = new NegocioConexionBD();
-                conexion.configuraConexion();
-
                 //Query cambia id_estadoCaso, para pasar de pendiente a finalizado, no elimina el caso.
-                conexion.Conec1.IntruccioneSQL = String.Format("UPDATE Caso SET Id_Estado = '3' WHERE Id_Caso = '{0}'", idCaso);
-
-                conexion.Conec1.EsSelect = false;
-                conexion.Conec1.conectar();
+                Conexion.IntruccioneSQL = "prc_FinalizarCasoInteraccion";
+                Conexion.conectarProcFinalizarCasoInteraccion(int.Parse(idCaso));
                 return true;
             }
 

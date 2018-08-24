@@ -26,22 +26,37 @@ namespace ProyectoPermanencia.Presentacion
                     if (extArchivo.Equals(".xls") || extArchivo.Equals(".xlsx"))
                     {
                         fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);
-                        if (opcion.Equals("1"))
+                        switch (opcion)
                         {
-                            new neg().agregarArchivoAsistencia(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                            case "1":
+                                new neg().agregarArchivoAsistencia(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                                break;
+                            case "2":
+                                new neg().agregarArchivoNotas(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                                break;
+                            case "3":
+                                new neg().agregarArchivoDeuda(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                                break;
+                            case "4":
+                                new neg().agregarArchivoIndice(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                                break;
                         }
-                        if (opcion.Equals("2"))
-                        {
-                            new neg().agregarArchivoNotas(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
-                        }
-                        if (opcion.Equals("3"))
-                        {
-                            new neg().agregarArchivoDeuda(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
-                        }
-                        if (opcion.Equals("4"))
-                        {
-                            new neg().agregarArchivoIndice(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
-                        }
+                        //if (opcion.Equals("1"))
+                        //{
+                        //    new neg().agregarArchivoAsistencia(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                        //}
+                        //if (opcion.Equals("2"))
+                        //{
+                        //    new neg().agregarArchivoNotas(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                        //}
+                        //if (opcion.Equals("3"))
+                        //{
+                        //    new neg().agregarArchivoDeuda(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                        //}
+                        //if (opcion.Equals("4"))
+                        //{
+                        //    new neg().agregarArchivoIndice(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                        //}
                     }
                     else
                     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoPermanencia.Negocio
 {
-    public class NegocioResolucion
+    public class NegocioResolucion : NegocioConexionBD
     {
         /// <summary>
         /// Retorna la parte principal de la consulta
@@ -89,8 +89,6 @@ namespace ProyectoPermanencia.Negocio
         /// <returns></returns>
 
         public DataSet buscarCasoSinFiltro(string tipoBusqueda, string busqueda) {
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
             string auxSQL ="";
             /**
              * TipoBusqueda = 1; busca por ID
@@ -111,10 +109,10 @@ namespace ProyectoPermanencia.Negocio
             }
 
             auxSQL += " ORDER BY base.ID DESC ";
-            conexion.Conec1.IntruccioneSQL = consulta() + auxSQL;
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            return conexion.Conec1.DbDat;
+            Conexion.IntruccioneSQL = consulta() + auxSQL;
+            Conexion.EsSelect = true;
+            Conexion.conectar();
+            return Conexion.DbDat;
         }
 
         /// <summary>
@@ -129,8 +127,6 @@ namespace ProyectoPermanencia.Negocio
 
         public DataSet buscarCasoConFiltro(List<string> listaCasos, List<string> listaInvertenciones, DateTime fechaInicio, DateTime fechaTermino)
         {
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
             string auxSQL = "";
 
             #region Filtros
@@ -190,24 +186,22 @@ namespace ProyectoPermanencia.Negocio
 
             auxSQL += " ORDER BY base.ID DESC ";
 
-            conexion.Conec1.IntruccioneSQL = consulta() + auxSQL;
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            return conexion.Conec1.DbDat;
+            Conexion.IntruccioneSQL = consulta() + auxSQL;
+            Conexion.EsSelect = true;
+            Conexion.conectar();
+            return Conexion.DbDat;
         }
 
         public DataSet buscarCasoPorRut(string rut)
         {
-            NegocioConexionBD conexion = new NegocioConexionBD();
-            conexion.configuraConexion();
 
-            conexion.Conec1.IntruccioneSQL = consulta()
+            Conexion.IntruccioneSQL = consulta()
                                              + "base.[Rut Alumno] = '" + rut + "' "
                                              + " ORDER BY base.ID DESC";
 
-            conexion.Conec1.EsSelect = true;
-            conexion.Conec1.conectar();
-            return conexion.Conec1.DbDat;
+            Conexion.EsSelect = true;
+            Conexion.conectar();
+            return Conexion.DbDat;
         }
     }
 }

@@ -5,11 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using ProyectoPermanencia.Negocio;
 namespace ProyectoPermanencia.Presentacion.Pages
 {
     public partial class EtapasResolucion : System.Web.UI.Page
     {
+        static NegocioResolucion negocio = new NegocioResolucion();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -21,7 +23,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
             {
                 if (!String.IsNullOrEmpty(txtIngresoBusqueda.Text))
                 {
-                    DataView dv = new Negocio.NegocioResolucion().buscarCasoSinFiltro(ddlTipoBusqueda.SelectedValue, txtIngresoBusqueda.Text).Tables["clientes"].AsDataView();
+                    DataView dv = negocio.buscarCasoSinFiltro(ddlTipoBusqueda.SelectedValue, txtIngresoBusqueda.Text).Tables[negocio.Conexion.NombreTabla].AsDataView();
                     Session["dvGeneral"] = dv;
                     dv.RowFilter = "Estado = 'Pendiente'";
                     grvIntervenciones.DataSource = dv;
@@ -109,7 +111,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 dtFechaTermino = new DateTime(int.Parse(arrayFechaTermino[0]), int.Parse(arrayFechaTermino[1]), int.Parse(arrayFechaTermino[2]));
             }
 
-            DataView dv = new Negocio.NegocioResolucion().buscarCasoConFiltro(listaCasos, listaIntervenciones, dtFechaInicio, dtFechaTermino).Tables["clientes"].AsDataView();
+            DataView dv = negocio.buscarCasoConFiltro(listaCasos, listaIntervenciones, dtFechaInicio, dtFechaTermino).Tables[negocio.Conexion.NombreTabla].AsDataView();
             Session["dvGeneral"] = dv;
             dv.RowFilter = "Estado = 'Pendiente'";
             grvIntervenciones.DataSource = dv;

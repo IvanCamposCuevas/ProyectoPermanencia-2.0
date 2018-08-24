@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Data;
 using System.Web.UI.WebControls;
-
+using ProyectoPermanencia.Negocio;
 
 
 namespace ProyectoPermanencia.Presentacion
 {
     public partial class VisionGlobal : System.Web.UI.Page
     {
+        static NegocioPaginaGlobal negocio = new NegocioPaginaGlobal();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -38,7 +41,7 @@ namespace ProyectoPermanencia.Presentacion
         {
             if (txtRutNombre.Text != "")
             {
-                Negocio.NegocioPaginaGlobal auxNegocio = new Negocio.NegocioPaginaGlobal();
+                NegocioPaginaGlobal auxNegocio = new NegocioPaginaGlobal();
                 this.grvGlobal.DataSource = auxNegocio.consultaScorePorRutNombre(this.txtRutNombre.Text, ddlRutNom.SelectedValue);
                 this.grvGlobal.DataBind();
             }
@@ -46,7 +49,7 @@ namespace ProyectoPermanencia.Presentacion
             {
                 System.Windows.Forms.MessageBox.Show("Ingrese la informacion dentro del campo de texto");
             }
-           
+
 
         }
 
@@ -54,7 +57,6 @@ namespace ProyectoPermanencia.Presentacion
         {
             try
             {
-                Negocio.NegocioPaginaGlobal auxNegocio = new Negocio.NegocioPaginaGlobal();
                 System.Collections.Generic.List<String> listaCarreras = new System.Collections.Generic.List<string>();
                 foreach (ListItem item in chkListaCarreras.Items)
                 {
@@ -63,22 +65,43 @@ namespace ProyectoPermanencia.Presentacion
                         listaCarreras.Add(item.Text);
                     }
                 }
-                this.grvGlobal.DataSource = auxNegocio.ConsultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, listaCarreras);
+                this.grvGlobal.DataSource = negocio.ConsultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, listaCarreras);
                 this.grvGlobal.DataBind();
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message+";"+ex.InnerException);
+                System.Windows.Forms.MessageBox.Show(ex.Message + ";" + ex.InnerException);
             }
+        }
+
+        private void cargarCheckboxs(DataView listaCarrera)
+        {
+            if (!ddlEscuelas.SelectedValue.Equals("0"))
+            {
+                listaCarrera.RowFilter = "Id_Escuela = " + ddlEscuelas.SelectedValue;
+            }
+            chkListaCarreras.DataSource = listaCarrera;
+            chkListaCarreras.DataTextField = "Desc_Carrera";
+            chkListaCarreras.DataValueField = "Id_Escuela";
+            chkListaCarreras.DataBind();
+            listaCarrera.RowFilter = "";
+            mpe.Show();
         }
 
         protected void ddlEscuelas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chkListaCarreras.DataSource = new Negocio.NegocioPaginaGlobal().cargarListaCarrera(ddlEscuelas.SelectedValue);
-            chkListaCarreras.DataTextField = "Desc_Carrera";
-            chkListaCarreras.DataValueField = "Desc_Carrera";
-            chkListaCarreras.DataBind();
-            mpe.Show();
+            DataView listaCarrera = new DataView();
+            if (Session["Lista Carrera"] != null)
+            {
+                listaCarrera = (DataView)Session["Lista Carrera"];
+                cargarCheckboxs(listaCarrera);
+            }
+            else
+            {
+                listaCarrera = negocio.cargarListaCarrera().Tables[negocio.Conexion.NombreTabla].AsDataView();
+                Session["Lista Carrera"] = listaCarrera;
+                cargarCheckboxs(listaCarrera);
+            }
         }
 
         protected void grvGlobal_RowDataBound(object sender, GridViewRowEventArgs e)

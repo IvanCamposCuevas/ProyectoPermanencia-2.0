@@ -63,7 +63,7 @@
                                         <asp:RadioButton runat="server" ID="rbtnExistentes" GroupName="corresponde" AutoPostBack="true" Text="Existente" CssClass="radio-inline form-control-sm" OnCheckedChanged="rbtnExistentes_CheckedChanged" Checked="True" />
                                     </div>
                                     <div class="col-md-8 container m-0 p-0">
-                                        <asp:DropDownList runat="server" ID="ddlCasos" CssClass="form-control form-control-sm" Font-Size="Smaller" OnDataBound="ddlCasos_DataBound">
+                                        <asp:DropDownList runat="server" ID="ddlCasos" CssClass="form-control form-control-sm" Font-Size="Smaller">
                                             <asp:ListItem>Seleccione</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
@@ -183,6 +183,7 @@
                                         </div>
                                         <div class="col-md-1">
                                             <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success btn-sm center-block" OnClick="btnGuardar_Click" />
+                                            <asp:Button ID="btnFinalizarCaso" runat="server" CssClass="btn btn-danger" OnClick="btnFinalizarCaso_Click" Text="Finalizar Caso" />
                                         </div>
                                     </div>
 

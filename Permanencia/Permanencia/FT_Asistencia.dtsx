@@ -12,8 +12,8 @@
   DTS:ObjectName="FT_Asistencia"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="69"
-  DTS:VersionGUID="{66F372AB-DB06-470E-8029-63386F1D26F6}">
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{9D9D0F5B-525D-443F-B268-C6FCAB440BD5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -165,7 +165,7 @@
       ,[Carrera del Alumno]
       ,[IDEvento]
       ,[Evento]
-      ,[DescEvento]
+      ,substring([Evento],1,CHARINDEX ('-',[Evento],1)-1) as [DescEvento]
       ,[Jornada]
       ,[ID Docente]
       ,[Rut Docente]
@@ -1355,7 +1355,7 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
         <NodeLayout
           Size="125,42"
           Id="Package\Tarea Flujo de datos\Asistencia"
-          TopLeft="336,32" />
+          TopLeft="337,34" />
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[Salida de entradas coincidentes de búsqueda1]"
           TopLeft="390.5,178">
@@ -1440,30 +1440,30 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Tarea Flujo de datos.Paths[OLE DB Source Output]"
-          TopLeft="398.5,74">
+          TopLeft="399.5,76">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-10.5,62"
+              EndConnector="-11.5,60"
               Start="0,0"
-              End="-10.5,54.5">
+              End="-11.5,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27" />
+                    End="0,26" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,27"
-                    Point2="0,31"
-                    Point3="-4,31" />
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
                   <mssgle:LineSegment
-                    End="-6.5,31" />
+                    End="-7.5,30" />
                   <mssgle:CubicBezierSegment
-                    Point1="-6.5,31"
-                    Point2="-10.5,31"
-                    Point3="-10.5,35" />
+                    Point1="-7.5,30"
+                    Point2="-11.5,30"
+                    Point3="-11.5,34" />
                   <mssgle:LineSegment
-                    End="-10.5,54.5" />
+                    End="-11.5,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1507,7 +1507,7 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1517,7 +1517,7 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1540,7 +1540,7 @@ where Substring([refTable].[Desc_Rut_Alumno],1,len([refTable].[Desc_Rut_Alumno])
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

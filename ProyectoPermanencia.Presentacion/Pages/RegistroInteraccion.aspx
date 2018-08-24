@@ -182,8 +182,8 @@
 
                                         </div>
                                         <div class="col-md-1">
-                                            <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success btn-sm center-block" OnClick="btnGuardar_Click" />
-                                            <asp:Button ID="btnFinalizarCaso" runat="server" CssClass="btn btn-danger" OnClick="btnFinalizarCaso_Click" Text="Finalizar Caso" />
+                                            <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success btn-sm" OnClick="btnGuardar_Click" />
+                                            <asp:Button runat="server" ID="btnFinalizarCaso" Text="Finalizar Caso" CssClass="btn btn-danger btn-sm" OnClick="btnFinalizarCaso_Click" />
                                         </div>
                                     </div>
 

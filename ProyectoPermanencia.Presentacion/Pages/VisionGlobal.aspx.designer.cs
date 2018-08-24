@@ -67,6 +67,33 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.DropDownList ddlJornada;
         
         /// <summary>
+        /// Control btnBuscarCarreras.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBuscarCarreras;
+        
+        /// <summary>
+        /// Control LinkButton1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        
+        /// <summary>
+        /// Control Panel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+        
+        /// <summary>
         /// Control ddlEscuelas.
         /// </summary>
         /// <remarks>
@@ -85,22 +112,13 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.SqlDataSource sqlEscuela;
         
         /// <summary>
-        /// Control btnBuscarCarreras.
+        /// Control OKButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscarCarreras;
-        
-        /// <summary>
-        /// Control Panel1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Button OKButton;
         
         /// <summary>
         /// Control chkListaCarreras.
@@ -112,15 +130,6 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.CheckBoxList chkListaCarreras;
         
         /// <summary>
-        /// Control OKButton.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button OKButton;
-        
-        /// <summary>
         /// Control mpe.
         /// </summary>
         /// <remarks>
@@ -128,15 +137,6 @@ namespace ProyectoPermanencia.Presentacion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.ModalPopupExtender mpe;
-        
-        /// <summary>
-        /// Control LinkButton1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
         
         /// <summary>
         /// Control grvGlobal.

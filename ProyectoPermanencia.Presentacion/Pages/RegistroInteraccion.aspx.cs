@@ -155,17 +155,18 @@ namespace ProyectoPermanencia.Presentacion.Pages
             return dt;
         }
 
-        private DataTable crearTablaDatosInteraccion(string rut, int idTipoInter, int idArea,
+        private DataTable crearTablaDatosInteraccion(int estadoTerminarCaso,string rut, int idTipoInter, int idArea,
                                                      string comentario, string nombreArchivo, string idCaso)
         {
             DataTable dt = new DataTable();
+            dt.Columns.Add("estadoTerminarCaso");
             dt.Columns.Add("rut");
             dt.Columns.Add("idCaso");
             dt.Columns.Add("idTipoInteraccion");
             dt.Columns.Add("idArea");
             dt.Columns.Add("comentario");
             dt.Columns.Add("rutaArchivo");
-            dt.Rows.Add(rut, (idCaso != null) ? int.Parse(idCaso) : 0, idTipoInter, idArea,
+            dt.Rows.Add(estadoTerminarCaso,rut, (idCaso != null) ? int.Parse(idCaso) : 0, idTipoInter, idArea,
                         comentario, (nombreArchivo == "") ? "" : nombreArchivo);
             
 
@@ -190,8 +191,8 @@ namespace ProyectoPermanencia.Presentacion.Pages
             }
             if (rbtnNuevo.Checked)
             {
-                //Si el caso es nuevo el id se le pasará al metodo despues de haberse creado
-                casoNuevo();
+                
+                casoNuevo(0);
             }
 
             Response.Redirect("/Pages/Interacciones.aspx");
@@ -218,7 +219,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
         {
             cargarDatos();
 
-            intervencion = crearTablaDatosInteraccion(rutalumno, tipointer, idarea, comentarios, nombreArchivo, idcaso);
+            intervencion = crearTablaDatosInteraccion(0 ,rutalumno, tipointer, idarea, comentarios, nombreArchivo, idcaso);
 
             if (ddlArederiv.SelectedValue.Equals("0") || ddlTipoInteraccion.SelectedValue.Equals("0") || participantes.Rows.Count == 0)
             {
@@ -253,12 +254,12 @@ namespace ProyectoPermanencia.Presentacion.Pages
             }
         }
 
-        protected void casoNuevo()
+        protected void casoNuevo(int estadoFinalizarCaso)
         {
             cargarDatos();
             int tipoCaso = int.Parse(ddlTipoCaso.SelectedValue);
             int idcurso = (ddlCurso.Enabled == true) ? int.Parse(ddlCurso.SelectedValue) : 0;
-            intervencion = crearTablaDatosInteraccion(rutalumno, tipointer, idarea, comentarios, nombreArchivo, null);
+            intervencion = crearTablaDatosInteraccion(estadoFinalizarCaso ,rutalumno, tipointer, idarea, comentarios, nombreArchivo, null);
             if (ddlArederiv.SelectedValue.Equals("0") || ddlTipoInteraccion.SelectedValue.Equals("0") || participantes.Rows.Count == 0)
             {
                 MessageBox.Show("Por favor, seleccione una opcion o varias opciones de la pantalla");
@@ -319,10 +320,10 @@ namespace ProyectoPermanencia.Presentacion.Pages
                     
                 }
             }
-            //if (rbtnNuevo.Checked)
-            //{
-            //    casoNuevo();
-            //}
+            if (rbtnNuevo.Checked)
+            {
+                casoNuevo(1);
+            }
 
             Response.Redirect("/Pages/Interacciones.aspx");
         }

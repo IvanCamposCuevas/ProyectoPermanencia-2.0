@@ -278,6 +278,11 @@ namespace ProyectoPermanencia.Presentacion.Pages
                         string[] detalleInteraccion = new string[] { ddlTipoInteraccion.SelectedItem.ToString(),
                                                                         ddlArederiv.SelectedItem.ToString(), comentarios };
                         sendMail(detalleInteraccion, descParticipantes, ddlTipoCaso.SelectedItem.Text, (ddlCurso.Enabled == true) ? ddlCurso.SelectedItem.Text : "No Aplica");
+
+                        if (estadoFinalizarCaso == 1)
+                        {
+                            MessageBox.Show("Se ha finalizado el caso correctamente, presione 'Aceptar' para volver a la página anterior");
+                        }
                     }
                 }
             }
@@ -289,7 +294,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
             mensaje.Body = string.Format("Se ha ingresado con éxito para el alumno {0} el caso N° xxx." +
                                          "\nDe tipo {1} y asociado al curso {2}." +
                                          "\n" +
-                                         "\nHubo una intervención de tipo {3} . Se derivó al area {4}" +
+                                         "\nHubo una intervención de tipo {3}. Se derivó al área {4}" +
                                          "\nDetalles: {5} \n", lblRut.Text, tipoCaso, curso, detalleInteraccion[0], detalleInteraccion[1], detalleInteraccion[2]);
             mensaje.Body += "Los participantes son: \n";
 
@@ -316,7 +321,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 string idcaso = ddlCasos.SelectedValue;
                 if (new Negocio.NegocioDetalleCaso().finalizaCaso(idcaso))
                 {
-                    MessageBox.Show("CONGRATULATIONS!!!! te devolveremos a la pagina anterior :u");
+                    MessageBox.Show("Se ha finalizado el caso correctamente, presione 'Aceptar' para volver a la página anterior");
                     
                 }
             }

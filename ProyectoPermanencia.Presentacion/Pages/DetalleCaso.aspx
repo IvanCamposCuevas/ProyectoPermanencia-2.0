@@ -140,7 +140,7 @@
 
                                 </div>
                                 <div class="col-md-4 d-flex justify-content-end">
-                                    <asp:Button runat="server" ID="btnFinalizarCaso" Text="Finalizar Caso" CssClass="btn btn-danger" />
+                                    <asp:Button runat="server" ID="btnFinalizarCaso" Text="Finalizar Caso" CssClass="btn btn-danger" OnClick="btnFinalizarCaso_Click" />
 
                                 </div>
                             </div>

@@ -42,7 +42,8 @@ namespace ProyectoPermanencia.Negocio
         {
 
             Conexion.IntruccioneSQL = consultaDetalleCaso() +
-                            " WHERE I.Id_Caso = "+idCaso;
+                            " WHERE I.Id_Caso = "+idCaso+
+                            " ORDER BY ID DESC";
 
             Conexion.EsSelect = true;
             Conexion.conectar();

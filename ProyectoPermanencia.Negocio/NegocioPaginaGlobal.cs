@@ -85,7 +85,7 @@ namespace ProyectoPermanencia.Negocio
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente
             */
-            Conexion.IntruccioneSQL = consulta() + auxSQL;
+            Conexion.IntruccioneSQL = consulta() + auxSQL + " ORDER BY Score, Nombre ASC";
 
             Conexion.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
             Conexion.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
@@ -108,16 +108,16 @@ namespace ProyectoPermanencia.Negocio
 
             //Aplicar Filtros
             if (!String.IsNullOrEmpty(rn) && valorTipo.Equals("1"))
-                auxSQL = auxSQL + " AND AL.Desc_Rut_Alumno = '" + rn + "';";
+                auxSQL = auxSQL + " AND AL.Desc_Rut_Alumno = '" + rn + "'";
             else
             {
-                auxSQL = auxSQL + " AND AL.Desc_Alumno COLLATE Latin1_General_CI_AI LIKE '%" + rn + "%' COLLATE Latin1_General_CI_AI;";
+                auxSQL = auxSQL + " AND AL.Desc_Alumno COLLATE Latin1_General_CI_AI LIKE '%" + rn + "%' COLLATE Latin1_General_CI_AI";
             }
             /*
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente
             */
-            Conexion.IntruccioneSQL = consulta() + auxSQL;
+            Conexion.IntruccioneSQL = consulta() + auxSQL + " ORDER BY Score, Nombre ASC";
 
             Conexion.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
             Conexion.conectar(); //Se inicia la conexion con la query anteriormente ingresada.

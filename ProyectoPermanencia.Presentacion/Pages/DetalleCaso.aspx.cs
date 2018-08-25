@@ -55,7 +55,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
         protected void btnFinalizarCaso_Click(object sender, EventArgs e)
         {
             new Negocio.NegocioDetalleCaso().finalizaCaso(lblIdCaso.Text);
-            Response.Redirect(HttpContext.Current.Request.Url.ToString(), true);
+            Response.Redirect(paginaAnterior);
             //Response.Redirect("/Pages/Interacciones.aspx");
         }
 

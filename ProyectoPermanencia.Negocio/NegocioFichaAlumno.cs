@@ -123,7 +123,7 @@ namespace ProyectoPermanencia.Negocio
 				 * en la base de datos con el ingresado en el parametro de entrada.
 				 * */
 
-                auxSQL += "AND AL.Desc_Rut_Alumno = '" + rut + "';";
+                auxSQL += "AND AL.Desc_Rut_Alumno = '" + rut + "' ORDER BY [Fecha de Vencimiento] DESC;";
                 /*
 				 * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
 				 * que incluye los las uniones y filtros correspondientes.

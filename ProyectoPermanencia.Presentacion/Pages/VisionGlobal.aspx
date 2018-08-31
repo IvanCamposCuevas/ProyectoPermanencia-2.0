@@ -105,7 +105,7 @@
                                             </div>
                                             <div class="row container d-flex align-bottom justify-content-end pr-0 pt-5">
                                                 <div class="d-flex">
-                                                    <asp:Button ID="OKButton" CssClass="btn btn-sm btn-success" Height="30px" runat="server" Text="Cerrar" />
+                                                    <asp:Button ID="OKButton" CssClass="btn btn-sm btn-success" Height="30px" runat="server" Text="Cerrar" OnClick="LinkButton_Click" />
                                                 </div>
                                             </div>
 

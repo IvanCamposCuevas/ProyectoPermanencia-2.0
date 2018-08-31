@@ -1,0 +1,67 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="ReportesMaster.master.cs" Inherits="ProyectoPermanencia.Presentacion.ReportesMaster" %>
+
+<asp:Content ID="ContentHeadReportesMaster" ContentPlaceHolderID="head" runat="server">
+    <title>Reportería</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</asp:Content>
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderTitle" runat="server">
+    <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderTitle">
+        <asp:Label runat="server">
+        <h3 style="color:azure" > Reportería </h3>
+        </asp:Label>
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="ContentReporteria" ContentPlaceHolderID="ContentPlaceHolderReporteria" runat="server">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header" style="background-color: rgb(1,40,69); color: white;">
+                        Filtros para los gráficos
+                    </div>
+                    <div class="card-body">
+                        Body de los filtros
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row container">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolderTabsReportes" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <!-- CONTENIDO DINAMICO DE LA MASTER -->
+                <div class="row container">
+                    <div>
+                        <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderReportes">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div>
+                        <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderReportesSe">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div>
+                        <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderReportesEs">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div>
+                        <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderReportesCa">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div>
+                        <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolderReportesJo">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</asp:Content>

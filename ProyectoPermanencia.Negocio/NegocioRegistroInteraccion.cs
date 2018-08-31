@@ -166,14 +166,26 @@ namespace ProyectoPermanencia.Negocio
         
         public void EnviarMail(MailMessage mensaje)
         {
-            SmtpClient client = new SmtpClient();
-            client.Host = "smtp.googlemail.com";
-            client.Port = 587;
-            client.UseDefaultCredentials = false;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.EnableSsl = true;
-            client.Credentials = new NetworkCredential("permanenciamail@gmail.com", "perma123.nencia456");
-            client.Send(mensaje);
+            try
+            {
+                SmtpClient client = new SmtpClient();
+                client.Host = "smtp.googlemail.com";
+                client.Port = 587;
+                client.UseDefaultCredentials = false;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.EnableSsl = true;
+                client.Credentials = new NetworkCredential("permanenciamail@gmail.com", "perma123.nencia456");
+                client.Send(mensaje);
+            }
+            catch (SmtpException ex)
+            {
+                throw new Exception("Error al enviar el mensaje", ex.InnerException);
+
+            } catch (Exception ex)
+            {
+                throw new Exception("Error: ", ex.InnerException);
+            }
+
         }
 
 

@@ -238,33 +238,6 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.SqlDataSource sqlParticipantes;
         
         /// <summary>
-        /// Control imbCalendario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imbCalendario;
-        
-        /// <summary>
-        /// Control txtFecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFecha;
-        
-        /// <summary>
-        /// Control calFecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calFecha;
-        
-        /// <summary>
         /// Control flInteraccion.
         /// </summary>
         /// <remarks>
@@ -283,6 +256,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.TextBox tbComentarios;
         
         /// <summary>
+        /// Control chkFinalizarCaso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkFinalizarCaso;
+        
+        /// <summary>
         /// Control btnGuardar.
         /// </summary>
         /// <remarks>
@@ -290,14 +272,5 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardar;
-        
-        /// <summary>
-        /// Control btnFinalizarCaso.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFinalizarCaso;
     }
 }

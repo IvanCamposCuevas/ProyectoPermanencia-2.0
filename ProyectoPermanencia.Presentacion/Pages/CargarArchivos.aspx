@@ -32,7 +32,7 @@
                     <br />
                 </div>
                 <div class="col-md-2" style="height: 50px; padding-left: 60px">
-                    <asp:Button ID="btnCargarAr" runat="server" Text="Cargar" CssClass="btn btn-danger" OnClick="btnCargarAr_Click" />
+                    <asp:Button ID="btnCargarAr" runat="server" Text="Cargar" CssClass="btn btn-danger" OnClick="btnCargarAr_Click" OnClientClick="return confirm('¿Desea cargar la iformacion dentro del archivo?');"/>
                 </div>
             </div>
             <div class="row container" style="margin:20px">

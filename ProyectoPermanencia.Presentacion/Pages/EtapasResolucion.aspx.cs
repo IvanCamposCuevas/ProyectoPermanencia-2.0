@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using ProyectoPermanencia.Negocio;
 namespace ProyectoPermanencia.Presentacion.Pages
 {
-    public partial class EtapasResolucion : System.Web.UI.Page
+    public partial class EtapasResolucion : System.Web.UI.Page, IMensajeAlerta
     {
         static NegocioResolucion negocio = new NegocioResolucion();
 
@@ -30,10 +30,10 @@ namespace ProyectoPermanencia.Presentacion.Pages
                     grvIntervenciones.DataBind();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                mostrarAlerta(ex.Message + " , " + ex.InnerException);
             }
         }
 
@@ -73,49 +73,57 @@ namespace ProyectoPermanencia.Presentacion.Pages
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            List<string> listaCasos = new List<string>();
-            List<string> listaIntervenciones = new List<string>();
-
-            foreach (ListItem item in ckblTipoCaso.Items)
+            try
             {
-                if (item.Selected == true)
+                List<string> listaCasos = new List<string>();
+                List<string> listaIntervenciones = new List<string>();
+
+                foreach (ListItem item in ckblTipoCaso.Items)
                 {
-                    listaCasos.Add(item.Text);
+                    if (item.Selected == true)
+                    {
+                        listaCasos.Add(item.Text);
+                    }
                 }
-            }
 
-            foreach (ListItem item in ckblTipoIntervención.Items)
-            {
-                if (item.Selected == true)
+                foreach (ListItem item in ckblTipoIntervención.Items)
                 {
-                    listaIntervenciones.Add(item.Text);
+                    if (item.Selected == true)
+                    {
+                        listaIntervenciones.Add(item.Text);
+                    }
                 }
+
+                string fechaInicio = string.Format("{0}", Request.Form["Fecha_Inicio"]);
+
+                string[] arrayFechaInicio = fechaInicio.Split('-');
+
+                string fechaTermino = string.Format("{0}", Request.Form["Fecha_Termino"]);
+
+                string[] arrayFechaTermino = fechaTermino.Split('-');
+
+                DateTime dtFechaInicio = new DateTime();
+
+                DateTime dtFechaTermino = new DateTime();
+
+                if (arrayFechaTermino[0] != "" && arrayFechaInicio[0] != "")
+                {
+                    dtFechaInicio = new DateTime(int.Parse(arrayFechaInicio[0]), int.Parse(arrayFechaInicio[1]), int.Parse(arrayFechaInicio[2]));
+
+                    dtFechaTermino = new DateTime(int.Parse(arrayFechaTermino[0]), int.Parse(arrayFechaTermino[1]), int.Parse(arrayFechaTermino[2]));
+                }
+
+                DataView dv = negocio.buscarCasoConFiltro(listaCasos, listaIntervenciones, dtFechaInicio, dtFechaTermino).Tables[negocio.Conexion.NombreTabla].AsDataView();
+                Session["dvGeneral"] = dv;
+                dv.RowFilter = "Estado = 'Pendiente'";
+                grvIntervenciones.DataSource = dv;
+                grvIntervenciones.DataBind();
             }
-
-            string fechaInicio = string.Format("{0}", Request.Form["Fecha_Inicio"]);
-
-            string[] arrayFechaInicio = fechaInicio.Split('-');
-
-            string fechaTermino = string.Format("{0}", Request.Form["Fecha_Termino"]);
-
-            string[] arrayFechaTermino = fechaTermino.Split('-');
-
-            DateTime dtFechaInicio = new DateTime() ;
-
-            DateTime dtFechaTermino = new DateTime();
-
-            if (arrayFechaTermino[0] != "" && arrayFechaInicio[0] != "")
+            catch (Exception ex)
             {
-                dtFechaInicio = new DateTime(int.Parse(arrayFechaInicio[0]), int.Parse(arrayFechaInicio[1]), int.Parse(arrayFechaInicio[2]));
 
-                dtFechaTermino = new DateTime(int.Parse(arrayFechaTermino[0]), int.Parse(arrayFechaTermino[1]), int.Parse(arrayFechaTermino[2]));
+                mostrarAlerta(ex.Message + " , " + ex.InnerException);
             }
-
-            DataView dv = negocio.buscarCasoConFiltro(listaCasos, listaIntervenciones, dtFechaInicio, dtFechaTermino).Tables[negocio.Conexion.NombreTabla].AsDataView();
-            Session["dvGeneral"] = dv;
-            dv.RowFilter = "Estado = 'Pendiente'";
-            grvIntervenciones.DataSource = dv;
-            grvIntervenciones.DataBind();
             
         }
 
@@ -143,6 +151,11 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 e.Row.Cells[10].Visible = false;//Oculta la fila "Jornada"
                 e.Row.Cells[11].Visible = false;//Oculta la fila "Sede"
             }
+        }
+
+        public void mostrarAlerta(string mensaje)
+        {
+            ScriptManager.RegisterStartupScript(this.Page, typeof(string), "Alert", string.Format("alert('{0}');", mensaje), true);
         }
     }
 }

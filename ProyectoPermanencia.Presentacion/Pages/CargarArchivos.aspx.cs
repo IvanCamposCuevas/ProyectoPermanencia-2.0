@@ -7,73 +7,77 @@ using System.Web.UI.WebControls;
 using neg = ProyectoPermanencia.Negocio.NegocioCargaArchivo;
 namespace ProyectoPermanencia.Presentacion
 {
-    public partial class CargarArchivos : System.Web.UI.Page
+    public partial class CargarArchivos : System.Web.UI.Page , IMensajeAlerta
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
+
+        /// <summary>
+        /// Evento que permite subir un archivo .xls o .xlsx (Excels), 
+        /// a la Base de Datos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnCargarAr_Click(object sender, EventArgs e)
         {
-            string opcion = this.ddlTipoArchivo.SelectedValue;
-            if (fuSubirArchivo.HasFile)
+            string opcion = this.ddlTipoArchivo.SelectedValue; //Obtiene el valor de la opcion que eligio el usuario desde el DropDownLisr
+            if (fuSubirArchivo.HasFile) //Verifica si se subio un archivo
             {
                 try
                 {
-                    string path = Server.MapPath("~/Uploads/");
-                    string extArchivo=System.IO.Path.GetExtension(path + fuSubirArchivo.FileName);
-                    if (extArchivo.Equals(".xls") || extArchivo.Equals(".xlsx"))
+                    string path = Server.MapPath("~/Uploads/"); //Se obtiene la ruta del servidor en donde se subira el archivo.
+                    string extArchivo=System.IO.Path.GetExtension(path + fuSubirArchivo.FileName); //Se obtiene la extension del archivo que se va a subir.
+                    if (extArchivo.Equals(".xls") || extArchivo.Equals(".xlsx")) //Se verifica que el archivo tenga las extenciones propuestas (.xls o .xlsx)
                     {
-                        fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName);
-                        switch (opcion)
+                        fuSubirArchivo.SaveAs(path + fuSubirArchivo.FileName); //Se guarda el archivo en la ruta anterirmente propuesta.
+                        switch (opcion) //Switch-case de la opcion elegida.
+                                        //Caso 1, agrega los archivos de asistencia,
+                                        //Caso 2, agrega el archivo de notas.
+                                        //Caso 3, agrega el archivo de deudas.
+                                        //Caso 4, agrega el archivo de indice. 
                         {
                             case "1":
                                 new neg().agregarArchivoAsistencia(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                                mostrarAlerta("Archivo cargado correctamente");
                                 break;
                             case "2":
                                 new neg().agregarArchivoNotas(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                                mostrarAlerta("Archivo cargado correctamente");
                                 break;
                             case "3":
                                 new neg().agregarArchivoDeuda(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                                mostrarAlerta("Archivo cargado correctamente");
                                 break;
                             case "4":
                                 new neg().agregarArchivoIndice(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
+                                mostrarAlerta("Archivo cargado correctamente");
                                 break;
                         }
-                        //if (opcion.Equals("1"))
-                        //{
-                        //    new neg().agregarArchivoAsistencia(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
-                        //}
-                        //if (opcion.Equals("2"))
-                        //{
-                        //    new neg().agregarArchivoNotas(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
-                        //}
-                        //if (opcion.Equals("3"))
-                        //{
-                        //    new neg().agregarArchivoDeuda(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
-                        //}
-                        //if (opcion.Equals("4"))
-                        //{
-                        //    new neg().agregarArchivoIndice(fuSubirArchivo.FileName, ddlTipoArchivo.SelectedValue, path);
-                        //}
                     }
                     else
                     {
-                        System.Windows.Forms.MessageBox.Show("El archivo adjunto debe ser en formato Excels, "
+                        mostrarAlerta("El archivo adjunto debe ser en formato Excels, "
                             +"con extension .xls o .xlsx");
                     }
                     
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.Forms.MessageBox.Show(ex.Message+ " " + ex.InnerException);
+                    mostrarAlerta(ex.Message + ex.InnerException);
                 }
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Por favor, Ingrese un archivo para continuar");
+               mostrarAlerta("Por favor, Ingrese un archivo para continuar");
             }
+        }
+
+        public void mostrarAlerta(string mensaje)
+        {
+            ScriptManager.RegisterStartupScript(this.Page, typeof(string), "Alert", string.Format("alert('{0}');", mensaje), true);
         }
     }
 }

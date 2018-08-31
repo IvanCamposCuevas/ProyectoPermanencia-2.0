@@ -251,6 +251,7 @@
     <Compile Include="FichaMaster.master.designer.cs">
       <DependentUpon>FichaMaster.master</DependentUpon>
     </Compile>
+    <Compile Include="IMensajeAlerta.cs" />
     <Compile Include="Pages\CargarArchivos.aspx.cs">
       <DependentUpon>CargarArchivos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

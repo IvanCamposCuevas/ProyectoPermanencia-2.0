@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace ProyectoPermanencia.Presentacion.Pages
 {
-    public partial class DetalleCaso : System.Web.UI.Page
+    public partial class DetalleCaso : System.Web.UI.Page, IMensajeAlerta
     {
         static string paginaAnterior = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
@@ -54,9 +54,13 @@ namespace ProyectoPermanencia.Presentacion.Pages
 
         protected void btnFinalizarCaso_Click(object sender, EventArgs e)
         {
-            new Negocio.NegocioDetalleCaso().finalizaCaso(lblIdCaso.Text);
-            Response.Redirect(paginaAnterior);
-            //Response.Redirect("/Pages/Interacciones.aspx");
+            if (new Negocio.NegocioDetalleCaso().finalizaCaso(lblIdCaso.Text))
+            {
+                mostrarAlerta("Caso finalizado correctamente, presione 'aceptar' \n para volver a la pagina anterior");
+                Response.Redirect(paginaAnterior);
+            }
+
+            
         }
 
 
@@ -83,6 +87,11 @@ namespace ProyectoPermanencia.Presentacion.Pages
         protected void btnAgregarInteraccion_Click(object sender, EventArgs e)
         {
             Response.Redirect("RegistroInteraccion.aspx");
+        }
+
+        public void mostrarAlerta(string mensaje)
+        {
+            ScriptManager.RegisterStartupScript(this.Page, typeof(string), "Alert", string.Format("alert('{0}');", mensaje), true);
         }
     }
 }

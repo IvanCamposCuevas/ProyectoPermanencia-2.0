@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="col-md-7" style="padding-right: 0px; justify-content: flex-end;">
                                         <asp:DropDownList runat="server" ID="ddlTipoCaso" AutoPostBack="True" CssClass="form-control form-control-sm ml-3" AppendDataBoundItems="True" Enabled="False" OnSelectedIndexChanged="ddlTipoCaso_SelectedIndexChanged" DataSourceID="sqlTipoCaso" DataTextField="Desc_TipoCaso" DataValueField="Id_TipoCaso">
-                                            <asp:ListItem Selected="True">Seleccione</asp:ListItem>
+                                            <asp:ListItem Selected="True" Value="0">Seleccione</asp:ListItem>
                                         </asp:DropDownList>
                                         <asp:SqlDataSource ID="sqlTipoCaso" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Tipo_Caso]"></asp:SqlDataSource>
                                     </div>
@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="col-md-7" style="padding-right: 0px; justify-content: flex-end;">
                                         <asp:DropDownList runat="server" ID="ddlCurso" AppendDataBoundItems="true" AutoPostBack="true" CssClass="form-control form-control-sm ml-3" Enabled="False">
-                                            <asp:ListItem>Seleccione</asp:ListItem>
+                                            <asp:ListItem Selected="True" Value="0">Seleccione</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -135,8 +135,9 @@
                                                 <asp:DropDownList runat="server" ID="ddlArederiv" Enabled="False" AutoPostBack="True"
                                                     CssClass="form-control form-control-sm ml-2" DataSourceID="sqlAreaDerivacion" DataTextField="Desc_AreaDerivacion"
                                                     DataValueField="Id_AreaDerivacion">
+                                                    <asp:ListItem  Selected="True" Value="0">Seleccione</asp:ListItem>
                                                 </asp:DropDownList>
-                                                <asp:SqlDataSource ID="sqlAreaDerivacion" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Area_Derivacion]" OnSelected="sqlAreaDerivacion_Selected"></asp:SqlDataSource>
+                                                <asp:SqlDataSource ID="sqlAreaDerivacion" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Area_Derivacion]"></asp:SqlDataSource>
                                             </div>
                                         </div>
                                     </div>
@@ -149,19 +150,13 @@
                                     <div class="col-md-4">
                                         <div class="row">
                                             <div class="row container mb-2">
-                                                <asp:Label runat="server" Font-Bold="true">Fecha:</asp:Label>
                                             </div>
                                             <div class="row container">
                                                 <div class="col-md-3 pl-0 ml-0">
-                                                    <asp:ImageButton ID="imbCalendario" runat="server" AlternateText="Calendario" ToolTip="Calendario"
-                                                        ImageUrl="~/imgs/calendar.png" CssClass="small" Height="30px" OnClientClick="imbCalendario_Click" OnClick="imbCalendario_Click" />
 
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <asp:TextBox runat="server" ID="txtFecha" Enabled="false" Text="dd/mm/yyyy" Width="90px"></asp:TextBox>
                                                 </div>
-                                                <asp:Calendar ID="calFecha" Font-Size="Smaller" runat="server" Visible="false" Enabled="false"
-                                                    CellPadding="1" CssClass="form-control" OnSelectionChanged="calFecha_SelectionChanged"></asp:Calendar>
                                             </div>
                                         </div>
                                         <div class="row mt-4">
@@ -180,10 +175,12 @@
                                         <div class="col-md-11">
                                             <asp:TextBox runat="server" ID="tbComentarios" CssClass="form-control" Rows="6" MaxLength="1000" Height="100px" TextMode="MultiLine"></asp:TextBox>
 
+                                            <asp:CheckBox ID="chkFinalizarCaso" runat="server" Text="¿Desea finalizar el caso una vez que se ha creado la interaccion?" />
+                                            <br />
+
                                         </div>
                                         <div class="col-md-1">
-                                            <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success btn-sm" OnClick="btnGuardar_Click" />
-                                            <asp:Button runat="server" ID="btnFinalizarCaso" Text="Finalizar Caso" CssClass="btn btn-danger btn-sm" OnClick="btnFinalizarCaso_Click" />
+                                            <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success btn-sm" OnClick="btnGuardar_Click" OnClientClick="return confirm('¿Esta seguro que quiere guardar el Caso?');"/>
                                         </div>
                                     </div>
 
@@ -194,7 +191,9 @@
                     </fieldset>
 
                 </div>
+
             </ContentTemplate>
+
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="rbtnExistentes" />
                 <asp:PostBackTrigger ControlID="btnGuardar" />

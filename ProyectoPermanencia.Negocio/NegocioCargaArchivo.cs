@@ -23,7 +23,12 @@ namespace ProyectoPermanencia.Negocio
             return nombreHoja;
         }
 
-
+        /// <summary>
+        /// Metodo que se dedicara a subir los archivos de asistencia en la Base de datos.
+        /// </summary>
+        /// <param name="nombreArchivo"></param>
+        /// <param name="tipoArchivo"></param>
+        /// <param name="path"></param>
         public void agregarArchivoAsistencia(String nombreArchivo, String tipoArchivo, String path)
         {
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'", path + nombreArchivo);
@@ -39,7 +44,6 @@ namespace ProyectoPermanencia.Negocio
                         {
                             bulkCopy.DestinationTableName = "dbo.AsistenciaSTG";
                             bulkCopy.WriteToServer(dr);
-                            System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
                         }
                     }
                 }
@@ -55,6 +59,13 @@ namespace ProyectoPermanencia.Negocio
             }
         }
 
+
+        /// <summary>
+        /// Metodo que se dedicara a subir los archivos de deudas en la Base de Datos.
+        /// </summary>
+        /// <param name="nombreArchivo"></param>
+        /// <param name="tipoArchivo"></param>
+        /// <param name="path"></param>
         public void agregarArchivoDeuda(String nombreArchivo, String tipoArchivo, String path)
         {
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'", path + nombreArchivo);
@@ -70,7 +81,6 @@ namespace ProyectoPermanencia.Negocio
                         {
                             bulkCopy.DestinationTableName = "dbo.Morosos_STG";
                             bulkCopy.WriteToServer(dr);
-                            System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
                         }
                     }
                 }
@@ -86,6 +96,13 @@ namespace ProyectoPermanencia.Negocio
             }
         }
 
+
+        /// <summary>
+        /// Metodo que sirve para cargar los archivos de Notas en la Base de Datos.
+        /// </summary>
+        /// <param name="nombreArchivo"></param>
+        /// <param name="tipoArchivo"></pa0ram>
+        /// <param name="path"></param>
         public void agregarArchivoNotas(String nombreArchivo, String tipoArchivo, String path)
         {
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'", path + nombreArchivo);
@@ -101,7 +118,6 @@ namespace ProyectoPermanencia.Negocio
                         {
                             bulkCopy.DestinationTableName = "dbo.Curso_STG";
                             bulkCopy.WriteToServer(dr);
-                            System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
                         }
                     }
                 }
@@ -117,6 +133,12 @@ namespace ProyectoPermanencia.Negocio
             }
         }
 
+        /// <summary>
+        /// Metodo que sirve para cargar los Archivos de Indice en la Base de datos.
+        /// </summary>
+        /// <param name="nombreArchivo"></param>
+        /// <param name="tipoArchivo"></param>
+        /// <param name="path"></param>
         public void agregarArchivoIndice(String nombreArchivo, String tipoArchivo, String path)
         {
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'", path + nombreArchivo);
@@ -133,7 +155,6 @@ namespace ProyectoPermanencia.Negocio
                             bulkCopy.DestinationTableName = "dbo.Indice_STG";
                             
                             bulkCopy.WriteToServer(dr);
-                            System.Windows.Forms.MessageBox.Show("Archivo cargado correctamente");
                         }
 
                     }

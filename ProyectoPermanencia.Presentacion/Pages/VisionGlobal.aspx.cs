@@ -2,11 +2,11 @@
 using System.Data;
 using System.Web.UI.WebControls;
 using ProyectoPermanencia.Negocio;
-
+using System.Web.UI;
 
 namespace ProyectoPermanencia.Presentacion
 {
-    public partial class VisionGlobal : System.Web.UI.Page
+    public partial class VisionGlobal : System.Web.UI.Page, IMensajeAlerta
     {
         static NegocioPaginaGlobal negocio = new NegocioPaginaGlobal();
 
@@ -47,7 +47,7 @@ namespace ProyectoPermanencia.Presentacion
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Ingrese la informacion dentro del campo de texto");
+                mostrarAlerta("Ingrese la informacion dentro del campo de texto");
             }
 
 
@@ -70,7 +70,7 @@ namespace ProyectoPermanencia.Presentacion
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message + ";" + ex.InnerException);
+                mostrarAlerta(ex.Message+ " , "+ex.InnerException);
             }
         }
 
@@ -117,6 +117,11 @@ namespace ProyectoPermanencia.Presentacion
         protected void sqlEscuela_Selected(object sender, SqlDataSourceStatusEventArgs e)
         {
             ddlEscuelas.Items.Add(new ListItem("Todos", "0"));
+        }
+
+        public void mostrarAlerta(string mensaje)
+        {
+            ScriptManager.RegisterStartupScript(this.Page, typeof(string), "Alert", string.Format("alert('{0}');", mensaje), true);
         }
     }
 }

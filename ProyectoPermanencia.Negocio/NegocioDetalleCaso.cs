@@ -17,7 +17,7 @@ namespace ProyectoPermanencia.Negocio
                             + "STUFF ((SELECT ',' + P.Desc_Participante "
                             + "FROM Participante P "
                             + "LEFT JOIN "
-                            + "Paricipante_Interaccion PI "
+                            + "Participante_Interaccion PI "
                             + "ON "
                             + "PI.Id_Participante = P.Id_Participante "
                             + "WHERE "

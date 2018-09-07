@@ -48,7 +48,7 @@
                         <!-- FILTROS DE BUSQUEDA -->
                         <div class="row filtrobox input-group" style="height: 100px; padding: 20px;">
                             <!-- Filtrar por Sede -->
-                            <div id="Sede" class="col-md-3" style="padding-left: 20px;">
+                            <div id="Sede" class="col-md-3" style="padding-left: 20px">
                                 <div class="form row align-items-center">
                                     <h5>Sede: </h5>
                                 </div>
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <!-- Filtrar por jornada-->
-                            <div id="Jornada" class="col-md-3" style="padding-left: 20px;">
+                            <div id="Jornada" class="col-md-3" style="padding-left:20px">
                                 <div class="form row align-items-center">
                                     <h5>Jornada: </h5>
                                 </div>

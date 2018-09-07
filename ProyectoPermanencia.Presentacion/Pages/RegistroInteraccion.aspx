@@ -135,36 +135,29 @@
                                                 <asp:DropDownList runat="server" ID="ddlArederiv" Enabled="False" AutoPostBack="True"
                                                     CssClass="form-control form-control-sm ml-2" DataSourceID="sqlAreaDerivacion" DataTextField="Desc_AreaDerivacion"
                                                     DataValueField="Id_AreaDerivacion">
-                                                    <asp:ListItem  Selected="True" Value="0">Seleccione</asp:ListItem>
+                                                    <asp:ListItem Selected="True" Value="0">Seleccione</asp:ListItem>
                                                 </asp:DropDownList>
                                                 <asp:SqlDataSource ID="sqlAreaDerivacion" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Area_Derivacion]"></asp:SqlDataSource>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 pl-5 ">
+                                    <div class="col-md-3 pl-3">
                                         <asp:Label runat="server" Font-Bold="true">Participa(n) :</asp:Label>
-                                        <asp:CheckBoxList runat="server" ID="ckblParticipan" CssClass="checkbox mt-2" DataSourceID="sqlParticipantes" DataTextField="Desc_Participante" DataValueField="Id_Participante">
+                                        <asp:CheckBoxList runat="server" ID="ckblParticipan" CssClass="checkbox mt-2 ml-1 form-control form-control-sm" DataSourceID="sqlParticipantes" DataTextField="Desc_Participante" DataValueField="Id_Participante">
                                         </asp:CheckBoxList>
                                         <asp:SqlDataSource ID="sqlParticipantes" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT * FROM [Participante]"></asp:SqlDataSource>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="row">
                                             <div class="row container mb-2">
+                                                <asp:Label runat="server" Font-Bold="true">Subir archivo (opcional):</asp:Label>
                                             </div>
-                                            <div class="row container">
-                                                <div class="col-md-3 pl-0 ml-0">
+                                            <div class="row container ml-1">
 
-                                                </div>
-                                                <div class="col-md-4">
-                                                </div>
+                                                <asp:FileUpload runat="server" ID="flInteraccion" />
                                             </div>
                                         </div>
-                                        <div class="row mt-4">
-                                            <div class="row container mb-2">
-                                                <asp:Label runat="server" Font-Bold="true">Subir archivo:</asp:Label>
-                                            </div>
-                                            <asp:FileUpload runat="server" ID="flInteraccion" />
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="row container mt-1">
@@ -175,12 +168,12 @@
                                         <div class="col-md-11">
                                             <asp:TextBox runat="server" ID="tbComentarios" CssClass="form-control" Rows="6" MaxLength="1000" Height="100px" TextMode="MultiLine"></asp:TextBox>
 
-                                            <asp:CheckBox ID="chkFinalizarCaso" runat="server" Text="¿Desea finalizar el caso una vez que se ha creado la interaccion?" />
+                                            <asp:CheckBox ID="chkFinalizarCaso" runat="server" Text="|   ¿Desea finalizar el caso con esta interacción?" CssClass="form-control form-control-sm " />
                                             <br />
 
                                         </div>
                                         <div class="col-md-1">
-                                            <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success btn-sm" OnClick="btnGuardar_Click" OnClientClick="return confirm('¿Esta seguro que quiere guardar el Caso?');"/>
+                                            <asp:Button runat="server" ID="btnGuardar" Text="Guardar" CssClass="btn btn-success btn-sm" OnClick="btnGuardar_Click" OnClientClick="return confirm('¿Esta seguro que quiere guardar el Caso?');" />
                                         </div>
                                     </div>
 

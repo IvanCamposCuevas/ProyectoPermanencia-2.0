@@ -22,10 +22,10 @@ namespace ProyectoPermanencia.Presentacion
                 this.lblSede.Text = info[6];
                 this.lblTelefono.Text = info[3];
                 this.lblMail.Text = info[4];
-                if (info[8] != null)
-                {
-                    this.lblBeneficio.Text = info[8];
-                }
+                //if (info[8] != null)
+                //{
+                //    this.lblBeneficio.Text = info[8];
+                //}
                 
             }
         }

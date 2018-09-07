@@ -29,15 +29,15 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 grvDetalleNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
-                info[8] = morosos.Tables[0].Rows[0].ItemArray[3].ToString();
-                Master.obtenerLblTipoBeneficio.Text = info[8];
+                //info[8] = morosos.Tables[0].Rows[0].ItemArray[3].ToString();
+                //Master.obtenerLblTipoBeneficio.Text = info[8];
                 Session["Info Alumnos"] = info;
             }
         }
 
         protected void grvFinanzas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            e.Row.Cells[3].Visible = false;
+            //e.Row.Cells[3].Visible = false;
         }
     }
 }

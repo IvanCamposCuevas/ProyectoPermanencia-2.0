@@ -31,7 +31,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 grvFinanzas.DataBind();
                 //info[8] = morosos.Tables[0].Rows[0].ItemArray[3].ToString();
                 //Master.obtenerLblTipoBeneficio.Text = info[8];
-                //Session["Info Alumnos"] = info;
+                Session["Info Alumnos"] = info;
             }
         }
 

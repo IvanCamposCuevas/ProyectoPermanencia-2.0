@@ -180,6 +180,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 
                 casoNuevo();
             }
+            Response.Redirect("Interacciones.aspx");
         }
 
 

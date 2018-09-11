@@ -79,5 +79,33 @@ namespace ProyectoPermanencia.Presentacion
         {
             ScriptManager.RegisterStartupScript(this.Page, typeof(string), "Alert", string.Format("alert('{0}');", mensaje), true);
         }
+
+        protected void btnArchivo_Click(object sender, EventArgs e)
+        {
+            switch (ddlTipoArchivo.SelectedValue)
+            {
+                case "1":
+                    descargarArchivo("Asistencia.xlsx");
+                    break;
+                case "2":
+                    descargarArchivo("Cursos.xlsx");
+                    break;
+                case "3":
+                    descargarArchivo("Reporte Morosidad.xlsx");
+                    break;
+                case "4":
+                    descargarArchivo("INDICE.xls");
+                    break;
+            }
+        }
+
+        private void descargarArchivo(string nombreArchivo)
+        {
+            Response.Clear();
+            Response.ContentType = "application/octect-stream";
+            Response.AppendHeader("content-disposition", "filename= "+ nombreArchivo);
+            Response.TransmitFile(Server.MapPath("~/Archivos_Brutos/") + nombreArchivo);
+            Response.End();
+        }
     }
 }

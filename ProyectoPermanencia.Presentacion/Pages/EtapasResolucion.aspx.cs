@@ -17,15 +17,26 @@ namespace ProyectoPermanencia.Presentacion.Pages
 
         }
 
+
+        /// <summary>
+        /// Evento que buscara una lista de casos sin criterios de busquedas avanzados.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnBuscarCasoSinFiltro_Click(object sender, EventArgs e)
         {
             try
             {
+                //Si el ingreso de busqueda no es nula...
                 if (!String.IsNullOrEmpty(txtIngresoBusqueda.Text))
                 {
+                    //El resultado de la busqueda se convierte en un DataView.
                     DataView dv = negocio.buscarCasoSinFiltro(ddlTipoBusqueda.SelectedValue, txtIngresoBusqueda.Text).Tables[negocio.Conexion.NombreTabla].AsDataView();
+                    //El resultado se guarda en una variable de Sesion.
                     Session["dvGeneral"] = dv;
+                    //Se filtra el rsultado por el estado del caso.
                     dv.RowFilter = "Estado = 'Pendiente'";
+                    //Se ingresa el resultado de la consulta filtrada en el Grid View.
                     grvIntervenciones.DataSource = dv;
                     grvIntervenciones.DataBind();
                 }
@@ -37,10 +48,16 @@ namespace ProyectoPermanencia.Presentacion.Pages
             }
         }
 
+        /// <summary>
+        /// Boton que mostrara los casos con resultados pendientes en la grilla.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnPendientes_Click(object sender, EventArgs e)
         {
-            if (Session["dvGeneral"] !=  null)
+            if (Session["dvGeneral"] !=  null) //Si la sesion indicada no es nula...
             {
+                //Se obtien DataView resguardado en la Sesion, y se filtran por pendiente.
                 DataView dv = (DataView)Session["dvGeneral"];
                 dv.RowFilter = "Estado = 'Pendiente'";
                 grvIntervenciones.DataSource = dv;
@@ -48,7 +65,9 @@ namespace ProyectoPermanencia.Presentacion.Pages
             }
 
         }
-
+        /**
+         Los siguientes dos eventos son el mismo como el anterior, solo que filtran si el estado
+          de los casos estan 'En Curso' o si estan finalizados*/
         protected void btnEnCurso_Click(object sender, EventArgs e)
         {
             if (Session["dvGeneral"] != null)
@@ -70,14 +89,22 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 grvIntervenciones.DataBind();
             }
         }
-
+        /// <summary>
+        /// Este evento busca y filtras todos los casos, por medio de criterios de busquedas
+        /// avanzado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
             try
             {
+                //Se inicializan las Listas tipeadas.
                 List<string> listaCasos = new List<string>();
                 List<string> listaIntervenciones = new List<string>();
 
+                //Ciclo For que resguardara una lista de casos, si los checkboxs de TipoCaso 
+                //estan seleccionados.
                 foreach (ListItem item in ckblTipoCaso.Items)
                 {
                     if (item.Selected == true)
@@ -85,7 +112,8 @@ namespace ProyectoPermanencia.Presentacion.Pages
                         listaCasos.Add(item.Text);
                     }
                 }
-
+                //Ciclo for que resguarda que llenara una lista de los tipos de intervenciones seleccionados
+                //en un checkbox.
                 foreach (ListItem item in ckblTipoIntervención.Items)
                 {
                     if (item.Selected == true)
@@ -93,14 +121,17 @@ namespace ProyectoPermanencia.Presentacion.Pages
                         listaIntervenciones.Add(item.Text);
                     }
                 }
-
+                //Obtiene la fecha de inicio del elemento HTML "Fecha_Inicio" de la pagína Web.
                 string fechaInicio = string.Format("{0}", Request.Form["Fecha_Inicio"]);
-
+                //Se transforma la fecha anterior que estaba en formato String, en un array.
                 string[] arrayFechaInicio = fechaInicio.Split('-');
-
+                //Obtiene la fehca de termino del elemento HTML "Fecha_Termino" de la pagína Web.
                 string fechaTermino = string.Format("{0}", Request.Form["Fecha_Termino"]);
-
+                //Se transforma la fehca anterior que estaba en formato String, en un array.
                 string[] arrayFechaTermino = fechaTermino.Split('-');
+
+                /*Se crean nuevas variables de tipo DateTime,
+                 * Si los array no estan vacíos, se procede a resguardar sus valores dentro de las instancias.**/
 
                 DateTime dtFechaInicio = new DateTime();
 
@@ -112,11 +143,13 @@ namespace ProyectoPermanencia.Presentacion.Pages
 
                     dtFechaTermino = new DateTime(int.Parse(arrayFechaTermino[0]), int.Parse(arrayFechaTermino[1]), int.Parse(arrayFechaTermino[2]));
                 }
-
+                //Se envia, como parametro de entrada, las variables creadas anteriormente al metodo 'buscarCasoConFiltro', este se transformara en DataView y se guardara 
+                //en una variable del mismo tipo.
                 DataView dv = negocio.buscarCasoConFiltro(listaCasos, listaIntervenciones, dtFechaInicio, dtFechaTermino).Tables[negocio.Conexion.NombreTabla].AsDataView();
-                Session["dvGeneral"] = dv;
-                dv.RowFilter = "Estado = 'Pendiente'";
-                grvIntervenciones.DataSource = dv;
+                Session["dvGeneral"] = dv; //Se resguarda el DataView e una variable de Session.
+                dv.RowFilter = "Estado = 'Pendiente'"; //Se filtra el DataView por el Estado del Caso, en 'Pendiente' por defecto.
+                //Se monta el DataView en la grilla
+                grvIntervenciones.DataSource = dv; 
                 grvIntervenciones.DataBind();
             }
             catch (Exception ex)
@@ -126,7 +159,12 @@ namespace ProyectoPermanencia.Presentacion.Pages
             }
             
         }
-
+        /// <summary>
+        /// Evento que guardara la mayor parte de la informacion de la tabla en un array, para luego resguardarla en
+        /// una Sesion, y redireccionar la pagína señalada por el metodo 'Response.Redirect'.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grvIntervenciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = this.grvIntervenciones.SelectedRow;
@@ -138,10 +176,14 @@ namespace ProyectoPermanencia.Presentacion.Pages
             Session["dvGeneral"] = null;
             Response.Redirect("DetalleCaso.aspx");
         }
-
+        /// <summary>
+        /// Evento que ocultara algunas filas de la grilla que no necesiten ser mostradas.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void grvIntervenciones_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.Cells.Count > 1)
+            if (e.Row.Cells.Count > 1) //Si la grilla no esta vacia...
             {
                 e.Row.Cells[5].Visible = false; //Oculta la fila "Nombre Alumno"
                 e.Row.Cells[6].Visible = false; //Oculta la fila "Correo"
@@ -153,6 +195,7 @@ namespace ProyectoPermanencia.Presentacion.Pages
             }
         }
 
+        //Metodo de la interfaz, que mostrara un mensaje de alerta por JavasCript.
         public void mostrarAlerta(string mensaje)
         {
             ScriptManager.RegisterStartupScript(this.Page, typeof(string), "Alert", string.Format("alert('{0}');", mensaje), true);

@@ -80,6 +80,12 @@ namespace ProyectoPermanencia.Presentacion
             ScriptManager.RegisterStartupScript(this.Page, typeof(string), "Alert", string.Format("alert('{0}');", mensaje), true);
         }
 
+        /// <summary>
+        /// Evento que segun que tipo de archvo se alla elegido, se descargara mediante el metodo y parametro de entrada
+        /// asignados.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnArchivo_Click(object sender, EventArgs e)
         {
             switch (ddlTipoArchivo.SelectedValue)
@@ -99,6 +105,10 @@ namespace ProyectoPermanencia.Presentacion
             }
         }
 
+        /// <summary>
+        /// Metodo privado que permitira descargar un archivo de prueba.
+        /// </summary>
+        /// <param name="nombreArchivo"></param>
         private void descargarArchivo(string nombreArchivo)
         {
             Response.Clear();

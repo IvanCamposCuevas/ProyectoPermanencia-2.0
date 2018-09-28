@@ -27,6 +27,8 @@
 
                     </asp:DropDownList>
                 </div>
+                
+                <asp:Button ID="btnArchivo" runat="server" Text="Descargar archivo de ejemplo" CssClass="btn btn-success" Width="240px" OnClick="btnArchivo_Click"/>
                 <div class="col-md-4" style="height: 50px;">
                     <asp:FileUpload runat="server" Width="350px" CssClass="form-control" ID="fuSubirArchivo" accept=".xls , .xlsx" />
                     <br />

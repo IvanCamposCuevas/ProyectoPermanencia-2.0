@@ -9,14 +9,16 @@ namespace ProyectoPermanencia.Presentacion.Pages
 {
     public partial class DetalleCaso : System.Web.UI.Page, IMensajeAlerta
     {
-        static string paginaAnterior = string.Empty;
+        static string paginaAnterior = string.Empty; //Variable estatica que servira para guardar la pagína anteriomente visitada.
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                //Se guarda la url de la ultíma pagína visitada por el usuarío.
                 paginaAnterior = Request.UrlReferrer.ToString();
 
-                if (Session["info_caso"] != null)
+                if (Session["info_caso"] != null)//Si la sesion no esta vacia, se recuperan todos los datos de la sesion, 
+                                                 //y se incluyen en los Label que estan en la pagína.
                 {
                     string[] info = (string[])Session["info_caso"];
                     this.lblRut.Text = info[3];
@@ -84,11 +86,17 @@ namespace ProyectoPermanencia.Presentacion.Pages
             }
         }
 
+        /// <summary>
+        /// Evento que reedirigira al usuario a la pagina de registro de interacciones.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnAgregarInteraccion_Click(object sender, EventArgs e)
         {
             Response.Redirect("RegistroInteraccion.aspx");
         }
 
+        
         public void mostrarAlerta(string mensaje)
         {
             ScriptManager.RegisterStartupScript(this.Page, typeof(string), "Alert", string.Format("alert('{0}');", mensaje), true);

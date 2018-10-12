@@ -22,6 +22,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Label lblRut;
         
         /// <summary>
+        /// Control lblScoreNotas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblScoreNotas;
+        
+        /// <summary>
         /// Control grvNotas.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         protected global::System.Web.UI.WebControls.Button ServerButton;
         
         /// <summary>
+        /// Control LblScoreAsistencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblScoreAsistencia;
+        
+        /// <summary>
         /// Control grvAsistencia.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,15 @@ namespace ProyectoPermanencia.Presentacion.Pages {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grvAsistencia;
+        
+        /// <summary>
+        /// Control LblScoreFinanzas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblScoreFinanzas;
         
         /// <summary>
         /// Control grvFinanzas.

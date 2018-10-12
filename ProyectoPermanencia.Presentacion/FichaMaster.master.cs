@@ -14,6 +14,7 @@ namespace ProyectoPermanencia.Presentacion
             if (!IsPostBack)
             {
                 string[] info = (string[])Session["Info Alumnos"];
+                this.lblScore.Text = info[8];
                 this.lblRut.Text = info[0];
                 this.lblNombre.Text = info[1];
                 this.lblCarrera.Text = info[2];
@@ -22,9 +23,10 @@ namespace ProyectoPermanencia.Presentacion
                 this.lblSede.Text = info[6];
                 this.lblTelefono.Text = info[3];
                 this.lblMail.Text = info[4];
-                //if (info[8] != null)
+                
+               // if (info[9] != null)
                 //{
-                //    this.lblBeneficio.Text = info[8];
+                    //this.lblBeneficio.Text = info[9];
                 //}
                 
             }

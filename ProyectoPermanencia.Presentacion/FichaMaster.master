@@ -28,7 +28,8 @@
                         <img src="~/imgs/avatar.png" height="150" runat="server" style="padding-left: 50px; margin: 10px; position: center;" />
                     </div>
                     <div style="padding-top: 0px; margin-top: 10px;">
-                        <h6 class="d-flex justify-content-start">Estado de riesgo: </h6>
+                        <h6 class="d-flex justify-content-start">Estado de riesgo:&nbsp;&nbsp; <asp:Label ID="lblScore" runat="server" Font-Bold="true" Text=""></asp:Label> </h6>
+                        
                         <div class="d-flex justify-content-center">
                             <div class="progress" style="width: 200px">
                                 <div class="progress-bar progress-bar-animated bg-success progress-bar-striped" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">

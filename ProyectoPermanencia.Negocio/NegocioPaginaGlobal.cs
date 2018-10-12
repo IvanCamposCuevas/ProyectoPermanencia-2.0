@@ -33,13 +33,16 @@ namespace ProyectoPermanencia.Negocio
                             + "ES.Desc_Escuela AS Escuela,"
                             + "SE.Desc_Sede AS Sede,"
                             + "JO.Desc_Jornada AS Jornada,"
-                            + "SC.Score AS Score " + "\n"
+                            + "SC.Score AS Score "
+                            + "\n"
                             + " FROM "
                             + "dbo.Score_Alumnos SC,"
                             + "dbo.LK_Alumno AL,"
                             + "dbo.LK_Carrera CA,"
                             + "dbo.LK_Escuela ES,"
                             + "dbo.LK_Sede SE,"
+                           // + "dbo.LK_Beneficio BE,"
+                           // + "dbo.FT_Deuda DE,"
                             + "dbo.LK_Jornada JO" + "\n"
                             + " WHERE "
                             + "AL.Id_Alumno = SC.Id_Alumno"
@@ -51,6 +54,10 @@ namespace ProyectoPermanencia.Negocio
                             + "AL.Id_Sede = SE.Id_Sede"
                             + " AND "
                             + "AL.Id_Jornada = JO.Id_Jornada";
+                           // + " AND "
+                           // + "AL.Id_Alumno = DE.Id_Alumno"
+                           // + " AND "
+                           // + "DE.Id_Beneficio = BE.Id_Beneficio";
 
             return consulta;
 
@@ -85,7 +92,7 @@ namespace ProyectoPermanencia.Negocio
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente
             */
-            Conexion.IntruccioneSQL = consulta() + auxSQL + " ORDER BY Score, Nombre ASC";
+            Conexion.IntruccioneSQL = consulta() + auxSQL + " ORDER BY Score, Nombre DESC";
 
             Conexion.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
             Conexion.conectar(); //Se inicia la conexion con la query anteriormente ingresada.

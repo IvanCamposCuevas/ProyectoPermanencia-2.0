@@ -29,7 +29,10 @@
             <!-- GRILLAS-->
             <div class="row container" style="padding-left: 30px; padding-top: 10px;">
                 <div id="ScoreNotas" class="ScoreNotas">
-                    <h5>Score notas por asignatura </h5>
+                    <nav id="HeaderScoreNotas" >
+                        <h5>Score notas por asignatura </h5>
+                        <asp:Label runat="server" ID="lblScoreNotas" Visible="true"><b></b></asp:Label>
+                            </nav>
                     <asp:GridView ID="grvNotas" runat="server" BackColor="#EFF4F8" GridLines="none" ShowHeaderWhenEmpty="True"
                         EmptyDataText="No se encontraron registros" Width="800px"
                         CssClass="table table-sm table-responsive table-bordered" Font-Size="12px">
@@ -93,7 +96,10 @@
 
             <div class="row container" style="padding-left: 30px; padding-top: 30px;">
                 <div id="ScoreAsistencia" class="ScoreAsistencia">
+                    <nav id="HeaderScoreAsistencia">
                     <h5>Score asistencia por asignatura </h5>
+                    <asp:Label runat="server" ID="LblScoreAsistencia" Visible="true"><b></b></asp:Label>
+                    </nav>
                     <asp:GridView ID="grvAsistencia" runat="server" BackColor="#eff4f8" GridLines="None" ShowHeaderWhenEmpty="True"
                         EmptyDataText="No se encontraron registros" Width="100%"
                         CssClass="table table-sm table-responsive table-bordered" Font-Size="12px">
@@ -105,7 +111,10 @@
 
             <div class="row container" style="padding-left: 30px; padding-top: 30px;">
                 <div id="ScoreFinanzas" class="ScoreFinanzas">
+                    <nav id="HeaderScoreFinanzas">
                     <h5>Score situación financiera </h5>
+                    <asp:Label runat="server" ID="LblScoreFinanzas" Visible="true"><b></b></asp:Label>
+                    </nav>
                     <asp:GridView ID="grvFinanzas" runat="server" BackColor="#eff4f8" ShowHeaderWhenEmpty="True" GridLines="none"
                         EmptyDataText="No se encontraron registros" Width="100%" OnRowDataBound="grvFinanzas_RowDataBound"
                         CssClass="table table-sm table-responsive table-bordered" Font-Size="12px">

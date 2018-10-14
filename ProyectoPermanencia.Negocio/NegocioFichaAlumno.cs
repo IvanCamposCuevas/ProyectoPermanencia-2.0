@@ -45,8 +45,8 @@ namespace ProyectoPermanencia.Negocio
                 Conexion.IntruccioneSQL = "SELECT SIG.[Cod_Asignatura] AS 'Codigo Asignatura'," +
                                         "SIG.[Desc_Asignatura] AS 'Nombre Asignatura'," +
                                         "SC.[Cant_Asignaturas]AS 'N° Clases Asistidas'," +
-                                        "ROUND(SI.[F_Asistencia] * 100, 2, 1) AS 'Porcentaje Asistencia'," +
-                                        "SC.ScoreAsistencia AS 'Score' " + "\n" +
+                                        "ROUND(SI.[F_Asistencia] * 100, 2, 1) AS 'Porcentaje Asistencia'" +
+                                        "\n" +
                                         "FROM " +
                                         "dbo.Score_Alumnos SC," +
                                         "dbo.[FT_Asistencia] SI," +
@@ -114,7 +114,8 @@ namespace ProyectoPermanencia.Negocio
             /*
 			 *  Se unen las tablas que deben ser usadas para efecuar la consulta
 			 * */
-            auxSQL = "WHERE AL.Desc_Rut_Alumno = MO.RUT AND AL.Id_Alumno = SC.Id_Alumno ";
+            //auxSQL = "WHERE AL.Desc_Rut_Alumno = MO.RUT AND AL.Id_Alumno = SC.Id_Alumno ";
+            auxSQL = "WHERE AL.Desc_Rut_Alumno = MO.RUT ";
 
             if (!string.IsNullOrEmpty(rut))
             {
@@ -130,11 +131,10 @@ namespace ProyectoPermanencia.Negocio
 				 * */
                 Conexion.IntruccioneSQL = "SELECT replace(convert(NVARCHAR, MO.[Fecha Vencimiento], 106), ' ', '/') " +
                                             "AS 'Fecha de Vencimiento', MO.[Cuota Vencida] AS 'Cuota Vencida', " +
-                                            "MO.[Monto Adeudado] AS 'Monto Adeudado', MO.[BENEFICIO] AS 'Beneficio', " + 
-                                            "SC.[ScoreDeuda] AS 'Score' "+"\n" +
+                                            "MO.[Monto Adeudado] AS 'Monto Adeudado', MO.[BENEFICIO] AS 'Beneficio' " + 
+                                            "\n" +
                                             "FROM " +
                                             "dbo.Morosos_STG MO, " +
-                                            "dbo.Score_Alumnos SC, " +
                                             "dbo.LK_Alumno AL " + "\n" +
                                             auxSQL;
                 Conexion.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.

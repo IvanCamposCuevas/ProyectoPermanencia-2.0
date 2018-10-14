@@ -212,12 +212,14 @@ namespace ProyectoPermanencia.Negocio
         /// <param name="rut"></param>
         /// <param name="datosNotas"></param>
         /// <param name="datosAsistencia"></param>
-        public void consultaGeneral(string rut, out System.Data.DataSet datosNotas, out System.Data.DataSet datosDetalleNotas, out System.Data.DataSet datosAsistencia, out System.Data.DataSet datosMorosos)
+        public void consultaGeneral(string rut, out System.Data.DataSet datosNotas, out System.Data.DataSet datosDetalleNotas, out System.Data.DataSet datosAsistencia, 
+            out System.Data.DataSet datosMorosos, out System.Data.DataSet scores)
         {
             datosNotas = consultaNota(rut);
             datosDetalleNotas = consultaDetNotas(rut);
             datosAsistencia = consultaAsistencia(rut);
             datosMorosos = consultaSituacionFinanciera(rut);
+            scores = scoresGrillas(rut);
         }
 
         //Cargar grilla con display de los casos que tiene activos el alumno
@@ -246,7 +248,36 @@ namespace ProyectoPermanencia.Negocio
         }
 
 
+        public DataSet scoresGrillas(string rut)
+        {
+            if (!string.IsNullOrEmpty(rut))
+            {
 
+                /*auxSQL = "WHERE [Id_Alumno] = " + rut;
+
+
+                Conexion.IntruccioneSQL = "SELECT [ScoreDeuda], " +
+                                          "[ScoreNotas], " +
+                                          "[ScoreAsistencia], " +
+                                          "\n" +
+                                          "FROM " +
+                                          "dbo.Score_Alumnos" +
+                                          "\n" +
+                                          auxSQL;*/
+
+                Conexion.IntruccioneSQL = String.Format("SELECT Id_Alumno FROM LK_Alumno WHERE Desc_Rut_Alumno = '{0}';", rut);
+                Conexion.EsSelect = true;
+                Conexion.conectar();
+                string idalumno = Conexion.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
+
+
+                Conexion.IntruccioneSQL = String.Format("SELECT ScoreDeuda, ScoreAsistencia, ScoreNotas FROM dbo.Score_Alumnos WHERE Id_Alumno= '{0}'",idalumno);
+                Conexion.EsSelect = true;
+                Conexion.conectar();
+            }
+            return Conexion.DbDat;
+        }
+            
 
 
 

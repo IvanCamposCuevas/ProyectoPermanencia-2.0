@@ -18,9 +18,10 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 System.Data.DataSet asistencias = new System.Data.DataSet();
                 System.Data.DataSet morosos = new System.Data.DataSet();
                 System.Data.DataSet detalleNotas = new System.Data.DataSet();
+                System.Data.DataSet scores = new System.Data.DataSet();
 
                 new Negocio.NegocioFichaAlumno().consultaGeneral(info[0], out notas, out detalleNotas,
-                    out asistencias, out morosos);
+                    out asistencias, out morosos, out scores);
                 grvAsistencia.DataSource = asistencias;
                 grvAsistencia.DataBind();
                 grvNotas.DataSource = notas;
@@ -29,6 +30,9 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 grvDetalleNotas.DataBind();
                 grvFinanzas.DataSource = morosos;
                 grvFinanzas.DataBind();
+                LblScoreFinanzas.Text = scores.Tables[0].Rows[0]["ScoreDeuda"].ToString();
+                LblScoreAsistencia.Text = scores.Tables[0].Rows[0]["ScoreAsistencia"].ToString();
+                lblScoreNotas.Text = scores.Tables[0].Rows[0]["ScoreNotas"].ToString();
                 //info[8] = morosos.Tables[0].Rows[0].ItemArray[3].ToString();
                 //Master.obtenerLblTipoBeneficio.Text = info[8];
                 Session["Info Alumnos"] = info;

@@ -82,7 +82,7 @@ namespace ProyectoPermanencia.Negocio
 				 * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
 				 * que incluye los las uniones y filtros correspondientes.
 				 * */
-                Conexion.IntruccioneSQL = "SELECT [CODIGO ASIGNATURA] AS 'Codigo', "+
+                Conexion.IntruccioneSQL = "SELECT [CODIGO ASIGNATURA] AS 'Codigo', " +
                                                    "[DESC ASIGNATURA] AS 'Asignatura', " +
                                                    "[SECCION] AS 'Sección', " +
                                                    "[AÑO] AS 'Año', " +
@@ -91,10 +91,10 @@ namespace ProyectoPermanencia.Negocio
                                                    "[Nº NOTAS EXAMEN] AS 'N° de notas de exámen', " +
                                                    "[PROMEDIO CATEDRA] AS 'Promedio Cátedra', " +
                                                    "[PROMEDIO EXAMEN] AS 'Promedio Exámen', " +
-                                                   "[NOTA FINAL] AS 'Nota Final' " +                                                   
+                                                   "[NOTA FINAL] AS 'Nota Final' " +
                                                    "\n" +
                                                    "FROM " +
-                                                   "dbo.Curso_STG" + 
+                                                   "dbo.Curso_STG" +
                                                    "\n" +
                                                    auxSQL;
 
@@ -131,7 +131,7 @@ namespace ProyectoPermanencia.Negocio
 				 * */
                 Conexion.IntruccioneSQL = "SELECT replace(convert(NVARCHAR, MO.[Fecha Vencimiento], 106), ' ', '/') " +
                                             "AS 'Fecha de Vencimiento', MO.[Cuota Vencida] AS 'Cuota Vencida', " +
-                                            "MO.[Monto Adeudado] AS 'Monto Adeudado', MO.[BENEFICIO] AS 'Beneficio' " + 
+                                            "MO.[Monto Adeudado] AS 'Monto Adeudado', MO.[BENEFICIO] AS 'Beneficio' " +
                                             "\n" +
                                             "FROM " +
                                             "dbo.Morosos_STG MO, " +
@@ -156,13 +156,13 @@ namespace ProyectoPermanencia.Negocio
 				 * en la base de datos con el ingresado en el parametro de entrada.
 				 * */
 
-                auxSQL= "WHERE [RUT ALUMNO] = '" + rut + "' ORDER BY [CODIGO ASIGNATURA] ASC;";
+                auxSQL = "WHERE [RUT ALUMNO] = '" + rut + "' ORDER BY [CODIGO ASIGNATURA] ASC;";
                 /*
 				 * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
 				 * que incluye los las uniones y filtros correspondientes.
 				 * */
                 Conexion.IntruccioneSQL = "SELECT [CODIGO ASIGNATURA]," +
-                                            "[DESC ASIGNATURA] AS 'NOMBRE ASIGNATURA', "+
+                                            "[DESC ASIGNATURA] AS 'NOMBRE ASIGNATURA', " +
                                             "[SEMESTRE], " +
                                             "[Nº NOTAS PARCIALES], " +
                                             "[Nº NOTAS EXAMEN], " +
@@ -212,7 +212,7 @@ namespace ProyectoPermanencia.Negocio
         /// <param name="rut"></param>
         /// <param name="datosNotas"></param>
         /// <param name="datosAsistencia"></param>
-        public void consultaGeneral(string rut, out System.Data.DataSet datosNotas, out System.Data.DataSet datosDetalleNotas, out System.Data.DataSet datosAsistencia, 
+        public void consultaGeneral(string rut, out System.Data.DataSet datosNotas, out System.Data.DataSet datosDetalleNotas, out System.Data.DataSet datosAsistencia,
             out System.Data.DataSet datosMorosos, out System.Data.DataSet scores)
         {
             datosNotas = consultaNota(rut);
@@ -271,16 +271,50 @@ namespace ProyectoPermanencia.Negocio
                 string idalumno = Conexion.DbDat.Tables[0].Rows[0]["Id_Alumno"].ToString();
 
 
-                Conexion.IntruccioneSQL = String.Format("SELECT ScoreDeuda, ScoreAsistencia, ScoreNotas FROM dbo.Score_Alumnos WHERE Id_Alumno= '{0}'",idalumno);
+                Conexion.IntruccioneSQL = String.Format("SELECT ScoreDeuda, ScoreAsistencia, ScoreNotas FROM dbo.Score_Alumnos WHERE Id_Alumno= '{0}'", idalumno);
                 Conexion.EsSelect = true;
                 Conexion.conectar();
             }
             return Conexion.DbDat;
         }
-            
+
+        //método para devolver los valores a asignar a la barra de progreso de la ficha alumno. El width dependiendo el score y el color que es cambiar la clase bootstrap
+        public string[] setBarraProgreso(decimal score)
+        {
+            string[] valores = new string[3]; //index 0 = width barra    index 1 = class barra   index 2 = porcentaje score 1 decimal para label
 
 
 
+            if (score > 0)
+            {
+                decimal porcentaje = score * 100 / 3; //calculo para sacar el porcentaje y determinar el width de la barra. "3" porq 3 es el maximo puntaje que se puede obtener
+                valores[0] = Decimal.Round(porcentaje).ToString() + "%"; //se redondea el width para no usar decimales.. se pasa a entero
+                valores[2] = Math.Round(porcentaje, 1).ToString() + "%"; //valor porcentaje del label que se redondea a un decimal
 
+                if (score <= 1)
+                {
+
+                    valores[1] = "progress-bar progress-bar-animated bg-success progress-bar-striped"; //verde
+
+                }
+
+                else if (score > 1 && score <= 2)
+                {
+                    valores[1] = "progress-bar progress-bar-animated bg-warning progress-bar-striped"; //amarillo
+                }
+                else if (score > 2 && score <= 3)
+                {
+                    valores[1] = "progress-bar progress-bar-animated bg-danger progress-bar-striped"; //rojo
+                }
+            }
+            else //0 o menor (esto en caso de errores de queries)
+            {
+                valores[0] = "2%"; //2% por defecto para que no se vea vacia la barra
+                valores[1] = "progress-bar progress-bar-animated bg-success progress-bar-striped";
+                valores[2] = "0,0%";
+
+            }
+            return valores;
+        }
     }
 }

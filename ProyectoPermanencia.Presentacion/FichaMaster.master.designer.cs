@@ -31,6 +31,24 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.Label lblScore;
         
         /// <summary>
+        /// Control barra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl barra;
+        
+        /// <summary>
+        /// Control lblProgreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProgreso;
+        
+        /// <summary>
         /// Control lblRut.
         /// </summary>
         /// <remarks>

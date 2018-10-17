@@ -23,12 +23,21 @@ namespace ProyectoPermanencia.Presentacion
                 this.lblSede.Text = info[6];
                 this.lblTelefono.Text = info[3];
                 this.lblMail.Text = info[4];
+
+                Negocio.NegocioFichaAlumno nfa = new Negocio.NegocioFichaAlumno();
+                decimal score=Decimal.Parse(info[8]);
+                string[] valores = nfa.setBarraProgreso(score);
+
+                barra.Style.Add("width", valores[0]);
+                barra.Attributes["class"] = valores[1];
+                lblProgreso.Text = valores[2];
                 
-               // if (info[9] != null)
-                //{
-                    //this.lblBeneficio.Text = info[9];
-                //}
                 
+                // if (info[9] != null)
+               //{
+               //this.lblBeneficio.Text = info[9];
+               //}
+
             }
         }
 
@@ -40,5 +49,7 @@ namespace ProyectoPermanencia.Presentacion
                 return this.lblBeneficio;
             }
         }
+
+        
     }
 }

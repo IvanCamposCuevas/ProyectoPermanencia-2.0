@@ -23,7 +23,7 @@ namespace ProyectoPermanencia.Negocio
             if (!String.IsNullOrEmpty(rutAlumno))
             {
                 //Consulta
-                Conexion.IntruccioneSQL = String.Format("SELECT DISTINCT ASI.Id_Asignatura, CONCAT(CU.[CODIGO ASIGNATURA],' - ', CU.SECCION) AS CURSO FROM Curso_STG CU, LK_Asignatura ASI WHERE [RUT ALUMNO] = '{0}' AND CU.[CODIGO ASIGNATURA] = ASI.Cod_Asignatura AND CU.SECCION = ASI.Seccion;", rutAlumno);
+                Conexion.IntruccioneSQL = String.Format("SELECT DISTINCT ASI.Id_Asignatura, CONCAT(CU.[DESC ASIGNATURA],' - 0', CU.SECCION) AS CURSO FROM Curso_STG CU, LK_Asignatura ASI WHERE [RUT ALUMNO] = '{0}' AND CU.[CODIGO ASIGNATURA] = ASI.Cod_Asignatura AND CU.SECCION = ASI.Seccion;", rutAlumno);
             }
             Conexion.EsSelect = true;
             Conexion.conectar();

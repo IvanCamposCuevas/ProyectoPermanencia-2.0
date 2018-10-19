@@ -142,10 +142,9 @@ namespace ProyectoPermanencia.Negocio
 
                 Conexion.IntruccioneSQL = "SELECT MD.[Desc_Mes_Deuda] AS 'Fecha de Vencimiento', " +
                                                             "DE.[F_Monto_Deuda] AS 'Monto Adeudado', " +
-                                                            "BE.[Desc_Beneficio] AS 'Beneficio', SC.[ScoreDeuda] AS 'Score' " +
+                                                            "BE.[Desc_Beneficio] AS 'Beneficio' " +
                                                             "\n" +
-                                                            "FROM dbo.Score_Alumnos SC " +
-                                                            "join dbo.LK_Alumno AL on SC.Id_Alumno = AL.Id_Alumno " +
+                                                            "FROM dbo.LK_Alumno AL " +
                                                             "join dbo.FT_Deuda DE on AL.Id_Alumno = DE.Id_Alumno " +
                                                             "join dbo.LK_Mes_Deuda MD on DE.Id_Mes_Deuda=MD.Id_Mes_Deuda " +
                                                             "join dbo.LK_Beneficio BE on DE.Id_Beneficio = BE.Id_Beneficio " + "\n"

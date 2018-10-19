@@ -22,7 +22,7 @@
                                 <div class="row container d-flex justify-content-center">
                                     <asp:DropDownList ID="ddlTipoBusqueda" runat="server" Width="130px" Height="30px" CssClass="form-control form-control-sm">
                                         <asp:ListItem Value="1" Text="Id Caso">Id Caso</asp:ListItem>
-                                        <asp:ListItem Value="2" Text="Sigla Curso">Sigla Curso</asp:ListItem>
+                                        <asp:ListItem Value="2" Text="Nombre Curso">Nombre Curso</asp:ListItem>
                                         <asp:ListItem Value="3" Text="Rut Alumno">Rut Alumno</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:TextBox runat="server" CssClass="form-control" Width="140px" Height="30px" ID="txtIngresoBusqueda"></asp:TextBox>
@@ -94,7 +94,7 @@
                         <!-- FALTA AGREGAR CANTIDAD DE CASOS A CADA BOTON -->
                         <asp:Button runat="server" ID="btnPendientes" Text="Pendientes" CssClass="btn btn-warning" OnClick="btnPendientes_Click" />
                         <asp:Button runat="server" ID="btnEnCurso" Text="En Curso" CssClass="btn btn-success" OnClick="btnEnCurso_Click" />
-                        <asp:Button runat="server" ID="btnFinalizadas" Text="Finalizadas" CssClass="btn btn-default " OnClick="btnFinalizadas_Click" />
+                        <asp:Button runat="server" ID="btnFinalizadas" Text="Finalizadas" CssClass="btn btn-default" OnClick="btnFinalizadas_Click" />
                     </div>
                     <div class="col-md-12 d-flex justify-content-center" style="margin: 0px; width:1200px">
                         <div id="ScoreGlobal" class="ScoreGlobal">

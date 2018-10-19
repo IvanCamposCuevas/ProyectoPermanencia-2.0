@@ -19,7 +19,7 @@ namespace ProyectoPermanencia.Negocio
                                     + "("
                                     + "SELECT C.Id_Caso AS 'ID',"
                                     + "TC.Desc_TipoCaso AS 'Caso',"
-                                    + "A.Cod_Asignatura AS 'Curso',"
+                                    + "A.Desc_Asignatura AS 'Curso',"
                                     + "L.Desc_Rut_Alumno AS 'Rut Alumno',"
                                     + "L.Desc_Alumno AS 'Nombre Alumno',"
                                     + "L.Desc_Correo_Inst AS 'Correo',"

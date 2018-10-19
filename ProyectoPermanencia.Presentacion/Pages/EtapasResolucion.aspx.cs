@@ -14,7 +14,8 @@ namespace ProyectoPermanencia.Presentacion.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string boton = "pendientes";
+            estadoBotones(boton);
         }
 
 
@@ -39,12 +40,33 @@ namespace ProyectoPermanencia.Presentacion.Pages
                     //Se ingresa el resultado de la consulta filtrada en el Grid View.
                     grvIntervenciones.DataSource = dv;
                     grvIntervenciones.DataBind();
+
                 }
             }
             catch (Exception ex)
             {
 
                 mostrarAlerta(ex.Message + " , " + ex.InnerException);
+            }
+        }
+
+        private void estadoBotones(string boton)
+        {
+            btnPendientes.CssClass = "btn btn-warning";
+            btnEnCurso.CssClass = "btn btn-success";
+            btnFinalizadas.CssClass = "btn btn-default";
+
+            if (boton == "pendientes")
+            {
+                btnPendientes.CssClass = "btn btn-primary";
+            }
+            else if (boton == "encurso")
+            {
+                btnEnCurso.CssClass = "btn btn-primary";
+            }
+            else if (boton == "finalizadas") 
+            {
+                btnFinalizadas.CssClass = "btn btn-primary";
             }
         }
 
@@ -55,13 +77,16 @@ namespace ProyectoPermanencia.Presentacion.Pages
         /// <param name="e"></param>
         protected void btnPendientes_Click(object sender, EventArgs e)
         {
-            if (Session["dvGeneral"] !=  null) //Si la sesion indicada no es nula...
+            if (Session["dvGeneral"] != null) //Si la sesion indicada no es nula...
             {
                 //Se obtien DataView resguardado en la Sesion, y se filtran por pendiente.
                 DataView dv = (DataView)Session["dvGeneral"];
                 dv.RowFilter = "Estado = 'Pendiente'";
                 grvIntervenciones.DataSource = dv;
                 grvIntervenciones.DataBind();
+
+                string boton = "pendientes";
+                estadoBotones(boton);
             }
 
         }
@@ -76,6 +101,9 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 dv.RowFilter = "Estado = 'En Curso'";
                 grvIntervenciones.DataSource = dv;
                 grvIntervenciones.DataBind();
+
+                string boton = "encurso";
+                estadoBotones(boton);
             }
         }
 
@@ -87,6 +115,9 @@ namespace ProyectoPermanencia.Presentacion.Pages
                 dv.RowFilter = "Estado = 'Finalizado'";
                 grvIntervenciones.DataSource = dv;
                 grvIntervenciones.DataBind();
+
+                string boton = "finalizadas";
+                estadoBotones(boton);
             }
         }
         /// <summary>

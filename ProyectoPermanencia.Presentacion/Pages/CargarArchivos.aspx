@@ -37,9 +37,11 @@
                     <asp:Button ID="btnCargarAr" runat="server" Text="Cargar" CssClass="btn btn-danger" OnClick="btnCargarAr_Click" OnClientClick="return confirm('¿Desea cargar la iformacion dentro del archivo?');"/>
                 </div>
             </div>
-            <div class="row container" style="margin:20px">
+            <div class="row container" style="margin:20px;display:inline-block">
                 <br />
                 <asp:Label ID="Label1" runat="server" ForeColor="Red" Text="* Solo se pueden ingresar archivos Excels, con extension .xls o .xlsx"></asp:Label>
+                <br />
+                <asp:Label ID="lblFecha" runat="server" Text="Fecha de la última carga: "></asp:Label>
             </div>
 
 

@@ -142,6 +142,27 @@ namespace ProyectoPermanencia.Negocio
             Conexion.conectar();
             return Conexion.DbDat;
         }
+
+        public string colorScore(decimal score)
+        {
+            string color = "<p style=color:green;text-align:center;font-size:20px;>•</p>";
+            if(score >= 0)
+            {
+                if (score <= 1)
+                {
+                    color = "<p style=color:green;text-align:right;font-size:20px;><b>•</b></p>";
+                }
+                else if(score >1 && score <= 2)
+                {
+                    color = "<p style=color:yellow;text-align:center;font-size:20px;>•</p>";
+                }
+                else if( score>2 && score <=3)
+                {
+                    color = "<p style=color:red;text-align:center;font-size:20px;>•</p>";
+                }
+            }
+            return color;
+        }
     }
 }
 

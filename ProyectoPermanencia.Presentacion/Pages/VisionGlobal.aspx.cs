@@ -30,9 +30,13 @@ namespace ProyectoPermanencia.Presentacion
              *  row.Cells[9] = Jornada
              *  row.Cells[10] = Score**/
             GridViewRow row = this.grvGlobal.SelectedRow;
+
+            int charLocation = row.Cells[10].Text.IndexOf("<", StringComparison.Ordinal);//codigo para que me saque el score hasta que encuentre el '<' del tag
+            string score = row.Cells[10].Text.Substring(0, charLocation); //continuacion
+
             string[] info_alumnos = new string[] { row.Cells[1].Text,
                 row.Cells[2].Text, row.Cells[3].Text, row.Cells[4].Text,
-                row.Cells[5].Text, row.Cells[7].Text, row.Cells[8].Text, row.Cells[9].Text, row.Cells[10].Text };
+                row.Cells[5].Text, row.Cells[7].Text, row.Cells[8].Text, row.Cells[9].Text, score};
             Session["Info Alumnos"] = info_alumnos;
             Response.Redirect("FichaAlumno.aspx");
         }
@@ -44,6 +48,13 @@ namespace ProyectoPermanencia.Presentacion
                 NegocioPaginaGlobal auxNegocio = new NegocioPaginaGlobal();
                 this.grvGlobal.DataSource = auxNegocio.consultaScorePorRutNombre(this.txtRutNombre.Text, ddlRutNom.SelectedValue);
                 this.grvGlobal.DataBind();
+
+                //this.grvGlobal.Rows[1].Cells[10]. += "sss";
+                foreach (GridViewRow gvr in this.grvGlobal.Rows)
+                {
+                    //gvr.Cells[10].Text += "<i class=fa fa-star; style=font-size:20px;color:red;></i>";
+                    gvr.Cells[10].Text += auxNegocio.colorScore(Decimal.Parse(gvr.Cells[10].Text));
+                }
             }
             else
             {

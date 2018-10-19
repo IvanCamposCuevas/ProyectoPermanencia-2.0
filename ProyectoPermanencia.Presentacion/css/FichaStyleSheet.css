@@ -12,8 +12,12 @@ div .ScoreNotas, .ScoreAsistencia, .ScoreFinanzas {
     border-color: rgb(9,40,69);
 }
 
+div .DetalleNotas {
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
 
-div Column{
+div Column {
     width: 30%;
 }
 

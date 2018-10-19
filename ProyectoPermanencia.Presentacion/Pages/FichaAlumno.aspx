@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="row" style="padding: 20px; padding-top: 5px;">
-                            <div id="DetalleNotas" style="overflow: auto; width: 100%" class="ScoreNotas">
+                            <div id="DetalleNotas" style="overflow-x: auto; overflow-y: scroll; width: 100%" class="ScoreNotas">
                                 <asp:GridView ID="grvDetalleNotas" runat="server" BackColor="#eff4f8" GridLines="None" BorderStyle="None" ShowHeaderWhenEmpty="True"
                                     EmptyDataText="No se encontraron registros" Width="800px"
                                     CssClass="table table-sm table-responsive table-bordered" Font-Size="12px">

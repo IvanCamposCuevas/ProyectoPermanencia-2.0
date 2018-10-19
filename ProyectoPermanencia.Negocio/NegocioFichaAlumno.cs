@@ -114,11 +114,7 @@ namespace ProyectoPermanencia.Negocio
             /*
 			 *  Se unen las tablas que deben ser usadas para efecuar la consulta
 			 * */
-            //auxSQL = "WHERE AL.Desc_Rut_Alumno = MO.RUT AND AL.Id_Alumno = SC.Id_Alumno ";
-            auxSQL = "WHERE AL.Id_Alumno = De.Id_Alumno " +
-                            "AND DE.Id_Beneficio = BE.Id_Beneficio " +
-                            "AND DE.Id_Mes_Deuda =MD.Id_Mes_Deuda "; 
-
+            
             if (!string.IsNullOrEmpty(rut))
             {
                 /*
@@ -126,22 +122,35 @@ namespace ProyectoPermanencia.Negocio
 				 * en la base de datos con el ingresado en el parametro de entrada.
 				 * */
 
-                auxSQL += "AND AL.Desc_Rut_Alumno = '" + rut + "' ORDER BY [Fecha de Vencimiento] DESC;";
+                
                 /*
 				 * Se ingresa toda la Query para la consulta, incluyendo la variable auxSQL, 
 				 * que incluye los las uniones y filtros correspondientes.
 				 * */
-                Conexion.IntruccioneSQL = "SELECT MD.[Desc_Mes_Deuda] AS 'Fecha de Vencimiento' " +
-                                            ", DE.[F_Monto_Deuda] AS 'Monto Adeudado', " +
-                                            "BE.[Desc_Beneficio] AS 'Beneficio', SC.[ScoreDeuda] AS 'Score' " +
-                                            "\n" +
-                                            "FROM " +
-                                            "dbo.Score_Alumnos SC, " +
-                                            "dbo.LK_Beneficio BE, " +
-                                            "dbo.FT_Deuda DE, " +
-                                            "dbo.LK_Mes_Deuda MD, " +
-                                            "dbo.LK_Alumno AL " + "\n" +
-                                            auxSQL;
+                /*
+               Conexion.IntruccioneSQL = "SELECT MD.[Desc_Mes_Deuda] AS 'Fecha de Vencimiento' " +
+                                           ", DE.[F_Monto_Deuda] AS 'Monto Adeudado', " +
+                                           "BE.[Desc_Beneficio] AS 'Beneficio', SC.[ScoreDeuda] AS 'Score' " +
+                                           "\n" +
+                                           "FROM " +
+                                           "dbo.Score_Alumnos SC, " +
+                                           "dbo.LK_Beneficio BE, " +
+                                           "dbo.FT_Deuda DE, " +
+                                           "dbo.LK_Mes_Deuda MD, " +
+                                           "dbo.LK_Alumno AL " + "\n" +
+                                           auxSQL;*/ 
+
+                Conexion.IntruccioneSQL = "SELECT MD.[Desc_Mes_Deuda] AS 'Fecha de Vencimiento', " +
+                                                            "DE.[F_Monto_Deuda] AS 'Monto Adeudado', " +
+                                                            "BE.[Desc_Beneficio] AS 'Beneficio', SC.[ScoreDeuda] AS 'Score' " +
+                                                            "\n" +
+                                                            "FROM dbo.Score_Alumnos SC " +
+                                                            "join dbo.LK_Alumno AL on SC.Id_Alumno = AL.Id_Alumno " +
+                                                            "join dbo.FT_Deuda DE on AL.Id_Alumno = DE.Id_Alumno " +
+                                                            "join dbo.LK_Mes_Deuda MD on DE.Id_Mes_Deuda=MD.Id_Mes_Deuda " +
+                                                            "join dbo.LK_Beneficio BE on DE.Id_Beneficio = BE.Id_Beneficio " + "\n"
+                                                             + "WHERE AL.Desc_Rut_Alumno = '" + rut + "' ORDER BY [Fecha de Vencimiento] DESC;"; ;
+
                 Conexion.EsSelect = true; //Si la query consultada es una Consulta (SELECT...) se ingresa como TRUE.
                 Conexion.conectar(); //Se ejecuta el metodo "conectar()" de la clase NegocioConexionBD.
             }

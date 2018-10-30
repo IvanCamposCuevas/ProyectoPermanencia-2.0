@@ -11,7 +11,7 @@ namespace ProyectoPermanencia.Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            fechaCarga();
+
         }
 
 
@@ -116,20 +116,6 @@ namespace ProyectoPermanencia.Presentacion
             Response.AppendHeader("content-disposition", "filename= "+ nombreArchivo);
             Response.TransmitFile(Server.MapPath("~/Archivos_Brutos/") + nombreArchivo);
             Response.End();
-        }
-
-        private void fechaCarga() 
-        {
-            if (lblFecha.Text != "Fecha de la última carga: ")
-            {
-                lblFecha.Text = "Fecha de la última carga: ";
-            }
-
-            System.Data.DataSet fecha = new System.Data.DataSet();
-            fecha = new neg().CargarFechaCarga();
-            lblFecha.Text += String.IsNullOrEmpty(fecha.Tables[0].Rows[0].ItemArray[0].ToString()) ? "---" : fecha.Tables[0].Rows[0].ItemArray[0].ToString(); //si no hay fechas muestra guiones
-            /*string fecha;
-            lblFecha.Text += new neg().CargarFechaCarga(out fecha);*/
         }
     }
 }

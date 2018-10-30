@@ -92,9 +92,9 @@
                 <div class="row container-fluid" style="padding-right: 0px">
                     <div class="col-md-12 d-flex justify-content-end">
                         <!-- FALTA AGREGAR CANTIDAD DE CASOS A CADA BOTON -->
-                        <asp:Button runat="server" ID="btnPendientes" Text="Pendientes" CssClass="btn btn-warning" OnClick="btnPendientes_Click" />
-                        <asp:Button runat="server" ID="btnEnCurso" Text="En Curso" CssClass="btn btn-success" OnClick="btnEnCurso_Click" />
-                        <asp:Button runat="server" ID="btnFinalizadas" Text="Finalizadas" CssClass="btn btn-default" OnClick="btnFinalizadas_Click" />
+                        <asp:Button runat="server" ID="btnPendientes" Text="Pendientes" CssClass="btn btn-secondary" OnClick="btnPendientes_Click" />
+                        <asp:Button runat="server" ID="btnEnCurso" Text="En Curso" CssClass="btn btn-secondary" OnClick="btnEnCurso_Click" />
+                        <asp:Button runat="server" ID="btnFinalizadas" Text="Finalizadas" CssClass="btn btn-secondary" OnClick="btnFinalizadas_Click" />
                     </div>
                     <div class="col-md-12 d-flex justify-content-center" style="margin: 0px; width:1200px">
                         <div id="ScoreGlobal" class="ScoreGlobal">

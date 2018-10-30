@@ -52,9 +52,9 @@ namespace ProyectoPermanencia.Presentacion.Pages
 
         private void estadoBotones(string boton)
         {
-            btnPendientes.CssClass = "btn btn-warning";
-            btnEnCurso.CssClass = "btn btn-success";
-            btnFinalizadas.CssClass = "btn btn-default";
+            btnPendientes.CssClass = "btn btn-secondary";
+            btnEnCurso.CssClass = "btn btn-secondary";
+            btnFinalizadas.CssClass = "btn btn-secondary";
 
             if (boton == "pendientes")
             {

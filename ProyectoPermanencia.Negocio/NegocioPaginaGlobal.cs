@@ -92,7 +92,7 @@ namespace ProyectoPermanencia.Negocio
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente
             */
-            Conexion.IntruccioneSQL = consulta() + auxSQL + " ORDER BY Score, Nombre DESC";
+            Conexion.IntruccioneSQL = consulta() + auxSQL + " ORDER BY Score DESC , Nombre ASC";
 
             Conexion.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
             Conexion.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
@@ -124,7 +124,7 @@ namespace ProyectoPermanencia.Negocio
              * Se crea y se reesguardan las intrucciones SQL dentro de la Clase Conexion.cs, 
              * tambien se agrega la variable auxiliar creada anteriormente
             */
-            Conexion.IntruccioneSQL = consulta() + auxSQL + " ORDER BY Score, Nombre ASC";
+            Conexion.IntruccioneSQL = consulta() + auxSQL + " ORDER BY Score DESC, Nombre ASC";
 
             Conexion.EsSelect = true; //Si la query es de consulta (SELECT...) se ingresa como True.
             Conexion.conectar(); //Se inicia la conexion con la query anteriormente ingresada.
@@ -150,7 +150,7 @@ namespace ProyectoPermanencia.Negocio
             {
                 if (score <= 1)
                 {
-                    color = "<p style=color:green;text-align:right;font-size:20px;><b>•</b></p>";
+                    color = "<p style=color:green;text-align:center;font-size:20px;><b>•</b></p>";
                 }
                 else if(score >1 && score <= 2)
                 {

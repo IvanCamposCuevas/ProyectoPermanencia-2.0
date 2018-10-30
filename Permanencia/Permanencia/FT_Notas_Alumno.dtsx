@@ -1,0 +1,1798 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/19/2018 1:01:31 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="MARCE"
+  DTS:CreatorName="MARCE\marce"
+  DTS:DTSID="{3ACD507A-F09B-4496-840E-D3389B31F29E}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="14.0.3008.28"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="FT_Notas_Alumno"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{3C2FE7A4-09A2-4500-BB92-64FE46EF064E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DE2769B6-A5FF-4E29-9979-5559A934908A}"
+      DTS:ObjectName="LAPTOP-9N5AEVQ2\.Permanencia_2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-9N5AEVQ2\;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CD0857F8-ADF5-4EBF-B1F0-B0BDB6CE98D6}"
+      DTS:ObjectName="MARCE\.Permanencia_2.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=MARCE\;User ID=sa;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MARCE\.Permanencia_2.sa 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FE208CDB-1E13-40C1-BDB5-05531ABDD80E}"
+      DTS:ObjectName="MARCE\.Permanencia_2.sa 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=MARCE\;User ID=sa;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Detalle Notas"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{023485E7-04A6-4D69-B158-7457DB9776EF}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Detalle Notas">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Detalle Notas\Busca Alumno"
+              componentClassID="DTSTransform.Lookup.3"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Busca Alumno"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[LK_Alumno]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[LK_Alumno]) [refTable]
+where [refTable].[Desc_Rut_Alumno] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Id_Alumno" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Sede" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Carrera" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Semestre" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Alumno" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Rut_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Telefono_Alumno" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Correo_Inst" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Desc_Correo_Part" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Id_Jornada" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Detalle Notas\13:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Detalle Notas\Busca Alumno.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Detalle Notas\Busca Alumno.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Detalle Notas\Busca Alumno.Inputs[Lookup Input].Columns[Rut]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="Rut"
+                      lineageId="Package\Detalle Notas\13:invalid">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Desc_Rut_Alumno</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Detalle Notas\Busca Alumno.Inputs[Lookup Input].Columns[Desc_Rut_Alumno]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="RUT ALUMNO"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[RUT ALUMNO]"
+                      name="Desc_Rut_Alumno"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn" />
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Desc_Rut_Alumno</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Detalle Notas\Busca Alumno.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Detalle Notas\Busca Alumno.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Detalle Notas\Busca Alumno.Outputs[Lookup Match Output].Columns[Id_Alumno]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Detalle Notas\Busca Alumno.Outputs[Lookup Match Output].Columns[Id_Alumno]"
+                      name="Id_Alumno"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Id_Alumno</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Detalle Notas\Busca Alumno.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Detalle Notas\Busca Alumno.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Detalle Notas\Busca Alumno.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Detalle Notas\Busca Alumno.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Detalle Notas\Busca Alumno.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Notas\Busca Alumno.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Busca Alumno.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Notas\Busca Alumno.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Detalle Notas\FT Notas_Alumno"
+              componentClassID="DTSAdapter.OLEDBDestination.3"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="FT Notas_Alumno"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FT_Notas_Alumno]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Detalle Notas\FT Notas_Alumno.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[Id_Alumno]"
+                      cachedDataType="i4"
+                      cachedName="Id_Alumno"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Id_Alumno]"
+                      lineageId="Package\Detalle Notas\Busca Alumno.Outputs[Lookup Match Output].Columns[Id_Alumno]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[Nº NOTAS PARCIALES]"
+                      cachedDataType="r8"
+                      cachedName="Nº NOTAS PARCIALES"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Nro_Notas_Parciales]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[Nº NOTAS PARCIALES]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[Nº NOTAS EXAMEN]"
+                      cachedDataType="r8"
+                      cachedName="Nº NOTAS EXAMEN"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Nro_Notas_Examen]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[Nº NOTAS EXAMEN]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C1]"
+                      cachedDataType="r8"
+                      cachedName="C1"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C1]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C1]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C2]"
+                      cachedDataType="r8"
+                      cachedName="C2"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C2]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C2]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C3]"
+                      cachedDataType="r8"
+                      cachedName="C3"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C3]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C3]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C4]"
+                      cachedDataType="r8"
+                      cachedName="C4"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C4]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C4]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C5]"
+                      cachedDataType="r8"
+                      cachedName="C5"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C5]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C5]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C6]"
+                      cachedDataType="r8"
+                      cachedName="C6"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C6]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C6]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C7]"
+                      cachedDataType="r8"
+                      cachedName="C7"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C7]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C7]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C8]"
+                      cachedDataType="r8"
+                      cachedName="C8"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C8]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C8]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C9]"
+                      cachedDataType="r8"
+                      cachedName="C9"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C9]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C9]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C10]"
+                      cachedDataType="r8"
+                      cachedName="C10"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C10]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C10]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C11]"
+                      cachedDataType="r8"
+                      cachedName="C11"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C11]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C11]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C12]"
+                      cachedDataType="r8"
+                      cachedName="C12"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C12]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C12]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C13]"
+                      cachedDataType="r8"
+                      cachedName="C13"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C13]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C13]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C14]"
+                      cachedDataType="r8"
+                      cachedName="C14"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C14]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C14]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C15]"
+                      cachedDataType="r8"
+                      cachedName="C15"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C15]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C15]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C16]"
+                      cachedDataType="r8"
+                      cachedName="C16"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C16]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C16]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C17]"
+                      cachedDataType="r8"
+                      cachedName="C17"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C17]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C17]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C18]"
+                      cachedDataType="r8"
+                      cachedName="C18"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C18]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C18]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C19]"
+                      cachedDataType="r8"
+                      cachedName="C19"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C19]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C19]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[C20]"
+                      cachedDataType="r8"
+                      cachedName="C20"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C20]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C20]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[E1]"
+                      cachedDataType="r8"
+                      cachedName="E1"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[E1]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[E1]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[E2]"
+                      cachedDataType="r8"
+                      cachedName="E2"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[E2]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[E2]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[E3]"
+                      cachedDataType="r8"
+                      cachedName="E3"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[E3]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[E3]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[PROMEDIO CATEDRA]"
+                      cachedDataType="r8"
+                      cachedName="PROMEDIO CATEDRA"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[PROMEDIO CATEDRA]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[PROMEDIO CATEDRA]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[PROMEDIO EXAMEN]"
+                      cachedDataType="r8"
+                      cachedName="PROMEDIO EXAMEN"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[PROMEDIO EXAMEN]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[PROMEDIO EXAMEN]" />
+                    <inputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].Columns[NOTA FINAL]"
+                      cachedDataType="r8"
+                      cachedName="NOTA FINAL"
+                      externalMetadataColumnId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[NOTA FINAL]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[NOTA FINAL]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Id_Alumno]"
+                      dataType="i4"
+                      name="Id_Alumno" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Id_Asignatura]"
+                      dataType="i4"
+                      name="Id_Asignatura" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Id_Semestre]"
+                      dataType="i4"
+                      name="Id_Semestre" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Nro_Notas_Parciales]"
+                      dataType="r8"
+                      name="Nro_Notas_Parciales" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[Nro_Notas_Examen]"
+                      dataType="r8"
+                      name="Nro_Notas_Examen" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C1]"
+                      dataType="r8"
+                      name="C1" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C2]"
+                      dataType="r8"
+                      name="C2" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C3]"
+                      dataType="r8"
+                      name="C3" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C4]"
+                      dataType="r8"
+                      name="C4" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C5]"
+                      dataType="r8"
+                      name="C5" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C6]"
+                      dataType="r8"
+                      name="C6" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C7]"
+                      dataType="r8"
+                      name="C7" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C8]"
+                      dataType="r8"
+                      name="C8" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C9]"
+                      dataType="r8"
+                      name="C9" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C10]"
+                      dataType="r8"
+                      name="C10" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C11]"
+                      dataType="r8"
+                      name="C11" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C12]"
+                      dataType="r8"
+                      name="C12" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C13]"
+                      dataType="r8"
+                      name="C13" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C14]"
+                      dataType="r8"
+                      name="C14" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C15]"
+                      dataType="r8"
+                      name="C15" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C16]"
+                      dataType="r8"
+                      name="C16" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C17]"
+                      dataType="r8"
+                      name="C17" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C18]"
+                      dataType="r8"
+                      name="C18" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C19]"
+                      dataType="r8"
+                      name="C19" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[C20]"
+                      dataType="r8"
+                      name="C20" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[E1]"
+                      dataType="r8"
+                      name="E1" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[E2]"
+                      dataType="r8"
+                      name="E2" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[E3]"
+                      dataType="r8"
+                      name="E3" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[PROMEDIO CATEDRA]"
+                      dataType="r8"
+                      name="PROMEDIO CATEDRA" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[PROMEDIO EXAMEN]"
+                      dataType="r8"
+                      name="PROMEDIO EXAMEN" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input].ExternalColumns[NOTA FINAL]"
+                      dataType="r8"
+                      name="NOTA FINAL" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Detalle Notas\FT Notas_Alumno.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Notas\FT Notas_Alumno.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\FT Notas_Alumno.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Notas\FT Notas_Alumno.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Detalle Notas\Notas"
+              componentClassID="DTSAdapter.OLEDBSource.3"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Notas"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+[RUT ALUMNO],
+[CODIGO ASIGNATURA],
+[DESC ASIGNATURA] AS 'NOMBRE ASIGNATURA',
+[SEMESTRE],
+[Nº NOTAS PARCIALES],
+[Nº NOTAS EXAMEN], 
+[C1], 
+[C2],
+[C3], 
+[C4], 
+[C5],
+[C6],
+[C7], 
+[C8],
+[C9], 
+[C10],
+[C11],
+[C12],
+[C13], 
+[C14], 
+[C15],
+[C16], 
+[C17],
+[C18],
+[C19], 
+[C20], 
+[E1],
+[E2], 
+[E3], 
+[PROMEDIO CATEDRA], 
+[PROMEDIO EXAMEN], 
+[NOTA FINAL]
+FROM [Permanencia_2].[dbo].[Curso_STG];</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Detalle Notas\Notas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MARCE\.Permanencia_2.sa 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARCE\.Permanencia_2.sa 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[RUT ALUMNO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[RUT ALUMNO]"
+                      length="255"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[RUT ALUMNO]"
+                      name="RUT ALUMNO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[CODIGO ASIGNATURA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[CODIGO ASIGNATURA]"
+                      length="255"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[CODIGO ASIGNATURA]"
+                      name="CODIGO ASIGNATURA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[NOMBRE ASIGNATURA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE ASIGNATURA]"
+                      length="255"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[NOMBRE ASIGNATURA]"
+                      name="NOMBRE ASIGNATURA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[SEMESTRE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[SEMESTRE]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[SEMESTRE]"
+                      name="SEMESTRE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[Nº NOTAS PARCIALES]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[Nº NOTAS PARCIALES]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[Nº NOTAS PARCIALES]"
+                      name="Nº NOTAS PARCIALES"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[Nº NOTAS EXAMEN]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[Nº NOTAS EXAMEN]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[Nº NOTAS EXAMEN]"
+                      name="Nº NOTAS EXAMEN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C1]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C1]"
+                      name="C1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C2]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C2]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C2]"
+                      name="C2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C3]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C3]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C3]"
+                      name="C3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C4]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C4]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C4]"
+                      name="C4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C5]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C5]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C5]"
+                      name="C5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C6]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C6]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C6]"
+                      name="C6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C7]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C7]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C7]"
+                      name="C7"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C8]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C8]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C8]"
+                      name="C8"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C9]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C9]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C9]"
+                      name="C9"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C10]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C10]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C10]"
+                      name="C10"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C11]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C11]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C11]"
+                      name="C11"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C12]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C12]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C12]"
+                      name="C12"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C13]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C13]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C13]"
+                      name="C13"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C14]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C14]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C14]"
+                      name="C14"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C15]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C15]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C15]"
+                      name="C15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C16]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C16]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C16]"
+                      name="C16"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C17]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C17]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C17]"
+                      name="C17"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C18]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C18]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C18]"
+                      name="C18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C19]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C19]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C19]"
+                      name="C19"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C20]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C20]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[C20]"
+                      name="C20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[E1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[E1]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[E1]"
+                      name="E1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[E2]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[E2]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[E2]"
+                      name="E2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[E3]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[E3]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[E3]"
+                      name="E3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[PROMEDIO CATEDRA]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[PROMEDIO CATEDRA]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[PROMEDIO CATEDRA]"
+                      name="PROMEDIO CATEDRA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[PROMEDIO EXAMEN]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[PROMEDIO EXAMEN]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[PROMEDIO EXAMEN]"
+                      name="PROMEDIO EXAMEN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[NOTA FINAL]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[NOTA FINAL]"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].Columns[NOTA FINAL]"
+                      name="NOTA FINAL"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[RUT ALUMNO]"
+                      dataType="wstr"
+                      length="255"
+                      name="RUT ALUMNO" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[CODIGO ASIGNATURA]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODIGO ASIGNATURA" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE ASIGNATURA]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOMBRE ASIGNATURA" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[SEMESTRE]"
+                      dataType="r8"
+                      name="SEMESTRE" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[Nº NOTAS PARCIALES]"
+                      dataType="r8"
+                      name="Nº NOTAS PARCIALES" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[Nº NOTAS EXAMEN]"
+                      dataType="r8"
+                      name="Nº NOTAS EXAMEN" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C1]"
+                      dataType="r8"
+                      name="C1" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C2]"
+                      dataType="r8"
+                      name="C2" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C3]"
+                      dataType="r8"
+                      name="C3" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C4]"
+                      dataType="r8"
+                      name="C4" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C5]"
+                      dataType="r8"
+                      name="C5" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C6]"
+                      dataType="r8"
+                      name="C6" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C7]"
+                      dataType="r8"
+                      name="C7" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C8]"
+                      dataType="r8"
+                      name="C8" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C9]"
+                      dataType="r8"
+                      name="C9" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C10]"
+                      dataType="r8"
+                      name="C10" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C11]"
+                      dataType="r8"
+                      name="C11" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C12]"
+                      dataType="r8"
+                      name="C12" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C13]"
+                      dataType="r8"
+                      name="C13" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C14]"
+                      dataType="r8"
+                      name="C14" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C15]"
+                      dataType="r8"
+                      name="C15" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C16]"
+                      dataType="r8"
+                      name="C16" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C17]"
+                      dataType="r8"
+                      name="C17" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C18]"
+                      dataType="r8"
+                      name="C18" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C19]"
+                      dataType="r8"
+                      name="C19" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[C20]"
+                      dataType="r8"
+                      name="C20" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[E1]"
+                      dataType="r8"
+                      name="E1" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[E2]"
+                      dataType="r8"
+                      name="E2" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[E3]"
+                      dataType="r8"
+                      name="E3" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[PROMEDIO CATEDRA]"
+                      dataType="r8"
+                      name="PROMEDIO CATEDRA" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[PROMEDIO EXAMEN]"
+                      dataType="r8"
+                      name="PROMEDIO EXAMEN" />
+                    <externalMetadataColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output].ExternalColumns[NOTA FINAL]"
+                      dataType="r8"
+                      name="NOTA FINAL" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[RUT ALUMNO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[RUT ALUMNO]"
+                      name="RUT ALUMNO" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[CODIGO ASIGNATURA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[CODIGO ASIGNATURA]"
+                      name="CODIGO ASIGNATURA" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[NOMBRE ASIGNATURA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[NOMBRE ASIGNATURA]"
+                      name="NOMBRE ASIGNATURA" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[SEMESTRE]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[SEMESTRE]"
+                      name="SEMESTRE" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[Nº NOTAS PARCIALES]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[Nº NOTAS PARCIALES]"
+                      name="Nº NOTAS PARCIALES" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[Nº NOTAS EXAMEN]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[Nº NOTAS EXAMEN]"
+                      name="Nº NOTAS EXAMEN" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C1]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C1]"
+                      name="C1" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C2]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C2]"
+                      name="C2" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C3]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C3]"
+                      name="C3" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C4]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C4]"
+                      name="C4" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C5]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C5]"
+                      name="C5" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C6]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C6]"
+                      name="C6" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C7]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C7]"
+                      name="C7" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C8]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C8]"
+                      name="C8" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C9]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C9]"
+                      name="C9" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C10]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C10]"
+                      name="C10" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C11]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C11]"
+                      name="C11" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C12]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C12]"
+                      name="C12" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C13]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C13]"
+                      name="C13" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C14]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C14]"
+                      name="C14" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C15]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C15]"
+                      name="C15" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C16]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C16]"
+                      name="C16" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C17]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C17]"
+                      name="C17" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C18]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C18]"
+                      name="C18" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C19]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C19]"
+                      name="C19" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C20]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[C20]"
+                      name="C20" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[E1]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[E1]"
+                      name="E1" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[E2]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[E2]"
+                      name="E2" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[E3]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[E3]"
+                      name="E3" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[PROMEDIO CATEDRA]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[PROMEDIO CATEDRA]"
+                      name="PROMEDIO CATEDRA" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[PROMEDIO EXAMEN]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[PROMEDIO EXAMEN]"
+                      name="PROMEDIO EXAMEN" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[NOTA FINAL]"
+                      dataType="r8"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[NOTA FINAL]"
+                      name="NOTA FINAL" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Detalle Notas\Parametros"
+              componentClassID="DTSTransform.DerivedColumn.3"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Parametros"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Detalle Notas\Parametros.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Detalle Notas\Parametros.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\Detalle Notas\Parametros.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Detalle Notas\Parametros.Outputs[Salida de columna derivada].Columns[Semestre]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Detalle Notas\Parametros.Outputs[Salida de columna derivada].Columns[Semestre]"
+                      name="Semestre"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_I2)@[User::Semester]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)@[User::Semester]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Detalle Notas\Parametros.Outputs[Salida de columna derivada].Columns[Medicion]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Detalle Notas\Parametros.Outputs[Salida de columna derivada].Columns[Medicion]"
+                      name="Medicion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">(DT_I2)@[User::Medicion1]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I2)@[User::Medicion1]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Detalle Notas\Parametros.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\Detalle Notas\Parametros.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Detalle Notas\Parametros.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Notas\Parametros.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Detalle Notas\Parametros.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Detalle Notas\Parametros.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Detalle Notas.Paths[Lookup No Match Output]"
+              endId="Package\Detalle Notas\Parametros.Inputs[Entrada de columna derivada]"
+              name="Lookup No Match Output"
+              startId="Package\Detalle Notas\Busca Alumno.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Detalle Notas.Paths[OLE DB Source Output]"
+              endId="Package\Detalle Notas\Busca Alumno.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Detalle Notas\Notas.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Detalle Notas.Paths[Salida de columna derivada]"
+              endId="Package\Detalle Notas\FT Notas_Alumno.Inputs[OLE DB Destination Input]"
+              name="Salida de columna derivada"
+              startId="Package\Detalle Notas\Parametros.Outputs[Salida de columna derivada]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Medicion"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9F1D685C-6178-44C3-9E9A-A8F731D4496F}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Medicion"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CD0857F8-ADF5-4EBF-B1F0-B0BDB6CE98D6}"
+          SQLTask:SqlStatementSource="SELECT    Top 1 [Id_Medición] as Medicion"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="Medicion"
+            SQLTask:DtsVariableName="User::Medicion1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Semestre"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FA641AAC-9E34-463D-B465-9D20A10E59CD}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Semestre"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CD0857F8-ADF5-4EBF-B1F0-B0BDB6CE98D6}"
+          SQLTask:SqlStatementSource="SELECT    Top 1 Id_Semestre as Semestre&#xA;FROM            LK_Semestre&#xA;Order By  Id_Semestre Desc"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="Semestre"
+            SQLTask:DtsVariableName="User::Semester" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9FD27C72-97D8-4550-8624-6F13491EE51D}"
+      DTS:From="Package\Medicion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Semestre" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{CCD72FB3-E5FA-4B0D-895D-6DF47C5E4828}"
+      DTS:From="Package\Semestre"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Detalle Notas" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Detalle Notas"
+          TopLeft="437.5,207.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Medicion"
+          TopLeft="37,25" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Semestre"
+          TopLeft="28,153" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="118.5,67">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-29,86"
+              Start="0,0"
+              End="-29,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39"
+                    Point2="0,43"
+                    Point3="-4,43" />
+                  <mssgle:LineSegment
+                    End="-25,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25,43"
+                    Point2="-29,43"
+                    Point3="-29,47" />
+                  <mssgle:LineSegment
+                    End="-29,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="151,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="286.5,54.5"
+              Start="0,0"
+              End="279,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="139.25,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="139.25,0"
+                    Point2="143.25,0"
+                    Point3="143.25,4" />
+                  <mssgle:LineSegment
+                    End="143.25,50.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="143.25,50.5"
+                    Point2="143.25,54.5"
+                    Point3="147.25,54.5" />
+                  <mssgle:LineSegment
+                    End="279,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Detalle Notas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="106,42"
+          Id="Package\Detalle Notas\Notas"
+          TopLeft="420,0" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Detalle Notas\Busca Alumno"
+          TopLeft="403,108" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Detalle Notas\Parametros"
+          TopLeft="426,221" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Detalle Notas\FT Notas_Alumno"
+          TopLeft="379,365" />
+        <EdgeLayout
+          Id="Package\Detalle Notas.Paths[Salida de columna derivada]"
+          TopLeft="492,263">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-32,102"
+              Start="0,0"
+              End="-32,94.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47"
+                    Point2="0,51"
+                    Point3="-4,51" />
+                  <mssgle:LineSegment
+                    End="-28,51" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-28,51"
+                    Point2="-32,51"
+                    Point3="-32,55" />
+                  <mssgle:LineSegment
+                    End="-32,94.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24,56,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Detalle Notas.Paths[OLE DB Source Output]"
+          TopLeft="474.25,42">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66"
+              Start="0,0"
+              End="0,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,21.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Detalle Notas.Paths[Lookup No Match Output]"
+          TopLeft="475.5,150">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.5,71"
+              Start="0,0"
+              End="16.5,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5"
+                    Point2="0,35.5"
+                    Point3="4,35.5" />
+                  <mssgle:LineSegment
+                    End="12.5,35.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.5,35.5"
+                    Point2="16.5,35.5"
+                    Point3="16.5,39.5" />
+                  <mssgle:LineSegment
+                    End="16.5,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-47.55638671875,40.5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Detalle Notas\Notas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Detalle Notas\Busca Alumno">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[LK_Alumno]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Detalle Notas\FT Notas_Alumno">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

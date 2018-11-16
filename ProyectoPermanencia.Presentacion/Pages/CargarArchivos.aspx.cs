@@ -77,7 +77,7 @@ namespace ProyectoPermanencia.Presentacion
             }
         }
 
-        public void mostrarAlerta(string mensaje)
+        public void mostrarAlerta(string mensaje) 
         {
             ScriptManager.RegisterStartupScript(this.Page, typeof(string), "Alert", string.Format("alert('{0}');", mensaje), true);
         }
@@ -90,7 +90,7 @@ namespace ProyectoPermanencia.Presentacion
         /// <param name="e"></param>
         protected void btnArchivo_Click(object sender, EventArgs e)
         {
-            switch (ddlTipoArchivo.SelectedValue)
+            switch (ddlTipoArchivoEjemplo.SelectedValue)
             {
                 case "1":
                     descargarArchivo("Asistencia.xlsx");

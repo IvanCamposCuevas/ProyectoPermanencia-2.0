@@ -11,7 +11,9 @@ namespace ProyectoPermanencia.Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //fechaCarga();
+            fechaCarga();
+            /*DateTime f = DateTime.Now;
+            new neg().InsertarLogCarga(f, "Asistencias");*/
         }
 
 
@@ -120,7 +122,8 @@ namespace ProyectoPermanencia.Presentacion
 
         private void fechaCarga()
         {
-            if (lblFecha.Text != "Fecha de la última carga: ")
+            /****** CÓDIGO PARA LLENAR LABEL CON FECHA DE CARGA SIN DISCRIMINAR POR TIPO DE ARCHIVO*************
+             * if (lblFecha.Text != "Fecha de la última carga: ")
             {
                 lblFecha.Text = "Fecha de la última carga: ";
             }
@@ -130,6 +133,42 @@ namespace ProyectoPermanencia.Presentacion
             lblFecha.Text += String.IsNullOrEmpty(fecha.Tables[0].Rows[0].ItemArray[0].ToString()) ? "---" : fecha.Tables[0].Rows[0].ItemArray[0].ToString(); //si no hay fechas muestra guiones
             /*string fecha;
             lblFecha.Text += new neg().CargarFechaCarga(out fecha);*/
+
+
+
+
+
+
+            /********MÉTODOS PARA DEVOLVER LAS FECHAS SEGÚN TIPO DE ARCHIVO USANDO LOS REPEATERS*************
+            System.Data.DataSet fechaNotas = new System.Data.DataSet();
+            fechaNotas = new neg().CargarFechaCargaNotas();
+            tableRepeaterNotas.DataSource = fechaNotas.Tables[0];
+            tableRepeaterNotas.DataBind();
+
+            System.Data.DataSet fechaAsistencias = new System.Data.DataSet();
+            fechaAsistencias = new neg().CargarFechaCargaAsistencias();
+            tableRepeaterAsistencias.DataSource = fechaAsistencias.Tables[0];
+            tableRepeaterAsistencias.DataBind();
+
+            System.Data.DataSet fechaDeudas = new System.Data.DataSet();
+            fechaDeudas = new neg().CargarFechaCargaDeudas();
+            tableRepeaterDeudas.DataSource = fechaDeudas.Tables[0];
+            tableRepeaterDeudas.DataBind();*/
+
+            
+
+            
+
+
+            //*******TIPO DE TABLA UNICA CON VARIAS FILAS EN VEZ DE SEPARAR EN 3 TABLAS USANDO UNION*******
+            System.Data.DataSet fecha = new System.Data.DataSet();
+            fecha = new neg().CargarFechaCarga();
+            tableRepeater.DataSource = fecha.Tables[0];
+            tableRepeater.DataBind();
+
+            
+
+
         }
     }
 }

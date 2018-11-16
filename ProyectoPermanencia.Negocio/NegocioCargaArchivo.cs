@@ -29,16 +29,17 @@ namespace ProyectoPermanencia.Negocio
             }
         }
 
+        
+
         public DataSet CargarFechaCarga()
         {
-            Conexion.IntruccioneSQL = String.Format("SELECT MAX(Fecha_Carga) FROM dbo.Log_Cargas;");
+            Conexion.IntruccioneSQL = String.Format("SELECT Tipo_Archivo, MAX(Fecha_Carga) AS Fecha_Carga FROM dbo.Log_Cargas WHERE Tipo_Archivo='Notas' GROUP BY Tipo_Archivo UNION SELECT Tipo_Archivo, MAX(Fecha_Carga) AS Fecha_Carga FROM dbo.Log_Cargas WHERE Tipo_Archivo = 'Asistencias' GROUP BY Tipo_Archivo UNION SELECT Tipo_Archivo, MAX(Fecha_Carga) AS Fecha_Carga FROM dbo.Log_Cargas WHERE Tipo_Archivo = 'Deudas' GROUP BY Tipo_Archivo UNION SELECT Tipo_Archivo, MAX(Fecha_Carga) AS Fecha_Carga FROM dbo.Log_Cargas WHERE Tipo_Archivo='Indice' GROUP BY Tipo_Archivo");
             Conexion.EsSelect = true;
             Conexion.conectar();
             //fecha = Conexion.DbDat.Tables[0].Rows[0].ItemArray[0].ToString(); //con esto hago referencia a la fecha de carga que llame
             //return fecha;
             return Conexion.DbDat;
         }
-
 
 
         /// <summary>
@@ -68,7 +69,8 @@ namespace ProyectoPermanencia.Negocio
                 try
                 {
                     conExcel.Open();
-                    InsertarLogCarga(new DateTime(), tipo);
+                    /*DateTime fecha = DateTime.Now;
+                    InsertarLogCarga(fecha, tipo);*/
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {
@@ -107,7 +109,8 @@ namespace ProyectoPermanencia.Negocio
                 try
                 {
                     conExcel.Open();
-                    InsertarLogCarga(new DateTime(), tipo);
+                    /*DateTime fecha = DateTime.Now;
+                    InsertarLogCarga(fecha, tipo);*/
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {
@@ -146,7 +149,8 @@ namespace ProyectoPermanencia.Negocio
                 try
                 {
                     conExcel.Open();
-                    InsertarLogCarga(new DateTime(), tipo);
+                    /*DateTime fecha = DateTime.Now;
+                    InsertarLogCarga(fecha, tipo);*/
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {
@@ -177,12 +181,16 @@ namespace ProyectoPermanencia.Negocio
         /// <param name="path"></param>
         public void agregarArchivoIndice(String nombreArchivo, String tipoArchivo, String path)
         {
+            string tipo = "Indice";
             string excelConnectionString = string.Format("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR=Yes;IMEX=1;'", path + nombreArchivo);
+            
             using (OleDbConnection conExcel = new OleDbConnection(excelConnectionString))
             {
                 try
                 {
                     conExcel.Open();
+                    /*DateTime fecha = DateTime.Now;
+                    InsertarLogCarga(fecha, tipo);*/
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {

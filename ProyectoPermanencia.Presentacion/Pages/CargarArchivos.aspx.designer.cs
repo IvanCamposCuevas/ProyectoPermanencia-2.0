@@ -13,15 +13,6 @@ namespace ProyectoPermanencia.Presentacion {
     public partial class CargarArchivos {
         
         /// <summary>
-        /// Control ddlTipoArchivo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoArchivo;
-        
-        /// <summary>
         /// Control fuSubirArchivo.
         /// </summary>
         /// <remarks>
@@ -58,13 +49,22 @@ namespace ProyectoPermanencia.Presentacion {
         protected global::System.Web.UI.WebControls.Label lblFecha;
         
         /// <summary>
-        /// Control ddlTipoArchivoEjemplo.
+        /// Control tableRepeater.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoArchivoEjemplo;
+        protected global::System.Web.UI.WebControls.Repeater tableRepeater;
+        
+        /// <summary>
+        /// Control ddlTipoArchivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoArchivo;
         
         /// <summary>
         /// Control btnArchivo.

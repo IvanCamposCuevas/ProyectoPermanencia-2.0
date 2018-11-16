@@ -49,12 +49,15 @@ namespace ProyectoPermanencia.Presentacion
                 NegocioPaginaGlobal auxNegocio = new NegocioPaginaGlobal();
                 this.grvGlobal.DataSource = auxNegocio.consultaScorePorRutNombre(this.txtRutNombre.Text, ddlRutNom.SelectedValue);
                 this.grvGlobal.DataBind();
-
-                //this.grvGlobal.Rows[1].Cells[10]. += "sss";
+                
                 foreach (GridViewRow gvr in this.grvGlobal.Rows)
                 {
                     //gvr.Cells[10].Text += "<i class=fa fa-star; style=font-size:20px;color:red;></i>";
+                    gvr.Cells[1].Width = new Unit("7%");
                     gvr.Cells[10].Text += auxNegocio.colorScore(Decimal.Parse(gvr.Cells[10].Text));
+
+                    gvr.Height = new Unit("5%");
+                    gvr.Cells[10].Width = new Unit("8%");
                 }
             }
             else
@@ -64,7 +67,7 @@ namespace ProyectoPermanencia.Presentacion
 
 
         }
-
+        //AGREGARLE FOREACH ACA TB
         protected void LinkButton_Click(object sender, EventArgs e)
         {
             try
@@ -79,6 +82,19 @@ namespace ProyectoPermanencia.Presentacion
                 }
                 this.grvGlobal.DataSource = negocio.ConsultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, listaCarreras);
                 this.grvGlobal.DataBind();
+
+                foreach (GridViewRow gvr in this.grvGlobal.Rows)
+                {
+                    //gvr.Cells[10].Text += "<i class=fa fa-star; style=font-size:20px;color:red;></i>";
+                    gvr.Cells[1].Width = new Unit("7%");
+                    gvr.Cells[10].Text += negocio.colorScore(Decimal.Parse(gvr.Cells[10].Text));
+
+                    gvr.Height = new Unit("5%");
+                    gvr.Cells[10].Width = new Unit("8%");
+                }
+
+
+
             }
             catch (Exception ex)
             {
@@ -98,7 +114,7 @@ namespace ProyectoPermanencia.Presentacion
             chkListaCarreras.DataBind();
             listaCarrera.RowFilter = "";
             mpe.Show();
-        }
+        }   
 
         protected void ddlEscuelas_SelectedIndexChanged(object sender, EventArgs e)
         {

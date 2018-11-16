@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /ProyectoPermanencia.Presentacion/ArchivoInteraccion
+/ProyectoPermanencia.Presentacion/Uploads/Reporte Morosidad.xlsx

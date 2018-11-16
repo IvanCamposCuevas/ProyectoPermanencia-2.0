@@ -57,7 +57,7 @@ namespace ProyectoPermanencia.Presentacion
                     gvr.Cells[10].Text += auxNegocio.colorScore(Decimal.Parse(gvr.Cells[10].Text));
 
                     gvr.Height = new Unit("5%");
-                    gvr.Cells[10].Width = new Unit("8%");
+                    gvr.Cells[10].Width = new Unit("8%"); //hola
                 }
             }
             else

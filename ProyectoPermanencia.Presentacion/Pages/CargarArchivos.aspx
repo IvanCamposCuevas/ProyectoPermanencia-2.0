@@ -73,55 +73,7 @@
             &nbsp;
             &nbsp;
             &nbsp;
-            <div id="columna fecha">
-                     <asp:Label ID="lblFecha" runat="server" Text="Fecha de la última carga: "></asp:Label>
-            </div>
-            <div id="espacio"></div>
-             <div id="clearfix" class="align-self-md-center" style="height:auto; border:dotted; border-color:lightsteelblue; width:auto; float:right" >
-                 
-                 <div id="columna archivo" style="float:right">
-                     <table style="width: 100%;">
-                     <tr>
-                         <td colspan="2">
-                             <p class="text-muted">Archivos de ejemplo</p>
-                         </td>  
-                     </tr>
-                     <tr>
-                         <td class="auto-style1" style="width:200px">
-                             &nbsp;&nbsp;&nbsp;&nbsp;
-                             <asp:DropDownList runat="server" CssClass="form-control" ID="ddlTipoArchivoEjemplo" >
-                                <asp:ListItem Value="0"> Seleccione </asp:ListItem>
-                                <asp:ListItem Value="1"> Asistencia </asp:ListItem>
-                                <asp:ListItem Value="2"> Notas </asp:ListItem>
-                                <asp:ListItem Value="3"> Situación Financiera </asp:ListItem>
-                                <asp:ListItem Value="4"> Indice Alumno </asp:ListItem>
-                                <asp:ListItem Value="5"> Deserción </asp:ListItem>
-                            </asp:DropDownList>
-                             
-                         &nbsp;&nbsp;&nbsp;&nbsp;
-
-                         </td>
-                         <td>
-                             <asp:Button ID="btnArchivo" runat="server" Text="Descargar" CssClass="btn btn-secondary; text-info; float-left"  OnClick="btnArchivo_Click" />
-                         </td>
-                         
-                     </tr>
-                    
-                 </table>
-                 </div>
-                 
-                 
-                     
-                
-                     
-                
-                    
-                    
-                
-                    
            
-                
-             </div>
                 
                 
             </div>
@@ -182,7 +134,7 @@
                      <tr>
                          <td class="auto-style1" style="width:200px">
                              &nbsp;&nbsp;&nbsp;&nbsp;
-                             <asp:DropDownList runat="server" CssClass="form-control" ID="ddlTipoArchivo" >
+                             <asp:DropDownList runat="server" CssClass="form-control" ID="ddlTipoArchivoEjemplo" >
                                 <asp:ListItem Value="0"> Seleccione </asp:ListItem>
                                 <asp:ListItem Value="1"> Asistencia </asp:ListItem>
                                 <asp:ListItem Value="2"> Notas </asp:ListItem>
@@ -213,5 +165,5 @@
 
 
 
-    </div>
+    
 </asp:Content>

@@ -19,7 +19,7 @@ namespace ProyectoPermanencia.Negocio
         {
             try
             {
-                Conexion.IntruccioneSQL = String.Format("INSERT INTO Log_Cargas '{0}', '{1}' ", fecha, tipo);
+                Conexion.IntruccioneSQL = String.Format("INSERT INTO Log_Cargas VALUES ('{0}', '{1}') ", fecha, tipo);
                 Conexion.EsSelect = false;
                 Conexion.conectar();
             }
@@ -69,8 +69,8 @@ namespace ProyectoPermanencia.Negocio
                 try
                 {
                     conExcel.Open();
-                    /*DateTime fecha = DateTime.Now;
-                    InsertarLogCarga(fecha, tipo);*/
+                    DateTime fecha = DateTime.Now;
+                    InsertarLogCarga(fecha, tipo);
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {
@@ -109,8 +109,8 @@ namespace ProyectoPermanencia.Negocio
                 try
                 {
                     conExcel.Open();
-                    /*DateTime fecha = DateTime.Now;
-                    InsertarLogCarga(fecha, tipo);*/
+                    DateTime fecha = DateTime.Now;
+                    InsertarLogCarga(fecha, tipo);
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {
@@ -149,8 +149,8 @@ namespace ProyectoPermanencia.Negocio
                 try
                 {
                     conExcel.Open();
-                    /*DateTime fecha = DateTime.Now;
-                    InsertarLogCarga(fecha, tipo);*/
+                    DateTime fecha = DateTime.Now;
+                    InsertarLogCarga(fecha, tipo);
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {
@@ -189,8 +189,8 @@ namespace ProyectoPermanencia.Negocio
                 try
                 {
                     conExcel.Open();
-                    /*DateTime fecha = DateTime.Now;
-                    InsertarLogCarga(fecha, tipo);*/
+                    DateTime fecha = DateTime.Now;
+                    InsertarLogCarga(fecha, tipo);
                     OleDbCommand comando = new OleDbCommand("SELECT * FROM [" + obtenerNombreHoja(conExcel) + "]", conExcel);
                     using (DbDataReader dr = comando.ExecuteReader())
                     {

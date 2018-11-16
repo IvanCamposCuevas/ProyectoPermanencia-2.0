@@ -11,7 +11,7 @@ namespace ProyectoPermanencia.Presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           // fechaCarga();
+           fechaCarga();
             /*DateTime f = DateTime.Now;
             new neg().InsertarLogCarga(f, "Asistencias");*/
         }

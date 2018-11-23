@@ -12,8 +12,8 @@
   DTS:ObjectName="DIM_Alumno"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{5B0A5D38-2F95-4950-A8E7-3C88A2FF5D8D}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{D07EBB22-2DCE-40FB-B3DC-2F49316515E0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -55,6 +55,20 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=.;User ID=sa;Initial Catalog=Permanencia;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EA8A6816-3964-4670-8455-FCCE62717D37}"
+      DTS:ObjectName="MARCE\.Permanencia_2.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=MARCE\;User ID=sa;Initial Catalog=Permanencia_2;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"></DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -135,8 +149,8 @@ FROM [dbo].[Indice_STG]</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Alumnos.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
-                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerID="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -435,8 +449,8 @@ FROM [dbo].[Indice_STG]</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\LK Alumno.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
-                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerID="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -656,8 +670,8 @@ where [refTable].[Desc_Sede] = ?</property>
               <connections>
                 <connection
                   refId="Package\Tarea Flujo de datos\Sede.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
-                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-9N5AEVQ2\.Permanencia_2]"
+                  connectionManagerID="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARCE\.Permanencia_2.sa]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -865,7 +879,7 @@ where [refTable].[Desc_Sede] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -875,7 +889,7 @@ where [refTable].[Desc_Sede] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -47,7 +47,7 @@ namespace ProyectoPermanencia.Negocio
                             + " WHERE "
                             + "AL.Id_Alumno = SC.Id_Alumno"
                             + " AND "
-                            + "AL.Id_Carrera = CA.Id_Carrera"
+                            + "AL.Id_Carrera = cast(round(CA.Id_Carrera,0) as varchar(100))"
                             + " AND "
                             + "CA.Id_Escuela = ES.Id_Escuela"
                             + " AND "
@@ -73,7 +73,7 @@ namespace ProyectoPermanencia.Negocio
         /// <param name="carrera"></param>
         /// <param name="escuela"></param>
         /// <returns></returns>
-        public DataSet ConsultaScorePorFiltro(String sede, String jornada, String escuela, List<string> carrera)
+        public DataSet ConsultaScorePorFiltro(String sede, String jornada, String escuela, String carrera)
         {
             String auxSQL = String.Empty;
             //Aplicar Filtros
@@ -83,9 +83,9 @@ namespace ProyectoPermanencia.Negocio
                 auxSQL = auxSQL + " AND AL.Id_Jornada = '" + jornada + "'";
             if (!String.IsNullOrEmpty(escuela) && int.Parse(escuela) >= 1)
                 auxSQL = auxSQL + " AND CA.Id_Escuela = '" + escuela + "'";
-            foreach (string item in carrera)
+            if (!String.IsNullOrEmpty(carrera) && int.Parse(carrera) >= 1)
             {
-                auxSQL = auxSQL + " AND CA.Desc_Carrera = '" + item + "'";
+                auxSQL = auxSQL + " AND CA.Id_Carrera = '" + carrera + "'";
             }
 
             /*
@@ -135,9 +135,9 @@ namespace ProyectoPermanencia.Negocio
 
         
 
-        public DataSet cargarListaCarrera()
+        public DataSet cargarListaCarrera(int idescuela)
         {
-            Conexion.IntruccioneSQL = "SELECT DISTINCT [Desc_Carrera], [Id_Escuela] FROM [LK_Carrera] ORDER BY [Desc_Carrera]";
+            Conexion.IntruccioneSQL = "SELECT DISTINCT [Desc_Carrera], [Id_Carrera] FROM [LK_Carrera] WHERE [Id_Escuela] = '" + idescuela + "' ORDER BY [Desc_Carrera] "; //cambio id escuela por id carrera
             Conexion.EsSelect = true;
             Conexion.conectar();
             return Conexion.DbDat;

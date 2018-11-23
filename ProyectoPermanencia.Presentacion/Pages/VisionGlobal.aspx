@@ -6,6 +6,7 @@
     </asp:Label>
 </asp:Content>
 <asp:Content ID="ContentGlobal" ContentPlaceHolderID="ContentPlaceHolderGlobal" runat="server">
+    
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="container" style="font-size: small">
@@ -103,13 +104,17 @@
                                 <div class="form row align-items-center">
                                     <h5>Carrera: </h5>
                                     <!--<asp:Button ID="Button1" runat="server" Text="Seleccionar" Font-Size="Small" CssClass="btn btn-sm btn-warning ml-4" OnClientClick="ddlEscuelas_SelectedIndexChanged" />-->
-                                    <asp:ListBox runat="server" ID="lstBoxTest" SelectionMode="Multiple" ClientIDMode="Static">
+                                    <!--<asp:ListBox runat="server" ID="lstBoxTest" SelectionMode="Multiple" >
                                         <asp:ListItem Text="Red" Value="0"></asp:ListItem>
                                         <asp:ListItem Text="Green" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="Yellow" Value="2"></asp:ListItem>
                                         <asp:ListItem Text="Blue" Value="3"></asp:ListItem>
                                         <asp:ListItem Text="Black" Value="4"></asp:ListItem>
-                                    </asp:ListBox>
+                                    </asp:ListBox>-->
+                                    <asp:DropDownList ID="ddlCarreras" runat="server" Width="180px" CssClass="form-control form-control-sm pl-0" >
+                                                    </asp:DropDownList>
+                                                    
+
                                     </div>
                             </div>
 
@@ -194,13 +199,14 @@
 
                 </div>
 
-            <script type="text/javascript">
+           <!-- <script type="text/javascript">
                 $(document).ready(function() {
         $('#lstBoxTest').multiselect({
             includeSelectAllOption: true
         });
     });
-            </script>
+            </script>-->
+
 
 
 

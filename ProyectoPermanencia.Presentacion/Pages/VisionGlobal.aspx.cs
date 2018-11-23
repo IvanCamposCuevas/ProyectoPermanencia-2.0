@@ -72,25 +72,25 @@ namespace ProyectoPermanencia.Presentacion
         {
             try
             {
-                System.Collections.Generic.List<String> listaCarreras = new System.Collections.Generic.List<string>();
+                /*System.Collections.Generic.List<String> listaCarreras = new System.Collections.Generic.List<string>();
                 foreach (ListItem item in chkListaCarreras.Items)
                 {
                     if (item.Selected == true)
                     {
                         listaCarreras.Add(item.Text);
                     }
-                }
-                this.grvGlobal.DataSource = negocio.ConsultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, listaCarreras);
+                }*/
+                this.grvGlobal.DataSource = negocio.ConsultaScorePorFiltro(this.ddlSede.SelectedValue, this.ddlJornada.SelectedValue, this.ddlEscuelas.SelectedValue, this.ddlCarreras.SelectedValue);
                 this.grvGlobal.DataBind();
 
                 foreach (GridViewRow gvr in this.grvGlobal.Rows)
                 {
                     //gvr.Cells[10].Text += "<i class=fa fa-star; style=font-size:20px;color:red;></i>";
-                    gvr.Cells[1].Width = new Unit("7%");
+                    gvr.Cells[1].Width = new Unit("11%");
                     gvr.Cells[10].Text += negocio.colorScore(Decimal.Parse(gvr.Cells[10].Text));
 
                     gvr.Height = new Unit("5%");
-                    gvr.Cells[10].Width = new Unit("8%");
+                    gvr.Cells[10].Width = new Unit("10%");
                 }
 
 
@@ -102,7 +102,7 @@ namespace ProyectoPermanencia.Presentacion
             }
         }
 
-        private void cargarCheckboxs(DataView listaCarrera)
+        /*private void cargarCheckboxs(DataView listaCarrera)
         {
             if (!ddlEscuelas.SelectedValue.Equals("0"))
             {
@@ -114,21 +114,36 @@ namespace ProyectoPermanencia.Presentacion
             chkListaCarreras.DataBind();
             listaCarrera.RowFilter = "";
             mpe.Show();
-        }   
+        }*/
+
+
+        /*private void cargarCarreras(DataView listaCarrera)
+    {
+        if (!ddlEscuelas.SelectedValue.Equals("0"))
+        {
+            listaCarrera.RowFilter = "Id_Escuela = " + ddlEscuelas.SelectedValue;
+        }
+        ddlCarreras.DataSource = listaCarrera;
+            ddlCarreras.DataTextField = "Desc_Carrera";
+            ddlCarreras.DataValueField = "Id_Escuela";
+            ddlCarreras.DataBind();
+        //listaCarrera.RowFilter = "";
+        //mpe.Show();
+    }*/
 
         protected void ddlEscuelas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataView listaCarrera = new DataView();
-            if (Session["Lista Carrera"] != null)
+            if (!ddlEscuelas.SelectedValue.Equals("0"))
             {
-                listaCarrera = (DataView)Session["Lista Carrera"];
-                cargarCheckboxs(listaCarrera);
-            }
-            else
-            {
-                listaCarrera = negocio.cargarListaCarrera().Tables[negocio.Conexion.NombreTabla].AsDataView();
-                Session["Lista Carrera"] = listaCarrera;
-                cargarCheckboxs(listaCarrera);
+                ddlCarreras.Items.Clear();
+                int idescuela = int.Parse(ddlEscuelas.SelectedValue);
+
+                ddlCarreras.DataSource = negocio.cargarListaCarrera(idescuela);
+                ddlCarreras.DataTextField = "Desc_Carrera";
+                ddlCarreras.DataValueField = "Id_Carrera";
+                ddlCarreras.DataBind();
+
+                //ddlCarreras.Items.Insert(0, new ListItem("Seleccione la carrera", "0"));
             }
         }
 

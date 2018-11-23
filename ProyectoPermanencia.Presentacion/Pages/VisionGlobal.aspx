@@ -6,6 +6,7 @@
     </asp:Label>
 </asp:Content>
 <asp:Content ID="ContentGlobal" ContentPlaceHolderID="ContentPlaceHolderGlobal" runat="server">
+    
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="container" style="font-size: small">
@@ -48,12 +49,12 @@
                         <!-- FILTROS DE BUSQUEDA -->
                         <div class="row filtrobox input-group" style="height: 100px; padding: 20px;">
                             <!-- Filtrar por Sede -->
-                            <div id="Sede" class="col-md-3" style="padding-left: 20px">
+                            <div id="Sede" class="col-md-2" style="padding-left: 20px">
                                 <div class="form row align-items-center">
                                     <h5>Sede: </h5>
                                 </div>
                                 <div>
-                                    <asp:DropDownList ID="ddlSede" runat="server" Width="130px" CssClass="form-control form-control-sm ">
+                                    <asp:DropDownList ID="ddlSede" runat="server" Width="100px" CssClass="form-control form-control-sm ">
                                         <asp:ListItem Value="">Todas</asp:ListItem>
                                         <asp:ListItem Value="3">Antonio Varas</asp:ListItem>
                                         <asp:ListItem Value="4">San Carlos</asp:ListItem>
@@ -66,19 +67,71 @@
                                     <h5>Jornada: </h5>
                                 </div>
                                 <div>
-                                    <asp:DropDownList ID="ddlJornada" runat="server" Width="130px" CssClass="form-control form-control-sm">
+                                    <asp:DropDownList ID="ddlJornada" runat="server" Width="100px" CssClass="form-control form-control-sm">
                                         <asp:ListItem Value="">Ambas</asp:ListItem>
                                         <asp:ListItem Value="D">Diurno</asp:ListItem>
                                         <asp:ListItem Value="V">Vespertino</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
-                            <div id="EscuelaCarrera pl-1" class="col-md-4" >
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div id="Escuela pl-1" class="col-md-4" >
                                 <div class="form row align-items-center">
-                                    <h5>Escuela y Carrera: </h5>
-                                    <asp:Button ID="btnBuscarCarreras" runat="server" Text="Seleccionar" Font-Size="Small" CssClass="btn btn-sm btn-warning ml-4" OnClientClick="ddlEscuelas_SelectedIndexChanged" />
+                                    <h5>Escuela: </h5>
+                                    <div>
+                                         <asp:DropDownList ID="ddlEscuelas" runat="server" Width="180px" CssClass="form-control form-control-sm pl-0" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela" OnSelectedIndexChanged="ddlEscuelas_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true">
+                                                    </asp:DropDownList>
+                                                    <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT DISTINCT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]" OnSelected="sqlEscuela_Selected"></asp:SqlDataSource>
+                                    </div>
+                                    <!--<asp:Button ID="btnBuscarCarreras" runat="server" Text="Seleccionar" Font-Size="Small" CssClass="btn btn-sm btn-warning ml-4" OnClientClick="ddlEscuelas_SelectedIndexChanged" />-->
                                 </div>
+                                
                             </div>
+
+
+                            <div id="Carrera pl-1" class="col-md-3" >
+                                <div class="form row align-items-center">
+                                    <h5>Carrera: </h5>
+                                    <!--<asp:Button ID="Button1" runat="server" Text="Seleccionar" Font-Size="Small" CssClass="btn btn-sm btn-warning ml-4" OnClientClick="ddlEscuelas_SelectedIndexChanged" />-->
+                                    <!--<asp:ListBox runat="server" ID="lstBoxTest" SelectionMode="Multiple" >
+                                        <asp:ListItem Text="Red" Value="0"></asp:ListItem>
+                                        <asp:ListItem Text="Green" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="Yellow" Value="2"></asp:ListItem>
+                                        <asp:ListItem Text="Blue" Value="3"></asp:ListItem>
+                                        <asp:ListItem Text="Black" Value="4"></asp:ListItem>
+                                    </asp:ListBox>-->
+                                    <asp:DropDownList ID="ddlCarreras" runat="server" Width="180px" CssClass="form-control form-control-sm pl-0" >
+                                                    </asp:DropDownList>
+                                                    
+
+                                    </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             <div class="col-md-1 p-0">
                                 <!-- Filtrar resultados -->
                                 <div class="row container">
@@ -87,20 +140,17 @@
 
                                 </div>
 
-
                             </div>
                             <!-- START Pop up -->
-                            <div id="popupCarreras" class="justify-content-center" style="max-height: 500px;">
+                            <!--<div id="popupCarreras" class="justify-content-center" style="max-height: 500px;">
                                 <asp:Panel ID="Panel1" runat="server" BackColor="White" Width="800px" Height="400px" CssClass="modal-content p-0" ScrollBars="Vertical" HorizontalAlign="Justify">
                                     <div class="row container pt-3">
                                         <div class="col-md-5">
-                                            <!-- Filtrar por escuela -->
+                                            <!-- Filtrar por escuela 
                                             <div id="Escuela" class="col-sm-4">
                                                 <h5>Escuela: </h5>
                                                 <div style="width: 100px; align-self: center;">
-                                                    <asp:DropDownList ID="ddlEscuelas" runat="server" Width="280px" CssClass="form-control form-control-sm pl-0" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela" OnSelectedIndexChanged="ddlEscuelas_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true">
-                                                    </asp:DropDownList>
-                                                    <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT DISTINCT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]" OnSelected="sqlEscuela_Selected"></asp:SqlDataSource>
+                                                    dropdown escuela iba aca
                                                 </div>
                                             </div>
                                             <div class="row container d-flex align-bottom justify-content-end pr-0 pt-5">
@@ -118,7 +168,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </asp:Panel>
+                                </asp:Panel>-->
 
 
                             </div>
@@ -148,6 +198,18 @@
                     <!-- GRILLA PRINCIPAL -->
 
                 </div>
+
+           <!-- <script type="text/javascript">
+                $(document).ready(function() {
+        $('#lstBoxTest').multiselect({
+            includeSelectAllOption: true
+        });
+    });
+            </script>-->
+
+
+
+
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

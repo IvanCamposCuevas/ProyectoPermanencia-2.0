@@ -26,13 +26,9 @@
 <asp:Content ID="ContentCarrera" runat="server" ContentPlaceHolderID="ContentPlaceHolderReportesCa">
     <div class="conteiner">
         <div class="row container m-1 modal-content" style="border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none;">
-            <asp:Chart ID="Chart2" runat="server" DataSourceID="SqlDataSource2" Width="387px" Height="270px">
+            <asp:Chart ID="Chart2" runat="server" DataSourceID="SqlDataSource2" Width="750px" Height="500px">
                 <Series>
-                    <asp:Series ChartType="StackedColumn" Color="0, 192, 0" Legend="Legend1" Name="Bajo" XValueMember="Desc_Carrera" YValueMembers="Bajo" ChartArea="ChartArea1">
-                    </asp:Series>
-                    <asp:Series ChartArea="ChartArea1" Color="Yellow" Legend="Legend1" Name="Medio" ChartType="StackedColumn">
-                    </asp:Series>
-                    <asp:Series ChartArea="ChartArea1" Color="Red" Legend="Legend1" Name="Alto" ChartType="StackedColumn">
+                    <asp:Series ChartType="StackedColumn" Color="0, 192, 0" Legend="Legend1" Name="Carreras" XValueMember="Carrera" YValueMembers="Resultado" ChartArea="ChartArea1">
                     </asp:Series>
                 </Series>
                 <ChartAreas>
@@ -54,23 +50,18 @@
             </asp:Chart>
         </div>
 
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2ConnectionString %>" SelectCommand="SELECT (SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&lt;=0.4) Bajo, 
-(SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;=0.41 AND Score&lt;0.7) Medio, 
-(SELECT (COUNT(*)*100)/(SELECT COUNT(*) FROM dbo.Score_Alumnos) FROM Score_Alumnos WHERE Score&gt;0.7) Alto,
-c.Desc_Carrera
-FROM 
-Permanencia_2.dbo.Score_Alumnos s, 
-Permanencia_2.dbo.LK_Alumno a , 
-Permanencia_2.dbo.LK_Carrera c,
-Permanencia_2.dbo.LK_Escuela e 
-WHERE 
-s.Id_Alumno = a.Id_Alumno 
-AND 
-a.Id_Carrera = c.Id_Carrera 
-AND 
-c.Id_Escuela = e.Id_Escuela
-GROUP BY
-c.Desc_Carrera;"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT Desc_Carrera Carrera, rango Rango, count (1) Resultado from( 
+SELECT Score_Alumnos.id_alumno, LK_Carrera.Desc_Carrera ,score,
+CASE WHEN
+SCORE&gt;= -3 AND SCORE&lt;= 1 THEN 'Bajo' 
+WHEN
+Score&gt; 1 AND Score&lt;=2 THEN 'Medio'
+WHEN
+Score&gt;2 AND Score&lt;=3 THEN 'Alto'
+END AS 'Rango'
+FROM dbo.Score_Alumnos inner join LK_Alumno on dbo.Score_Alumnos.Id_Alumno = LK_Alumno.Id_Alumno
+inner join LK_Carrera on dbo.LK_Carrera.Id_Carrera = LK_Alumno.Id_Carrera ) a
+group by Desc_Carrera, rango"></asp:SqlDataSource>
         
     </div>
 

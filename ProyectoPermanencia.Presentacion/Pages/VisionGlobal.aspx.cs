@@ -136,6 +136,7 @@ namespace ProyectoPermanencia.Presentacion
             if (!ddlEscuelas.SelectedValue.Equals("0"))
             {
                 ddlCarreras.Items.Clear();
+                ddlCarreras.Items.Insert(0, new ListItem("Seleccione la carrera", "0"));
                 int idescuela = int.Parse(ddlEscuelas.SelectedValue);
 
                 ddlCarreras.DataSource = negocio.cargarListaCarrera(idescuela);
@@ -143,8 +144,13 @@ namespace ProyectoPermanencia.Presentacion
                 ddlCarreras.DataValueField = "Id_Carrera";
                 ddlCarreras.DataBind();
 
-                //ddlCarreras.Items.Insert(0, new ListItem("Seleccione la carrera", "0"));
+                
             }
+            else
+            {
+                ddlCarreras.Items.Clear();
+            }
+
         }
 
         protected void grvGlobal_RowDataBound(object sender, GridViewRowEventArgs e)

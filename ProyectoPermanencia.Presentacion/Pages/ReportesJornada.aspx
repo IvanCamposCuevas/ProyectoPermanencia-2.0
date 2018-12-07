@@ -28,7 +28,11 @@
         <div class="row container m-1 modal-content" style="border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none;">
             <asp:Chart ID="Chart3" runat="server" DataSourceID="SqlDataSource3" Height="305px" Width="392px">
                 <Series>
-                    <asp:Series ChartType="StackedColumn" Color="0, 192, 0" Legend="Legend1" Name="Jornadas" XValueMember="Jornada" YValueMembers="Resultado">
+                    <asp:Series Color="0, 192, 0" Legend="Legend1" Name="Bajo" XValueMember="Rango" YValueMembers="Resultado">
+                    </asp:Series>
+                    <asp:Series ChartArea="ChartArea1" Color="Yellow" Legend="Legend1" Name="Medio">
+                    </asp:Series>
+                    <asp:Series ChartArea="ChartArea1" Color="Red" Legend="Legend1" Name="Alto">
                     </asp:Series>
                 </Series>
                 <ChartAreas>

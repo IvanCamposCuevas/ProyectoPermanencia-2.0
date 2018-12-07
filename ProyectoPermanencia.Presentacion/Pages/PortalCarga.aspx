@@ -1,11 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="CargarArchivos.aspx.cs" Inherits="ProyectoPermanencia.Presentacion.CargarArchivos" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="PortalCarga.aspx.cs" Inherits="ProyectoPermanencia.Presentacion.Pages.PortalCarga" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-        .auto-style1 {
-            width: 140px;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" runat="server">
     <asp:Label runat="server">
@@ -47,13 +41,12 @@
                
 
                 <div class="col-md-4" style="height: 50px;">
-                    <asp:DropDownList ID="ddlTipoArchivo" CssClass="form-control" runat="server">
-                        <asp:ListItem Value="0"> Seleccione </asp:ListItem>
+                    <asp:DropDownList ID="ddlTipoArchivoASubir" runat="server" CssClass="form-control">
+                                <asp:ListItem Value="0"> Seleccione </asp:ListItem>
                                 <asp:ListItem Value="1"> Asistencia </asp:ListItem>
                                 <asp:ListItem Value="2"> Notas </asp:ListItem>
                                 <asp:ListItem Value="3"> Situación Financiera </asp:ListItem>
                                 <asp:ListItem Value="4"> Indice Alumno </asp:ListItem>
-                                <asp:ListItem Value="5"> Deserción </asp:ListItem>
                     </asp:DropDownList>
                     <asp:FileUpload runat="server" Width="350px" CssClass="form-control" ID="fuSubirArchivo" accept=".xls , .xlsx" />
                     <br />
@@ -63,18 +56,9 @@
                 </div>
             </div>
             <div class="row container" style="margin:20px;display:inline-block">
-              
+                <br />
                 <asp:Label ID="Label1" runat="server" ForeColor="Red" style="font-size:13px;" Text="* Solo se pueden ingresar archivos Excels, con extension .xls o .xlsx"></asp:Label>
                 <br />
-                
-            </div>
-            &nbsp;
-            &nbsp;
-            &nbsp;
-            &nbsp;
-            &nbsp;
-           
-                
                 
             </div>
             &nbsp;
@@ -134,7 +118,7 @@
                      <tr>
                          <td class="auto-style1" style="width:200px">
                              &nbsp;&nbsp;&nbsp;&nbsp;
-                             <asp:DropDownList runat="server" CssClass="form-control" ID="ddlTipoArchivoEjemplo" >
+                             <asp:DropDownList runat="server" CssClass="form-control" ID="ddlTipoArchivo" >
                                 <asp:ListItem Value="0"> Seleccione </asp:ListItem>
                                 <asp:ListItem Value="1"> Asistencia </asp:ListItem>
                                 <asp:ListItem Value="2"> Notas </asp:ListItem>
@@ -165,5 +149,5 @@
 
 
 
-    
+    </div>
 </asp:Content>

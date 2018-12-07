@@ -90,7 +90,7 @@
                         <a class="nav-link" style="color: azure" href="/Pages/Reportes.aspx">Reportes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: azure" href="/Pages/CargarArchivos.aspx">Cargar</a>
+                        <a class="nav-link" style="color: azure" href="/Pages/PortalCarga.aspx">Cargar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="color: azure" href="/Pages/EtapasResolucion.aspx">Etapas de Resolución</a>

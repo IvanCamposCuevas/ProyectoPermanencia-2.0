@@ -167,6 +167,7 @@
     <Content Include="Pages\Historico.aspx" />
     <Content Include="Pages\Interacciones.aspx" />
     <Content Include="Pages\MantenedorSemestre.aspx" />
+    <Content Include="Pages\PortalCarga.aspx" />
     <Content Include="Pages\RegistroInteraccion.aspx" />
     <Content Include="Pages\Reportes.aspx" />
     <Content Include="Pages\ReportesCarrera.aspx" />
@@ -334,6 +335,13 @@
     </Compile>
     <Compile Include="Pages\MantenedorSemestre.aspx.designer.cs">
       <DependentUpon>MantenedorSemestre.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PortalCarga.aspx.cs">
+      <DependentUpon>PortalCarga.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\PortalCarga.aspx.designer.cs">
+      <DependentUpon>PortalCarga.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\RegistroInteraccion.aspx.cs">
       <DependentUpon>RegistroInteraccion.aspx</DependentUpon>

@@ -31,7 +31,7 @@ namespace ProyectoPermanencia.Presentacion
              *  row.Cells[10] = Score**/
             GridViewRow row = this.grvGlobal.SelectedRow;
 
-            int charLocation = row.Cells[10].Text.IndexOf("<", StringComparison.Ordinal);//codigo para que me saque el score hasta que encuentre el '<' del tag
+            int charLocation = row.Cells[10].Text.IndexOf("&", StringComparison.Ordinal);//codigo para que me saque el score hasta que encuentre el '<' del tag
             string score = row.Cells[10].Text.Substring(0, charLocation); //continuacion
             //row.Cells[10].Style.Add = ("width","20px");
 

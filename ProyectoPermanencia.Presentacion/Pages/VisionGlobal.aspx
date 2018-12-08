@@ -51,7 +51,7 @@
                             <!-- Filtrar por Sede -->
                             <div id="Sede" class="col-md-2" style="padding-left: 20px">
                                 <div class="form row align-items-center">
-                                    <h5>Sede: </h5>
+                                    <h5>Sede:</h5>
                                 </div>
                                 <div>
                                     <asp:DropDownList ID="ddlSede" runat="server" Width="100px" CssClass="form-control form-control-sm ">
@@ -64,7 +64,7 @@
                             <!-- Filtrar por jornada-->
                             <div id="Jornada" class="col-md-3" style="padding-left:20px">
                                 <div class="form row align-items-center">
-                                    <h5>Jornada: </h5>
+                                    <h5>Jornada:</h5>
                                 </div>
                                 <div>
                                     <asp:DropDownList ID="ddlJornada" runat="server" Width="100px" CssClass="form-control form-control-sm">
@@ -90,7 +90,7 @@
                                 <div class="form row align-items-center">
                                     <h5>Escuela: </h5>
                                     <div>
-                                         <asp:DropDownList ID="ddlEscuelas" runat="server" Width="180px" CssClass="form-control form-control-sm pl-0" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela" OnSelectedIndexChanged="ddlEscuelas_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true">
+                                         <asp:DropDownList ID="ddlEscuelas" runat="server" Width="200px" CssClass="form-control form-control-sm pl-0" DataSourceID="sqlEscuela" DataTextField="Desc_Escuela" DataValueField="Id_Escuela" OnSelectedIndexChanged="ddlEscuelas_SelectedIndexChanged" AutoPostBack="True" AppendDataBoundItems="true">
                                                     </asp:DropDownList>
                                                     <asp:SqlDataSource ID="sqlEscuela" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT DISTINCT * FROM [LK_Escuela] ORDER BY [Desc_Escuela]" OnSelected="sqlEscuela_Selected"></asp:SqlDataSource>
                                     </div>
@@ -111,7 +111,7 @@
                                         <asp:ListItem Text="Blue" Value="3"></asp:ListItem>
                                         <asp:ListItem Text="Black" Value="4"></asp:ListItem>
                                     </asp:ListBox>-->
-                                    <asp:DropDownList ID="ddlCarreras" runat="server" Width="180px" CssClass="form-control form-control-sm pl-0" >
+                                    <asp:DropDownList ID="ddlCarreras" runat="server" Width="200px" CssClass="form-control form-control-sm pl-0" >
                                                     </asp:DropDownList>
                                                     
 
@@ -132,10 +132,9 @@
 
 
 
-                            <div class="col-md-1 p-0">
+                            <div class="col-md-3 p-3">
                                 <!-- Filtrar resultados -->
                                 <div class="row container">
-                                    <h5> . </h5>
                                     <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-sm btn-info" Text="Filtrar" OnClick="LinkButton_Click"></asp:LinkButton>
 
                                 </div>

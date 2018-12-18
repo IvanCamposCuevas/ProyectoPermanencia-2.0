@@ -28,7 +28,11 @@
         <div class="row modal-content m-1" style="border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none;">
             <asp:Chart ID="Chart4" runat="server" DataSourceID="SqlDataSource4" Height="325px" Width="356px" Palette="Chocolate" PaletteCustomColors="Red; Yellow; Lime">
                 <Series>
-                    <asp:Series Name="Sede A.V" ChartType="Bubble" Color="0, 192, 0" Legend="Legend1" XValueMember="Rango" YValueMembers="Resultado" YValuesPerPoint="2"></asp:Series>
+                    <asp:Series Name="Bajo" ChartType="StackedColumn" Color="0, 192, 0" Legend="Legend1" XValueMember="Sede" YValueMembers="Resultado" YValuesPerPoint="2"></asp:Series>
+                    <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn" Color="Yellow" Legend="Legend1" Name="Medio" XValueMember="Sede" YValueMembers="Resultado">
+                    </asp:Series>
+                    <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn" Color="Red" Legend="Legend1" Name="Alto" XValueMember="Sede" YValueMembers="Resultado">
+                    </asp:Series>
                 </Series>
                 <ChartAreas>
                     <asp:ChartArea Name="ChartArea1">

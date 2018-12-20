@@ -28,11 +28,11 @@
         <div class="row container m-1 modal-content" style="border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none;">
             <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource1" OnLoad="Chart1_Load" Width="400px">
                 <Series>
-                    <asp:Series ChartType="StackedColumn" Color="0, 192, 0" Name="Bajo" XValueMember="Escuela" YValueMembers="Resultado" Legend="Legend1">
+                    <asp:Series ChartType="StackedColumn100" Color="0, 192, 0" Name="Bajo" XValueMember="Escuela" YValueMembers="Resultado" Legend="Legend1">
                     </asp:Series>
-                    <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn" Color="Gold" Name="Medio" XValueMember="Escuela" YValueMembers="Resultado" Legend="Legend1">
+                    <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn100" Legend="Legend1" Name="Medio" XValueMember="Escuela" YValueMembers="Resultado">
                     </asp:Series>
-                    <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn" Color="Red" Name="Alto" XValueMember="Escuela" YValueMembers="Resultado" Legend="Legend1">
+                    <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn100" Legend="Legend1" Name="Alto" XValueMember="Escuela" YValueMembers="Resultado">
                     </asp:Series>
                 </Series>
                 <ChartAreas>

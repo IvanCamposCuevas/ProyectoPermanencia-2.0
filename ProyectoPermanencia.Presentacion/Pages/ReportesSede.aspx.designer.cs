@@ -13,13 +13,13 @@ namespace ProyectoPermanencia.Presentacion.Pages {
     public partial class ReportesSede {
         
         /// <summary>
-        /// Control Chart4.
+        /// Control Chart1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart4;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
         
         /// <summary>
         /// Control SqlDataSource4.

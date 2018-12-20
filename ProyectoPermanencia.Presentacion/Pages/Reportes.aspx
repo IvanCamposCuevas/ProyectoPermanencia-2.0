@@ -16,10 +16,10 @@
                 <a class="nav-link" href="/Pages/ReportesSede.aspx">Sede</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Pages/ReportesEscuela.aspx">Escuela</a>
+                <a class="nav-link" href="/Pages/Reporte Escuela2.aspx">Escuela</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Pages/ReportesCarrera.aspx">Carrera</a>
+                <a class="nav-link" href="#">Carrera</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/Pages/ReportesJornada.aspx">Jornada</a>

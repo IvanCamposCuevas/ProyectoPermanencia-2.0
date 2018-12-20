@@ -12,10 +12,10 @@
                 <a class="nav-link active" href="#">Sede</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Pages/ReportesEscuela.aspx">Escuela</a>
+                <a class="nav-link" href="/Pages/Reporte Escuela2.aspx">Escuela</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Pages/ReportesCarrera.aspx">Carrera</a>
+                <a class="nav-link" href="#">Carrera</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/Pages/ReportesJornada.aspx">Jornada</a>
@@ -26,28 +26,20 @@
 <asp:Content ID="ContentReportesSe" ContentPlaceHolderID="ContentPlaceHolderReportesSe" runat="server">
     <div class="container">
         <div class="row modal-content m-1" style="border-radius: 2px; border-left: 5px solid rgb(252,173,24); border-right: 5px solid rgb(252,173,24); box-shadow: none;">
-            <asp:Chart ID="Chart4" runat="server" DataSourceID="SqlDataSource4" Height="325px" Width="356px" Palette="Chocolate" PaletteCustomColors="Red; Yellow; Lime">
+            <asp:Chart ID="Chart1" runat="server" BackColor="WhiteSmoke" DataSourceID="SqlDataSource4" Palette="None" PaletteCustomColors="Navy">
                 <Series>
-                    <asp:Series Name="Bajo" ChartType="StackedColumn" Color="0, 192, 0" Legend="Legend1" XValueMember="Sede" YValueMembers="Resultado" YValuesPerPoint="2"></asp:Series>
-                    <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn" Color="Yellow" Legend="Legend1" Name="Medio" XValueMember="Sede" YValueMembers="Resultado">
-                    </asp:Series>
-                    <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn" Color="Red" Legend="Legend1" Name="Alto" XValueMember="Sede" YValueMembers="Resultado">
-                    </asp:Series>
+                    <asp:Series Name="Series1" XValueMember="Rango" YValueMembers="Resultado"></asp:Series>
                 </Series>
                 <ChartAreas>
                     <asp:ChartArea Name="ChartArea1">
-                        <AxisY Title="Porcentajes">
+                        <AxisY Title="Cantidad Alumnos">
                         </AxisY>
-                        <AxisX Title="Sedes">
+                        <AxisX Title="Scores">
                         </AxisX>
                     </asp:ChartArea>
                 </ChartAreas>
-                <Legends>
-                    <asp:Legend Name="Legend1">
-                    </asp:Legend>
-                </Legends>
                 <Titles>
-                    <asp:Title Name="Title1" Text="Reporte Sedes">
+                    <asp:Title Font="Microsoft Sans Serif, 9pt, style=Bold" Name="Sede ANTONIO VARAS" Text="Sede ANTONIO VARAS">
                     </asp:Title>
                 </Titles>
             </asp:Chart>
@@ -64,7 +56,8 @@ Score&gt;2 AND Score&lt;=3 THEN 'Alto'
 END AS 'Rango'
 FROM dbo.Score_Alumnos inner join LK_Alumno on dbo.Score_Alumnos.Id_Alumno = LK_Alumno.Id_Alumno
 inner join LK_Sede on dbo.LK_Sede.Id_Sede = LK_Alumno.Id_Sede ) a
-group by Desc_Sede, rango"></asp:SqlDataSource>
+group by Desc_Sede, rango
+order by Resultado desc"></asp:SqlDataSource>
 
 
     </div>

@@ -54,7 +54,7 @@
             </asp:Chart>
         </div>
 
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT Desc_Carrera Carrera, rango Rango, count (1) Resultado from( 
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Permanencia_2_Conexion-Ivan %>" SelectCommand="SELECT DISTINCT Desc_Carrera Carrera, rango Rango, count (1) Resultado from( 
 SELECT Score_Alumnos.id_alumno, LK_Carrera.Desc_Carrera ,score,
 CASE WHEN
 SCORE&gt;= -3 AND SCORE&lt;= 1 THEN 'Bajo' 
